@@ -6,13 +6,13 @@
 //
 //
 
-#import "SecondViewController.h"
+#import "DoorReviewViewController.h"
 
-@interface SecondViewController ()
+@interface DoorReviewViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation DoorReviewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
