@@ -11,6 +11,7 @@
 		6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38B1AB5ED530085965E /* ResourcesViewController.m */; };
 		6851D3901AB5ED890085965E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38F1AB5ED890085965E /* SettingViewController.m */; };
 		6851D3941AB5EDA10085965E /* LogoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3931AB5EDA10085965E /* LogoutViewController.m */; };
+		6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3971AB60BAC0085965E /* AlphabetView.m */; };
 		686634AE1AB5E7CA003EA804 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634AD1AB5E7CA003EA804 /* main.m */; };
 		686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634B01AB5E7CA003EA804 /* AppDelegate.m */; };
 		686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634B31AB5E7CA003EA804 /* HomeViewController.m */; };
@@ -44,6 +45,8 @@
 		6851D38F1AB5ED890085965E /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Controllers/SettingViewController/SettingViewController.m; sourceTree = "<group>"; };
 		6851D3921AB5EDA10085965E /* LogoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogoutViewController.h; path = Controllers/LogoutViewController/LogoutViewController.h; sourceTree = "<group>"; };
 		6851D3931AB5EDA10085965E /* LogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogoutViewController.m; path = Controllers/LogoutViewController/LogoutViewController.m; sourceTree = "<group>"; };
+		6851D3961AB60BAC0085965E /* AlphabetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlphabetView.h; path = Controllers/ResourcesViewController/View/AlphabetView.h; sourceTree = "<group>"; };
+		6851D3971AB60BAC0085965E /* AlphabetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlphabetView.m; path = Controllers/ResourcesViewController/View/AlphabetView.m; sourceTree = "<group>"; };
 		686634A81AB5E7CA003EA804 /* firedoortracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firedoortracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686634AC1AB5E7CA003EA804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686634AD1AB5E7CA003EA804 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 		6851D3891AB5ED330085965E /* ResourcesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6851D3951AB60B6A0085965E /* View */,
 				6851D38A1AB5ED530085965E /* ResourcesViewController.h */,
 				6851D38B1AB5ED530085965E /* ResourcesViewController.m */,
 			);
@@ -132,6 +136,15 @@
 				6851D3931AB5EDA10085965E /* LogoutViewController.m */,
 			);
 			name = LogoutViewController;
+			sourceTree = "<group>";
+		};
+		6851D3951AB60B6A0085965E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6851D3961AB60BAC0085965E /* AlphabetView.h */,
+				6851D3971AB60BAC0085965E /* AlphabetView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		6866349F1AB5E7CA003EA804 = {
@@ -382,6 +395,7 @@
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
+				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
