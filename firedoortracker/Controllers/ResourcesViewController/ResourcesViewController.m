@@ -8,6 +8,20 @@
 
 #import "ResourcesViewController.h"
 
+//Import View
+#import "AlphabetView.h"
+
+@interface ResourcesViewController()
+
+@end
+
 @implementation ResourcesViewController
+
+#pragma mark - view controller lyfecircle
+#pragma mark -
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
 
 @end
