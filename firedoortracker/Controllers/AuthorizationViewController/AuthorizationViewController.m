@@ -41,13 +41,13 @@
                                                   andParams:@{@"login" : @"stasionok@gmail.com",
                                                               @"password" : @"124"}
                                              withCompletion:^(id responseObject, NSError *error) {
+                                                 [welf.activityIndicator stopAnimating];
+                                                 [welf.descriptionLabel setHidden:NO];
                                                  if (error) {
-                                                     [welf.activityIndicator stopAnimating];
-                                                     [welf.descriptionLabel setHidden:NO];
-                                                     [welf.descriptionLabel setText:NSLocalizedString(@"Connection Problem", nil)];
                                                      [welf.logInButton setEnabled:YES];
+                                                     [welf.descriptionLabel setText:NSLocalizedString(@"Connection Problem", nil)];
                                                  }
-                                                 //TODO: Push tab bar controller if response status = ok
+                                                 [welf.descriptionLabel setText:NSLocalizedString(@"Authorization Completed",nil)];
                                              }];
 }
 

@@ -12,9 +12,12 @@
 static NSString* baseURL = @"http://superpizdato.com/service/dispatcher";
 
 static NSString* kRequestType = @"type";
-static NSString* AuthRequestType = @"Auth";
+static NSString* AuthRequestType = @"auth";
 
 static NSString* kToken = @"token";
+
+static NSString* kStatus = @"status";
+static NSString* statusOK = @"ok";
 
 typedef enum {
     RequestMethodPOST = 0,
@@ -133,7 +136,19 @@ static bool isFirstAccess = YES;
             [self.networkManager POST:@""
                            parameters:requestParams
                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                  if (completion) completion(responseObject, nil);
+                                  if ([responseObject objectForKey:kToken]) {
+                                      self.userToken = [responseObject objectForKey:kToken];
+                                  }
+                                  
+                                  if (completion) {
+                                      if ([[responseObject objectForKey:kStatus] isEqualToString:statusOK]) {
+                                          completion(responseObject, nil);
+                                      } else {
+                                          completion(nil, [NSError errorWithDomain:@"Request Error"
+                                                                              code:-100500
+                                                                          userInfo:responseObject]);
+                                      }
+                                  }
                               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                   if (completion) completion(nil, error);
                               }];
