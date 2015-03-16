@@ -15,6 +15,7 @@ static NSString* kRequestType = @"type";
 static NSString* AuthRequestType = @"auth";
 static NSString* glossaryLettersRequestType = @"get_glossary_letters";
 static NSString* glossaryTermsByLetter = @"get_terms_by_letter";
+static NSString* glossaryKeyWordSearch = @"search_glossary_terms";
 
 static NSString* kToken = @"token";
 
@@ -98,20 +99,20 @@ static bool isFirstAccess = YES;
                      andParams:(NSDictionary *)params
                 withCompletion:(void (^)(id responseObject, NSError* error))completion {
     NSMutableDictionary* requestParams = [NSMutableDictionary dictionary];
-    RequestMethod requestMethod;
+    RequestMethod requestMethod = RequestMethodPOST;
     
     switch (type) {
         case AuthorizationRequestType:
             [requestParams setObject:AuthRequestType forKey:kRequestType];
-            requestMethod = RequestMethodPOST;
             break;
         case GlossaryLettersRequestType:
             [requestParams setObject:glossaryLettersRequestType forKey:kRequestType];
-            requestMethod = RequestMethodPOST;
             break;
         case GlossaryTermsByLetterRequestType:
             [requestParams setObject:glossaryTermsByLetter forKey:kRequestType];
-            requestMethod = RequestMethodPOST;
+            break;
+        case GlossaryKeyWordSearchRequestType:
+            [requestParams setObject:glossaryKeyWordSearch forKey:kRequestType];
             break;
         default:
             //TODO: Unknow request type, return Error

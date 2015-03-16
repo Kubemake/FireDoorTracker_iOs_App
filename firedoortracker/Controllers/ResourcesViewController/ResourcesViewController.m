@@ -21,6 +21,7 @@
 static NSString* kLetters = @"letters";
 static NSString* kLetter = @"letter";
 static NSString* kTerms = @"terms";
+static NSString* kKeyWord = @"needle";
 
 static NSString* termCellIdentifier = @"TermTableViewCell";
 
@@ -65,6 +66,7 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      //TODO: Display Error
+                                                     return;
                                                  }
                                                  [welf.alphabetView displayActiveLetters:[responseObject objectForKey:kLetters]];
                                              }];
@@ -77,12 +79,13 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      //TODO: Display error
+                                                     return;
                                                  }
                                                  welf.terms = [NSMutableArray array];
                                                  for (NSDictionary *termDictionary in [responseObject objectForKey:kTerms]) {
                                                      [welf.terms addObject:[[Term alloc] initWithDictionary:termDictionary]];
-                                                     [welf.tableView reloadData];
                                                  }
+                                                 [welf.tableView reloadData];
                                              }];
 }
 
@@ -97,6 +100,21 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 #pragma mark - search bar delegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    __weak typeof(self) welf = self;
+    [self.backButton setEnabled:YES];
+    [[NetworkManager sharedInstance] performRequestWithType:GlossaryKeyWordSearchRequestType
+                                                  andParams:@{kKeyWord : searchBar.text ? : [NSNull null]}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     //TODO: Display Error
+                                                     return;
+                                                 }
+                                                 welf.terms = [NSMutableArray array];
+                                                 for (NSDictionary *termDictionary in [responseObject objectForKey:kTerms]) {
+                                                     [welf.terms addObject:[[Term alloc] initWithDictionary:termDictionary]];
+                                                 }
+                                                 [welf.tableView reloadData];
+                                             }];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
