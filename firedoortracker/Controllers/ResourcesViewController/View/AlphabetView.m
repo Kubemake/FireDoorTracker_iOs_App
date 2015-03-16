@@ -8,8 +8,6 @@
 
 #import "AlphabetView.h"
 
-static const CGFloat symbolSpace = 5.0f;
-
 @interface AlphabetView()
 
 @property (nonatomic, strong) NSMutableArray* alphabetButtons;
@@ -21,7 +19,11 @@ static const CGFloat symbolSpace = 5.0f;
 #pragma mark - Display Methods
 #pragma mark -
 
-- (void)awakeFromNib {
+- (void)layoutSubviews {
+    //This code need to resize alphabet letters
+    for (UIView *subview in self.subviews) {
+        [subview removeFromSuperview];
+    }
     [self generateAlphabetButtons];
 }
 
@@ -35,7 +37,7 @@ static const CGFloat symbolSpace = 5.0f;
 - (void)generateAlphabetButtons {
     self.alphabetButtons = [NSMutableArray new];
     CGFloat buttonWidth = self.bounds.size.width / 26;
-    CGFloat nextButtonXPosition = symbolSpace;
+    CGFloat nextButtonXPosition = 0.0f;
     for (char symbol = 'A'; symbol <= 'Z'; symbol++) {
         UIButton *symbolButton = [[UIButton alloc] initWithFrame:CGRectMake(nextButtonXPosition,
                                                                             0,
