@@ -8,6 +8,8 @@
 
 #import "AlphabetView.h"
 
+static const CGFloat letterFontSize = 20.0f;
+
 @interface AlphabetView()
 
 @property (nonatomic, strong) NSMutableArray* alphabetButtons;
@@ -51,7 +53,7 @@
                                                                             self.bounds.size.height)];
         [symbolButton setTitle:[NSString stringWithFormat:@"%c",symbol]
                       forState:UIControlStateNormal];
-        [symbolButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
+        [symbolButton.titleLabel setFont:[UIFont boldSystemFontOfSize:letterFontSize]];
         [symbolButton setTitleColor:[AlphabetView activeButtonCollor]
                            forState:UIControlStateNormal];
         [symbolButton setTitleColor:[UIColor grayColor]
