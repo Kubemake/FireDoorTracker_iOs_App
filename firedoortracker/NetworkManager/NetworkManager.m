@@ -1,0 +1,145 @@
+//
+//  NetworkManager.m
+//  firedoortracker
+//
+//  Created by Dmitriy Bagrov on 16.03.15.
+//
+//
+
+#import "NetworkManager.h"
+#import <AFNetworking.h>
+
+static NSString* baseURL = @"http://superpizdato.com/service/dispatcher";
+
+static NSString* kRequestType = @"type";
+static NSString* AuthRequestType = @"Auth";
+
+static NSString* kToken = @"token";
+
+typedef enum {
+    RequestMethodPOST = 0,
+    RequestMethodGET
+} RequestMethod;
+
+@interface NetworkManager()
+
+@property (nonatomic, strong) AFHTTPRequestOperationManager* networkManager;
+@property (nonatomic, copy) NSString* userToken;
+
+@end
+
+@implementation NetworkManager
+
+static NetworkManager *SINGLETON = nil;
+static bool isFirstAccess = YES;
+
+#pragma mark - Public Method
+
++ (id)sharedInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        isFirstAccess = NO;
+        SINGLETON = [[super allocWithZone:NULL] init];    
+    });
+    
+    return SINGLETON;
+}
+
+#pragma mark - Life Cycle
+
++ (id) allocWithZone:(NSZone *)zone {
+    return [self sharedInstance];
+}
+
++ (id)copyWithZone:(struct _NSZone *)zone {
+    return [self sharedInstance];
+}
+
++ (id)mutableCopyWithZone:(struct _NSZone *)zone {
+    return [self sharedInstance];
+}
+
+- (id)copy {
+    return [[NetworkManager alloc] init];
+}
+
+- (id)mutableCopy {
+    return [[NetworkManager alloc] init];
+}
+
+- (id)init {
+    if(SINGLETON){
+        return SINGLETON;
+    }
+    if (isFirstAccess) {
+        [self doesNotRecognizeSelector:_cmd];
+    }
+    self = [super init];
+    [self initRequestOperationManager];
+    return self;
+}
+
+#pragma mark - Operation Manager lyfecircle
+
+- (void)initRequestOperationManager {
+    self.networkManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    self.networkManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    self.networkManager.responseSerializer = [AFJSONResponseSerializer serializer];
+}
+
+#pragma mark - Request methods
+
+- (void)performRequestWithType:(RequestType)type
+                     andParams:(NSDictionary *)params
+                withCompletion:(void (^)(id responseObject, NSError* error))completion {
+    NSMutableDictionary* requestParams = [NSMutableDictionary dictionary];
+    RequestMethod requestMethod;
+    
+    switch (type) {
+        case AuthorizationRequestType:
+            [requestParams setObject:AuthRequestType forKey:kRequestType];
+            requestMethod = RequestMethodPOST;
+            break;
+            
+        default:
+            //TODO: Unknow request type, return Error
+            break;
+    }
+    if (self.userToken) {
+        [requestParams setObject:self.userToken forKey:kToken];
+    }
+    for (NSString* paramsKey in [params allKeys]) {
+        if ([requestParams objectForKey:paramsKey]) {
+            //TODO: Return error -> wrong request param
+        } else {
+            [requestParams setObject:[params objectForKey:paramsKey]
+                              forKey:paramsKey];
+        }
+    }
+    
+    switch (requestMethod) {
+        case RequestMethodGET: {
+            [self.networkManager GET:@""
+                          parameters:requestParams
+                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                 if (completion) completion(responseObject, nil);
+                             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                 if (completion) completion(nil, error);
+                             }];
+            break;
+        }
+
+        case RequestMethodPOST:
+            [self.networkManager POST:@""
+                           parameters:requestParams
+                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                  if (completion) completion(responseObject, nil);
+                              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                  if (completion) completion(nil, error);
+                              }];
+            break;
+    }
+}
+
+
+@end

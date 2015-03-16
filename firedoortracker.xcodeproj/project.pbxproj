@@ -12,6 +12,8 @@
 		6851D3901AB5ED890085965E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38F1AB5ED890085965E /* SettingViewController.m */; };
 		6851D3941AB5EDA10085965E /* LogoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3931AB5EDA10085965E /* LogoutViewController.m */; };
 		6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3971AB60BAC0085965E /* AlphabetView.m */; };
+		6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D39B1AB6E7130085965E /* NetworkManager.m */; };
+		6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D39F1AB6E8FB0085965E /* AuthorizationViewController.m */; };
 		686634AE1AB5E7CA003EA804 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634AD1AB5E7CA003EA804 /* main.m */; };
 		686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634B01AB5E7CA003EA804 /* AppDelegate.m */; };
 		686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634B31AB5E7CA003EA804 /* HomeViewController.m */; };
@@ -47,6 +49,10 @@
 		6851D3931AB5EDA10085965E /* LogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogoutViewController.m; path = Controllers/LogoutViewController/LogoutViewController.m; sourceTree = "<group>"; };
 		6851D3961AB60BAC0085965E /* AlphabetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlphabetView.h; path = Controllers/ResourcesViewController/View/AlphabetView.h; sourceTree = "<group>"; };
 		6851D3971AB60BAC0085965E /* AlphabetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlphabetView.m; path = Controllers/ResourcesViewController/View/AlphabetView.m; sourceTree = "<group>"; };
+		6851D39A1AB6E7130085965E /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = NetworkManager/NetworkManager.h; sourceTree = "<group>"; };
+		6851D39B1AB6E7130085965E /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkManager.m; path = NetworkManager/NetworkManager.m; sourceTree = "<group>"; };
+		6851D39E1AB6E8FB0085965E /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizationViewController.h; path = Controllers/AuthorizationViewController/AuthorizationViewController.h; sourceTree = "<group>"; };
+		6851D39F1AB6E8FB0085965E /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationViewController.m; path = Controllers/AuthorizationViewController/AuthorizationViewController.m; sourceTree = "<group>"; };
 		686634A81AB5E7CA003EA804 /* firedoortracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firedoortracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686634AC1AB5E7CA003EA804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686634AD1AB5E7CA003EA804 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -147,6 +153,24 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		6851D3991AB6E6EC0085965E /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				6851D39A1AB6E7130085965E /* NetworkManager.h */,
+				6851D39B1AB6E7130085965E /* NetworkManager.m */,
+			);
+			name = NetworkManager;
+			sourceTree = "<group>";
+		};
+		6851D39D1AB6E8D70085965E /* AuthorizationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6851D39E1AB6E8FB0085965E /* AuthorizationViewController.h */,
+				6851D39F1AB6E8FB0085965E /* AuthorizationViewController.m */,
+			);
+			name = AuthorizationViewController;
+			sourceTree = "<group>";
+		};
 		6866349F1AB5E7CA003EA804 = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +194,7 @@
 		686634AA1AB5E7CA003EA804 /* firedoortracker */ = {
 			isa = PBXGroup;
 			children = (
+				6851D3991AB6E6EC0085965E /* NetworkManager */,
 				686634D61AB5E7EF003EA804 /* AppDelegate */,
 				686634D51AB5E7E0003EA804 /* Controllers */,
 				686634D41AB5E7D6003EA804 /* Storyboard */,
@@ -217,6 +242,7 @@
 		686634D51AB5E7E0003EA804 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6851D39D1AB6E8D70085965E /* AuthorizationViewController */,
 				6851D3911AB5ED8D0085965E /* LogoutViewController */,
 				6851D38D1AB5ED740085965E /* SettingViewController */,
 				6851D3891AB5ED330085965E /* ResourcesViewController */,
@@ -391,10 +417,12 @@
 				686634B71AB5E7CA003EA804 /* DoorReviewViewController.m in Sources */,
 				6851D3941AB5EDA10085965E /* LogoutViewController.m in Sources */,
 				686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */,
+				6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */,
 				6851D3901AB5ED890085965E /* SettingViewController.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
+				6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
