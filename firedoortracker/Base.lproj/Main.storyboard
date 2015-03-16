@@ -351,9 +351,17 @@
                             <constraint firstItem="BEE-96-4Tv" firstAttribute="top" secondItem="Vhr-64-9Vl" secondAttribute="bottom" id="oe8-EB-7Yh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="GLOSSARY" id="Umf-nZ-AhC"/>
+                    <navigationItem key="navigationItem" title="GLOSSARY" id="Umf-nZ-AhC">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="backButton" id="xUb-s0-nid">
+                            <color key="tintColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="backButtonTouched:" destination="MRp-bh-LVg" id="5Nv-9e-nww"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="alphabetView" destination="Bha-iG-x4V" id="3Rj-iI-dEY"/>
+                        <outlet property="backButton" destination="xUb-s0-nid" id="VgK-0T-c89"/>
                         <outlet property="tableView" destination="8Mb-xY-tiP" id="1gF-of-Iur"/>
                     </connections>
                 </viewController>
@@ -458,6 +466,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backButton" width="37" height="37"/>
         <image name="doorReviewIcon" width="37" height="37"/>
         <image name="homeIcon" width="37" height="37"/>
         <image name="logout" width="37" height="37"/>

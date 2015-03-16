@@ -51,6 +51,7 @@
                                                                             self.bounds.size.height)];
         [symbolButton setTitle:[NSString stringWithFormat:@"%c",symbol]
                       forState:UIControlStateNormal];
+        [symbolButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
         [symbolButton setTitleColor:[AlphabetView activeButtonCollor]
                            forState:UIControlStateNormal];
         [symbolButton setTitleColor:[UIColor grayColor]

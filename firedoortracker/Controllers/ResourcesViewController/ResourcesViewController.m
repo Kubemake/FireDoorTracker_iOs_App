@@ -27,6 +27,7 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 @interface ResourcesViewController() <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, AlphabetViewDelegate>
 
 //IBOutlets
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet AlphabetView *alphabetView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -44,6 +45,7 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
     [super viewDidLoad];
     [self setupDelegates];
     [self loadAndDisplayAvailableLetters];
+    [self loadAndDispayGlossaryTermsByLetter:nil];
 }
 
 #pragma mark - Setup Methods
@@ -71,7 +73,7 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 - (void)loadAndDispayGlossaryTermsByLetter:(NSString *)letter {
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:GlossaryTermsByLetterRequestType
-                                                  andParams:@{kLetter : letter}
+                                                  andParams:@{kLetter : letter ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      //TODO: Display error
@@ -88,17 +90,26 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 #pragma mark - ALphabet View Delegate
 
 - (void)userSelectLetter:(NSString *)letter {
+    [self.backButton setEnabled:YES];
     [self loadAndDispayGlossaryTermsByLetter:letter];
 }
 
 #pragma mark - search bar delegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    //TODO: Make Special search
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    
+    [searchBar setText:nil];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO];
 }
 
 #pragma mark - Table View Delegate
@@ -117,6 +128,14 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
     TermTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:termCellIdentifier];
     [cell displayTerm:[self.terms objectAtIndex:indexPath.row]];
     return cell;
+}
+
+#pragma mark - IBActions
+#pragma mark -
+
+- (IBAction)backButtonTouched:(UIBarButtonItem *)sender {
+    [self.backButton setEnabled:NO];
+    [self loadAndDispayGlossaryTermsByLetter:nil];
 }
 
 @end
