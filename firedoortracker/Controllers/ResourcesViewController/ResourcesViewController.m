@@ -10,16 +10,28 @@
 
 //Import View
 #import "AlphabetView.h"
+#import "TermTableViewCell.h"
+
+//Import Model
+#import "Term.h"
 
 //Import Network
 #import "NetworkManager.h"
 
 static NSString* kLetters = @"letters";
+static NSString* kLetter = @"letter";
 static NSString* kTerms = @"terms";
 
-@interface ResourcesViewController() <AlphabetViewDelegate>
+static NSString* termCellIdentifier = @"TermTableViewCell";
 
+@interface ResourcesViewController() <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, AlphabetViewDelegate>
+
+//IBOutlets
 @property (weak, nonatomic) IBOutlet AlphabetView *alphabetView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+//Display Data
+@property (nonatomic, strong) NSMutableArray* terms;
 
 @end
 
@@ -59,12 +71,16 @@ static NSString* kTerms = @"terms";
 - (void)loadAndDispayGlossaryTermsByLetter:(NSString *)letter {
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:GlossaryTermsByLetterRequestType
-                                                  andParams:@{kLetters : letter}
+                                                  andParams:@{kLetter : letter}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      //TODO: Display error
                                                  }
-                                                 //TODO: Displat terms on table
+                                                 welf.terms = [NSMutableArray array];
+                                                 for (NSDictionary *termDictionary in [responseObject objectForKey:kTerms]) {
+                                                     [welf.terms addObject:[[Term alloc] initWithDictionary:termDictionary]];
+                                                     [welf.tableView reloadData];
+                                                 }
                                              }];
 }
 
@@ -73,6 +89,34 @@ static NSString* kTerms = @"terms";
 
 - (void)userSelectLetter:(NSString *)letter {
     [self loadAndDispayGlossaryTermsByLetter:letter];
+}
+
+#pragma mark - search bar delegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    //TODO: Make Special search
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+}
+
+#pragma mark - Table View Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Table View DataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.terms.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TermTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:termCellIdentifier];
+    [cell displayTerm:[self.terms objectAtIndex:indexPath.row]];
+    return cell;
 }
 
 @end

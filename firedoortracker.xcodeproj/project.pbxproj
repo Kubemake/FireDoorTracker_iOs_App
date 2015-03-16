@@ -22,6 +22,8 @@
 		686634BC1AB5E7CA003EA804 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 686634BB1AB5E7CA003EA804 /* Images.xcassets */; };
 		686634BF1AB5E7CA003EA804 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686634BD1AB5E7CA003EA804 /* LaunchScreen.xib */; };
 		686634CB1AB5E7CA003EA804 /* firedoortrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634CA1AB5E7CA003EA804 /* firedoortrackerTests.m */; };
+		68B27A1D1AB7157C00990DCA /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A1C1AB7157C00990DCA /* Term.m */; };
+		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
 		D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,10 @@
 		686634C41AB5E7CA003EA804 /* firedoortrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = firedoortrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		686634C91AB5E7CA003EA804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686634CA1AB5E7CA003EA804 /* firedoortrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = firedoortrackerTests.m; sourceTree = "<group>"; };
+		68B27A1B1AB7157C00990DCA /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Term.h; path = Model/Glossary/Term.h; sourceTree = "<group>"; };
+		68B27A1C1AB7157C00990DCA /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Term.m; path = Model/Glossary/Term.m; sourceTree = "<group>"; };
+		68B27A1F1AB717E900990DCA /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermTableViewCell.h; path = Controllers/ResourcesViewController/View/TermTableViewCell.h; sourceTree = "<group>"; };
+		68B27A201AB717E900990DCA /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermTableViewCell.m; path = Controllers/ResourcesViewController/View/TermTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,7 @@
 		6851D3951AB60B6A0085965E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				68B27A1E1AB717D100990DCA /* TableViewCell */,
 				6851D3961AB60BAC0085965E /* AlphabetView.h */,
 				6851D3971AB60BAC0085965E /* AlphabetView.m */,
 			);
@@ -266,8 +273,27 @@
 		68B27A191AB714CC00990DCA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				68B27A1A1AB7156000990DCA /* Glossary */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		68B27A1A1AB7156000990DCA /* Glossary */ = {
+			isa = PBXGroup;
+			children = (
+				68B27A1B1AB7157C00990DCA /* Term.h */,
+				68B27A1C1AB7157C00990DCA /* Term.m */,
+			);
+			name = Glossary;
+			sourceTree = "<group>";
+		};
+		68B27A1E1AB717D100990DCA /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				68B27A1F1AB717E900990DCA /* TermTableViewCell.h */,
+				68B27A201AB717E900990DCA /* TermTableViewCell.m */,
+			);
+			name = TableViewCell;
 			sourceTree = "<group>";
 		};
 		C0DA254AF651AD874067329D /* Frameworks */ = {
@@ -428,8 +454,10 @@
 				6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */,
 				6851D3901AB5ED890085965E /* SettingViewController.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
+				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
+				68B27A1D1AB7157C00990DCA /* Term.m in Sources */,
 				6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
 			);
