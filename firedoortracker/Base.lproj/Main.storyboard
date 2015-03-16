@@ -137,7 +137,6 @@
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Itk-uo-2UI" secondAttribute="centerY" id="2ei-3a-okL"/>
                             <constraint firstAttribute="centerY" secondItem="wW5-Vk-cCt" secondAttribute="centerY" id="EQo-zY-ZR9"/>
@@ -151,6 +150,7 @@
                         <outlet property="activityIndicator" destination="Itk-uo-2UI" id="ahu-Ri-epA"/>
                         <outlet property="descriptionLabel" destination="wW5-Vk-cCt" id="UZb-rD-KcY"/>
                         <outlet property="logInButton" destination="qRJ-Iu-DtW" id="ieo-Hm-ZAh"/>
+                        <segue destination="49e-Tb-3d3" kind="showDetail" identifier="showTabBarFlowSegueIdentifier" id="DhL-kx-7PG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAk-eL-WEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -341,6 +341,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="GLOSSARY" id="Umf-nZ-AhC"/>
+                    <connections>
+                        <outlet property="alphabetView" destination="Bha-iG-x4V" id="3Rj-iI-dEY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LmP-r0-Itu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

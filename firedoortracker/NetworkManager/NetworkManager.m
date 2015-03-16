@@ -13,6 +13,8 @@ static NSString* baseURL = @"http://superpizdato.com/service/dispatcher";
 
 static NSString* kRequestType = @"type";
 static NSString* AuthRequestType = @"auth";
+static NSString* glossaryLettersRequestType = @"get_glossary_letters";
+static NSString* glossaryTermsByLetter = @"get_terms_by_letter";
 
 static NSString* kToken = @"token";
 
@@ -103,7 +105,14 @@ static bool isFirstAccess = YES;
             [requestParams setObject:AuthRequestType forKey:kRequestType];
             requestMethod = RequestMethodPOST;
             break;
-            
+        case GlossaryLettersRequestType:
+            [requestParams setObject:glossaryLettersRequestType forKey:kRequestType];
+            requestMethod = RequestMethodPOST;
+            break;
+        case GlossaryTermsByLetterRequestType:
+            [requestParams setObject:glossaryTermsByLetter forKey:kRequestType];
+            requestMethod = RequestMethodPOST;
+            break;
         default:
             //TODO: Unknow request type, return Error
             break;
@@ -126,7 +135,8 @@ static bool isFirstAccess = YES;
                           parameters:requestParams
                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                  if (completion) completion(responseObject, nil);
-                             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                             }
+                             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                  if (completion) completion(nil, error);
                              }];
             break;

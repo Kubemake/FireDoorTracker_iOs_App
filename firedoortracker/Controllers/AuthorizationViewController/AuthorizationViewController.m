@@ -11,6 +11,8 @@
 //Import Network part
 #import "NetworkManager.h"
 
+static NSString* showTabBarFlowSegueIdentifier = @"showTabBarFlowSegueIdentifier";
+
 @interface AuthorizationViewController ()
 
 //IBOutlets
@@ -31,6 +33,7 @@
 }
 
 #pragma mark - Login Action
+#pragma mark -
 
 - (void)logInWithCashedCredentials {
     [self.activityIndicator startAnimating];
@@ -48,7 +51,12 @@
                                                      [welf.descriptionLabel setText:NSLocalizedString(@"Connection Problem", nil)];
                                                  }
                                                  [welf.descriptionLabel setText:NSLocalizedString(@"Authorization Completed",nil)];
+                                                 [welf performSegueWithIdentifier:showTabBarFlowSegueIdentifier
+                                                                           sender:welf];
                                              }];
 }
+
+#pragma mark Segue methods
+
 
 @end

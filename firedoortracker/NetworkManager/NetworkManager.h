@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    AuthorizationRequestType = 0
+    AuthorizationRequestType = 0,
+    GlossaryLettersRequestType,
+    GlossaryTermsByLetterRequestType
 } RequestType ;
 
 @interface NetworkManager : NSObject
