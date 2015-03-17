@@ -250,10 +250,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBf-0j-5XP">
-                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzC-Jo-9kV">
-                                        <rect key="frame" x="112" y="26" width="62" height="48"/>
+                                        <rect key="frame" x="112" y="76" width="62" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="e8R-ws-NVy"/>
                                             <constraint firstAttribute="width" constant="62" id="jxH-xO-w7Y"/>
@@ -266,7 +266,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpY-Jf-9as">
-                                        <rect key="frame" x="272" y="26" width="55" height="48"/>
+                                        <rect key="frame" x="272" y="76" width="55" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="3fq-yo-TO4"/>
                                             <constraint firstAttribute="width" constant="55" id="viA-a6-w0C"/>
@@ -279,7 +279,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sx6-Ul-NOA">
-                                        <rect key="frame" x="427" y="19" width="62" height="62"/>
+                                        <rect key="frame" x="427" y="69" width="62" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="62" id="YGK-KJ-qkY"/>
                                             <constraint firstAttribute="height" constant="62" id="lRG-bs-M2F"/>
@@ -291,21 +291,36 @@
                                             <action selector="scanQRCodePressed:" destination="UWy-Xt-lAu" eventType="touchUpInside" id="y79-pV-MVT"/>
                                         </connections>
                                     </button>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-2T-cnu">
-                                        <rect key="frame" x="181" y="8" width="239" height="84"/>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-2T-cnu">
+                                        <rect key="frame" x="175" y="14.5" width="250" height="170"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="239" id="Ca8-bF-chR"/>
-                                            <constraint firstAttribute="height" constant="84" id="OIM-kf-y3Y"/>
+                                            <constraint firstAttribute="width" constant="250" id="Ca8-bF-chR"/>
+                                            <constraint firstAttribute="height" constant="170" id="OIM-kf-y3Y"/>
                                         </constraints>
                                     </imageView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJR-xp-wJe">
+                                        <rect key="frame" x="405" y="0.0" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="nBV-BB-u3Y"/>
+                                            <constraint firstAttribute="width" constant="35" id="oih-y6-ZWl"/>
+                                        </constraints>
+                                        <state key="normal" image="closeIcon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelImageButtonPressed:" destination="UWy-Xt-lAu" eventType="touchUpInside" id="PVx-Fu-Eyw"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="NU5-2T-cnu" secondAttribute="centerX" id="2UR-ej-LCk"/>
                                     <constraint firstItem="mpY-Jf-9as" firstAttribute="centerY" secondItem="Sx6-Ul-NOA" secondAttribute="centerY" id="7Vb-QO-3hA"/>
                                     <constraint firstAttribute="centerX" secondItem="mpY-Jf-9as" secondAttribute="centerX" id="Bgq-8f-Nc2"/>
+                                    <constraint firstItem="NU5-2T-cnu" firstAttribute="top" secondItem="pJR-xp-wJe" secondAttribute="bottom" constant="-20.5" id="VZ6-OA-FWa"/>
                                     <constraint firstAttribute="centerY" secondItem="mpY-Jf-9as" secondAttribute="centerY" id="ZIj-Q9-IjV"/>
-                                    <constraint firstAttribute="height" constant="100" id="cTY-Uu-FzY"/>
+                                    <constraint firstItem="pJR-xp-wJe" firstAttribute="leading" secondItem="NU5-2T-cnu" secondAttribute="trailing" constant="-20" id="bkt-Y0-rew"/>
+                                    <constraint firstAttribute="height" constant="200" id="cTY-Uu-FzY"/>
                                     <constraint firstItem="uzC-Jo-9kV" firstAttribute="centerY" secondItem="mpY-Jf-9as" secondAttribute="centerY" id="dDq-tN-L8g"/>
                                     <constraint firstAttribute="centerY" secondItem="NU5-2T-cnu" secondAttribute="centerY" id="eNK-pQ-K3F"/>
                                     <constraint firstItem="mpY-Jf-9as" firstAttribute="leading" secondItem="uzC-Jo-9kV" secondAttribute="trailing" constant="98" id="jhU-cb-Sg0"/>
@@ -327,7 +342,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please input description here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-gB-jYF">
-                                <rect key="frame" x="0.0" y="172" width="600" height="326"/>
+                                <rect key="frame" x="0.0" y="272" width="600" height="226"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
@@ -350,6 +365,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="SUBMIT DOOR REVIEW" id="Po3-34-URB"/>
                     <connections>
+                        <outlet property="cancelImageButton" destination="pJR-xp-wJe" id="sCj-Ns-EFr"/>
                         <outlet property="descriptiontextField" destination="7UF-gB-jYF" id="c0B-DD-nU0"/>
                         <outlet property="galleryButton" destination="mpY-Jf-9as" id="Y3s-Lv-ky2"/>
                         <outlet property="photoButton" destination="uzC-Jo-9kV" id="Z1L-ve-74i"/>
@@ -592,6 +608,7 @@
     </scenes>
     <resources>
         <image name="backButton" width="37" height="37"/>
+        <image name="closeIcon" width="70" height="70"/>
         <image name="doorReviewIcon" width="37" height="37"/>
         <image name="galleryIcon" width="137" height="137"/>
         <image name="homeIcon" width="37" height="37"/>

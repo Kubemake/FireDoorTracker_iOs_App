@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *galleryButton;
 @property (weak, nonatomic) IBOutlet UIButton *scanQRCodeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (weak, nonatomic) IBOutlet UIButton *cancelImageButton;
 @property (weak, nonatomic) IBOutlet UITextField *descriptiontextField;
 
 @end
@@ -63,6 +64,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 - (void)displayImage:(UIImage *)image andHideImageSelectionButtons:(BOOL)hideButtons {
     self.photoImageView.image = image;
     [self.photoImageView setHidden:(BOOL)!image];
+    [self.cancelImageButton setHidden:(BOOL)!image];
     [self.photoButton setHidden:hideButtons];
     [self.galleryButton setHidden:hideButtons];
     [self.scanQRCodeButton setHidden:hideButtons];
@@ -90,6 +92,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (IBAction)scanQRCodePressed:(id)sender {
+}
+
+- (IBAction)cancelImageButtonPressed:(id)sender {
+    [self displayImage:nil andHideImageSelectionButtons:NO];
 }
 
 - (IBAction)submitButtomPressed:(id)sender {
