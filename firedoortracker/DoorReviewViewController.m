@@ -17,6 +17,8 @@
 
 static NSString* inspectionCellIdentifier = @"InspectionCollectionViewCell";
 
+static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifier";
+
 @interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 //IBOutlets
@@ -24,6 +26,7 @@ static NSString* inspectionCellIdentifier = @"InspectionCollectionViewCell";
 
 //User Data
 @property (strong, nonatomic) NSArray* inspectionsForDisplaying;
+@property (weak, nonatomic) Inspection* selectedInspection;
 
 @end
 
@@ -75,6 +78,14 @@ static NSString* inspectionCellIdentifier = @"InspectionCollectionViewCell";
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedInspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:showDoorInfoOverviewSegue sender:self];
+}
+
+#pragma mark - Segue delegate
+#pragma mark -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
 }
 
