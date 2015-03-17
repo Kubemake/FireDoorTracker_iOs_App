@@ -11,7 +11,12 @@
 //Import Network part
 #import "NetworkManager.h"
 
+//Import Model
+#import "CurrentUser.h"
+
 static NSString* showTabBarFlowSegueIdentifier = @"showTabBarFlowSegueIdentifier";
+
+static NSString* kUserInspections = @"inspections";
 
 @interface AuthorizationViewController ()
 
@@ -32,28 +37,58 @@ static NSString* showTabBarFlowSegueIdentifier = @"showTabBarFlowSegueIdentifier
     [self logInWithCashedCredentials];
 }
 
-#pragma mark - Login Action
-#pragma mark -
+#pragma mark - API Methods
+#pragma mark - Login
 
 - (void)logInWithCashedCredentials {
-    [self.activityIndicator startAnimating];
-    [self.descriptionLabel setHidden:YES];
-    [self.logInButton setEnabled:NO];
+    [self changeViewStatus:YES];
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:AuthorizationRequestType
                                                   andParams:@{@"login" : @"stasionok@gmail.com",
                                                               @"password" : @"124"}
                                              withCompletion:^(id responseObject, NSError *error) {
-                                                 [welf.activityIndicator stopAnimating];
-                                                 [welf.descriptionLabel setHidden:NO];
+                                                 [welf changeViewStatus:NO];
                                                  if (error) {
-                                                     [welf.logInButton setEnabled:YES];
                                                      [welf.descriptionLabel setText:NSLocalizedString(@"Connection Problem", nil)];
                                                  }
                                                  [welf.descriptionLabel setText:NSLocalizedString(@"Authorization Completed",nil)];
+                                                 [welf loadIssuesListFromServer];
+                                             }];
+}
+
+#pragma mark - Issues List
+
+- (void)loadIssuesListFromServer {
+    [self changeViewStatus:YES];
+    __weak typeof(self) welf = self;
+    [[NetworkManager sharedInstance] performRequestWithType:InspectionListByUserRequestType
+                                                  andParams:@{}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 [welf changeViewStatus:NO];
+                                                 if (error) {
+                                                     [welf.descriptionLabel setText:NSLocalizedString(@"Error in Issues List Loading", nil)];
+                                                 }
+                                                 [welf.descriptionLabel setText:NSLocalizedString(@"Issues List Loading Completed",nil)];
+                                                 [CurrentUser sharedInstance].userInscpetions = [responseObject objectForKey:kUserInspections];
                                                  [welf performSegueWithIdentifier:showTabBarFlowSegueIdentifier
                                                                            sender:welf];
                                              }];
+}
+
+#pragma mark - UI Supporting methods
+
+- (void)changeViewStatus:(BOOL)isLoading {
+    if (isLoading) {
+        [self.activityIndicator startAnimating];
+#warning Debug logic
+//        [self.descriptionLabel setHidden:YES];
+        [self.logInButton setEnabled:NO];
+    } else {
+        [self.activityIndicator stopAnimating];
+        [self.descriptionLabel setHidden:NO];
+        [self.logInButton setEnabled:YES];
+        
+    }
 }
 
 #pragma mark Segue methods

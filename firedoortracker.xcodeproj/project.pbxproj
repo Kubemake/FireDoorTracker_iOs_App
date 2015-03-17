@@ -22,8 +22,11 @@
 		686634BC1AB5E7CA003EA804 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 686634BB1AB5E7CA003EA804 /* Images.xcassets */; };
 		686634BF1AB5E7CA003EA804 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686634BD1AB5E7CA003EA804 /* LaunchScreen.xib */; };
 		686634CB1AB5E7CA003EA804 /* firedoortrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634CA1AB5E7CA003EA804 /* firedoortrackerTests.m */; };
+		688906851AB85CA10079F67B /* Inspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906841AB85CA10079F67B /* Inspection.m */; };
+		688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906881AB861180079F67B /* InspectionCollectionViewCell.m */; };
 		68B27A1D1AB7157C00990DCA /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A1C1AB7157C00990DCA /* Term.m */; };
 		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
+		68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A2E1AB85AD300990DCA /* CurrentUser.m */; };
 		D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */; };
 /* End PBXBuildFile section */
 
@@ -70,10 +73,16 @@
 		686634C41AB5E7CA003EA804 /* firedoortrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = firedoortrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		686634C91AB5E7CA003EA804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686634CA1AB5E7CA003EA804 /* firedoortrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = firedoortrackerTests.m; sourceTree = "<group>"; };
+		688906831AB85CA10079F67B /* Inspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Inspection.h; path = Model/Inspection/Inspection.h; sourceTree = "<group>"; };
+		688906841AB85CA10079F67B /* Inspection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Inspection.m; path = Model/Inspection/Inspection.m; sourceTree = "<group>"; };
+		688906871AB861180079F67B /* InspectionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InspectionCollectionViewCell.h; path = Controllers/DoorReviewViewController/View/InspectionCollectionViewCell.h; sourceTree = "<group>"; };
+		688906881AB861180079F67B /* InspectionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InspectionCollectionViewCell.m; path = Controllers/DoorReviewViewController/View/InspectionCollectionViewCell.m; sourceTree = "<group>"; };
 		68B27A1B1AB7157C00990DCA /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Term.h; path = Model/Glossary/Term.h; sourceTree = "<group>"; };
 		68B27A1C1AB7157C00990DCA /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Term.m; path = Model/Glossary/Term.m; sourceTree = "<group>"; };
 		68B27A1F1AB717E900990DCA /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermTableViewCell.h; path = Controllers/ResourcesViewController/View/TermTableViewCell.h; sourceTree = "<group>"; };
 		68B27A201AB717E900990DCA /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermTableViewCell.m; path = Controllers/ResourcesViewController/View/TermTableViewCell.m; sourceTree = "<group>"; };
+		68B27A2D1AB85AD300990DCA /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentUser.h; path = Model/CurrentUser/CurrentUser.h; sourceTree = "<group>"; };
+		68B27A2E1AB85AD300990DCA /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentUser.m; path = Model/CurrentUser/CurrentUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +116,7 @@
 		6851D3841AB5ECD00085965E /* DoorReviewViewController */ = {
 			isa = PBXGroup;
 			children = (
+				688906861AB860E50079F67B /* View */,
 				686634B51AB5E7CA003EA804 /* DoorReviewViewController.h */,
 				686634B61AB5E7CA003EA804 /* DoorReviewViewController.m */,
 			);
@@ -270,9 +280,29 @@
 			name = AppDelegate;
 			sourceTree = "<group>";
 		};
+		688906821AB85C860079F67B /* Inspection */ = {
+			isa = PBXGroup;
+			children = (
+				688906831AB85CA10079F67B /* Inspection.h */,
+				688906841AB85CA10079F67B /* Inspection.m */,
+			);
+			name = Inspection;
+			sourceTree = "<group>";
+		};
+		688906861AB860E50079F67B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				688906871AB861180079F67B /* InspectionCollectionViewCell.h */,
+				688906881AB861180079F67B /* InspectionCollectionViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		68B27A191AB714CC00990DCA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				688906821AB85C860079F67B /* Inspection */,
+				68B27A2C1AB85AB600990DCA /* CurrentUser */,
 				68B27A1A1AB7156000990DCA /* Glossary */,
 			);
 			name = Model;
@@ -294,6 +324,15 @@
 				68B27A201AB717E900990DCA /* TermTableViewCell.m */,
 			);
 			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		68B27A2C1AB85AB600990DCA /* CurrentUser */ = {
+			isa = PBXGroup;
+			children = (
+				68B27A2D1AB85AD300990DCA /* CurrentUser.h */,
+				68B27A2E1AB85AD300990DCA /* CurrentUser.m */,
+			);
+			name = CurrentUser;
 			sourceTree = "<group>";
 		};
 		C0DA254AF651AD874067329D /* Frameworks */ = {
@@ -453,11 +492,14 @@
 				686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */,
 				6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */,
 				6851D3901AB5ED890085965E /* SettingViewController.m in Sources */,
+				68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
 				68B27A1D1AB7157C00990DCA /* Term.m in Sources */,
+				688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */,
+				688906851AB85CA10079F67B /* Inspection.m in Sources */,
 				6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
 			);

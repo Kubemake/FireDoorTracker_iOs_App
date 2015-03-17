@@ -12,7 +12,8 @@ typedef enum {
     AuthorizationRequestType = 0,
     GlossaryLettersRequestType,
     GlossaryTermsByLetterRequestType,
-    GlossaryKeyWordSearchRequestType
+    GlossaryKeyWordSearchRequestType,
+    InspectionListByUserRequestType
 } RequestType ;
 
 @interface NetworkManager : NSObject
