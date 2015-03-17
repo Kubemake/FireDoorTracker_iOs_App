@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--HOME-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="HomeViewController" sceneMemberID="viewController">
@@ -15,9 +15,65 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f59-r0-ZgJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wWz-01-vTJ">
+                                    <size key="itemSize" width="500" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="100" maxX="0.0" maxY="100"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeMenuCollectionViewCell" id="pwL-D1-R6T" customClass="HomeMenuCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkz-0y-eSZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="500" height="100"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BUILDING OWNERS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qy-KL-y0F">
+                                                            <rect key="frame" x="183" y="8" width="217" height="77"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buildingReview" translatesAutoresizingMaskIntoConstraints="NO" id="qKF-P3-yUu">
+                                                            <rect key="frame" x="100" y="8" width="75" height="75"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="qKF-P3-yUu" id="3VS-YL-7zk"/>
+                                            <outlet property="titleLabel" destination="2qy-KL-y0F" id="IEn-8F-Ziy"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="1bY-5y-4Lf"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="t7f-aQ-q93"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f59-r0-ZgJ" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="45t-9X-Nn8"/>
+                            <constraint firstAttribute="bottom" secondItem="f59-r0-ZgJ" secondAttribute="bottom" id="I5Z-X6-zwn"/>
+                            <constraint firstItem="f59-r0-ZgJ" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="ONT-W5-CRM"/>
+                            <constraint firstAttribute="trailing" secondItem="f59-r0-ZgJ" secondAttribute="trailing" id="xa9-By-UHC"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pOF-Pf-gmM"/>
+                    <navigationItem key="navigationItem" title="HOME" id="pOF-Pf-gmM"/>
+                    <connections>
+                        <outlet property="collectionView" destination="f59-r0-ZgJ" id="hsc-DT-4tR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -352,7 +408,7 @@
                                         </connections>
                                     </button>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-2T-cnu">
-                                        <rect key="frame" x="175" y="14.5" width="250" height="170"/>
+                                        <rect key="frame" x="175" y="15" width="250" height="170"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="Ca8-bF-chR"/>
                                             <constraint firstAttribute="height" constant="170" id="OIM-kf-y3Y"/>
@@ -393,8 +449,8 @@
                                     <constraint firstAttribute="height" constant="30" id="Kg5-Um-6HH"/>
                                     <constraint firstAttribute="width" constant="123" id="yXc-dt-wm1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Send">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <state key="normal" title="Submit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -403,7 +459,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please input description here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-gB-jYF">
                                 <rect key="frame" x="0.0" y="272" width="600" height="226"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="UWy-Xt-lAu" id="xPV-0N-7vY"/>
@@ -668,6 +724,7 @@
     </scenes>
     <resources>
         <image name="backButton" width="37" height="37"/>
+        <image name="buildingReview" width="107" height="107"/>
         <image name="closeIcon" width="70" height="70"/>
         <image name="doorReviewIcon" width="37" height="37"/>
         <image name="galleryIcon" width="137" height="137"/>
