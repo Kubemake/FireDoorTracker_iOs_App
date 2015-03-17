@@ -218,7 +218,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--Media View Controller-->
+        <!--SUBMIT DOOR REVIEW-->
         <scene sceneID="Kj2-hZ-Gvj">
             <objects>
                 <viewController id="UWy-Xt-lAu" customClass="MediaViewController" sceneMemberID="viewController">
@@ -229,9 +229,86 @@
                     <view key="view" contentMode="scaleToFill" id="rLE-Bk-eJc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBf-0j-5XP">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <subviews>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-2T-cnu">
+                                        <rect key="frame" x="181" y="8" width="239" height="84"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzC-Jo-9kV">
+                                        <rect key="frame" x="112.5" y="26" width="62" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="e8R-ws-NVy"/>
+                                            <constraint firstAttribute="width" constant="62" id="jxH-xO-w7Y"/>
+                                        </constraints>
+                                        <state key="normal" image="photoIcon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpY-Jf-9as">
+                                        <rect key="frame" x="272.5" y="26" width="55" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="3fq-yo-TO4"/>
+                                            <constraint firstAttribute="width" constant="55" id="viA-a6-w0C"/>
+                                        </constraints>
+                                        <state key="normal" image="galleryIcon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sx6-Ul-NOA">
+                                        <rect key="frame" x="427.5" y="19" width="62" height="62"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="62" id="YGK-KJ-qkY"/>
+                                            <constraint firstAttribute="height" constant="62" id="lRG-bs-M2F"/>
+                                        </constraints>
+                                        <state key="normal" image="scanQRIcon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mpY-Jf-9as" firstAttribute="centerY" secondItem="Sx6-Ul-NOA" secondAttribute="centerY" id="7Vb-QO-3hA"/>
+                                    <constraint firstAttribute="centerX" secondItem="mpY-Jf-9as" secondAttribute="centerX" id="Bgq-8f-Nc2"/>
+                                    <constraint firstAttribute="centerY" secondItem="mpY-Jf-9as" secondAttribute="centerY" id="ZIj-Q9-IjV"/>
+                                    <constraint firstAttribute="height" constant="100" id="cTY-Uu-FzY"/>
+                                    <constraint firstItem="uzC-Jo-9kV" firstAttribute="centerY" secondItem="mpY-Jf-9as" secondAttribute="centerY" id="dDq-tN-L8g"/>
+                                    <constraint firstItem="mpY-Jf-9as" firstAttribute="leading" secondItem="uzC-Jo-9kV" secondAttribute="trailing" constant="98" id="jhU-cb-Sg0"/>
+                                    <constraint firstItem="Sx6-Ul-NOA" firstAttribute="leading" secondItem="mpY-Jf-9as" secondAttribute="trailing" constant="100" id="sdK-Kj-A2v"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please input descripton..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PG3-Bf-wD4">
+                                <rect key="frame" x="0.0" y="164" width="600" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPB-nh-JKd">
+                                <rect key="frame" x="239" y="506" width="123" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Kg5-Um-6HH"/>
+                                    <constraint firstAttribute="width" constant="123" id="yXc-dt-wm1"/>
+                                </constraints>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PBf-0j-5XP" firstAttribute="leading" secondItem="rLE-Bk-eJc" secondAttribute="leading" id="07T-kr-udm"/>
+                            <constraint firstAttribute="trailing" secondItem="PBf-0j-5XP" secondAttribute="trailing" id="9WK-kE-KZy"/>
+                            <constraint firstItem="PBf-0j-5XP" firstAttribute="top" secondItem="bhS-Vz-MuU" secondAttribute="bottom" id="Efb-3Z-J7f"/>
+                            <constraint firstAttribute="trailing" secondItem="PG3-Bf-wD4" secondAttribute="trailing" id="Up3-XX-1TL"/>
+                            <constraint firstItem="PG3-Bf-wD4" firstAttribute="leading" secondItem="rLE-Bk-eJc" secondAttribute="leading" id="fps-Lk-RfL"/>
+                            <constraint firstItem="lfM-dy-MXD" firstAttribute="top" secondItem="qPB-nh-JKd" secondAttribute="bottom" constant="15" id="ghe-27-a1F"/>
+                            <constraint firstItem="PG3-Bf-wD4" firstAttribute="top" secondItem="PBf-0j-5XP" secondAttribute="bottom" id="jAT-12-NtH"/>
+                            <constraint firstItem="qPB-nh-JKd" firstAttribute="top" secondItem="PG3-Bf-wD4" secondAttribute="bottom" constant="22" id="liJ-2N-Osk"/>
+                            <constraint firstAttribute="centerX" secondItem="qPB-nh-JKd" secondAttribute="centerX" id="nlc-je-onx"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Po3-34-URB"/>
+                    <navigationItem key="navigationItem" title="SUBMIT DOOR REVIEW" id="Po3-34-URB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebm-XV-bBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -468,10 +545,13 @@
     <resources>
         <image name="backButton" width="37" height="37"/>
         <image name="doorReviewIcon" width="37" height="37"/>
+        <image name="galleryIcon" width="137" height="137"/>
         <image name="homeIcon" width="37" height="37"/>
         <image name="logout" width="37" height="37"/>
         <image name="mediaIcon" width="37" height="37"/>
+        <image name="photoIcon" width="137" height="106"/>
         <image name="resources" width="37" height="37"/>
+        <image name="scanQRIcon" width="137" height="136"/>
         <image name="settingIcon" width="37" height="37"/>
     </resources>
 </document>
