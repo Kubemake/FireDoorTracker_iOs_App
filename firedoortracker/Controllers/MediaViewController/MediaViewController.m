@@ -8,14 +8,14 @@
 
 #import "MediaViewController.h"
 
-@interface MediaViewController() <UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MediaViewController() <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
 @property (weak, nonatomic) IBOutlet UIButton *galleryButton;
 @property (weak, nonatomic) IBOutlet UIButton *scanQRCodeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UITextField *descriptiontextField;
 
 @end
 
@@ -32,28 +32,40 @@
 #pragma mark - Delegate Methods
 #pragma mark - UITextFieldDelegate
 
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    //TODO: If first editing - delete text
-    textView.text = nil;
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
     
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self submitButtomPressed:textField];
+    return YES;
+}
+
 
 #pragma mark - UIImagePickerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.photoImageView.image = chosenImage;
+    [self displayImage:chosenImage andHideImageSelectionButtons:YES];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
-
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UI Modifying methods
+#pragma mark -
+
+- (void)displayImage:(UIImage *)image andHideImageSelectionButtons:(BOOL)hideButtons {
+    self.photoImageView.image = image;
+    [self.photoImageView setHidden:(BOOL)!image];
+    [self.photoButton setHidden:hideButtons];
+    [self.galleryButton setHidden:hideButtons];
+    [self.scanQRCodeButton setHidden:hideButtons];
 }
 
 #pragma mark - IBActions
@@ -78,6 +90,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (IBAction)scanQRCodePressed:(id)sender {
+}
+
+- (IBAction)submitButtomPressed:(id)sender {
 }
 
 @end
