@@ -101,6 +101,25 @@
             </objects>
             <point key="canvasLocation" x="2228" y="360"/>
         </scene>
+        <!--SELECT DOOR REVIEW-->
+        <scene sceneID="MST-GM-nP8">
+            <objects>
+                <viewController id="hYO-yP-o4t" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bQA-aB-FLz"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lqb-5F-WBx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w2y-MQ-uXR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SELECT DOOR REVIEW" id="bon-2D-6RN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="peN-6I-56P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2227" y="1014"/>
+        </scene>
         <!--Authorization View Controller-->
         <scene sceneID="dqJ-oR-9YN">
             <objects>
@@ -233,7 +252,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBf-0j-5XP">
                                 <rect key="frame" x="0.0" y="64" width="600" height="100"/>
                                 <subviews>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-2T-cnu">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-2T-cnu">
                                         <rect key="frame" x="181" y="8" width="239" height="84"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzC-Jo-9kV">
@@ -245,6 +264,9 @@
                                         <state key="normal" image="photoIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="photoButtonPressed:" destination="UWy-Xt-lAu" eventType="touchUpInside" id="AxU-b0-Wvz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpY-Jf-9as">
                                         <rect key="frame" x="272.5" y="26" width="55" height="48"/>
@@ -255,6 +277,9 @@
                                         <state key="normal" image="galleryIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="galleryButtonPressed:" destination="UWy-Xt-lAu" eventType="touchUpInside" id="n3l-vX-7hm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sx6-Ul-NOA">
                                         <rect key="frame" x="427.5" y="19" width="62" height="62"/>
@@ -265,6 +290,9 @@
                                         <state key="normal" image="scanQRIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="scanQRCodePressed:" destination="UWy-Xt-lAu" eventType="touchUpInside" id="y79-pV-MVT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -283,6 +311,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UWy-Xt-lAu" id="Tgc-sz-9Hw"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPB-nh-JKd">
                                 <rect key="frame" x="239" y="506" width="123" height="30"/>
@@ -309,6 +340,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SUBMIT DOOR REVIEW" id="Po3-34-URB"/>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="PG3-Bf-wD4" id="V5L-8h-hhz"/>
+                        <outlet property="galleryButton" destination="mpY-Jf-9as" id="Y3s-Lv-ky2"/>
+                        <outlet property="photoButton" destination="uzC-Jo-9kV" id="Z1L-ve-74i"/>
+                        <outlet property="photoImageView" destination="NU5-2T-cnu" id="kox-6D-Thw"/>
+                        <outlet property="scanQRCodeButton" destination="Sx6-Ul-NOA" id="yxs-8x-yNe"/>
+                        <segue destination="hYO-yP-o4t" kind="show" identifier="showSelectDoorReview" id="CCt-6U-anu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebm-XV-bBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
