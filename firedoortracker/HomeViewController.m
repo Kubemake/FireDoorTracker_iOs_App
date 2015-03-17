@@ -12,12 +12,12 @@
 #import "HomeMenuCollectionViewCell.h"
 
 typedef enum{
-    homeMenuItemBuildingReview = 0,
-    homeMenuItemOnlineDoorData,
-    homeMenuItemUserFiles,
-    homeMenuItemBuildingOwners,
-    homeMenuItemBuilding,
-    homeMenuItemSignOut,
+    homeMenuItemDoorReview = 0,
+    homeMenuItemContactAnExpert,
+    homeMenuItemMedia,
+    homeMenuItemResources,
+    homeMenuItemUserSettings,
+    homeMenuItemLogOut,
     homeMenuItemCount
 }homeMenuItem;
 
@@ -52,29 +52,29 @@ static NSString* homeCellIdentifier = @"HomeMenuCollectionViewCell";
     HomeMenuCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:homeCellIdentifier
                                                                                  forIndexPath:indexPath];
     switch (indexPath.row) {
-        case homeMenuItemBuildingReview:
+        case homeMenuItemDoorReview:
             [cell displayWithIcon:[UIImage imageNamed:@"buildingReview"]
-                         andTitle:NSLocalizedString(@"BUILDING REVIEW", nil)];
+                         andTitle:NSLocalizedString(@"DOOR REVIEW", nil)];
             break;
-        case homeMenuItemOnlineDoorData:
-            [cell displayWithIcon:[UIImage imageNamed:@"onlineDoorData"]
-                         andTitle:NSLocalizedString(@"ONLINE DOORDATA", nil)];
+        case homeMenuItemContactAnExpert:
+            [cell displayWithIcon:[UIImage imageNamed:@"contactAnExpert"]
+                         andTitle:NSLocalizedString(@"CONTACT AN EXPERT", nil)];
             break;
-        case homeMenuItemUserFiles:
+        case homeMenuItemMedia:
             [cell displayWithIcon:[UIImage imageNamed:@"userFiles"]
-                         andTitle:NSLocalizedString(@"USER FILES", nil)];
+                         andTitle:NSLocalizedString(@"MEDIA", nil)];
             break;
-        case homeMenuItemBuildingOwners:
-            [cell displayWithIcon:[UIImage imageNamed:@"buildngOwners"]
-                         andTitle:NSLocalizedString(@"BUILDING OWNERS", nil)];
+        case homeMenuItemResources:
+            [cell displayWithIcon:[UIImage imageNamed:@"onlineDoorData"]
+                         andTitle:NSLocalizedString(@"RESOURCES", nil)];
             break;
-        case homeMenuItemBuilding:
-            [cell displayWithIcon:[UIImage imageNamed:@"buildings"]
-                         andTitle:NSLocalizedString(@"BUILDINGS", nil)];
+        case homeMenuItemUserSettings:
+            [cell displayWithIcon:[UIImage imageNamed:@"userSettings"]
+                         andTitle:NSLocalizedString(@"USER SETTINGS", nil)];
             break;
-        case homeMenuItemSignOut:
+        case homeMenuItemLogOut:
             [cell displayWithIcon:[UIImage imageNamed:@"signOut"]
-                         andTitle:NSLocalizedString(@"SIGN OUT", nil)];
+                         andTitle:NSLocalizedString(@"LOGOUT OUT", nil)];
             break;
 
     }
@@ -85,7 +85,20 @@ static NSString* homeCellIdentifier = @"HomeMenuCollectionViewCell";
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    switch (indexPath.row) {
+        case homeMenuItemDoorReview:
+            [self.tabBarController setSelectedIndex:1];
+            break;
+        case homeMenuItemContactAnExpert:
+            //TODO: display contacts
+            break;
+        case homeMenuItemMedia:
+        case homeMenuItemResources:
+        case homeMenuItemUserSettings:
+        case homeMenuItemLogOut:
+            [self.tabBarController setSelectedIndex:indexPath.row];
+            break;
+    }
 }
 
 @end

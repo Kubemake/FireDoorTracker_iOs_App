@@ -36,13 +36,13 @@
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkz-0y-eSZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="500" height="100"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BUILDING OWNERS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qy-KL-y0F">
-                                                            <rect key="frame" x="183" y="8" width="217" height="77"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONTACT AN EXPERT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qy-KL-y0F">
+                                                            <rect key="frame" x="165" y="8" width="253" height="77"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buildingReview" translatesAutoresizingMaskIntoConstraints="NO" id="qKF-P3-yUu">
-                                                            <rect key="frame" x="100" y="8" width="75" height="75"/>
+                                                            <rect key="frame" x="82" y="9" width="75" height="75"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -216,25 +216,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xK4-PQ-JSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2228" y="360"/>
-        </scene>
-        <!--SELECT DOOR REVIEW-->
-        <scene sceneID="MST-GM-nP8">
-            <objects>
-                <viewController id="hYO-yP-o4t" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bQA-aB-FLz"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lqb-5F-WBx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="w2y-MQ-uXR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="SELECT DOOR REVIEW" id="bon-2D-6RN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="peN-6I-56P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2227" y="1014"/>
         </scene>
         <!--Authorization View Controller-->
         <scene sceneID="dqJ-oR-9YN">
@@ -487,7 +468,6 @@
                         <outlet property="photoButton" destination="uzC-Jo-9kV" id="Z1L-ve-74i"/>
                         <outlet property="photoImageView" destination="NU5-2T-cnu" id="kox-6D-Thw"/>
                         <outlet property="scanQRCodeButton" destination="Sx6-Ul-NOA" id="yxs-8x-yNe"/>
-                        <segue destination="hYO-yP-o4t" kind="show" identifier="showSelectDoorReview" id="CCt-6U-anu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebm-XV-bBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -637,7 +617,23 @@
                     <view key="view" contentMode="scaleToFill" id="joe-zR-SJ4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" WORK IN PROGRESS..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZX-6R-aDV">
+                                <rect key="frame" x="83" y="234" width="434" height="132"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="434" id="Iu4-gY-cfd"/>
+                                    <constraint firstAttribute="height" constant="132" id="jD8-cI-vyI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="5ZX-6R-aDV" secondAttribute="centerY" id="7sM-5E-zcA"/>
+                            <constraint firstAttribute="centerX" secondItem="5ZX-6R-aDV" secondAttribute="centerX" id="x5Q-cz-KXH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pd3-fV-R7r"/>
                 </viewController>
