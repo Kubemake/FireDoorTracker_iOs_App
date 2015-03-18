@@ -26,6 +26,8 @@
 		688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906881AB861180079F67B /* InspectionCollectionViewCell.m */; };
 		6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889068C1AB879360079F67B /* HomeMenuCollectionViewCell.m */; };
 		688906911AB8858F0079F67B /* DoorInfoOveriviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906901AB8858F0079F67B /* DoorInfoOveriviewViewController.m */; };
+		688906951AB958620079F67B /* UIColor+FireDoorTrackerColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906941AB958620079F67B /* UIColor+FireDoorTrackerColors.m */; };
+		688906971AB95E680079F67B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688906961AB95E680079F67B /* QuartzCore.framework */; };
 		68B27A1D1AB7157C00990DCA /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A1C1AB7157C00990DCA /* Term.m */; };
 		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
 		68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A2E1AB85AD300990DCA /* CurrentUser.m */; };
@@ -83,6 +85,9 @@
 		6889068C1AB879360079F67B /* HomeMenuCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeMenuCollectionViewCell.m; path = Controllers/HomeViewController/View/HomeMenuCollectionViewCell.m; sourceTree = "<group>"; };
 		6889068F1AB8858F0079F67B /* DoorInfoOveriviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorInfoOveriviewViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/DoorInfoOveriviewViewController.h; sourceTree = "<group>"; };
 		688906901AB8858F0079F67B /* DoorInfoOveriviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorInfoOveriviewViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/DoorInfoOveriviewViewController.m; sourceTree = "<group>"; };
+		688906931AB958620079F67B /* UIColor+FireDoorTrackerColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+FireDoorTrackerColors.h"; path = "Extensions/UIColor+FireDoorTrackerColors.h"; sourceTree = "<group>"; };
+		688906941AB958620079F67B /* UIColor+FireDoorTrackerColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FireDoorTrackerColors.m"; path = "Extensions/UIColor+FireDoorTrackerColors.m"; sourceTree = "<group>"; };
+		688906961AB95E680079F67B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		68B27A1B1AB7157C00990DCA /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Term.h; path = Model/Glossary/Term.h; sourceTree = "<group>"; };
 		68B27A1C1AB7157C00990DCA /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Term.m; path = Model/Glossary/Term.m; sourceTree = "<group>"; };
 		68B27A1F1AB717E900990DCA /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermTableViewCell.h; path = Controllers/ResourcesViewController/View/TermTableViewCell.h; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				688906971AB95E680079F67B /* QuartzCore.framework in Frameworks */,
 				D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,6 +225,7 @@
 		686634AA1AB5E7CA003EA804 /* firedoortracker */ = {
 			isa = PBXGroup;
 			children = (
+				688906921AB9583D0079F67B /* Extensions */,
 				68B27A191AB714CC00990DCA /* Model */,
 				6851D3991AB6E6EC0085965E /* NetworkManager */,
 				686634D61AB5E7EF003EA804 /* AppDelegate */,
@@ -324,6 +331,15 @@
 			name = DoorInfoOverviewViewController;
 			sourceTree = "<group>";
 		};
+		688906921AB9583D0079F67B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				688906931AB958620079F67B /* UIColor+FireDoorTrackerColors.h */,
+				688906941AB958620079F67B /* UIColor+FireDoorTrackerColors.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		68B27A191AB714CC00990DCA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +380,7 @@
 		C0DA254AF651AD874067329D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				688906961AB95E680079F67B /* QuartzCore.framework */,
 				062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */,
 			);
 			name = Frameworks;
@@ -530,6 +547,7 @@
 				688906851AB85CA10079F67B /* Inspection.m in Sources */,
 				6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
+				688906951AB958620079F67B /* UIColor+FireDoorTrackerColors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

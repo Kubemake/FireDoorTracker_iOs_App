@@ -209,8 +209,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZi-U2-4gd">
+                                <rect key="frame" x="0.0" y="321" width="600" height="230"/>
+                                <connections>
+                                    <segue destination="lsQ-F3-VBN" kind="embed" id="hrV-26-vrJ"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2M-LO-cWs" customClass="HMSegmentedControl">
+                                <rect key="frame" x="0.0" y="64" width="600" height="58"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="Zwo-gw-8aW"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTw-Hf-3tc">
-                                <rect key="frame" x="0.0" y="64" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjA-rk-yU4">
                                         <rect key="frame" x="257" y="178" width="87" height="22"/>
@@ -226,7 +239,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTd-wu-X9I">
-                                        <rect key="frame" x="159" y="21" width="282" height="21"/>
+                                        <rect key="frame" x="159" y="21" width="282" height="21.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="282" id="zC4-dX-vO5"/>
                                         </constraints>
@@ -268,19 +281,16 @@
                                     <constraint firstAttribute="height" constant="200" id="xMZ-DZ-4Ev"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZi-U2-4gd">
-                                <rect key="frame" x="0.0" y="263" width="600" height="288"/>
-                                <connections>
-                                    <segue destination="lsQ-F3-VBN" kind="embed" id="hrV-26-vrJ"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kTw-Hf-3tc" firstAttribute="top" secondItem="Alk-ig-d6M" secondAttribute="bottom" id="B9v-xa-i4A"/>
+                            <constraint firstItem="h2M-LO-cWs" firstAttribute="top" secondItem="Alk-ig-d6M" secondAttribute="bottom" id="VnG-de-A69"/>
                             <constraint firstItem="kTw-Hf-3tc" firstAttribute="leading" secondItem="HU8-Qp-Afs" secondAttribute="leading" id="Ycy-6W-h32"/>
+                            <constraint firstItem="kTw-Hf-3tc" firstAttribute="top" secondItem="h2M-LO-cWs" secondAttribute="bottom" id="aaB-x4-CPa"/>
+                            <constraint firstItem="h2M-LO-cWs" firstAttribute="leading" secondItem="HU8-Qp-Afs" secondAttribute="leading" id="bBQ-ql-NyH"/>
                             <constraint firstItem="bZi-U2-4gd" firstAttribute="leading" secondItem="HU8-Qp-Afs" secondAttribute="leading" id="cWu-yy-feJ"/>
                             <constraint firstItem="AWL-q6-cBP" firstAttribute="top" secondItem="bZi-U2-4gd" secondAttribute="bottom" id="diI-Mf-S0a"/>
+                            <constraint firstAttribute="trailing" secondItem="h2M-LO-cWs" secondAttribute="trailing" id="gG5-nu-Xjq"/>
                             <constraint firstAttribute="trailing" secondItem="kTw-Hf-3tc" secondAttribute="trailing" id="iEG-i8-vaP"/>
                             <constraint firstAttribute="trailing" secondItem="bZi-U2-4gd" secondAttribute="trailing" id="njG-n5-hwa"/>
                             <constraint firstItem="bZi-U2-4gd" firstAttribute="top" secondItem="kTw-Hf-3tc" secondAttribute="bottom" constant="-1" id="vpg-tO-3Ce"/>
@@ -290,6 +300,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="doorInfoHeightConstraint" destination="xMZ-DZ-4Ev" id="pBW-BU-4eK"/>
+                        <outlet property="doorInfoMenu" destination="h2M-LO-cWs" id="Ifr-ep-Z5z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xK4-PQ-JSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -805,7 +816,7 @@
                         <viewControllerLayoutGuide type="bottom" id="3VT-eN-kc0"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9vQ-9B-lKQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="288"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

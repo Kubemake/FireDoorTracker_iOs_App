@@ -4,6 +4,7 @@
 target 'firedoortracker' do
 
 pod 'AFNetworking', '~> 2.5'
+pod 'HMSegmentedControl'
 
 end
 
