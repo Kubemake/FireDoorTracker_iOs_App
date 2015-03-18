@@ -16,6 +16,7 @@ static NSString* kSelected = @"selected";
 static NSString* kType = @"type";
 static NSString* vTypeEnum = @"enum";
 static NSString* kValues = @"values";
+static NSString* kName = @"name";
 
 @interface StartInterviewViewController ()
 
@@ -41,18 +42,18 @@ static NSString* kValues = @"values";
     CGFloat propertyTitleLabelWidth = self.doorPropertiesView.bounds.size.width / 4.0f;
     CGFloat propertyValueLabelWidth = self.doorPropertiesView.bounds.size.width - propertyTitleLabelWidth;
     CGFloat propertyLabelY = 0;
-    for (NSString* propertyName in [doorProperties allKeys]) {
+    for (NSDictionary* property in [doorProperties allValues]) {
         UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                         propertyLabelY,
                                                                         propertyTitleLabelWidth,
                                                                         propertyLabelHeight)];
-        titleLabel.text = propertyName;
+        titleLabel.text = [property objectForKey:kName];
 
         UILabel *temLanel = [[UILabel alloc] initWithFrame:CGRectMake(propertyTitleLabelWidth,
                                                                       propertyLabelY,
                                                                       propertyValueLabelWidth,
                                                                       propertyLabelHeight)];
-        temLanel.text = [[doorProperties objectForKey:propertyName] objectForKey:kSelected];
+        temLanel.text = [property objectForKey:kSelected];
         
         [self.doorPropertiesView addSubview:titleLabel];
         [self.doorPropertiesView addSubview:temLanel];
