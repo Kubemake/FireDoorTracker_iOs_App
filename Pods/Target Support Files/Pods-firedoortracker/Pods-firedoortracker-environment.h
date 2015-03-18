@@ -54,3 +54,10 @@
 #define COCOAPODS_VERSION_MINOR_HMSegmentedControl 5
 #define COCOAPODS_VERSION_PATCH_HMSegmentedControl 0
 
+// IQDropDownTextField
+#define COCOAPODS_POD_AVAILABLE_IQDropDownTextField
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 1.0.4.1.
+

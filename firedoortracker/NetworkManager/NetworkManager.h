@@ -13,7 +13,9 @@ typedef enum {
     GlossaryLettersRequestType,
     GlossaryTermsByLetterRequestType,
     GlossaryKeyWordSearchRequestType,
-    InspectionListByUserRequestType
+    InspectionListByUserRequestType,
+    InspectionQuestionListRequestType,
+    InspectionDoorOverviewRequestType
 } RequestType ;
 
 @interface NetworkManager : NSObject

@@ -6,7 +6,9 @@
 //
 //
 
+//Import Controller
 #import "DoorReviewViewController.h"
+#import "DoorInfoOveriviewViewController.h"
 
 //Import Model and API
 #import "NetworkManager.h"
@@ -86,7 +88,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    //TODO: Check for segue identifier
+    DoorInfoOveriviewViewController *destionationVC = [segue destinationViewController];
+    destionationVC.selectedInspection = self.selectedInspection;
 }
 
 @end
