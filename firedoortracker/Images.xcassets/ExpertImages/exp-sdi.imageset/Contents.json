@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "exp-sdi.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "contactAnExpert@2x.png"
+      "filename" : "exp-sdi@2x.png"
     },
     {
       "idiom" : "universal",

@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "tab-bar-media.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "contactAnExpert@2x.png"
+      "filename" : "tab-bar-media@2x.png"
     },
     {
       "idiom" : "universal",

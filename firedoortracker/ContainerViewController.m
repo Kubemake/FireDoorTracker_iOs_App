@@ -9,23 +9,48 @@
 #import "ContainerViewController.h"
 #import "NiceTabBarView.h"
 
-static NSString *const HomeViewControllerSegueIdentifier = @"";
-static NSString *const DoorReviewViewControllerSegueIdentifier = @"";
-static NSString *const MediaViewControllerSegueIdentifier = @"";
-static NSString *const ResourcesViewControllerSegueIdentifier = @"";
-static NSString *const SegueViewControllerSegueIdentifier = @"";
+static NSString *const homeViewControllerSegueIdentifier = @"HomeViewControllerSegue";
+static NSString *const doorReviewViewControllerSegueIdentifier = @"DoorReviewViewControllerSegue";
+static NSString *const mediaViewControllerSegueIdentifier = @"MediaViewControllerSegue";
+static NSString *const resourcesViewControllerSegueIdentifier = @"ResourcesViewControllerSegue";
+static NSString *const segueViewControllerSegueIdentifier = @"SettingsViewController";
 
 @interface ContainerViewController () <NiceTabBarViewDeleage>
+
+@property (weak, nonatomic) IBOutlet NiceTabBarView *niceTabBarView;
+
 @end
 
 @implementation ContainerViewController
 
 #pragma mark - HiceTabBarViewDelegate
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.niceTabBarView.delegate = self;
+}
+
 - (void)niceTabBarViewButtonPressed:(NiceTabBarButtonType)button
 {
     if (button == NiceTabBarButtonTypeHome) {
-//        [self seg]
+        [self performSegueWithIdentifier:homeViewControllerSegueIdentifier sender:self];
+    }
+    else if (button == NiceTabBarButtonTypeDoorReview) {
+        [self performSegueWithIdentifier:doorReviewViewControllerSegueIdentifier sender:self];
+    }
+    else if (button == NiceTabBarButtonTypeMedia) {
+        [self performSegueWithIdentifier:mediaViewControllerSegueIdentifier sender:self];
+    }
+    else if (button == NiceTabBarButtonTypeResources) {
+        [self performSegueWithIdentifier:resourcesViewControllerSegueIdentifier sender:self];
+    }
+    else if (button == NiceTabBarButtonTypeSettings) {
+        [self performSegueWithIdentifier:segueViewControllerSegueIdentifier sender:self];
+    }
+    else if (button == NiceTabBarButtonTypeLogOut) {
+#warning add logic for logout
     }
 }
 

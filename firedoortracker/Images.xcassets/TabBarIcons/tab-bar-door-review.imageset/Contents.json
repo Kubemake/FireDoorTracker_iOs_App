@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "tab-bar-door-review.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "contactAnExpert@2x.png"
+      "filename" : "tab-bar-door-review@2x.png"
     },
     {
       "idiom" : "universal",
