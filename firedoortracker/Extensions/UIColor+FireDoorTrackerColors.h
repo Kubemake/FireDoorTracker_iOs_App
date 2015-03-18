@@ -12,6 +12,7 @@
 @interface UIColor (Extension)
 
 + (UIColor *)FDTDarkGrayColor;
++ (UIColor *)FDTMediumGayColor;
 + (UIColor *)FDTLightGrayColor;
 
 @end

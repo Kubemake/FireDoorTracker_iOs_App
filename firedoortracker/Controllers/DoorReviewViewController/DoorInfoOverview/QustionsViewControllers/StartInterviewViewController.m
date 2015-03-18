@@ -12,6 +12,10 @@
 //Import View
 #import <IQDropDownTextField.h>
 
+//Import Extensions
+#import "UIFont+FDTFonts.h"
+#import "UIColor+FireDoorTrackerColors.h"
+
 static NSString* kSelected = @"selected";
 static NSString* kType = @"type";
 static NSString* vTypeEnum = @"enum";
@@ -38,8 +42,8 @@ static NSString* kName = @"name";
 #pragma mark -
 
 - (void)displayDoorProperties:(NSDictionary *)doorProperties {
-    CGFloat propertyLabelHeight = self.doorPropertiesView.bounds.size.height / doorProperties.count;
-    CGFloat propertyTitleLabelWidth = self.doorPropertiesView.bounds.size.width / 4.0f;
+    CGFloat propertyLabelHeight = self.doorPropertiesView.bounds.size.height / doorProperties.count + 1;
+    CGFloat propertyTitleLabelWidth = self.doorPropertiesView.bounds.size.width / 3.0f;
     CGFloat propertyValueLabelWidth = self.doorPropertiesView.bounds.size.width - propertyTitleLabelWidth;
     CGFloat propertyLabelY = 0;
     for (NSDictionary* property in [doorProperties allValues]) {
@@ -47,16 +51,25 @@ static NSString* kName = @"name";
                                                                         propertyLabelY,
                                                                         propertyTitleLabelWidth,
                                                                         propertyLabelHeight)];
+        titleLabel.font = [UIFont FDTTimesNewRomanBoldWithSize:16.0f];
+        titleLabel.textColor = [UIColor FDTMediumGayColor];
         titleLabel.text = [property objectForKey:kName];
-
-        UILabel *temLanel = [[UILabel alloc] initWithFrame:CGRectMake(propertyTitleLabelWidth,
-                                                                      propertyLabelY,
-                                                                      propertyValueLabelWidth,
-                                                                      propertyLabelHeight)];
-        temLanel.text = [property objectForKey:kSelected];
-        
         [self.doorPropertiesView addSubview:titleLabel];
-        [self.doorPropertiesView addSubview:temLanel];
+        
+        if ([[property  objectForKey:kType] isEqualToString:vTypeEnum]) {
+            IQDropDownTextField *dropDownField = [[IQDropDownTextField alloc] initWithFrame:CGRectMake(propertyTitleLabelWidth,
+                                                                                                                                propertyLabelY,
+                                                                                                                                                                            propertyValueLabelWidth,
+                                                                                                                                                                            propertyLabelHeight)];
+            dropDownField.background = [UIImage imageNamed:@"reviewDropDownFieldBackground"];
+            if ([[property objectForKey:kValues] isKindOfClass:[NSDictionary class]]) {
+                dropDownField.itemList = [[property objectForKey:kValues] allValues];
+            } else if ([[property objectForKey:kValues] isKindOfClass:[NSString class]]) {
+                dropDownField.itemList = [[property objectForKey:kValues] componentsSeparatedByString:@"\n"];
+            }
+            [self.doorPropertiesView addSubview:dropDownField];
+        }
+        
         propertyLabelY += propertyLabelHeight;
     }
     
