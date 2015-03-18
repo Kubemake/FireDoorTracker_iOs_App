@@ -35,6 +35,7 @@
 		F9DA37901AB9A2D50075BCB6 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA378F1AB9A2D50075BCB6 /* ContainerViewController.m */; };
 		F9DA37951AB9A30D0075BCB6 /* NiceTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA37941AB9A30D0075BCB6 /* NiceTabBarView.m */; };
 		F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */; };
+		F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA379E1AB9E0B50075BCB6 /* UIImage+Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		F9DA37941AB9A30D0075BCB6 /* NiceTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NiceTabBarView.m; sourceTree = "<group>"; };
 		F9DA37971AB9A3230075BCB6 /* UIColor+additionalInitializers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+additionalInitializers.h"; sourceTree = "<group>"; };
 		F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+additionalInitializers.m"; sourceTree = "<group>"; };
+		F9DA379D1AB9E0B50075BCB6 /* UIImage+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utilities.h"; sourceTree = "<group>"; };
+		F9DA379E1AB9E0B50075BCB6 /* UIImage+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,10 +348,9 @@
 		688906921AB9583D0079F67B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F9DA37971AB9A3230075BCB6 /* UIColor+additionalInitializers.h */,
-				F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */,
-				688906931AB958620079F67B /* UIColor+FireDoorTrackerColors.h */,
-				688906941AB958620079F67B /* UIColor+FireDoorTrackerColors.m */,
+				F9DA37A01AB9E0BC0075BCB6 /* UIImage+Utilities */,
+				F9DA379C1AB9E0870075BCB6 /* UIColor+FireDoorTrackerColors */,
+				F9DA379B1AB9E0760075BCB6 /* UIColor+additionalInitializers */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -432,6 +434,33 @@
 				F9DA37941AB9A30D0075BCB6 /* NiceTabBarView.m */,
 			);
 			name = NiceTabBarView;
+			sourceTree = "<group>";
+		};
+		F9DA379B1AB9E0760075BCB6 /* UIColor+additionalInitializers */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA37971AB9A3230075BCB6 /* UIColor+additionalInitializers.h */,
+				F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */,
+			);
+			name = "UIColor+additionalInitializers";
+			sourceTree = "<group>";
+		};
+		F9DA379C1AB9E0870075BCB6 /* UIColor+FireDoorTrackerColors */ = {
+			isa = PBXGroup;
+			children = (
+				688906931AB958620079F67B /* UIColor+FireDoorTrackerColors.h */,
+				688906941AB958620079F67B /* UIColor+FireDoorTrackerColors.m */,
+			);
+			name = "UIColor+FireDoorTrackerColors";
+			sourceTree = "<group>";
+		};
+		F9DA37A01AB9E0BC0075BCB6 /* UIImage+Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA379D1AB9E0B50075BCB6 /* UIImage+Utilities.h */,
+				F9DA379E1AB9E0B50075BCB6 /* UIImage+Utilities.m */,
+			);
+			name = "UIImage+Utilities";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,6 +607,7 @@
 				6851D3901AB5ED890085965E /* SettingViewController.m in Sources */,
 				68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
+				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
 				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
 				6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,

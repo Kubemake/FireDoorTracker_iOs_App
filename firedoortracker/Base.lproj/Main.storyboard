@@ -383,19 +383,19 @@
                                 <rect key="frame" x="0.0" y="536" width="600" height="64"/>
                                 <color key="backgroundColor" red="0.16862745100000001" green="0.33333333329999998" blue="0.60392156860000001" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="p4C-TA-qBa"/>
+                                    <constraint firstAttribute="height" constant="64" id="xwq-dT-tQk"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="LTQ-ho-YIV" secondAttribute="trailing" id="E2T-DF-Pdk"/>
-                            <constraint firstItem="8tO-HB-zAa" firstAttribute="top" secondItem="LTQ-ho-YIV" secondAttribute="bottom" id="HzG-lx-Ekn"/>
-                            <constraint firstAttribute="trailing" secondItem="ddS-bM-mf4" secondAttribute="trailing" id="KrR-5B-OuY"/>
-                            <constraint firstItem="LTQ-ho-YIV" firstAttribute="leading" secondItem="rvq-GN-ec9" secondAttribute="leading" id="PXv-iR-8wi"/>
-                            <constraint firstItem="ddS-bM-mf4" firstAttribute="leading" secondItem="rvq-GN-ec9" secondAttribute="leading" id="ah9-Jd-aYX"/>
-                            <constraint firstItem="ddS-bM-mf4" firstAttribute="top" secondItem="rvq-GN-ec9" secondAttribute="top" id="ecY-Ax-NbH"/>
-                            <constraint firstItem="LTQ-ho-YIV" firstAttribute="top" secondItem="ddS-bM-mf4" secondAttribute="bottom" id="m6B-7n-ceb"/>
+                            <constraint firstItem="LTQ-ho-YIV" firstAttribute="top" secondItem="ddS-bM-mf4" secondAttribute="bottom" id="Ayp-Lh-SY1"/>
+                            <constraint firstItem="ddS-bM-mf4" firstAttribute="leading" secondItem="rvq-GN-ec9" secondAttribute="leading" id="HrG-v6-L07"/>
+                            <constraint firstItem="8tO-HB-zAa" firstAttribute="top" secondItem="LTQ-ho-YIV" secondAttribute="bottom" id="XTB-ZI-ref"/>
+                            <constraint firstAttribute="trailing" secondItem="ddS-bM-mf4" secondAttribute="trailing" id="cmA-fq-kVX"/>
+                            <constraint firstItem="ddS-bM-mf4" firstAttribute="top" secondItem="rvq-GN-ec9" secondAttribute="top" id="kek-xB-ggE"/>
+                            <constraint firstAttribute="trailing" secondItem="LTQ-ho-YIV" secondAttribute="trailing" id="lTd-oD-7zv"/>
+                            <constraint firstItem="LTQ-ho-YIV" firstAttribute="leading" secondItem="rvq-GN-ec9" secondAttribute="leading" id="qob-0g-dF6"/>
                         </constraints>
                     </view>
                     <connections>
