@@ -14,5 +14,6 @@
 + (UIColor *)FDTDarkGrayColor;
 + (UIColor *)FDTMediumGayColor;
 + (UIColor *)FDTLightGrayColor;
++ (UIColor *)FDTDeepBlueColor;
 
 @end

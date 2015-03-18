@@ -19,7 +19,7 @@
 //Import Extension
 #import "UIColor+FireDoorTrackerColors.h"
 
-static const CGFloat doorInfoHeight = 200.0f;
+static const CGFloat doorInfoHeight = 150.0f;
 static const CGFloat hidenDoorInfoHeight = 22.0f;
 static const CGFloat doorInfoMenuSegmentInset = 22.0f;
 
@@ -74,6 +74,7 @@ static NSString* kApertureID = @"aperture_id";
     self.doorInfoMenu.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleDynamic;
     self.doorInfoMenu.segmentEdgeInset = UIEdgeInsetsMake(0, doorInfoMenuSegmentInset, 0, doorInfoMenuSegmentInset);
     self.doorInfoMenu.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(doorInfoMenuSegmentInset/2.0f, 0, 0, 0);
+    self.doorInfoMenu.touchEnabled = NO;
     [self.doorInfoMenu addTarget:self
                           action:@selector(doorInfoMenuChangedValue:)
                 forControlEvents:UIControlEventValueChanged];
