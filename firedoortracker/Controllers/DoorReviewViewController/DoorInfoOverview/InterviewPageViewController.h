@@ -21,6 +21,6 @@
 @property (nonatomic, strong) NSDictionary* doorOverviewDictionary;
 
 //Door Interview Delegate
-@property (nonatomic, weak) id <InterviewPageDelegate> delegate;
+@property (nonatomic, weak) id <InterviewPageDelegate> interviewDelegate;
 
 @end

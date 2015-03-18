@@ -8,6 +8,7 @@
 
 //Import Network Manager and Model
 #import "NetworkManager.h"
+#import "Tab.h"
 
 //Import Controllers
 #import "InterviewPageViewController.h"
@@ -36,7 +37,7 @@ static NSString* kQuestions = @"issues";
 @property (nonatomic, strong) StartInterviewViewController* startInterviewController;
 
 //Inspections Quiestions and Tabs
-@property (nonatomic, strong) NSDictionary *tabs;
+@property (nonatomic, strong) NSArray *tabs;
 @property (nonatomic, strong) NSDictionary *questions;
 
 @end
@@ -94,7 +95,12 @@ static NSString* kQuestions = @"issues";
                                                      //TODO: Display Error
                                                      return;
                                                  }
-                                                 welf.tabs = [responseObject objectForKey:kTabs];
+                                                 NSMutableArray *mutableTabs = [NSMutableArray array];
+                                                 for (NSDictionary *tabDictionary in [[responseObject objectForKey:kTabs] allObjects]) {
+                                                     //Server Bloody Issue fix
+                                                     [mutableTabs addObject:[[Tab alloc] initWithDictionary:tabDictionary]];
+                                                 }
+                                                 welf.tabs = mutableTabs;
                                                  welf.questions = [responseObject objectForKey:kQuestions];
                                              }];
 }
