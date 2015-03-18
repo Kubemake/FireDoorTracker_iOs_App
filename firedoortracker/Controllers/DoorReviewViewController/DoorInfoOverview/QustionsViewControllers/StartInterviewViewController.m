@@ -29,6 +29,7 @@ static const CGFloat maxInputFieldHeght = 37.0f;
 @interface StartInterviewViewController () <IQDropDownTextFieldDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *doorPropertiesView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @end
 
@@ -94,14 +95,14 @@ static const CGFloat maxInputFieldHeght = 37.0f;
     UIButton *submitButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
                                                                        propertyLabelY,
                                                                        propertyTitleLabelWidth + propertyValueLabelWidth,
-                                                                       propertyLabelHeight / 2.0f)];
+                                                                       MIN(maxInputFieldHeght, propertyLabelHeight))];
     [submitButton setTitle:NSLocalizedString(@"SUBMIT", nil) forState:UIControlStateNormal];
     [submitButton setBackgroundColor:[UIColor FDTDeepBlueColor]];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [submitButton addTarget:self action:@selector(submitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [submitButton.titleLabel setFont:[UIFont FDTTimesNewRomanBoldWithSize:18.0f]];
     [self.doorPropertiesView addSubview:submitButton];
-    
+    [self.activityView stopAnimating];
 }
 
 #pragma mark - Delegation Methods
@@ -130,14 +131,17 @@ static const CGFloat maxInputFieldHeght = 37.0f;
                                                                                 action:@selector(resignFirstResponder)];
     [toolBar setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
     [textField setInputAccessoryView:toolBar];
-
 }
 
 #pragma mark - IBActions
 #pragma mark -
 
 - (void)submitButtonPressed:(id)sender {
-    
+    //TODO: Add Validation
+    if ([self.delegate respondsToSelector:@selector(submitDoorOverview)]) {
+        [self.delegate submitDoorOverview];
+        [sender setEnabled:NO];
+    }
 }
 
 @end

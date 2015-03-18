@@ -17,7 +17,7 @@ static NSString* glossaryLettersRequestType = @"get_glossary_letters";
 static NSString* glossaryTermsByLetter = @"get_terms_by_letter";
 static NSString* glossaryKeyWordSearch = @"search_glossary_terms";
 static NSString* inspectionListByUser = @"get_inspection_list_by_user";
-static NSString* inspectionquestionsList = @"get_issues_list";
+static NSString* inspectionquestionsList = @"get_aperture_issues";
 static NSString* inspectionDoorOverview = @"get_aperture_overview_info";
 
 static NSString* kToken = @"token";

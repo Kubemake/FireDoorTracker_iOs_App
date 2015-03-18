@@ -6,6 +6,9 @@
 //
 //
 
+//Import Network Manager and Model
+#import "NetworkManager.h"
+
 //Import Controllers
 #import "InterviewPageViewController.h"
 #import "StartInterviewViewController.h"
@@ -17,9 +20,24 @@ typedef enum{
 
 static NSString* startInterviewControllerIdentifier = @"startInterviewControllerIdentifier";
 
-@interface InterviewPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+static NSString* kApertureID = @"aperture_id";
+static NSString* kWallRating = @"wall_Rating";
+static NSString* kSmokeRating = @"smoke_Rating";
+static NSString* kMaterial = @"material";
+static NSString* kRating = @"rating";
+static NSString* kSelected = @"selected";
 
+static NSString* kTabs = @"tabs";
+static NSString* kQuestions = @"issues";
+
+@interface InterviewPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, startInterviewDelegate>
+
+//Child View Controllers
 @property (nonatomic, strong) StartInterviewViewController* startInterviewController;
+
+//Inspections Quiestions and Tabs
+@property (nonatomic, strong) NSDictionary *tabs;
+@property (nonatomic, strong) NSDictionary *questions;
 
 @end
 
@@ -39,6 +57,7 @@ static NSString* startInterviewControllerIdentifier = @"startInterviewController
     self.delegate = self;
     self.dataSource = self;
     self.startInterviewController = [self.storyboard instantiateViewControllerWithIdentifier:startInterviewControllerIdentifier];
+    self.startInterviewController.delegate = self;
     [self setViewControllers:@[self.startInterviewController]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO
@@ -60,10 +79,35 @@ static NSString* startInterviewControllerIdentifier = @"startInterviewController
 
 #pragma mark - UIPageViewControllerDelegate
 
+#pragma mark - Start Interview Delegate
+
+- (void)submitDoorOverview {
+    __weak typeof(self) welf = self;
+    [[NetworkManager sharedInstance] performRequestWithType:InspectionQuestionListRequestType
+                                                  andParams:@{kApertureID : self.apertureID,
+                                                              kWallRating : [self doorOverviewPropertyByKey:kWallRating],
+                                                              kSmokeRating : [self doorOverviewPropertyByKey:kSmokeRating],
+                                                              kMaterial : [self doorOverviewPropertyByKey:kMaterial],
+                                                              kRating : [self doorOverviewPropertyByKey:kRating]}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     //TODO: Display Error
+                                                     return;
+                                                 }
+                                                 welf.tabs = [responseObject objectForKey:kTabs];
+                                                 welf.questions = [responseObject objectForKey:kQuestions];
+                                             }];
+}
+
+- (NSString *)doorOverviewPropertyByKey:(NSString *)key {
+    return [[self.doorOverviewDictionary objectForKey:key] objectForKey:kSelected];
+}
+
 #pragma mark - public setters
 
 - (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary {
     [self.startInterviewController displayDoorProperties:doorOverviewDictionary];
+    _doorOverviewDictionary = doorOverviewDictionary;
 }
 
 @end

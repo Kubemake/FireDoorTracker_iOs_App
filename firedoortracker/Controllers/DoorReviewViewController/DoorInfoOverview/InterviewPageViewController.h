@@ -10,6 +10,7 @@
 
 @interface InterviewPageViewController : UIPageViewController
 
-@property (nonatomic, weak) NSDictionary* doorOverviewDictionary;
+@property (nonatomic, copy) NSString* apertureID;
+@property (nonatomic, strong) NSDictionary* doorOverviewDictionary;
 
 @end
