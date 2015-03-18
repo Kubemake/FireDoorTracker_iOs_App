@@ -31,6 +31,7 @@
 		6889069B1AB96F910079F67B /* InterviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889069A1AB96F910079F67B /* InterviewPageViewController.m */; };
 		6889069F1AB98AE00079F67B /* StartInterviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889069E1AB98AE00079F67B /* StartInterviewViewController.m */; };
 		688906A21AB9A8850079F67B /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906A11AB9A8850079F67B /* UIFont+FDTFonts.m */; };
+		688906A61AB9E3A30079F67B /* Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906A51AB9E3A30079F67B /* Tab.m */; };
 		68B27A1D1AB7157C00990DCA /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A1C1AB7157C00990DCA /* Term.m */; };
 		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
 		68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A2E1AB85AD300990DCA /* CurrentUser.m */; };
@@ -97,6 +98,8 @@
 		6889069E1AB98AE00079F67B /* StartInterviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartInterviewViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/StartInterviewViewController.m; sourceTree = "<group>"; };
 		688906A01AB9A8850079F67B /* UIFont+FDTFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FDTFonts.h"; path = "Extensions/UIFont+FDTFonts.h"; sourceTree = "<group>"; };
 		688906A11AB9A8850079F67B /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
+		688906A41AB9E3A30079F67B /* Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tab.h; path = Model/Inspection/Tab.h; sourceTree = "<group>"; };
+		688906A51AB9E3A30079F67B /* Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tab.m; path = Model/Inspection/Tab.m; sourceTree = "<group>"; };
 		68B27A1B1AB7157C00990DCA /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Term.h; path = Model/Glossary/Term.h; sourceTree = "<group>"; };
 		68B27A1C1AB7157C00990DCA /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Term.m; path = Model/Glossary/Term.m; sourceTree = "<group>"; };
 		68B27A1F1AB717E900990DCA /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermTableViewCell.h; path = Controllers/ResourcesViewController/View/TermTableViewCell.h; sourceTree = "<group>"; };
@@ -307,6 +310,7 @@
 		688906821AB85C860079F67B /* Inspection */ = {
 			isa = PBXGroup;
 			children = (
+				688906A31AB9E38F0079F67B /* Issues */,
 				688906831AB85CA10079F67B /* Inspection.h */,
 				688906841AB85CA10079F67B /* Inspection.m */,
 			);
@@ -369,6 +373,15 @@
 				6889069E1AB98AE00079F67B /* StartInterviewViewController.m */,
 			);
 			name = QuestionsViewControllers;
+			sourceTree = "<group>";
+		};
+		688906A31AB9E38F0079F67B /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				688906A41AB9E3A30079F67B /* Tab.h */,
+				688906A51AB9E3A30079F67B /* Tab.m */,
+			);
+			name = Issues;
 			sourceTree = "<group>";
 		};
 		68B27A191AB714CC00990DCA /* Model */ = {
@@ -574,6 +587,7 @@
 				6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
+				688906A61AB9E3A30079F67B /* Tab.m in Sources */,
 				68B27A1D1AB7157C00990DCA /* Term.m in Sources */,
 				688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */,
 				688906851AB85CA10079F67B /* Inspection.m in Sources */,
