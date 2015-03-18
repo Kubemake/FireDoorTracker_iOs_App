@@ -356,35 +356,61 @@
                         <outlet property="activityIndicator" destination="Itk-uo-2UI" id="ahu-Ri-epA"/>
                         <outlet property="descriptionLabel" destination="wW5-Vk-cCt" id="UZb-rD-KcY"/>
                         <outlet property="logInButton" destination="qRJ-Iu-DtW" id="ieo-Hm-ZAh"/>
-                        <segue destination="49e-Tb-3d3" kind="showDetail" identifier="showTabBarFlowSegueIdentifier" id="DhL-kx-7PG"/>
+                        <segue destination="D3H-nf-ngR" kind="show" identifier="showTabBarFlowSegueIdentifier" id="gP5-zx-q2v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAk-eL-WEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-649" y="0.0"/>
+            <point key="canvasLocation" x="-753" y="-16"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
+        <!--Container View Controller-->
+        <scene sceneID="da7-u1-VNw">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
-                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUO-ty-q5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="D3H-nf-ngR" customClass="ContainerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qca-2s-plG"/>
+                        <viewControllerLayoutGuide type="bottom" id="8tO-HB-zAa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rvq-GN-ec9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddS-bM-mf4" userLabel="PlaceholderView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTQ-ho-YIV" userLabel="NiceTabBarView" customClass="NiceTabBarView">
+                                <rect key="frame" x="0.0" y="536" width="600" height="64"/>
+                                <color key="backgroundColor" red="0.61934375760000004" green="0.2667748714" blue="0.21527101909999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="p4C-TA-qBa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LTQ-ho-YIV" secondAttribute="trailing" id="E2T-DF-Pdk"/>
+                            <constraint firstItem="8tO-HB-zAa" firstAttribute="top" secondItem="LTQ-ho-YIV" secondAttribute="bottom" id="HzG-lx-Ekn"/>
+                            <constraint firstAttribute="trailing" secondItem="ddS-bM-mf4" secondAttribute="trailing" id="KrR-5B-OuY"/>
+                            <constraint firstItem="LTQ-ho-YIV" firstAttribute="leading" secondItem="rvq-GN-ec9" secondAttribute="leading" id="PXv-iR-8wi"/>
+                            <constraint firstItem="ddS-bM-mf4" firstAttribute="leading" secondItem="rvq-GN-ec9" secondAttribute="leading" id="ah9-Jd-aYX"/>
+                            <constraint firstItem="ddS-bM-mf4" firstAttribute="top" secondItem="rvq-GN-ec9" secondAttribute="top" id="ecY-Ax-NbH"/>
+                            <constraint firstItem="LTQ-ho-YIV" firstAttribute="top" secondItem="ddS-bM-mf4" secondAttribute="bottom" id="m6B-7n-ceb"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <segue destination="yV7-eB-X2C" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="w3A-6A-IWa" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="k9G-6X-Gc0" kind="relationship" relationship="viewControllers" id="Zt7-q0-enq"/>
-                        <segue destination="lBB-jn-xNf" kind="relationship" relationship="viewControllers" id="2er-GX-hvR"/>
-                        <segue destination="GTs-wD-ZMY" kind="relationship" relationship="viewControllers" id="Tb0-Hv-kHC"/>
-                        <segue destination="mUN-16-OhL" kind="relationship" relationship="viewControllers" id="aff-2i-Pe1"/>
+                        <outletCollection property="placeholderViews" destination="ddS-bM-mf4" id="Ap0-9S-o5e"/>
+                        <segue destination="yV7-eB-X2C" kind="custom" identifier="hls_preload_at_index_0" customClass="HLSPlaceholderInsetSegue" id="YRW-li-5uA"/>
+                        <segue destination="w3A-6A-IWa" kind="custom" identifier="DoorReviewViewControllerSegue" customClass="HLSPlaceholderInsetSegue" id="GOd-hb-3q6"/>
+                        <segue destination="k9G-6X-Gc0" kind="custom" identifier="MediaViewControllerSegue" customClass="HLSPlaceholderInsetSegue" id="BZH-AF-0ha"/>
+                        <segue destination="lBB-jn-xNf" kind="custom" identifier="ResourcesViewControllerSegue" customClass="HLSPlaceholderInsetSegue" id="KzJ-t6-xxq"/>
+                        <segue destination="GTs-wD-ZMY" kind="custom" identifier="SettingsViewController" customClass="HLSPlaceholderInsetSegue" id="cWg-I0-MSG"/>
+                        <segue destination="yV7-eB-X2C" kind="custom" customClass="HLSPlaceholderCoverFromTopRightSegue" id="NuS-bI-fTJ"/>
                     </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+                </viewController>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-11" y="-16"/>
         </scene>
         <!--Home-->
         <scene sceneID="NtT-4i-CYH">
@@ -731,25 +757,6 @@
             </objects>
             <point key="canvasLocation" x="1562" y="2325"/>
         </scene>
-        <!--Logout View Controller-->
-        <scene sceneID="V2T-TG-Cev">
-            <objects>
-                <viewController id="GPp-J7-zWU" customClass="LogoutViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="q86-sp-R7A"/>
-                        <viewControllerLayoutGuide type="bottom" id="fQv-7i-eu6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bR3-O8-JnB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="D8b-HO-KMN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jgs-dR-W4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1558" y="2997"/>
-        </scene>
         <!--Reources-->
         <scene sceneID="UuS-eS-PbX">
             <objects>
@@ -788,25 +795,6 @@
             </objects>
             <point key="canvasLocation" x="750" y="2325"/>
         </scene>
-        <!--Log Out-->
-        <scene sceneID="rgH-e5-BgG">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mUN-16-OhL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Log Out" image="logout" id="xRB-Dn-Di5"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jJH-se-kmQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GPp-J7-zWU" kind="relationship" relationship="rootViewController" id="iv8-id-1tq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GDk-s3-xaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="746" y="2997"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="lHd-ru-vK8">
             <objects>
@@ -835,11 +823,13 @@
         <image name="galleryIcon" width="137" height="137"/>
         <image name="hideDoorSectionButton" width="32" height="12"/>
         <image name="homeIcon" width="37" height="37"/>
-        <image name="logout" width="37" height="37"/>
         <image name="mediaIcon" width="37" height="37"/>
         <image name="photoIcon" width="137" height="106"/>
         <image name="resources" width="37" height="37"/>
         <image name="scanQRIcon" width="137" height="136"/>
         <image name="settingIcon" width="37" height="37"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NuS-bI-fTJ"/>
+    </inferredMetricsTieBreakers>
 </document>
