@@ -49,24 +49,31 @@
         return;
     }
         
-    UILabel *label = (UILabel *)[self viewWithTag:button.tag + 10];
+    [self setSelectedButton:button.tag - 10];
+    [self.delegate niceTabBarViewButtonPressed:button.tag - 10];
+}
+
+#pragma mark - Public
+
+- (void)setSelectedButton:(NiceTabBarButtonType)buttonType
+{
+    UILabel *label = (UILabel *)[self viewWithTag:buttonType + 100];
     label.textColor = [UIColor colorWithUCharRed:47 green:81 blue:152 alpha:1.0f];
     
+    UIButton *button = (UIButton *)[self viewWithTag:buttonType + 10];
     button.selected = YES;
     
-    for (int i = 1; i < NiceTabBarButtonTypeTotalCount; i++) {
-        if ((i + 1) == button.tag) {
+    for (int i = 0; i < NiceTabBarButtonTypeTotalCount; i++) {
+        if (i == buttonType) {
             continue;
         }
 
-        UILabel *label = (UILabel *)[self viewWithTag:i + 10];
+        UILabel *label = (UILabel *)[self viewWithTag:i + 100];
         label.textColor = [UIColor colorWithUCharWhite:64 alpha:1.0f];
         
-        UIButton *button = (UIButton *)[self viewWithTag:i + 1];
+        UIButton *button = (UIButton *)[self viewWithTag:i + 10];
         button.selected = NO;
-    }
-    
-    [self.delegate niceTabBarViewButtonPressed:button.tag - 1];
+    }   
 }
 
 #pragma mark - Private Logic
@@ -75,26 +82,26 @@
 {
     self.backgroundColor = [UIColor colorWithUCharWhite:226 alpha:1.0f];
     
-    for (int i = 1; i < NiceTabBarButtonTypeTotalCount; i++) {
+    for (int i = 0; i < NiceTabBarButtonTypeTotalCount; i++) {
         UIButton *button = [UIButton new];
         [button setImage:[self imageForButtonType:i]         forState:UIControlStateNormal];
         [button setImage:[self selectedImageForButtonType:i] forState:UIControlStateSelected];
         [button setImage:[self selectedImageForButtonType:i] forState:UIControlStateSelected | UIControlStateHighlighted];
         [button addTarget:self action:@selector(niceButtonPressed:) forControlEvents:UIControlEventTouchDown];
-        button.tag = i + 1;
-        button.selected = !(i - 1);
+        button.tag = i + 10;
+        button.selected = !i;
         [self addSubview:button];
        
         UILabel *label = [UILabel new];
         label.font = [UIFont systemFontOfSize:8.0f];
         label.textAlignment = NSTextAlignmentCenter;
         label.text = [self titleForButtonType:i];
-        label.tag = i + 10;
+        label.tag = i + 100;
         [self addSubview:label];
         
         UIView *verticalSeparator = [UIView new];
         verticalSeparator.backgroundColor = [UIColor colorWithUCharWhite:202 alpha:1.0f];
-        verticalSeparator.tag = i + 110;
+        verticalSeparator.tag = i + 1000;
         [self addSubview:verticalSeparator];
     }
     
@@ -109,23 +116,23 @@
     CGFloat offset = roundf(self.bounds.size.width / 6);
     CGRect frame = CGRectZero;
     
-    for (int i = 1; i < NiceTabBarButtonTypeTotalCount; i++) {
-        UIButton *button = (UIButton *)[self viewWithTag:i + 1];
+    for (int i = 0; i < NiceTabBarButtonTypeTotalCount; i++) {
+        UIButton *button = (UIButton *)[self viewWithTag:i + 10];
         [button sizeToFit];
         frame = button.frame;
-        frame.origin.x = (i - 1) ? (offset * (i - 1) + offset / 2 - frame.size.width / 2)
-                                 : roundf(offset / 2 - frame.size.width / 2);
+        frame.origin.x = i ? (offset * i) + roundf(offset / 2 - frame.size.width / 2)
+                           : roundf(offset / 2 - frame.size.width / 2);
         frame.origin.y = (self.bounds.size.height - frame.size.height) / 2 - 4.0f;
         button.frame = frame;
    
-        UILabel *label = (UILabel *)[self viewWithTag:i + 10];
+        UILabel *label = (UILabel *)[self viewWithTag:i + 100];
         [label sizeToFit];
         frame = label.frame;
         frame.origin.y = CGRectGetMaxY(button.frame) + 4.0f;
         frame.origin.x = CGRectGetMidX(button.frame) - frame.size.width / 2;
         label.frame = frame;
         
-        UIView *verticalSeparator = [self viewWithTag:i + 110];
+        UIView *verticalSeparator = [self viewWithTag:i + 1000];
         frame = verticalSeparator.frame;
         frame.size.height = self.bounds.size.height;
         frame.size.width = 0.5f;

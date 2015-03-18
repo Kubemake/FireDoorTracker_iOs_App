@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, NiceTabBarButtonType) {
-    NiceTabBarButtonTypeUnknown,
     NiceTabBarButtonTypeHome,
     NiceTabBarButtonTypeDoorReview,
     NiceTabBarButtonTypeMedia,
@@ -28,5 +27,7 @@ typedef NS_ENUM(NSUInteger, NiceTabBarButtonType) {
 @interface NiceTabBarView : UIView
 
 @property (weak, nonatomic) id<NiceTabBarViewDeleage> delegate;
+
+- (void)setSelectedButton:(NiceTabBarButtonType)buttonType;
 
 @end

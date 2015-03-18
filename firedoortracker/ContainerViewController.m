@@ -7,17 +7,10 @@
 //
 
 #import "ContainerViewController.h"
-#import "NiceTabBarView.h"
-
-static NSString *const homeViewControllerSegueIdentifier = @"HomeViewControllerSegue";
-static NSString *const doorReviewViewControllerSegueIdentifier = @"DoorReviewViewControllerSegue";
-static NSString *const mediaViewControllerSegueIdentifier = @"MediaViewControllerSegue";
-static NSString *const resourcesViewControllerSegueIdentifier = @"ResourcesViewControllerSegue";
-static NSString *const segueViewControllerSegueIdentifier = @"SettingsViewController";
 
 @interface ContainerViewController () <NiceTabBarViewDeleage>
 
-@property (weak, nonatomic) IBOutlet NiceTabBarView *niceTabBarView;
+@property (weak, nonatomic, readwrite) IBOutlet NiceTabBarView *niceTabBarView;
 
 @end
 
@@ -47,7 +40,7 @@ static NSString *const segueViewControllerSegueIdentifier = @"SettingsViewContro
         [self performSegueWithIdentifier:resourcesViewControllerSegueIdentifier sender:self];
     }
     else if (button == NiceTabBarButtonTypeSettings) {
-        [self performSegueWithIdentifier:segueViewControllerSegueIdentifier sender:self];
+        [self performSegueWithIdentifier:settingsViewControllerSegueIdentifier sender:self];
     }
     else if (button == NiceTabBarButtonTypeLogOut) {
 #warning add logic for logout
