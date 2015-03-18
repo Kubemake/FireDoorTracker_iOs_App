@@ -12,5 +12,6 @@
 @interface UIFont (Extenstion)
 
 + (UIFont *)FDTTimesNewRomanBoldWithSize:(CGFloat) size;
++ (UIFont *)FDTTimesNewRomanRegularWithSize:(CGFloat) size;
 
 @end

@@ -22,7 +22,7 @@ static NSString* vTypeEnum = @"enum";
 static NSString* kValues = @"values";
 static NSString* kName = @"name";
 
-@interface StartInterviewViewController ()
+@interface StartInterviewViewController () <IQDropDownTextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *doorPropertiesView;
 
@@ -42,7 +42,7 @@ static NSString* kName = @"name";
 #pragma mark -
 
 - (void)displayDoorProperties:(NSDictionary *)doorProperties {
-    CGFloat propertyLabelHeight = self.doorPropertiesView.bounds.size.height / doorProperties.count + 1;
+    CGFloat propertyLabelHeight = self.doorPropertiesView.bounds.size.height / doorProperties.count;
     CGFloat propertyTitleLabelWidth = self.doorPropertiesView.bounds.size.width / 3.0f;
     CGFloat propertyValueLabelWidth = self.doorPropertiesView.bounds.size.width - propertyTitleLabelWidth;
     CGFloat propertyLabelY = 0;
@@ -62,17 +62,41 @@ static NSString* kName = @"name";
                                                                                                                                                                             propertyValueLabelWidth,
                                                                                                                                                                             propertyLabelHeight)];
             dropDownField.background = [UIImage imageNamed:@"reviewDropDownFieldBackground"];
+            dropDownField.isOptionalDropDown = NO;
+            dropDownField.font = [UIFont FDTTimesNewRomanRegularWithSize:15.0f];
+            dropDownField.textColor = [UIColor FDTMediumGayColor];
+            dropDownField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reviewLeftViewField"]];
+            dropDownField.leftViewMode = UITextFieldViewModeAlways;
+            dropDownField.delegate = self;
+            
+            UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,42)];
+            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                        target:dropDownField
+                                                                                        action:@selector(resignFirstResponder)];
+            [toolBar setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
+            [dropDownField setInputAccessoryView:toolBar];
+            
             if ([[property objectForKey:kValues] isKindOfClass:[NSDictionary class]]) {
                 dropDownField.itemList = [[property objectForKey:kValues] allValues];
             } else if ([[property objectForKey:kValues] isKindOfClass:[NSString class]]) {
                 dropDownField.itemList = [[property objectForKey:kValues] componentsSeparatedByString:@"\n"];
             }
+            dropDownField.text = [property objectForKey:kSelected];
             [self.doorPropertiesView addSubview:dropDownField];
         }
         
         propertyLabelY += propertyLabelHeight;
     }
-    
+}
+
+#pragma mark - Delegation Methods
+#pragma mark - IQDropDownTextField
+
+-(void)textField:(IQDropDownTextField*)textField didSelectItem:(NSString*)item {
+    //Save changed data to dictionary
+}
+
+- (void)doneDropDownTextField:(id)sender {
 }
 
 @end

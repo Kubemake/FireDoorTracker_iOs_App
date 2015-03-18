@@ -14,4 +14,8 @@
     return [UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:size];
 }
 
++ (UIFont *)FDTTimesNewRomanRegularWithSize:(CGFloat)size {
+    return [UIFont fontWithName:@"TimesNewRomanPSMT" size:size];
+}
+
 @end
