@@ -116,7 +116,9 @@ static NSString* kApertureID = @"aperture_id";
 
 - (void)enableMenuTitles:(NSArray *)menuItems {
     self.doorInfoMenu.touchEnabled = YES;
+    //TODO: Rwork this hardcode
     [self.doorInfoMenu setSelectedSegmentIndex:1 animated:YES];
+    [self doorInfoMenuChangedValue:self.doorInfoMenu];
 }
 
 

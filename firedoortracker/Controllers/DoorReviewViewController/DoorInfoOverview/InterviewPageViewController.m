@@ -146,8 +146,8 @@ static NSString* kQuestions = @"issues";
                                                      [mutableQuestions addObject:[[QuestionOrAnswer alloc] initWithDictionary:quiestDict]];
                                                  }
                                                  welf.questions = mutableQuestions;
-                                                 [welf displayTabsOnDoorInfoOverview];
                                                  [welf displayTabQuestionsViewControllers];
+                                                 [welf displayTabsOnDoorInfoOverview];
                                              }];
 }
 
@@ -189,7 +189,12 @@ static NSString* kQuestions = @"issues";
 }
 
 - (void)setSelectedPage:(NSInteger)selectedPage {
-    
+    if ([self viewControllerAtIndex:selectedPage] ) {
+        [self setViewControllers:@[[self viewControllerAtIndex:selectedPage]]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:YES
+                      completion:nil];
+    }
 }
 
 @end
