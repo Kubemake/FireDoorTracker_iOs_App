@@ -86,7 +86,7 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 - (void)answerSelected:(UIButton *)sender {
     //TODO: Save current Answer for the crump breads
-    QuestionOrAnswer *currentAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%d",sender.tag]];
+    QuestionOrAnswer *currentAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%ld",(long)sender.tag]];
     QuestionOrAnswer *nextAnswer = [self questionByID:currentAnswer.nextQuiestionID];
     [self displayQuestion:nextAnswer];
 }

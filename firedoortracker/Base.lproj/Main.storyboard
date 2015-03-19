@@ -238,7 +238,7 @@
                                             <action selector="showDoorInfoStatusButtonPressed:" destination="79p-Zy-XWy" eventType="touchUpInside" id="yjE-Q3-61F"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTd-wu-X9I">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status: In Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTd-wu-X9I">
                                         <rect key="frame" x="159" y="21" width="282" height="21.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="282" id="zC4-dX-vO5"/>
@@ -862,7 +862,7 @@ No Data</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-oc-cxo">
-                                <rect key="frame" x="50" y="10" width="500" height="35"/>
+                                <rect key="frame" x="50" y="25" width="500" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="500" id="8eo-we-t4F"/>
                                     <constraint firstAttribute="height" constant="35" id="9Sj-Ug-4nW"/>
@@ -872,20 +872,46 @@ No Data</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DF-ZA-dhT">
-                                <rect key="frame" x="33" y="70" width="535" height="459"/>
+                                <rect key="frame" x="33" y="85" width="535" height="444"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="535" id="X9G-m8-1kX"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqV-MD-RAe">
+                                <rect key="frame" x="33" y="537" width="107" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="2dA-Nt-p6i"/>
+                                    <constraint firstAttribute="width" constant="107" id="EEe-5l-2xH"/>
+                                </constraints>
+                                <state key="normal" image="backButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-QR-Zlu">
+                                <rect key="frame" x="461" y="537" width="107" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="g9l-Hb-BX9"/>
+                                    <constraint firstAttribute="height" constant="55" id="t1g-r9-xmH"/>
+                                </constraints>
+                                <state key="normal" image="nextButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="EhH-FF-JsX" firstAttribute="top" secondItem="QqV-MD-RAe" secondAttribute="bottom" constant="8" id="5GQ-f5-zWL"/>
                             <constraint firstAttribute="centerX" secondItem="0DF-ZA-dhT" secondAttribute="centerX" id="IXY-Bd-DhU"/>
-                            <constraint firstItem="yI4-oc-cxo" firstAttribute="top" secondItem="YfP-4C-usT" secondAttribute="top" constant="10" id="PpT-hK-SSh"/>
+                            <constraint firstItem="yI4-oc-cxo" firstAttribute="top" secondItem="YfP-4C-usT" secondAttribute="top" constant="25" id="PpT-hK-SSh"/>
                             <constraint firstItem="EhH-FF-JsX" firstAttribute="top" secondItem="0DF-ZA-dhT" secondAttribute="bottom" constant="71" id="aDl-jI-Z1c"/>
+                            <constraint firstItem="QqV-MD-RAe" firstAttribute="top" secondItem="0DF-ZA-dhT" secondAttribute="bottom" constant="8" id="ccp-wA-9YC"/>
                             <constraint firstAttribute="centerX" secondItem="yI4-oc-cxo" secondAttribute="centerX" id="dxc-Nu-oDf"/>
+                            <constraint firstItem="EhH-FF-JsX" firstAttribute="top" secondItem="dxj-QR-Zlu" secondAttribute="bottom" constant="8" id="iV9-hF-EWy"/>
                             <constraint firstItem="0DF-ZA-dhT" firstAttribute="top" secondItem="yI4-oc-cxo" secondAttribute="bottom" constant="25" id="pNn-mX-BUb"/>
+                            <constraint firstItem="QqV-MD-RAe" firstAttribute="leading" secondItem="0DF-ZA-dhT" secondAttribute="leading" id="rrx-JR-rGG"/>
+                            <constraint firstItem="dxj-QR-Zlu" firstAttribute="top" secondItem="0DF-ZA-dhT" secondAttribute="bottom" constant="8" id="saO-xQ-gjg"/>
+                            <constraint firstItem="dxj-QR-Zlu" firstAttribute="trailing" secondItem="0DF-ZA-dhT" secondAttribute="trailing" id="tpr-HI-aLo"/>
                         </constraints>
                     </view>
                     <connections>
@@ -943,6 +969,7 @@ No Data</string>
         <image name="hideDoorSectionButton" width="32" height="12"/>
         <image name="homeIcon" width="37" height="37"/>
         <image name="mediaIcon" width="37" height="37"/>
+        <image name="nextButton" width="37" height="37"/>
         <image name="photoIcon" width="137" height="106"/>
         <image name="resources" width="37" height="37"/>
         <image name="scanQRIcon" width="137" height="136"/>

@@ -16,4 +16,11 @@
 + (UIColor *)FDTLightGrayColor;
 + (UIColor *)FDTDeepBlueColor;
 
+//Door Review Status
++ (UIColor *)FDTcompliant;
++ (UIColor *)FDTmaintenance;
++ (UIColor *)FDTrepair;
++ (UIColor *)FDTreplace;
++ (UIColor *)FDTrecertify;
+
 @end
