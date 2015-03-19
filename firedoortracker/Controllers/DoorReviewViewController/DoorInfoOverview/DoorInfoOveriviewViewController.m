@@ -19,7 +19,9 @@
 //Import Extension
 #import "UIColor+FireDoorTrackerColors.h"
 
-static const CGFloat doorInfoHeight = 150.0f;
+#import "NavigationBarButtons.h"
+
+static const CGFloat doorInfoHeight = 200.0f;
 static const CGFloat hidenDoorInfoHeight = 22.0f;
 static const CGFloat doorInfoMenuSegmentInset = 22.0f;
 
@@ -27,7 +29,7 @@ static NSString* segueEmbededInterviewControllerIdentifier = @"EmbededInterviewC
 
 static NSString* kApertureID = @"aperture_id";
 
-@interface DoorInfoOveriviewViewController () <InterviewPageDelegate>
+@interface DoorInfoOveriviewViewController ()<InterviewPageDelegate>
 
 //IBOutlets and View Properties
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *doorInfoHeightConstraint;
@@ -44,10 +46,24 @@ static NSString* kApertureID = @"aperture_id";
 #pragma mark - View Controller Lyfecircle
 #pragma mark -
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.navigationItem.leftBarButtonItem = [NavigationBarButtons backBarButtonItem];
+    [self.navigationItem.leftBarButtonItem setTarget:self];
+    [self.navigationItem.leftBarButtonItem setAction:@selector(backButtonPressed)];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDoorInfoMenu];
     [self loadDoorOverview];
+}
+
+#pragma mark - Actions
+#pragma mark -
+
+- (void)backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Segue Delegation
@@ -56,6 +72,7 @@ static NSString* kApertureID = @"aperture_id";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:segueEmbededInterviewControllerIdentifier]) {
         self.embededInterviewController = segue.destinationViewController;
+        self.embededInterviewController.inspectionID = self.selectedInspection.uid;
         self.embededInterviewController.interviewDelegate = self;
     }
 }
@@ -75,7 +92,6 @@ static NSString* kApertureID = @"aperture_id";
     self.doorInfoMenu.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleDynamic;
     self.doorInfoMenu.segmentEdgeInset = UIEdgeInsetsMake(0, doorInfoMenuSegmentInset, 0, doorInfoMenuSegmentInset);
     self.doorInfoMenu.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(doorInfoMenuSegmentInset/2.0f, 0, 0, 0);
-    self.doorInfoMenu.touchEnabled = NO;
     [self.doorInfoMenu addTarget:self
                           action:@selector(doorInfoMenuChangedValue:)
                 forControlEvents:UIControlEventValueChanged];
@@ -91,7 +107,6 @@ static NSString* kApertureID = @"aperture_id";
                                                      return;
                                                  }
                                                  welf.embededInterviewController.doorOverviewDictionary = [responseObject objectForKey:@"info"];
-                                                 welf.embededInterviewController.inspectionID = [self.selectedInspection uid];
                                              }];
 }
 
@@ -112,13 +127,10 @@ static NSString* kApertureID = @"aperture_id";
 }
 
 #pragma mark - Delegation Methods
-#pragma mark - InterviewPageCOntroller Delegate
+#pragma mark - Interview Page Delegate 
 
 - (void)enableMenuTitles:(NSArray *)menuItems {
-    self.doorInfoMenu.touchEnabled = YES;
-    //TODO: Rwork this hardcode
-    [self.doorInfoMenu setSelectedSegmentIndex:1 animated:YES];
-    [self doorInfoMenuChangedValue:self.doorInfoMenu];
+    [self.embededInterviewController setSelectedPage:1];
 }
 
 

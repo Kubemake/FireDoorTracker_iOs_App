@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UIImage+Utilities.h"
+#import "TestFairy.h"
 
 @interface AppDelegate ()
 @end
@@ -19,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self setupNavigationBarAppearance];
+    [TestFairy begin:@"80331b626231b2dc25c06037e77882814a81c4c5"];
     
     return YES;
 }

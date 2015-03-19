@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		683F0CD81ABAC84F008B3A1B /* QuestionTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CD71ABAC84F008B3A1B /* QuestionTreeViewController.m */; };
-		683F0CDE1ABAC8A6008B3A1B /* QuestionOrAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CDB1ABAC8A6008B3A1B /* QuestionOrAnswer.m */; };
-		683F0CDF1ABAC8A6008B3A1B /* Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CDD1ABAC8A6008B3A1B /* Tab.m */; };
-		683F0CE31ABAC8C6008B3A1B /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CE21ABAC8C6008B3A1B /* UIFont+FDTFonts.m */; };
-		683F0CE61ABAE57F008B3A1B /* InterviewConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CE51ABAE57F008B3A1B /* InterviewConfirmationViewController.m */; };
 		6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3871AB5ED2D0085965E /* MediaViewController.m */; };
 		6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38B1AB5ED530085965E /* ResourcesViewController.m */; };
 		6851D3901AB5ED890085965E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38F1AB5ED890085965E /* SettingViewController.m */; };
@@ -38,7 +33,18 @@
 		68B27A1D1AB7157C00990DCA /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A1C1AB7157C00990DCA /* Term.m */; };
 		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
 		68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A2E1AB85AD300990DCA /* CurrentUser.m */; };
+		68BAA31E1ABB42D300D56EF0 /* QuestionOrAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA31B1ABB42D300D56EF0 /* QuestionOrAnswer.m */; };
+		68BAA31F1ABB42D300D56EF0 /* Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA31D1ABB42D300D56EF0 /* Tab.m */; };
+		68BAA3251ABB42F700D56EF0 /* InterviewConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3221ABB42F700D56EF0 /* InterviewConfirmationViewController.m */; };
+		68BAA3261ABB42F700D56EF0 /* QuestionTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3241ABB42F700D56EF0 /* QuestionTreeViewController.m */; };
+		68BAA3291ABB430F00D56EF0 /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */; };
 		D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */; };
+		F94A8BFB1ABB18CD00A3AC06 /* CellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */; };
+		F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */; };
+		F94A8BFE1ABB18CD00A3AC06 /* ContactExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BFA1ABB18CD00A3AC06 /* ContactExpertViewController.m */; };
+		F94A8C041ABB1B5600A3AC06 /* ContactExpertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */; };
+		F94A8C091ABB1BEB00A3AC06 /* CustomFontUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8C071ABB1BEB00A3AC06 /* CustomFontUtilities.m */; };
+		F94A8C0D1ABB21DE00A3AC06 /* NavigationBarButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8C0C1ABB21DE00A3AC06 /* NavigationBarButtons.m */; };
 		F9DA37901AB9A2D50075BCB6 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA378F1AB9A2D50075BCB6 /* ContainerViewController.m */; };
 		F9DA37951AB9A30D0075BCB6 /* NiceTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA37941AB9A30D0075BCB6 /* NiceTabBarView.m */; };
 		F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */; };
@@ -59,16 +65,6 @@
 		00B0C653FC2A3B21007B85DC /* Pods-firedoortracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-firedoortracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-firedoortracker/Pods-firedoortracker.debug.xcconfig"; sourceTree = "<group>"; };
 		062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-firedoortracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-firedoortracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-firedoortracker/Pods-firedoortracker.release.xcconfig"; sourceTree = "<group>"; };
-		683F0CD61ABAC84F008B3A1B /* QuestionTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionTreeViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.h; sourceTree = "<group>"; };
-		683F0CD71ABAC84F008B3A1B /* QuestionTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTreeViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.m; sourceTree = "<group>"; };
-		683F0CDA1ABAC8A6008B3A1B /* QuestionOrAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionOrAnswer.h; path = Model/Inspection/QuestionOrAnswer.h; sourceTree = "<group>"; };
-		683F0CDB1ABAC8A6008B3A1B /* QuestionOrAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionOrAnswer.m; path = Model/Inspection/QuestionOrAnswer.m; sourceTree = "<group>"; };
-		683F0CDC1ABAC8A6008B3A1B /* Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tab.h; path = Model/Inspection/Tab.h; sourceTree = "<group>"; };
-		683F0CDD1ABAC8A6008B3A1B /* Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tab.m; path = Model/Inspection/Tab.m; sourceTree = "<group>"; };
-		683F0CE11ABAC8C6008B3A1B /* UIFont+FDTFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FDTFonts.h"; path = "Extensions/UIFont+FDTFonts.h"; sourceTree = "<group>"; };
-		683F0CE21ABAC8C6008B3A1B /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
-		683F0CE41ABAE57F008B3A1B /* InterviewConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InterviewConfirmationViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/InterviewConfirmationViewController.h; sourceTree = "<group>"; };
-		683F0CE51ABAE57F008B3A1B /* InterviewConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InterviewConfirmationViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/InterviewConfirmationViewController.m; sourceTree = "<group>"; };
 		6851D3861AB5ED2D0085965E /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaViewController.h; path = Controllers/MediaViewController/MediaViewController.h; sourceTree = "<group>"; };
 		6851D3871AB5ED2D0085965E /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaViewController.m; path = Controllers/MediaViewController/MediaViewController.m; sourceTree = "<group>"; };
 		6851D38A1AB5ED530085965E /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcesViewController.h; path = Controllers/ResourcesViewController/ResourcesViewController.h; sourceTree = "<group>"; };
@@ -119,6 +115,28 @@
 		68B27A201AB717E900990DCA /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermTableViewCell.m; path = Controllers/ResourcesViewController/View/TermTableViewCell.m; sourceTree = "<group>"; };
 		68B27A2D1AB85AD300990DCA /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentUser.h; path = Model/CurrentUser/CurrentUser.h; sourceTree = "<group>"; };
 		68B27A2E1AB85AD300990DCA /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentUser.m; path = Model/CurrentUser/CurrentUser.m; sourceTree = "<group>"; };
+		68BAA31A1ABB42D300D56EF0 /* QuestionOrAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionOrAnswer.h; path = Model/Inspection/QuestionOrAnswer.h; sourceTree = "<group>"; };
+		68BAA31B1ABB42D300D56EF0 /* QuestionOrAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionOrAnswer.m; path = Model/Inspection/QuestionOrAnswer.m; sourceTree = "<group>"; };
+		68BAA31C1ABB42D300D56EF0 /* Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tab.h; path = Model/Inspection/Tab.h; sourceTree = "<group>"; };
+		68BAA31D1ABB42D300D56EF0 /* Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tab.m; path = Model/Inspection/Tab.m; sourceTree = "<group>"; };
+		68BAA3211ABB42F700D56EF0 /* InterviewConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InterviewConfirmationViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/InterviewConfirmationViewController.h; sourceTree = "<group>"; };
+		68BAA3221ABB42F700D56EF0 /* InterviewConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InterviewConfirmationViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/InterviewConfirmationViewController.m; sourceTree = "<group>"; };
+		68BAA3231ABB42F700D56EF0 /* QuestionTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionTreeViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.h; sourceTree = "<group>"; };
+		68BAA3241ABB42F700D56EF0 /* QuestionTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTreeViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.m; sourceTree = "<group>"; };
+		68BAA3271ABB430F00D56EF0 /* UIFont+FDTFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FDTFonts.h"; path = "Extensions/UIFont+FDTFonts.h"; sourceTree = "<group>"; };
+		68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
+		F94A8BF31ABB18CD00A3AC06 /* CellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellDataModel.h; sourceTree = "<group>"; };
+		F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellDataModel.m; sourceTree = "<group>"; };
+		F94A8BF71ABB18CD00A3AC06 /* ContactExpertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertView.h; sourceTree = "<group>"; };
+		F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertView.m; sourceTree = "<group>"; };
+		F94A8BF91ABB18CD00A3AC06 /* ContactExpertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertViewController.h; sourceTree = "<group>"; };
+		F94A8BFA1ABB18CD00A3AC06 /* ContactExpertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertViewController.m; sourceTree = "<group>"; };
+		F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertCell.m; sourceTree = "<group>"; };
+		F94A8C031ABB1B5600A3AC06 /* ContactExpertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertCell.h; sourceTree = "<group>"; };
+		F94A8C071ABB1BEB00A3AC06 /* CustomFontUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFontUtilities.m; sourceTree = "<group>"; };
+		F94A8C081ABB1BEB00A3AC06 /* CustomFontUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFontUtilities.h; sourceTree = "<group>"; };
+		F94A8C0B1ABB21DE00A3AC06 /* NavigationBarButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarButtons.h; sourceTree = "<group>"; };
+		F94A8C0C1ABB21DE00A3AC06 /* NavigationBarButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarButtons.m; sourceTree = "<group>"; };
 		F9DA378E1AB9A2D50075BCB6 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		F9DA378F1AB9A2D50075BCB6 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		F9DA37931AB9A30D0075BCB6 /* NiceTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiceTabBarView.h; sourceTree = "<group>"; };
@@ -149,26 +167,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		683F0CD91ABAC88F008B3A1B /* Issues */ = {
-			isa = PBXGroup;
-			children = (
-				683F0CDA1ABAC8A6008B3A1B /* QuestionOrAnswer.h */,
-				683F0CDB1ABAC8A6008B3A1B /* QuestionOrAnswer.m */,
-				683F0CDC1ABAC8A6008B3A1B /* Tab.h */,
-				683F0CDD1ABAC8A6008B3A1B /* Tab.m */,
-			);
-			name = Issues;
-			sourceTree = "<group>";
-		};
-		683F0CE01ABAC8B3008B3A1B /* UIFont+FDTFonts */ = {
-			isa = PBXGroup;
-			children = (
-				683F0CE11ABAC8C6008B3A1B /* UIFont+FDTFonts.h */,
-				683F0CE21ABAC8C6008B3A1B /* UIFont+FDTFonts.m */,
-			);
-			name = "UIFont+FDTFonts";
-			sourceTree = "<group>";
-		};
 		6851D3831AB5ECAC0085965E /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +276,7 @@
 		686634AA1AB5E7CA003EA804 /* firedoortracker */ = {
 			isa = PBXGroup;
 			children = (
+				F94A8C051ABB1B6C00A3AC06 /* Utilies */,
 				F9DA37921AB9A2FB0075BCB6 /* Views */,
 				688906921AB9583D0079F67B /* Extensions */,
 				68B27A191AB714CC00990DCA /* Model */,
@@ -331,6 +330,7 @@
 			children = (
 				F9DA37911AB9A2D80075BCB6 /* ContainerViewController */,
 				6851D39D1AB6E8D70085965E /* AuthorizationViewController */,
+				F94A8BF11ABB182500A3AC06 /* ContactAnExpertViewController */,
 				6851D3831AB5ECAC0085965E /* HomeViewController */,
 				6851D3841AB5ECD00085965E /* DoorReviewViewController */,
 				6851D3851AB5ECEE0085965E /* MediaViewController */,
@@ -353,7 +353,10 @@
 		688906821AB85C860079F67B /* Inspection */ = {
 			isa = PBXGroup;
 			children = (
-				683F0CD91ABAC88F008B3A1B /* Issues */,
+				68BAA31A1ABB42D300D56EF0 /* QuestionOrAnswer.h */,
+				68BAA31B1ABB42D300D56EF0 /* QuestionOrAnswer.m */,
+				68BAA31C1ABB42D300D56EF0 /* Tab.h */,
+				68BAA31D1ABB42D300D56EF0 /* Tab.m */,
 				688906831AB85CA10079F67B /* Inspection.h */,
 				688906841AB85CA10079F67B /* Inspection.m */,
 			);
@@ -391,7 +394,8 @@
 		688906921AB9583D0079F67B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				683F0CE01ABAC8B3008B3A1B /* UIFont+FDTFonts */,
+				68BAA3271ABB430F00D56EF0 /* UIFont+FDTFonts.h */,
+				68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */,
 				F9DA37A01AB9E0BC0075BCB6 /* UIImage+Utilities */,
 				F9DA379C1AB9E0870075BCB6 /* UIColor+FireDoorTrackerColors */,
 				F9DA379B1AB9E0760075BCB6 /* UIColor+additionalInitializers */,
@@ -412,12 +416,12 @@
 		6889069C1AB97F620079F67B /* QuestionsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				683F0CD61ABAC84F008B3A1B /* QuestionTreeViewController.h */,
-				683F0CD71ABAC84F008B3A1B /* QuestionTreeViewController.m */,
+				68BAA3211ABB42F700D56EF0 /* InterviewConfirmationViewController.h */,
+				68BAA3221ABB42F700D56EF0 /* InterviewConfirmationViewController.m */,
+				68BAA3231ABB42F700D56EF0 /* QuestionTreeViewController.h */,
+				68BAA3241ABB42F700D56EF0 /* QuestionTreeViewController.m */,
 				6889069D1AB98AE00079F67B /* StartInterviewViewController.h */,
 				6889069E1AB98AE00079F67B /* StartInterviewViewController.m */,
-				683F0CE41ABAE57F008B3A1B /* InterviewConfirmationViewController.h */,
-				683F0CE51ABAE57F008B3A1B /* InterviewConfirmationViewController.m */,
 			);
 			name = QuestionsViewControllers;
 			sourceTree = "<group>";
@@ -475,6 +479,72 @@
 				650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F94A8BF11ABB182500A3AC06 /* ContactAnExpertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C011ABB19AD00A3AC06 /* ContactExpertView */,
+				F94A8C001ABB193F00A3AC06 /* ContactExpertCell */,
+				F94A8BFF1ABB18D100A3AC06 /* CellDataModel */,
+				F94A8BF91ABB18CD00A3AC06 /* ContactExpertViewController.h */,
+				F94A8BFA1ABB18CD00A3AC06 /* ContactExpertViewController.m */,
+			);
+			name = ContactAnExpertViewController;
+			sourceTree = "<group>";
+		};
+		F94A8BFF1ABB18D100A3AC06 /* CellDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8BF31ABB18CD00A3AC06 /* CellDataModel.h */,
+				F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */,
+			);
+			name = CellDataModel;
+			sourceTree = "<group>";
+		};
+		F94A8C001ABB193F00A3AC06 /* ContactExpertCell */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */,
+				F94A8C031ABB1B5600A3AC06 /* ContactExpertCell.h */,
+			);
+			name = ContactExpertCell;
+			sourceTree = "<group>";
+		};
+		F94A8C011ABB19AD00A3AC06 /* ContactExpertView */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8BF71ABB18CD00A3AC06 /* ContactExpertView.h */,
+				F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */,
+			);
+			name = ContactExpertView;
+			sourceTree = "<group>";
+		};
+		F94A8C051ABB1B6C00A3AC06 /* Utilies */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C0A1ABB21CD00A3AC06 /* NavigationBarButtons */,
+				F94A8C061ABB1BD800A3AC06 /* CustomFontUtilities */,
+			);
+			name = Utilies;
+			sourceTree = "<group>";
+		};
+		F94A8C061ABB1BD800A3AC06 /* CustomFontUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C071ABB1BEB00A3AC06 /* CustomFontUtilities.m */,
+				F94A8C081ABB1BEB00A3AC06 /* CustomFontUtilities.h */,
+			);
+			name = CustomFontUtilities;
+			sourceTree = "<group>";
+		};
+		F94A8C0A1ABB21CD00A3AC06 /* NavigationBarButtons */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C0B1ABB21DE00A3AC06 /* NavigationBarButtons.h */,
+				F94A8C0C1ABB21DE00A3AC06 /* NavigationBarButtons.m */,
+			);
+			name = NavigationBarButtons;
 			sourceTree = "<group>";
 		};
 		F9DA37911AB9A2D80075BCB6 /* ContainerViewController */ = {
@@ -580,7 +650,6 @@
 				TargetAttributes = {
 					686634A71AB5E7CA003EA804 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 9XVU48JZV7;
 					};
 					686634C31AB5E7CA003EA804 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -665,33 +734,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				683F0CD81ABAC84F008B3A1B /* QuestionTreeViewController.m in Sources */,
+				68BAA31F1ABB42D300D56EF0 /* Tab.m in Sources */,
 				6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */,
 				F9DA37951AB9A30D0075BCB6 /* NiceTabBarView.m in Sources */,
+				F94A8C041ABB1B5600A3AC06 /* ContactExpertCell.m in Sources */,
 				686634B71AB5E7CA003EA804 /* DoorReviewViewController.m in Sources */,
 				6851D3941AB5EDA10085965E /* LogoutViewController.m in Sources */,
 				686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */,
-				683F0CDE1ABAC8A6008B3A1B /* QuestionOrAnswer.m in Sources */,
-				683F0CE61ABAE57F008B3A1B /* InterviewConfirmationViewController.m in Sources */,
+				F94A8C091ABB1BEB00A3AC06 /* CustomFontUtilities.m in Sources */,
 				6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */,
 				6889069B1AB96F910079F67B /* InterviewPageViewController.m in Sources */,
 				688906911AB8858F0079F67B /* DoorInfoOveriviewViewController.m in Sources */,
 				6851D3901AB5ED890085965E /* SettingViewController.m in Sources */,
+				68BAA3291ABB430F00D56EF0 /* UIFont+FDTFonts.m in Sources */,
 				68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
+				F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */,
 				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
-				683F0CDF1ABAC8A6008B3A1B /* Tab.m in Sources */,
-				683F0CE31ABAC8C6008B3A1B /* UIFont+FDTFonts.m in Sources */,
+				F94A8C0D1ABB21DE00A3AC06 /* NavigationBarButtons.m in Sources */,
 				6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
 				68B27A1D1AB7157C00990DCA /* Term.m in Sources */,
+				F94A8BFB1ABB18CD00A3AC06 /* CellDataModel.m in Sources */,
+				68BAA31E1ABB42D300D56EF0 /* QuestionOrAnswer.m in Sources */,
 				F9DA37901AB9A2D50075BCB6 /* ContainerViewController.m in Sources */,
 				688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */,
 				688906851AB85CA10079F67B /* Inspection.m in Sources */,
 				6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
+				68BAA3251ABB42F700D56EF0 /* InterviewConfirmationViewController.m in Sources */,
+				F94A8BFE1ABB18CD00A3AC06 /* ContactExpertViewController.m in Sources */,
+				68BAA3261ABB42F700D56EF0 /* QuestionTreeViewController.m in Sources */,
 				F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */,
 				688906951AB958620079F67B /* UIColor+FireDoorTrackerColors.m in Sources */,
 				6889069F1AB98AE00079F67B /* StartInterviewViewController.m in Sources */,
@@ -819,7 +894,6 @@
 			baseConfigurationReference = 00B0C653FC2A3B21007B85DC /* Pods-firedoortracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = firedoortracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -832,7 +906,6 @@
 			baseConfigurationReference = 650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = firedoortracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
