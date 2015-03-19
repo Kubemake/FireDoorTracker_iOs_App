@@ -43,6 +43,9 @@ static NSString* kQuestions = @"issues";
 @property (nonatomic, strong) NSArray *tabs;
 @property (nonatomic, strong) NSArray *questions;
 
+//Page Content controllers
+@property (nonatomic, strong) NSArray *contentViewControllers;
+
 @end
 
 @implementation InterviewPageViewController
@@ -73,12 +76,45 @@ static NSString* kQuestions = @"issues";
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController {
-    return nil;
+    NSUInteger index = [self indexOfContentViewController:viewController];
+    
+    if (index == 0 || index == NSNotFound) {
+        return nil;
+    }
+    
+    index--;
+    
+    return [self viewControllerAtIndex:index];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController {
+    NSUInteger index = [self indexOfContentViewController:viewController];
+    
+    
+    index++;
+    
+    if (index == self.contentViewControllers.count || index == NSNotFound) {
+        return nil;
+    }
+    
+    return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)viewControllerAtIndex:(NSInteger)index {
+    if (index != NSNotFound && index < self.contentViewControllers.count) {
+        return [self.contentViewControllers objectAtIndex:index];
+    }
     return nil;
+}
+
+- (NSInteger)indexOfContentViewController:(UIViewController *)controller {
+    for (UIViewController* contentController in self.contentViewControllers) {
+        if (controller == contentController) {
+            return [self.contentViewControllers indexOfObject:contentController];
+        }
+    }
+    return NSNotFound;
 }
 
 #pragma mark - UIPageViewControllerDelegate
@@ -135,13 +171,14 @@ static NSString* kQuestions = @"issues";
 #pragma mark - Display Tabs View Controllers
 
 - (void)displayTabQuestionsViewControllers {
-    NSMutableArray *questionVCs = [NSMutableArray arrayWithObject:self.startInterviewController];
+    NSMutableArray *contentViewControllersMutable = [NSMutableArray arrayWithObject:self.startInterviewController];
     for (Tab *currentTab in self.tabs) {
         QuestionTreeViewController *questionVC = [self.storyboard instantiateViewControllerWithIdentifier:questionTreeViewControllerIdentifier];
         questionVC.questionForReview = self.questions;
         [questionVC displayTab:currentTab];
-        [questionVCs addObject:questionVC];
+        [contentViewControllersMutable addObject:questionVC];
     }
+    self.contentViewControllers = contentViewControllersMutable;
 }
 
 #pragma mark - public setters
