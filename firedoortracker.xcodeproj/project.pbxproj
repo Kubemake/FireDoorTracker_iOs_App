@@ -34,6 +34,11 @@
 		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
 		68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A2E1AB85AD300990DCA /* CurrentUser.m */; };
 		D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */; };
+		F94A8BFB1ABB18CD00A3AC06 /* CellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */; };
+		F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */; };
+		F94A8BFE1ABB18CD00A3AC06 /* ContactExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BFA1ABB18CD00A3AC06 /* ContactExpertViewController.m */; };
+		F94A8C041ABB1B5600A3AC06 /* ContactExpertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */; };
+		F94A8C091ABB1BEB00A3AC06 /* CustomFontUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8C071ABB1BEB00A3AC06 /* CustomFontUtilities.m */; };
 		F9DA37901AB9A2D50075BCB6 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA378F1AB9A2D50075BCB6 /* ContainerViewController.m */; };
 		F9DA37951AB9A30D0075BCB6 /* NiceTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA37941AB9A30D0075BCB6 /* NiceTabBarView.m */; };
 		F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */; };
@@ -104,6 +109,16 @@
 		68B27A201AB717E900990DCA /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermTableViewCell.m; path = Controllers/ResourcesViewController/View/TermTableViewCell.m; sourceTree = "<group>"; };
 		68B27A2D1AB85AD300990DCA /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentUser.h; path = Model/CurrentUser/CurrentUser.h; sourceTree = "<group>"; };
 		68B27A2E1AB85AD300990DCA /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentUser.m; path = Model/CurrentUser/CurrentUser.m; sourceTree = "<group>"; };
+		F94A8BF31ABB18CD00A3AC06 /* CellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellDataModel.h; sourceTree = "<group>"; };
+		F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellDataModel.m; sourceTree = "<group>"; };
+		F94A8BF71ABB18CD00A3AC06 /* ContactExpertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertView.h; sourceTree = "<group>"; };
+		F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertView.m; sourceTree = "<group>"; };
+		F94A8BF91ABB18CD00A3AC06 /* ContactExpertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertViewController.h; sourceTree = "<group>"; };
+		F94A8BFA1ABB18CD00A3AC06 /* ContactExpertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertViewController.m; sourceTree = "<group>"; };
+		F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertCell.m; sourceTree = "<group>"; };
+		F94A8C031ABB1B5600A3AC06 /* ContactExpertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertCell.h; sourceTree = "<group>"; };
+		F94A8C071ABB1BEB00A3AC06 /* CustomFontUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFontUtilities.m; sourceTree = "<group>"; };
+		F94A8C081ABB1BEB00A3AC06 /* CustomFontUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFontUtilities.h; sourceTree = "<group>"; };
 		F9DA378E1AB9A2D50075BCB6 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		F9DA378F1AB9A2D50075BCB6 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		F9DA37931AB9A30D0075BCB6 /* NiceTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiceTabBarView.h; sourceTree = "<group>"; };
@@ -243,6 +258,7 @@
 		686634AA1AB5E7CA003EA804 /* firedoortracker */ = {
 			isa = PBXGroup;
 			children = (
+				F94A8C051ABB1B6C00A3AC06 /* Utilies */,
 				F9DA37921AB9A2FB0075BCB6 /* Views */,
 				688906921AB9583D0079F67B /* Extensions */,
 				68B27A191AB714CC00990DCA /* Model */,
@@ -296,6 +312,7 @@
 			children = (
 				F9DA37911AB9A2D80075BCB6 /* ContainerViewController */,
 				6851D39D1AB6E8D70085965E /* AuthorizationViewController */,
+				F94A8BF11ABB182500A3AC06 /* ContactAnExpertViewController */,
 				6851D3831AB5ECAC0085965E /* HomeViewController */,
 				6851D3841AB5ECD00085965E /* DoorReviewViewController */,
 				6851D3851AB5ECEE0085965E /* MediaViewController */,
@@ -434,6 +451,62 @@
 				650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F94A8BF11ABB182500A3AC06 /* ContactAnExpertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C011ABB19AD00A3AC06 /* ContactExpertView */,
+				F94A8C001ABB193F00A3AC06 /* ContactExpertCell */,
+				F94A8BFF1ABB18D100A3AC06 /* CellDataModel */,
+				F94A8BF91ABB18CD00A3AC06 /* ContactExpertViewController.h */,
+				F94A8BFA1ABB18CD00A3AC06 /* ContactExpertViewController.m */,
+			);
+			name = ContactAnExpertViewController;
+			sourceTree = "<group>";
+		};
+		F94A8BFF1ABB18D100A3AC06 /* CellDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8BF31ABB18CD00A3AC06 /* CellDataModel.h */,
+				F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */,
+			);
+			name = CellDataModel;
+			sourceTree = "<group>";
+		};
+		F94A8C001ABB193F00A3AC06 /* ContactExpertCell */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */,
+				F94A8C031ABB1B5600A3AC06 /* ContactExpertCell.h */,
+			);
+			name = ContactExpertCell;
+			sourceTree = "<group>";
+		};
+		F94A8C011ABB19AD00A3AC06 /* ContactExpertView */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8BF71ABB18CD00A3AC06 /* ContactExpertView.h */,
+				F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */,
+			);
+			name = ContactExpertView;
+			sourceTree = "<group>";
+		};
+		F94A8C051ABB1B6C00A3AC06 /* Utilies */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C061ABB1BD800A3AC06 /* CustomFontUtilities */,
+			);
+			name = Utilies;
+			sourceTree = "<group>";
+		};
+		F94A8C061ABB1BD800A3AC06 /* CustomFontUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				F94A8C071ABB1BEB00A3AC06 /* CustomFontUtilities.m */,
+				F94A8C081ABB1BEB00A3AC06 /* CustomFontUtilities.h */,
+			);
+			name = CustomFontUtilities;
 			sourceTree = "<group>";
 		};
 		F9DA37911AB9A2D80075BCB6 /* ContainerViewController */ = {
@@ -625,9 +698,11 @@
 			files = (
 				6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */,
 				F9DA37951AB9A30D0075BCB6 /* NiceTabBarView.m in Sources */,
+				F94A8C041ABB1B5600A3AC06 /* ContactExpertCell.m in Sources */,
 				686634B71AB5E7CA003EA804 /* DoorReviewViewController.m in Sources */,
 				6851D3941AB5EDA10085965E /* LogoutViewController.m in Sources */,
 				686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */,
+				F94A8C091ABB1BEB00A3AC06 /* CustomFontUtilities.m in Sources */,
 				6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */,
 				6889069B1AB96F910079F67B /* InterviewPageViewController.m in Sources */,
 				688906911AB8858F0079F67B /* DoorInfoOveriviewViewController.m in Sources */,
@@ -635,16 +710,19 @@
 				68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
+				F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */,
 				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
 				6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
 				68B27A1D1AB7157C00990DCA /* Term.m in Sources */,
+				F94A8BFB1ABB18CD00A3AC06 /* CellDataModel.m in Sources */,
 				F9DA37901AB9A2D50075BCB6 /* ContainerViewController.m in Sources */,
 				688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */,
 				688906851AB85CA10079F67B /* Inspection.m in Sources */,
 				6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
+				F94A8BFE1ABB18CD00A3AC06 /* ContactExpertViewController.m in Sources */,
 				F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */,
 				688906951AB958620079F67B /* UIColor+FireDoorTrackerColors.m in Sources */,
 				6889069F1AB98AE00079F67B /* StartInterviewViewController.m in Sources */,

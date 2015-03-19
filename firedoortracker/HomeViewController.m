@@ -10,6 +10,7 @@
 #import "ContainerViewController.h"
 #import "HomeMenuCollectionViewCell.h"
 #import "HomeViewController.h"
+#import "ContactExpertViewController.h"
 
 typedef enum{
     homeMenuItemDoorReview = 0,
@@ -96,7 +97,8 @@ static NSString* homeCellIdentifier = @"HomeMenuCollectionViewCell";
         }
             break;
         case homeMenuItemContactAnExpert: {
-            
+            ContactExpertViewController *contactExpertViewController = [ContactExpertViewController new];
+            [self.navigationController pushViewController:contactExpertViewController animated:YES];
         }
             break;
         case homeMenuItemMedia: {
