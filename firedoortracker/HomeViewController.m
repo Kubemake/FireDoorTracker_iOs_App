@@ -6,10 +6,10 @@
 //
 //
 
-#import "HomeViewController.h"
-
-//Import View
+#import "NiceTabBarView.h"
+#import "ContainerViewController.h"
 #import "HomeMenuCollectionViewCell.h"
+#import "HomeViewController.h"
 
 typedef enum{
     homeMenuItemDoorReview = 0,
@@ -83,20 +83,43 @@ static NSString* homeCellIdentifier = @"HomeMenuCollectionViewCell";
 
 #pragma mark - Collection View Delegate
 
-- (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UINavigationController *navController = (UINavigationController *)self.parentViewController;
+    ContainerViewController *parentViewController = (ContainerViewController *)navController.parentViewController;
+    
     switch (indexPath.row) {
-        case homeMenuItemDoorReview:
-            [self.tabBarController setSelectedIndex:1];
+        case homeMenuItemDoorReview: {
+            [parentViewController.niceTabBarView setSelectedButton:1];
+            [parentViewController performSegueWithIdentifier:doorReviewViewControllerSegueIdentifier
+                                                      sender:parentViewController];
+        }
             break;
-        case homeMenuItemContactAnExpert:
-            //TODO: display contacts
+        case homeMenuItemContactAnExpert: {
+            
+        }
             break;
-        case homeMenuItemMedia:
-        case homeMenuItemResources:
-        case homeMenuItemUserSettings:
-        case homeMenuItemLogOut:
-            [self.tabBarController setSelectedIndex:indexPath.row];
+        case homeMenuItemMedia: {
+            [parentViewController.niceTabBarView setSelectedButton:2];
+            [parentViewController performSegueWithIdentifier:mediaViewControllerSegueIdentifier
+                                                      sender:parentViewController];
+        }
+            break;
+        case homeMenuItemResources: {
+            [parentViewController.niceTabBarView setSelectedButton:3];
+            [parentViewController performSegueWithIdentifier:resourcesViewControllerSegueIdentifier
+                                                      sender:parentViewController];
+        }
+            break;
+        case homeMenuItemUserSettings: {
+            [parentViewController.niceTabBarView setSelectedButton:4];
+            [parentViewController performSegueWithIdentifier:settingsViewControllerSegueIdentifier
+                                                      sender:parentViewController];
+        }
+            break;
+        case homeMenuItemLogOut: {
+            [parentViewController.niceTabBarView setSelectedButton:5];
+        }
             break;
     }
 }

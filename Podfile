@@ -5,6 +5,7 @@ target 'firedoortracker' do
 
 pod 'AFNetworking', '~> 2.5'
 pod 'HMSegmentedControl'
+pod 'CoconutKit', '~> 3.0.rc4'
 pod 'IQDropDownTextField'
 
 end
