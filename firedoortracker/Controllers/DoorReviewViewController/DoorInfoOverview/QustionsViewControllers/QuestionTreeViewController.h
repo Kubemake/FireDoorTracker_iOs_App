@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+//Import Model
+#import "Tab.h"
+
 @interface QuestionTreeViewController : UIViewController
+
+@property (nonatomic, weak) NSArray* questionForReview;
+
+- (void)displayTab:(Tab *)tabForReview;
 
 @end

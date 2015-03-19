@@ -14,6 +14,7 @@
 //Import Controllers
 #import "InterviewPageViewController.h"
 #import "StartInterviewViewController.h"
+#import "QuestionTreeViewController.h"
 
 typedef enum{
     interviewPageControllerOverview = 0,
@@ -21,6 +22,7 @@ typedef enum{
 }interviewPageController;
 
 static NSString* startInterviewControllerIdentifier = @"startInterviewControllerIdentifier";
+static NSString* questionTreeViewControllerIdentifier = @"QuestionTreeViewController";
 
 static NSString* kApertureID = @"aperture_id";
 static NSString* kWallRating = @"wall_Rating";
@@ -109,6 +111,7 @@ static NSString* kQuestions = @"issues";
                                                  }
                                                  welf.questions = mutableQuestions;
                                                  [welf displayTabsOnDoorInfoOverview];
+                                                 [welf displayTabQuestionsViewControllers];
                                              }];
 }
 
@@ -116,6 +119,7 @@ static NSString* kQuestions = @"issues";
     return [[self.doorOverviewDictionary objectForKey:key] objectForKey:kSelected];
 }
 
+#pragma mark - Display Methods
 #pragma mark - Interview Page Delegate Methods
 
 - (void)displayTabsOnDoorInfoOverview {
@@ -125,6 +129,18 @@ static NSString* kQuestions = @"issues";
     }
     if ([self.interviewDelegate respondsToSelector:@selector(enableMenuTitles:)]) {
         [self.interviewDelegate enableMenuTitles:tabsForDisplaying];
+    }
+}
+
+#pragma mark - Display Tabs View Controllers
+
+- (void)displayTabQuestionsViewControllers {
+    NSMutableArray *questionVCs = [NSMutableArray arrayWithObject:self.startInterviewController];
+    for (Tab *currentTab in self.tabs) {
+        QuestionTreeViewController *questionVC = [self.storyboard instantiateViewControllerWithIdentifier:questionTreeViewControllerIdentifier];
+        questionVC.questionForReview = self.questions;
+        [questionVC displayTab:currentTab];
+        [questionVCs addObject:questionVC];
     }
 }
 
