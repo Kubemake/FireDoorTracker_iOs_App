@@ -17,6 +17,8 @@ static NSString* glossaryLettersRequestType = @"get_glossary_letters";
 static NSString* glossaryTermsByLetter = @"get_terms_by_letter";
 static NSString* glossaryKeyWordSearch = @"search_glossary_terms";
 static NSString* inspectionListByUser = @"get_inspection_list_by_user";
+static NSString* inspectionquestionsList = @"get_issues_list";
+static NSString* inspectionDoorOverview = @"get_aperture_overview_info";
 
 static NSString* kToken = @"token";
 
@@ -117,6 +119,13 @@ static bool isFirstAccess = YES;
             break;
         case InspectionListByUserRequestType:
             [requestParams setObject:inspectionListByUser forKey:kRequestType];
+            break;
+        case InspectionQuestionListRequestType:
+            [requestParams setObject:inspectionquestionsList forKey:kRequestType];
+            break;
+        case InspectionDoorOverviewRequestType:
+            [requestParams setObject:inspectionDoorOverview forKey:kRequestType];
+            break;
         default:
             //TODO: Unknow request type, return Error
             break;

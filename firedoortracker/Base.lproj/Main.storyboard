@@ -212,7 +212,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZi-U2-4gd">
                                 <rect key="frame" x="0.0" y="321" width="600" height="230"/>
                                 <connections>
-                                    <segue destination="lsQ-F3-VBN" kind="embed" id="hrV-26-vrJ"/>
+                                    <segue destination="lsQ-F3-VBN" kind="embed" identifier="EmbededInterviewControllerSegueIdentifier" id="hrV-26-vrJ"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2M-LO-cWs" customClass="HMSegmentedControl">
@@ -247,7 +247,7 @@
                                         <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door ID: Door Location: Door Rating: Previous Reviewer: Previous Review Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-2K-Scs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door ID: Door Location: Previous Reviewer: Previous Review Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-2K-Scs">
                                         <rect key="frame" x="133" y="51" width="185" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="bYU-f2-rIC"/>
@@ -262,8 +262,8 @@
                                             <constraint firstAttribute="height" constant="120" id="ltq-d3-vxX"/>
                                             <constraint firstAttribute="width" constant="185" id="uEA-fx-hLh"/>
                                         </constraints>
-                                        <string key="text">1234 3456 1233 1233
-133</string>
+                                        <string key="text">No Data No Data No Data
+No Data</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -799,7 +799,7 @@
         <!--View Controller-->
         <scene sceneID="lHd-ru-vK8">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="lsQ-F3-VBN" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="lsQ-F3-VBN" customClass="InterviewPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x1L-Gl-3Qx"/>
                         <viewControllerLayoutGuide type="bottom" id="3VT-eN-kc0"/>
@@ -814,6 +814,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oz8-Hc-RJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2945" y="468"/>
+        </scene>
+        <!--Start Interview View Controller-->
+        <scene sceneID="M70-Vw-jzJ">
+            <objects>
+                <viewController storyboardIdentifier="startInterviewControllerIdentifier" id="3AN-32-qbG" customClass="StartInterviewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fj2-IA-zHB"/>
+                        <viewControllerLayoutGuide type="bottom" id="bFK-sS-D9f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oUI-Ie-9KM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oli-RY-Icg">
+                                <rect key="frame" x="205" y="28" width="191" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Ugo-t8-tmf"/>
+                                    <constraint firstAttribute="width" constant="191" id="fHp-2X-P1U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="29"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5t-jd-frt">
+                                <rect key="frame" x="108" y="71" width="384" height="529"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w5t-jd-frt" firstAttribute="leading" secondItem="oUI-Ie-9KM" secondAttribute="leading" constant="108" id="Y3g-hS-tga"/>
+                            <constraint firstAttribute="trailing" secondItem="w5t-jd-frt" secondAttribute="trailing" constant="108" id="eZa-tz-ede"/>
+                            <constraint firstItem="w5t-jd-frt" firstAttribute="top" secondItem="oli-RY-Icg" secondAttribute="bottom" constant="8" id="kIE-eu-y9e"/>
+                            <constraint firstItem="oli-RY-Icg" firstAttribute="top" secondItem="fj2-IA-zHB" secondAttribute="bottom" constant="8" id="urf-6N-TOk"/>
+                            <constraint firstItem="bFK-sS-D9f" firstAttribute="top" secondItem="w5t-jd-frt" secondAttribute="bottom" id="vaI-W0-glU"/>
+                            <constraint firstAttribute="centerX" secondItem="oli-RY-Icg" secondAttribute="centerX" id="ybE-2E-iTx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doorPropertiesView" destination="w5t-jd-frt" id="AO5-8c-9Z7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KJY-97-9tV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3576" y="191"/>
         </scene>
     </scenes>
     <resources>

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Inspection.h"
 
 @interface DoorInfoOveriviewViewController : UIViewController
+
+@property (nonatomic, weak) Inspection* selectedInspection;
 
 @end

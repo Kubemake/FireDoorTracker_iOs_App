@@ -6,7 +6,12 @@
 //
 //
 
+//Import Controllers
 #import "DoorInfoOveriviewViewController.h"
+#import "InterviewPageViewController.h"
+
+//Import Model and Network Manager
+#import "NetworkManager.h"
 
 //Import View
 #import <HMSegmentedControl.h>
@@ -15,16 +20,22 @@
 #import "UIColor+FireDoorTrackerColors.h"
 
 static const CGFloat doorInfoHeight = 200.0f;
-static const CGFloat hidenDoorInfoGeight = 22.0f;
+static const CGFloat hidenDoorInfoHeight = 22.0f;
 static const CGFloat doorInfoMenuSegmentInset = 22.0f;
+
+static NSString* segueEmbededInterviewControllerIdentifier = @"EmbededInterviewControllerSegueIdentifier";
+
+static NSString* kApertureID = @"aperture_id";
 
 @interface DoorInfoOveriviewViewController ()
 
 //IBOutlets and View Properties
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *doorInfoHeightConstraint;
 @property (assign, nonatomic) BOOL isDoorInfoHidden;
-
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *doorInfoMenu;
+
+//Embeded View Controller
+@property (weak, nonatomic) InterviewPageViewController* embededInterviewController;
 
 @end
 
@@ -36,9 +47,19 @@ static const CGFloat doorInfoMenuSegmentInset = 22.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDoorInfoMenu];
+    [self loadDoorOverview];
 }
 
-#pragma mark - Settup Methods
+#pragma mark - Segue Delegation
+#pragma mark -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:segueEmbededInterviewControllerIdentifier]) {
+        self.embededInterviewController = segue.destinationViewController;
+    }
+}
+
+#pragma mark - Setup Methods
 #pragma mark - 
 
 - (void)setupDoorInfoMenu {
@@ -58,11 +79,24 @@ static const CGFloat doorInfoMenuSegmentInset = 22.0f;
                 forControlEvents:UIControlEventValueChanged];
 }
 
+- (void)loadDoorOverview {
+    __weak typeof(self) welf = self;
+    [[NetworkManager sharedInstance] performRequestWithType:InspectionDoorOverviewRequestType
+                                                  andParams:@{kApertureID : self.selectedInspection.apertureId}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     //TODO: Display Error
+                                                     return;
+                                                 }
+                                                 welf.embededInterviewController.doorOverviewDictionary = [responseObject objectForKey:@"info"];
+                                             }];
+}
+
 #pragma mark - IBOutlets
 #pragma mark -
 
 - (IBAction)showDoorInfoStatusButtonPressed:(id)sender {
-    self.doorInfoHeightConstraint.constant = (self.isDoorInfoHidden) ? doorInfoHeight : hidenDoorInfoGeight;
+    self.doorInfoHeightConstraint.constant = (self.isDoorInfoHidden) ? doorInfoHeight : hidenDoorInfoHeight;
     self.isDoorInfoHidden = !self.isDoorInfoHidden;
     [UIView animateWithDuration:0.25f
                      animations:^{
