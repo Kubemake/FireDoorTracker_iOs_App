@@ -15,6 +15,7 @@
 #import "InterviewPageViewController.h"
 #import "StartInterviewViewController.h"
 #import "QuestionTreeViewController.h"
+#import "InterviewConfirmationViewController.h"
 
 typedef enum{
     interviewPageControllerOverview = 0,
@@ -23,6 +24,7 @@ typedef enum{
 
 static NSString* startInterviewControllerIdentifier = @"startInterviewControllerIdentifier";
 static NSString* questionTreeViewControllerIdentifier = @"QuestionTreeViewController";
+static NSString* confirmationViewControllerIdentifier = @"InterviewConfirmationViewController";
 
 static NSString* kApertureID = @"aperture_id";
 static NSString* kWallRating = @"wall_Rating";
@@ -178,6 +180,10 @@ static NSString* kQuestions = @"issues";
         questionVC.tabForDisplaying = currentTab;
         [contentViewControllersMutable addObject:questionVC];
     }
+    //Add Confirmation View Controller
+    InterviewConfirmationViewController *confVC = [self.storyboard instantiateViewControllerWithIdentifier:confirmationViewControllerIdentifier];
+    [contentViewControllersMutable addObject:confVC];
+    
     self.contentViewControllers = contentViewControllersMutable;
 }
 

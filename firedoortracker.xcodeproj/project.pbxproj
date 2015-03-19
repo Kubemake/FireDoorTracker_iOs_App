@@ -11,6 +11,7 @@
 		683F0CDE1ABAC8A6008B3A1B /* QuestionOrAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CDB1ABAC8A6008B3A1B /* QuestionOrAnswer.m */; };
 		683F0CDF1ABAC8A6008B3A1B /* Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CDD1ABAC8A6008B3A1B /* Tab.m */; };
 		683F0CE31ABAC8C6008B3A1B /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CE21ABAC8C6008B3A1B /* UIFont+FDTFonts.m */; };
+		683F0CE61ABAE57F008B3A1B /* InterviewConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CE51ABAE57F008B3A1B /* InterviewConfirmationViewController.m */; };
 		6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3871AB5ED2D0085965E /* MediaViewController.m */; };
 		6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38B1AB5ED530085965E /* ResourcesViewController.m */; };
 		6851D3901AB5ED890085965E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38F1AB5ED890085965E /* SettingViewController.m */; };
@@ -66,6 +67,8 @@
 		683F0CDD1ABAC8A6008B3A1B /* Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tab.m; path = Model/Inspection/Tab.m; sourceTree = "<group>"; };
 		683F0CE11ABAC8C6008B3A1B /* UIFont+FDTFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FDTFonts.h"; path = "Extensions/UIFont+FDTFonts.h"; sourceTree = "<group>"; };
 		683F0CE21ABAC8C6008B3A1B /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
+		683F0CE41ABAE57F008B3A1B /* InterviewConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InterviewConfirmationViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/InterviewConfirmationViewController.h; sourceTree = "<group>"; };
+		683F0CE51ABAE57F008B3A1B /* InterviewConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InterviewConfirmationViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/InterviewConfirmationViewController.m; sourceTree = "<group>"; };
 		6851D3861AB5ED2D0085965E /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaViewController.h; path = Controllers/MediaViewController/MediaViewController.h; sourceTree = "<group>"; };
 		6851D3871AB5ED2D0085965E /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaViewController.m; path = Controllers/MediaViewController/MediaViewController.m; sourceTree = "<group>"; };
 		6851D38A1AB5ED530085965E /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcesViewController.h; path = Controllers/ResourcesViewController/ResourcesViewController.h; sourceTree = "<group>"; };
@@ -413,6 +416,8 @@
 				683F0CD71ABAC84F008B3A1B /* QuestionTreeViewController.m */,
 				6889069D1AB98AE00079F67B /* StartInterviewViewController.h */,
 				6889069E1AB98AE00079F67B /* StartInterviewViewController.m */,
+				683F0CE41ABAE57F008B3A1B /* InterviewConfirmationViewController.h */,
+				683F0CE51ABAE57F008B3A1B /* InterviewConfirmationViewController.m */,
 			);
 			name = QuestionsViewControllers;
 			sourceTree = "<group>";
@@ -666,6 +671,7 @@
 				6851D3941AB5EDA10085965E /* LogoutViewController.m in Sources */,
 				686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */,
 				683F0CDE1ABAC8A6008B3A1B /* QuestionOrAnswer.m in Sources */,
+				683F0CE61ABAE57F008B3A1B /* InterviewConfirmationViewController.m in Sources */,
 				6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */,
 				6889069B1AB96F910079F67B /* InterviewPageViewController.m in Sources */,
 				688906911AB8858F0079F67B /* DoorInfoOveriviewViewController.m in Sources */,
