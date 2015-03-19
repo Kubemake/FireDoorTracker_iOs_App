@@ -53,13 +53,14 @@ static const CGFloat answerButtonPadding = 5.0f;
     self.currentQuestion = question;
     self.questionTitleLabel.text = question.label;
     
+    [self removeAllButtonsFromView];
     CGFloat answerButtonHeight = self.questionBodyView.bounds.size.height / self.currentQuestion.answers.count;
     CGFloat answerButtonY = 0;
     for (QuestionOrAnswer *answer in question.answers) {
         UIButton *answerButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
                                                                             answerButtonY,
                                                                             self.questionBodyView.bounds.size.width,
-                                                                            MIN(answerButtonHeight,maxAnswerButtonHeight-answerButtonPadding))];
+                                                                            MIN(answerButtonHeight-answerButtonPadding,maxAnswerButtonHeight))];
         //TODO: Change to answer collor
         [answerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [answerButton.titleLabel setFont:[UIFont FDTTimesNewRomanBoldWithSize:24.0f]];
@@ -74,11 +75,20 @@ static const CGFloat answerButtonPadding = 5.0f;
     }
 }
 
+- (void)removeAllButtonsFromView {
+    for (UIButton* button in self.questionBodyView.subviews) {
+        [button removeFromSuperview];
+    }
+}
+
 #pragma mark - Actions
 #pragma mark - 
 
 - (void)answerSelected:(UIButton *)sender {
-    
+    //TODO: Save current Answer for the crump breads
+    QuestionOrAnswer *currentAnswer = [self questionByID:[NSString stringWithFormat:@"%ld",(long)sender.tag]];
+    QuestionOrAnswer *nextAnswer = [self questionByID:currentAnswer.nextQuiestionID];
+    [self displayQuestion:nextAnswer];
 }
 
 #pragma mark - Support Question Methods
