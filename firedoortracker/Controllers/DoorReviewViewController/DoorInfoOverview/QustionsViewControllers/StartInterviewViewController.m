@@ -140,7 +140,7 @@ static const CGFloat maxInputFieldHeght = 37.0f;
     //TODO: Add Validation
     if ([self.delegate respondsToSelector:@selector(submitDoorOverview)]) {
         [self.delegate submitDoorOverview];
-        [sender setEnabled:NO];
+//        [sender setEnabled:NO];
     }
 }
 

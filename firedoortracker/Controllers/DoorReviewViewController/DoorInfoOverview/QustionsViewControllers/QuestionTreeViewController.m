@@ -12,6 +12,13 @@
 //Import Model
 #import "QuestionOrAnswer.h"
 
+//Import Extension
+#import "UIFont+FDTFonts.h"
+#import "UIColor+FireDoorTrackerColors.h"
+
+static const CGFloat maxAnswerButtonHeight = 65.0f;
+static const CGFloat answerButtonPadding = 5.0f;
+
 @interface QuestionTreeViewController ()
 
 //IBOutlets
@@ -44,11 +51,34 @@
 
 - (void)displayQuestion:(QuestionOrAnswer *)question {
     self.currentQuestion = question;
-    
     self.questionTitleLabel.text = question.label;
+    
+    CGFloat answerButtonHeight = self.questionBodyView.bounds.size.height / self.currentQuestion.answers.count;
+    CGFloat answerButtonY = 0;
     for (QuestionOrAnswer *answer in question.answers) {
-        //TODO:Display Answers
+        UIButton *answerButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
+                                                                            answerButtonY,
+                                                                            self.questionBodyView.bounds.size.width,
+                                                                            MIN(answerButtonHeight,maxAnswerButtonHeight-answerButtonPadding))];
+        //TODO: Change to answer collor
+        [answerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [answerButton.titleLabel setFont:[UIFont FDTTimesNewRomanBoldWithSize:24.0f]];
+        [answerButton setBackgroundColor:[UIColor FDTDeepBlueColor]];
+        
+        answerButton.tag = [answer.idFormField integerValue];
+        [answerButton setTitle:answer.label forState:UIControlStateNormal];
+        
+        [answerButton addTarget:self action:@selector(answerSelected:) forControlEvents:UIControlEventTouchUpInside];
+        [self.questionBodyView addSubview:answerButton];
+        answerButtonY += answerButtonHeight;
     }
+}
+
+#pragma mark - Actions
+#pragma mark - 
+
+- (void)answerSelected:(UIButton *)sender {
+    
 }
 
 #pragma mark - Support Question Methods

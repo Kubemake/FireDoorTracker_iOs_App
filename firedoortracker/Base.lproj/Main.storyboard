@@ -872,19 +872,20 @@ No Data</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DF-ZA-dhT">
-                                <rect key="frame" x="33" y="53" width="535" height="495"/>
+                                <rect key="frame" x="33" y="70" width="535" height="459"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="535" id="X9G-m8-1kX"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0DF-ZA-dhT" firstAttribute="top" secondItem="yI4-oc-cxo" secondAttribute="bottom" constant="8" id="1Ha-BE-nme"/>
-                            <constraint firstAttribute="centerX" secondItem="yI4-oc-cxo" secondAttribute="centerX" id="1Ou-6L-iKR"/>
-                            <constraint firstAttribute="trailing" secondItem="0DF-ZA-dhT" secondAttribute="trailing" constant="32" id="Fze-Bm-lBs"/>
-                            <constraint firstItem="0DF-ZA-dhT" firstAttribute="top" secondItem="yI4-oc-cxo" secondAttribute="bottom" constant="8" id="tag-Qo-wUD"/>
-                            <constraint firstItem="yI4-oc-cxo" firstAttribute="top" secondItem="YfP-4C-usT" secondAttribute="top" constant="10" id="yCn-cu-Gc3"/>
-                            <constraint firstItem="0DF-ZA-dhT" firstAttribute="leading" secondItem="YfP-4C-usT" secondAttribute="leading" constant="33" id="yLf-Kb-COl"/>
-                            <constraint firstItem="EhH-FF-JsX" firstAttribute="top" secondItem="0DF-ZA-dhT" secondAttribute="bottom" constant="52" id="ydH-3Q-JvC"/>
+                            <constraint firstAttribute="centerX" secondItem="0DF-ZA-dhT" secondAttribute="centerX" id="IXY-Bd-DhU"/>
+                            <constraint firstItem="yI4-oc-cxo" firstAttribute="top" secondItem="YfP-4C-usT" secondAttribute="top" constant="10" id="PpT-hK-SSh"/>
+                            <constraint firstItem="EhH-FF-JsX" firstAttribute="top" secondItem="0DF-ZA-dhT" secondAttribute="bottom" constant="71" id="aDl-jI-Z1c"/>
+                            <constraint firstAttribute="centerX" secondItem="yI4-oc-cxo" secondAttribute="centerX" id="dxc-Nu-oDf"/>
+                            <constraint firstItem="0DF-ZA-dhT" firstAttribute="top" secondItem="yI4-oc-cxo" secondAttribute="bottom" constant="25" id="pNn-mX-BUb"/>
                         </constraints>
                     </view>
                     <connections>
