@@ -26,6 +26,8 @@ static const CGFloat answerButtonPadding = 5.0f;
 @property (weak, nonatomic) IBOutlet UILabel *questionTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *questionBodyView;
 @property (nonatomic, strong) NSArray* answerButtons;
+@property (weak, nonatomic) IBOutlet UIButton *previousQuestionButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextQuestionButton;
 
 //User Data
 @property (nonatomic, weak) QuestionOrAnswer *currentQuestion;
@@ -101,15 +103,31 @@ static const CGFloat answerButtonPadding = 5.0f;
     self.selectedAnswer.selected = [NSNumber numberWithBool:![self.selectedAnswer.selected boolValue]];
     if ([self.selectedAnswer.status integerValue] == inspectionStatusCompliant) {
         [self resetAllAnswerSelectionWithousStatus:inspectionStatusCompliant];
+    } else {
+        [self resetAllAnswersWithStatus:inspectionStatusCompliant];
     }
     //Reset UI View
     [self displayQuestion:self.currentQuestion];
+    
+    //If Answer not have side effect -> go to next question
+    if (self.selectedAnswer.status.integerValue == 0) {
+        [self nextQuestionButtonPressed:sender];
+    }
 }
 
 - (void)resetAllAnswerSelectionWithousStatus:(inspectionStatus)status {
-    //Reset Moodel State
-    for (QuestionOrAnswer *answers in self.selectedAnswer.answers) {
+    //Reset Model State
+    for (QuestionOrAnswer *answers in self.currentQuestion.answers) {
         if (answers.status.integerValue != status) {
+            answers.selected = [NSNumber numberWithBool:NO];
+        }
+    }
+}
+
+- (void)resetAllAnswersWithStatus:(inspectionStatus)status {
+    //Reset Model State
+    for (QuestionOrAnswer *answers in self.currentQuestion.answers) {
+        if (answers.status.integerValue == status) {
             answers.selected = [NSNumber numberWithBool:NO];
         }
     }
@@ -119,6 +137,10 @@ static const CGFloat answerButtonPadding = 5.0f;
 - (IBAction)nextQuestionButtonPressed:(id)sender {
     QuestionOrAnswer *nextAnswer = [self questionByID:self.selectedAnswer.nextQuiestionID];
     [self displayQuestion:nextAnswer];
+}
+
+- (IBAction)previousQuestionButtonPressed:(id)sender {
+    
 }
 
 #pragma mark - Support Question Methods

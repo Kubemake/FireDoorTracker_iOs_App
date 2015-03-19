@@ -887,6 +887,9 @@ No Data</string>
                                 <state key="normal" image="backButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="previousQuestionButtonPressed:" destination="45x-8O-B7S" eventType="touchUpInside" id="QVb-rf-3nf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-QR-Zlu">
                                 <rect key="frame" x="461" y="537" width="107" height="55"/>
@@ -918,6 +921,8 @@ No Data</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nextQuestionButton" destination="dxj-QR-Zlu" id="6nO-EL-GOs"/>
+                        <outlet property="previousQuestionButton" destination="QqV-MD-RAe" id="XXD-JP-4L5"/>
                         <outlet property="questionBodyView" destination="0DF-ZA-dhT" id="Fbm-NK-cut"/>
                         <outlet property="questionTitleLabel" destination="yI4-oc-cxo" id="J7G-AX-lzM"/>
                     </connections>
