@@ -23,4 +23,6 @@
 //Door Interview Delegate
 @property (nonatomic, weak) id <InterviewPageDelegate> interviewDelegate;
 
+- (void)setSelectedPage:(NSInteger)selectedPage;
+
 @end

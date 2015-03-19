@@ -9,6 +9,7 @@
 //Import Network Manager and Model
 #import "NetworkManager.h"
 #import "Tab.h"
+#import "QuestionOrAnswer.h"
 
 //Import Controllers
 #import "InterviewPageViewController.h"
@@ -38,7 +39,7 @@ static NSString* kQuestions = @"issues";
 
 //Inspections Quiestions and Tabs
 @property (nonatomic, strong) NSArray *tabs;
-@property (nonatomic, strong) NSDictionary *questions;
+@property (nonatomic, strong) NSArray *questions;
 
 @end
 
@@ -101,7 +102,12 @@ static NSString* kQuestions = @"issues";
                                                      [mutableTabs addObject:[[Tab alloc] initWithDictionary:tabDictionary]];
                                                  }
                                                  welf.tabs = mutableTabs;
-                                                 welf.questions = [responseObject objectForKey:kQuestions];
+                                                 
+                                                 NSMutableArray *mutableQuestions = [NSMutableArray array];
+                                                 for (NSDictionary *quiestDict in [[responseObject objectForKey:kQuestions] allObjects]) {
+                                                     [mutableQuestions addObject:[[QuestionOrAnswer alloc] initWithDictionary:quiestDict]];
+                                                 }
+                                                 welf.questions = mutableQuestions;
                                                  [welf displayTabsOnDoorInfoOverview];
                                              }];
 }
@@ -127,6 +133,10 @@ static NSString* kQuestions = @"issues";
 - (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary {
     [self.startInterviewController displayDoorProperties:doorOverviewDictionary];
     _doorOverviewDictionary = doorOverviewDictionary;
+}
+
+- (void)setSelectedPage:(NSInteger)selectedPage {
+    
 }
 
 @end

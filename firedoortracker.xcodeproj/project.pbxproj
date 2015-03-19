@@ -32,6 +32,8 @@
 		6889069F1AB98AE00079F67B /* StartInterviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889069E1AB98AE00079F67B /* StartInterviewViewController.m */; };
 		688906A21AB9A8850079F67B /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906A11AB9A8850079F67B /* UIFont+FDTFonts.m */; };
 		688906A61AB9E3A30079F67B /* Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906A51AB9E3A30079F67B /* Tab.m */; };
+		688906A91ABAA84E0079F67B /* QuestionTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906A81ABAA84E0079F67B /* QuestionTreeViewController.m */; };
+		688906AC1ABAA9F50079F67B /* QuestionOrAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906AB1ABAA9F50079F67B /* QuestionOrAnswer.m */; };
 		68B27A1D1AB7157C00990DCA /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A1C1AB7157C00990DCA /* Term.m */; };
 		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
 		68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A2E1AB85AD300990DCA /* CurrentUser.m */; };
@@ -100,6 +102,10 @@
 		688906A11AB9A8850079F67B /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
 		688906A41AB9E3A30079F67B /* Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tab.h; path = Model/Inspection/Tab.h; sourceTree = "<group>"; };
 		688906A51AB9E3A30079F67B /* Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tab.m; path = Model/Inspection/Tab.m; sourceTree = "<group>"; };
+		688906A71ABAA84E0079F67B /* QuestionTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionTreeViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.h; sourceTree = "<group>"; };
+		688906A81ABAA84E0079F67B /* QuestionTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTreeViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.m; sourceTree = "<group>"; };
+		688906AA1ABAA9F50079F67B /* QuestionOrAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionOrAnswer.h; path = Model/Inspection/QuestionOrAnswer.h; sourceTree = "<group>"; };
+		688906AB1ABAA9F50079F67B /* QuestionOrAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionOrAnswer.m; path = Model/Inspection/QuestionOrAnswer.m; sourceTree = "<group>"; };
 		68B27A1B1AB7157C00990DCA /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Term.h; path = Model/Glossary/Term.h; sourceTree = "<group>"; };
 		68B27A1C1AB7157C00990DCA /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Term.m; path = Model/Glossary/Term.m; sourceTree = "<group>"; };
 		68B27A1F1AB717E900990DCA /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermTableViewCell.h; path = Controllers/ResourcesViewController/View/TermTableViewCell.h; sourceTree = "<group>"; };
@@ -371,6 +377,8 @@
 			children = (
 				6889069D1AB98AE00079F67B /* StartInterviewViewController.h */,
 				6889069E1AB98AE00079F67B /* StartInterviewViewController.m */,
+				688906A71ABAA84E0079F67B /* QuestionTreeViewController.h */,
+				688906A81ABAA84E0079F67B /* QuestionTreeViewController.m */,
 			);
 			name = QuestionsViewControllers;
 			sourceTree = "<group>";
@@ -380,6 +388,8 @@
 			children = (
 				688906A41AB9E3A30079F67B /* Tab.h */,
 				688906A51AB9E3A30079F67B /* Tab.m */,
+				688906AA1ABAA9F50079F67B /* QuestionOrAnswer.h */,
+				688906AB1ABAA9F50079F67B /* QuestionOrAnswer.m */,
 			);
 			name = Issues;
 			sourceTree = "<group>";
@@ -575,6 +585,7 @@
 			files = (
 				6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */,
 				686634B71AB5E7CA003EA804 /* DoorReviewViewController.m in Sources */,
+				688906AC1ABAA9F50079F67B /* QuestionOrAnswer.m in Sources */,
 				6851D3941AB5EDA10085965E /* LogoutViewController.m in Sources */,
 				686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */,
 				6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */,
@@ -595,6 +606,7 @@
 				688906A21AB9A8850079F67B /* UIFont+FDTFonts.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
 				688906951AB958620079F67B /* UIColor+FireDoorTrackerColors.m in Sources */,
+				688906A91ABAA84E0079F67B /* QuestionTreeViewController.m in Sources */,
 				6889069F1AB98AE00079F67B /* StartInterviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

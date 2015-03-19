@@ -108,7 +108,7 @@ static NSString* kApertureID = @"aperture_id";
 }
 
 - (void)doorInfoMenuChangedValue:(id)sender {
-    
+    [self.embededInterviewController setSelectedPage:self.doorInfoMenu.selectedSegmentIndex];
 }
 
 #pragma mark - Delegation Methods
