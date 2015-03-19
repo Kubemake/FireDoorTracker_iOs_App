@@ -17,7 +17,7 @@
 
 @interface InterviewPageViewController : UIPageViewController
 
-@property (nonatomic, copy) NSString* apertureID;
+@property (nonatomic, copy) NSString* inspectionID;
 @property (nonatomic, strong) NSDictionary* doorOverviewDictionary;
 
 //Door Interview Delegate

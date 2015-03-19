@@ -30,6 +30,7 @@ static const CGFloat answerButtonPadding = 5.0f;
 @property (weak, nonatomic) IBOutlet UIButton *nextQuestionButton;
 
 //User Data
+@property (nonatomic, weak) QuestionOrAnswer *previosQuestion;
 @property (nonatomic, weak) QuestionOrAnswer *currentQuestion;
 @property (nonatomic, weak) QuestionOrAnswer *selectedAnswer;
 
@@ -58,6 +59,9 @@ static const CGFloat answerButtonPadding = 5.0f;
     self.currentQuestion = question;
     self.questionTitleLabel.text = question.label;
     
+    self.previousQuestionButton.enabled = (self.previosQuestion) ? YES : NO;
+    self.nextQuestionButton.enabled = NO;
+    
     [self removeAllButtonsFromView];
     CGFloat answerButtonHeight = self.questionBodyView.bounds.size.height / self.currentQuestion.answers.count;
     CGFloat answerButtonY = 0;
@@ -71,14 +75,21 @@ static const CGFloat answerButtonPadding = 5.0f;
         [answerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [answerButton.titleLabel setFont:[UIFont FDTTimesNewRomanBoldWithSize:24.0f]];
         
-        if ([answer.selected boolValue] && answer.status.integerValue) {
-            [answerButton setBackgroundColor:[Inspection colorForStatus:answer.status.integerValue]];
+        if ([answer.selected boolValue]) {
+            //TODO: Add to the question array
+            self.nextQuestionButton.enabled = YES;
+            self.selectedAnswer = answer;
+            if (answer.status.integerValue) {
+                [answerButton setBackgroundColor:[Inspection colorForStatus:answer.status.integerValue]];
+            }
         } else {
             [answerButton setBackgroundColor:[UIColor FDTDeepBlueColor]];
         }
         
         answerButton.tag = [answer.idFormField integerValue];
         [answerButton setTitle:answer.label forState:UIControlStateNormal];
+        [answerButton setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [answerButton.titleLabel setShadowOffset:CGSizeMake(1, 1)];
         
         [answerButton addTarget:self action:@selector(answerSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self.questionBodyView addSubview:answerButton];
@@ -87,6 +98,9 @@ static const CGFloat answerButtonPadding = 5.0f;
     }
     self.answerButtons = answerButtons;
 }
+
+#pragma mark - Supporting Methods
+
 
 - (void)removeAllButtonsFromView {
     for (UIButton* button in self.questionBodyView.subviews) {
@@ -135,12 +149,14 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 
 - (IBAction)nextQuestionButtonPressed:(id)sender {
-    QuestionOrAnswer *nextAnswer = [self questionByID:self.selectedAnswer.nextQuiestionID];
-    [self displayQuestion:nextAnswer];
+    self.previosQuestion = self.currentQuestion;
+    QuestionOrAnswer *nextQuestion = [self questionByID:self.selectedAnswer.nextQuiestionID];
+    [self displayQuestion:nextQuestion];
 }
 
 - (IBAction)previousQuestionButtonPressed:(id)sender {
-    
+    self.currentQuestion = self.previosQuestion;
+    [self displayQuestion:self.currentQuestion];
 }
 
 #pragma mark - Support Question Methods

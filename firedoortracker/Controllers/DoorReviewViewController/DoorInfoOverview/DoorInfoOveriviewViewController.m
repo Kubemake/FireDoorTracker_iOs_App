@@ -91,7 +91,7 @@ static NSString* kApertureID = @"aperture_id";
                                                      return;
                                                  }
                                                  welf.embededInterviewController.doorOverviewDictionary = [responseObject objectForKey:@"info"];
-                                                 welf.embededInterviewController.apertureID = [self.selectedInspection apertureId];
+                                                 welf.embededInterviewController.inspectionID = [self.selectedInspection uid];
                                              }];
 }
 

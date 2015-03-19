@@ -26,7 +26,7 @@ static NSString* startInterviewControllerIdentifier = @"startInterviewController
 static NSString* questionTreeViewControllerIdentifier = @"QuestionTreeViewController";
 static NSString* confirmationViewControllerIdentifier = @"InterviewConfirmationViewController";
 
-static NSString* kApertureID = @"aperture_id";
+static NSString* kInspectionID = @"inspection_id";
 static NSString* kWallRating = @"wall_Rating";
 static NSString* kSmokeRating = @"smoke_Rating";
 static NSString* kMaterial = @"material";
@@ -126,7 +126,7 @@ static NSString* kQuestions = @"issues";
 - (void)submitDoorOverview {
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:InspectionQuestionListRequestType
-                                                  andParams:@{kApertureID : self.apertureID,
+                                                  andParams:@{kInspectionID : self.inspectionID,
                                                               kWallRating : [self doorOverviewPropertyByKey:kWallRating],
                                                               kSmokeRating : [self doorOverviewPropertyByKey:kSmokeRating],
                                                               kMaterial : [self doorOverviewPropertyByKey:kMaterial],
