@@ -59,6 +59,8 @@
             return [UIColor FDTreplace];
         case inspectionStatusRecertify:
             return [UIColor FDTrecertify];
+        default:
+            return [UIColor FDTDeepBlueColor];
     }
 }
 

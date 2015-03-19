@@ -79,9 +79,7 @@ static const CGFloat answerButtonPadding = 5.0f;
             //TODO: Add to the question array
             self.nextQuestionButton.enabled = YES;
             self.selectedAnswer = answer;
-            if (answer.status.integerValue) {
-                [answerButton setBackgroundColor:[Inspection colorForStatus:answer.status.integerValue]];
-            }
+            [answerButton setBackgroundColor:[Inspection colorForStatus:answer.status.integerValue]];
         } else {
             [answerButton setBackgroundColor:[UIColor FDTDeepBlueColor]];
         }
@@ -122,6 +120,8 @@ static const CGFloat answerButtonPadding = 5.0f;
     }
     //Reset UI View
     [self displayQuestion:self.currentQuestion];
+    
+    //TODO: Colorize Previous Answer Status as selected
     
     //If Answer not have side effect -> go to next question
     if (self.selectedAnswer.status.integerValue == 0) {
