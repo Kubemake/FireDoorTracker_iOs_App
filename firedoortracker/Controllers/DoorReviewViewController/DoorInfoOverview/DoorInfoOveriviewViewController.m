@@ -27,7 +27,7 @@ static NSString* segueEmbededInterviewControllerIdentifier = @"EmbededInterviewC
 
 static NSString* kApertureID = @"aperture_id";
 
-@interface DoorInfoOveriviewViewController ()
+@interface DoorInfoOveriviewViewController () <InterviewPageDelegate>
 
 //IBOutlets and View Properties
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *doorInfoHeightConstraint;
@@ -56,6 +56,7 @@ static NSString* kApertureID = @"aperture_id";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:segueEmbededInterviewControllerIdentifier]) {
         self.embededInterviewController = segue.destinationViewController;
+        self.embededInterviewController.interviewDelegate = self;
     }
 }
 
@@ -111,6 +112,12 @@ static NSString* kApertureID = @"aperture_id";
 }
 
 #pragma mark - Delegation Methods
+#pragma mark - InterviewPageCOntroller Delegate
+
+- (void)enableMenuTitles:(NSArray *)menuItems {
+    self.doorInfoMenu.touchEnabled = YES;
+    [self.doorInfoMenu setSelectedSegmentIndex:1 animated:YES];
+}
 
 
 @end

@@ -11,7 +11,7 @@
 @protocol InterviewPageDelegate <NSObject>
 
 @required
-- (void)displayMenuItems:(NSArray *)menuItems;
+- (void)enableMenuTitles:(NSArray *)menuItems;
 
 @end
 

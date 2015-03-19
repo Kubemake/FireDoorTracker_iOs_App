@@ -102,11 +102,24 @@ static NSString* kQuestions = @"issues";
                                                  }
                                                  welf.tabs = mutableTabs;
                                                  welf.questions = [responseObject objectForKey:kQuestions];
+                                                 [welf displayTabsOnDoorInfoOverview];
                                              }];
 }
 
 - (NSString *)doorOverviewPropertyByKey:(NSString *)key {
     return [[self.doorOverviewDictionary objectForKey:key] objectForKey:kSelected];
+}
+
+#pragma mark - Interview Page Delegate Methods
+
+- (void)displayTabsOnDoorInfoOverview {
+    NSMutableArray *tabsForDisplaying = [NSMutableArray array];
+    for (Tab *tab in self.tabs) {
+        [tabsForDisplaying addObject:tab.label];
+    }
+    if ([self.interviewDelegate respondsToSelector:@selector(enableMenuTitles:)]) {
+        [self.interviewDelegate enableMenuTitles:tabsForDisplaying];
+    }
 }
 
 #pragma mark - public setters
