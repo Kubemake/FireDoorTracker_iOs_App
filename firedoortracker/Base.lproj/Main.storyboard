@@ -209,10 +209,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZi-U2-4gd">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZi-U2-4gd">
                                 <rect key="frame" x="0.0" y="321" width="600" height="230"/>
                                 <connections>
-                                    <segue destination="lsQ-F3-VBN" kind="embed" identifier="EmbededInterviewControllerSegueIdentifier" id="hrV-26-vrJ"/>
+                                    <segue destination="s4U-DZ-gVs" kind="embed" identifier="EmbededInterviewControllerSegueIdentifier" id="OWI-3l-Pku"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2M-LO-cWs" customClass="HMSegmentedControl">
@@ -289,7 +289,7 @@ No Data</string>
                             <constraint firstItem="kTw-Hf-3tc" firstAttribute="top" secondItem="h2M-LO-cWs" secondAttribute="bottom" id="aaB-x4-CPa"/>
                             <constraint firstItem="h2M-LO-cWs" firstAttribute="leading" secondItem="HU8-Qp-Afs" secondAttribute="leading" id="bBQ-ql-NyH"/>
                             <constraint firstItem="bZi-U2-4gd" firstAttribute="leading" secondItem="HU8-Qp-Afs" secondAttribute="leading" id="cWu-yy-feJ"/>
-                            <constraint firstItem="AWL-q6-cBP" firstAttribute="top" secondItem="bZi-U2-4gd" secondAttribute="bottom" id="diI-Mf-S0a"/>
+                            <constraint firstItem="AWL-q6-cBP" firstAttribute="top" secondItem="bZi-U2-4gd" secondAttribute="bottom" constant="49" id="diI-Mf-S0a"/>
                             <constraint firstAttribute="trailing" secondItem="h2M-LO-cWs" secondAttribute="trailing" id="gG5-nu-Xjq"/>
                             <constraint firstAttribute="trailing" secondItem="kTw-Hf-3tc" secondAttribute="trailing" id="iEG-i8-vaP"/>
                             <constraint firstAttribute="trailing" secondItem="bZi-U2-4gd" secondAttribute="trailing" id="njG-n5-hwa"/>
@@ -797,23 +797,12 @@ No Data</string>
             <point key="canvasLocation" x="750" y="2325"/>
         </scene>
         <!--Interview Page View Controller-->
-        <scene sceneID="lHd-ru-vK8">
+        <scene sceneID="vym-nU-LPO">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="lsQ-F3-VBN" customClass="InterviewPageViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="x1L-Gl-3Qx"/>
-                        <viewControllerLayoutGuide type="bottom" id="3VT-eN-kc0"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9vQ-9B-lKQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Oz8-Hc-RJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="s4U-DZ-gVs" customClass="InterviewPageViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tlw-Lj-EZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2945" y="468"/>
+            <point key="canvasLocation" x="2900" y="511"/>
         </scene>
         <!--Start Interview View Controller-->
         <scene sceneID="M70-Vw-jzJ">
@@ -872,10 +861,10 @@ No Data</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-oc-cxo">
-                                <rect key="frame" x="204.5" y="10" width="191" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-oc-cxo">
+                                <rect key="frame" x="50" y="10" width="500" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="191" id="8eo-we-t4F"/>
+                                    <constraint firstAttribute="width" constant="500" id="8eo-we-t4F"/>
                                     <constraint firstAttribute="height" constant="35" id="9Sj-Ug-4nW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="29"/>
