@@ -19,6 +19,8 @@
 //Import Extension
 #import "UIColor+FireDoorTrackerColors.h"
 
+#import "NavigationBarButtons.h"
+
 static const CGFloat doorInfoHeight = 200.0f;
 static const CGFloat hidenDoorInfoHeight = 22.0f;
 static const CGFloat doorInfoMenuSegmentInset = 22.0f;
@@ -44,10 +46,26 @@ static NSString* kApertureID = @"aperture_id";
 #pragma mark - View Controller Lyfecircle
 #pragma mark -
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.navigationItem.leftBarButtonItem = [NavigationBarButtons backBarButtonItem];
+    [self.navigationItem.leftBarButtonItem setTarget:self];
+    [self.navigationItem.leftBarButtonItem setAction:@selector(backButtonPressed)];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDoorInfoMenu];
     [self loadDoorOverview];
+}
+
+#pragma mark - Actions
+#pragma mark -
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Segue Delegation

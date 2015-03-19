@@ -10,6 +10,7 @@
 #import "ContactExpertCell.h"
 #import "ContactExpertView.h"
 #import "CellDataModel.h"
+#import "NavigationBarButtons.h"
 
 @interface ContactExpertViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -29,12 +30,23 @@
     self.view.collectionView.dataSource = self;
     
     self.title = @"CONTACT AN EXPERT";
+    
+    self.navigationItem.leftBarButtonItem = [NavigationBarButtons backBarButtonItem];
+    [self.navigationItem.leftBarButtonItem setTarget:self];
+    [self.navigationItem.leftBarButtonItem setAction:@selector(backButtonPressed)];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self loadData];
+}
+
+#pragma mark - Actions
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource
