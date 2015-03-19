@@ -145,7 +145,9 @@ static NSString* kQuestions = @"issues";
                                                  
                                                  NSMutableArray *mutableQuestions = [NSMutableArray array];
                                                  for (NSDictionary *quiestDict in [[responseObject objectForKey:kQuestions] allObjects]) {
-                                                     [mutableQuestions addObject:[[QuestionOrAnswer alloc] initWithDictionary:quiestDict]];
+                                                     QuestionOrAnswer *encodedQuestion = [[QuestionOrAnswer alloc] initWithDictionary:quiestDict];
+                                                     [mutableQuestions addObject:encodedQuestion];
+                                                     NSLog(@"%@",encodedQuestion.idFormField);
                                                  }
                                                  welf.questions = mutableQuestions;
                                                  [welf displayTabQuestionsViewControllers];

@@ -22,4 +22,7 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 
+//Public accessory methods
+- (QuestionOrAnswer *)answerByID:(NSString *)answerID;
+
 @end

@@ -32,4 +32,13 @@
     return self;
 }
 
+- (QuestionOrAnswer *)answerByID:(NSString *)answerID {
+    for (QuestionOrAnswer *answer in self.answers) {
+        if ([answer.idFormField isEqualToString:answerID]) {
+            return answer;
+        }
+    }
+    return nil;
+}
+
 @end
