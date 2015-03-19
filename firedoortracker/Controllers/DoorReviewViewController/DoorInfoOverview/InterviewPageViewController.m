@@ -175,7 +175,7 @@ static NSString* kQuestions = @"issues";
     for (Tab *currentTab in self.tabs) {
         QuestionTreeViewController *questionVC = [self.storyboard instantiateViewControllerWithIdentifier:questionTreeViewControllerIdentifier];
         questionVC.questionForReview = self.questions;
-        [questionVC displayTab:currentTab];
+        questionVC.tabForDisplaying = currentTab;
         [contentViewControllersMutable addObject:questionVC];
     }
     self.contentViewControllers = contentViewControllersMutable;

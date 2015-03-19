@@ -16,10 +16,10 @@
 
 @implementation HomeMenuCollectionViewCell
 
-- (void)displayWithIcon:(UIImage *)icon andTitle:(NSString *)title {
+- (void)displayWithIcon:(UIImage *)icon andTitle:(NSString *)title
+{
     self.iconImageView.image = icon;
     self.titleLabel.text = title;
-    
 }
 
 @end

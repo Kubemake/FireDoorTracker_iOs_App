@@ -30,11 +30,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self displayTab:self.tabForDisplaying];
 }
 
 #pragma mark - Display Methods
-#pragma mark - Display Tab
 
 - (void)displayTab:(Tab *)tabForReview {
     QuestionOrAnswer *firstQuestionForTab = [self questionByID:tabForReview.nextQuiestionID];

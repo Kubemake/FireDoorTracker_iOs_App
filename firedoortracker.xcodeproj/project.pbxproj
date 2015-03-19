@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683F0CD81ABAC84F008B3A1B /* QuestionTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CD71ABAC84F008B3A1B /* QuestionTreeViewController.m */; };
+		683F0CDE1ABAC8A6008B3A1B /* QuestionOrAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CDB1ABAC8A6008B3A1B /* QuestionOrAnswer.m */; };
+		683F0CDF1ABAC8A6008B3A1B /* Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CDD1ABAC8A6008B3A1B /* Tab.m */; };
+		683F0CE31ABAC8C6008B3A1B /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F0CE21ABAC8C6008B3A1B /* UIFont+FDTFonts.m */; };
 		6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3871AB5ED2D0085965E /* MediaViewController.m */; };
 		6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38B1AB5ED530085965E /* ResourcesViewController.m */; };
 		6851D3901AB5ED890085965E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38F1AB5ED890085965E /* SettingViewController.m */; };
@@ -30,14 +34,14 @@
 		688906971AB95E680079F67B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688906961AB95E680079F67B /* QuartzCore.framework */; };
 		6889069B1AB96F910079F67B /* InterviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889069A1AB96F910079F67B /* InterviewPageViewController.m */; };
 		6889069F1AB98AE00079F67B /* StartInterviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889069E1AB98AE00079F67B /* StartInterviewViewController.m */; };
-		688906A21AB9A8850079F67B /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906A11AB9A8850079F67B /* UIFont+FDTFonts.m */; };
-		688906A61AB9E3A30079F67B /* Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906A51AB9E3A30079F67B /* Tab.m */; };
-		688906A91ABAA84E0079F67B /* QuestionTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906A81ABAA84E0079F67B /* QuestionTreeViewController.m */; };
-		688906AC1ABAA9F50079F67B /* QuestionOrAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906AB1ABAA9F50079F67B /* QuestionOrAnswer.m */; };
 		68B27A1D1AB7157C00990DCA /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A1C1AB7157C00990DCA /* Term.m */; };
 		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
 		68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A2E1AB85AD300990DCA /* CurrentUser.m */; };
 		D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */; };
+		F9DA37901AB9A2D50075BCB6 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA378F1AB9A2D50075BCB6 /* ContainerViewController.m */; };
+		F9DA37951AB9A30D0075BCB6 /* NiceTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA37941AB9A30D0075BCB6 /* NiceTabBarView.m */; };
+		F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */; };
+		F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DA379E1AB9E0B50075BCB6 /* UIImage+Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,14 @@
 		00B0C653FC2A3B21007B85DC /* Pods-firedoortracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-firedoortracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-firedoortracker/Pods-firedoortracker.debug.xcconfig"; sourceTree = "<group>"; };
 		062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-firedoortracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-firedoortracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-firedoortracker/Pods-firedoortracker.release.xcconfig"; sourceTree = "<group>"; };
+		683F0CD61ABAC84F008B3A1B /* QuestionTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionTreeViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.h; sourceTree = "<group>"; };
+		683F0CD71ABAC84F008B3A1B /* QuestionTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTreeViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.m; sourceTree = "<group>"; };
+		683F0CDA1ABAC8A6008B3A1B /* QuestionOrAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionOrAnswer.h; path = Model/Inspection/QuestionOrAnswer.h; sourceTree = "<group>"; };
+		683F0CDB1ABAC8A6008B3A1B /* QuestionOrAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionOrAnswer.m; path = Model/Inspection/QuestionOrAnswer.m; sourceTree = "<group>"; };
+		683F0CDC1ABAC8A6008B3A1B /* Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tab.h; path = Model/Inspection/Tab.h; sourceTree = "<group>"; };
+		683F0CDD1ABAC8A6008B3A1B /* Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tab.m; path = Model/Inspection/Tab.m; sourceTree = "<group>"; };
+		683F0CE11ABAC8C6008B3A1B /* UIFont+FDTFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FDTFonts.h"; path = "Extensions/UIFont+FDTFonts.h"; sourceTree = "<group>"; };
+		683F0CE21ABAC8C6008B3A1B /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
 		6851D3861AB5ED2D0085965E /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaViewController.h; path = Controllers/MediaViewController/MediaViewController.h; sourceTree = "<group>"; };
 		6851D3871AB5ED2D0085965E /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaViewController.m; path = Controllers/MediaViewController/MediaViewController.m; sourceTree = "<group>"; };
 		6851D38A1AB5ED530085965E /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcesViewController.h; path = Controllers/ResourcesViewController/ResourcesViewController.h; sourceTree = "<group>"; };
@@ -98,20 +110,20 @@
 		6889069A1AB96F910079F67B /* InterviewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InterviewPageViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/InterviewPageViewController.m; sourceTree = "<group>"; };
 		6889069D1AB98AE00079F67B /* StartInterviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartInterviewViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/StartInterviewViewController.h; sourceTree = "<group>"; };
 		6889069E1AB98AE00079F67B /* StartInterviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartInterviewViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/StartInterviewViewController.m; sourceTree = "<group>"; };
-		688906A01AB9A8850079F67B /* UIFont+FDTFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FDTFonts.h"; path = "Extensions/UIFont+FDTFonts.h"; sourceTree = "<group>"; };
-		688906A11AB9A8850079F67B /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
-		688906A41AB9E3A30079F67B /* Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tab.h; path = Model/Inspection/Tab.h; sourceTree = "<group>"; };
-		688906A51AB9E3A30079F67B /* Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tab.m; path = Model/Inspection/Tab.m; sourceTree = "<group>"; };
-		688906A71ABAA84E0079F67B /* QuestionTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionTreeViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.h; sourceTree = "<group>"; };
-		688906A81ABAA84E0079F67B /* QuestionTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTreeViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.m; sourceTree = "<group>"; };
-		688906AA1ABAA9F50079F67B /* QuestionOrAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionOrAnswer.h; path = Model/Inspection/QuestionOrAnswer.h; sourceTree = "<group>"; };
-		688906AB1ABAA9F50079F67B /* QuestionOrAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionOrAnswer.m; path = Model/Inspection/QuestionOrAnswer.m; sourceTree = "<group>"; };
 		68B27A1B1AB7157C00990DCA /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Term.h; path = Model/Glossary/Term.h; sourceTree = "<group>"; };
 		68B27A1C1AB7157C00990DCA /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Term.m; path = Model/Glossary/Term.m; sourceTree = "<group>"; };
 		68B27A1F1AB717E900990DCA /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermTableViewCell.h; path = Controllers/ResourcesViewController/View/TermTableViewCell.h; sourceTree = "<group>"; };
 		68B27A201AB717E900990DCA /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermTableViewCell.m; path = Controllers/ResourcesViewController/View/TermTableViewCell.m; sourceTree = "<group>"; };
 		68B27A2D1AB85AD300990DCA /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentUser.h; path = Model/CurrentUser/CurrentUser.h; sourceTree = "<group>"; };
 		68B27A2E1AB85AD300990DCA /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentUser.m; path = Model/CurrentUser/CurrentUser.m; sourceTree = "<group>"; };
+		F9DA378E1AB9A2D50075BCB6 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		F9DA378F1AB9A2D50075BCB6 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		F9DA37931AB9A30D0075BCB6 /* NiceTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiceTabBarView.h; sourceTree = "<group>"; };
+		F9DA37941AB9A30D0075BCB6 /* NiceTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NiceTabBarView.m; sourceTree = "<group>"; };
+		F9DA37971AB9A3230075BCB6 /* UIColor+additionalInitializers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+additionalInitializers.h"; sourceTree = "<group>"; };
+		F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+additionalInitializers.m"; sourceTree = "<group>"; };
+		F9DA379D1AB9E0B50075BCB6 /* UIImage+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utilities.h"; sourceTree = "<group>"; };
+		F9DA379E1AB9E0B50075BCB6 /* UIImage+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +146,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		683F0CD91ABAC88F008B3A1B /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				683F0CDA1ABAC8A6008B3A1B /* QuestionOrAnswer.h */,
+				683F0CDB1ABAC8A6008B3A1B /* QuestionOrAnswer.m */,
+				683F0CDC1ABAC8A6008B3A1B /* Tab.h */,
+				683F0CDD1ABAC8A6008B3A1B /* Tab.m */,
+			);
+			name = Issues;
+			sourceTree = "<group>";
+		};
+		683F0CE01ABAC8B3008B3A1B /* UIFont+FDTFonts */ = {
+			isa = PBXGroup;
+			children = (
+				683F0CE11ABAC8C6008B3A1B /* UIFont+FDTFonts.h */,
+				683F0CE21ABAC8C6008B3A1B /* UIFont+FDTFonts.m */,
+			);
+			name = "UIFont+FDTFonts";
+			sourceTree = "<group>";
+		};
 		6851D3831AB5ECAC0085965E /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +275,7 @@
 		686634AA1AB5E7CA003EA804 /* firedoortracker */ = {
 			isa = PBXGroup;
 			children = (
+				F9DA37921AB9A2FB0075BCB6 /* Views */,
 				688906921AB9583D0079F67B /* Extensions */,
 				68B27A191AB714CC00990DCA /* Model */,
 				6851D3991AB6E6EC0085965E /* NetworkManager */,
@@ -293,6 +326,7 @@
 		686634D51AB5E7E0003EA804 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F9DA37911AB9A2D80075BCB6 /* ContainerViewController */,
 				6851D39D1AB6E8D70085965E /* AuthorizationViewController */,
 				6851D3831AB5ECAC0085965E /* HomeViewController */,
 				6851D3841AB5ECD00085965E /* DoorReviewViewController */,
@@ -316,7 +350,7 @@
 		688906821AB85C860079F67B /* Inspection */ = {
 			isa = PBXGroup;
 			children = (
-				688906A31AB9E38F0079F67B /* Issues */,
+				683F0CD91ABAC88F008B3A1B /* Issues */,
 				688906831AB85CA10079F67B /* Inspection.h */,
 				688906841AB85CA10079F67B /* Inspection.m */,
 			);
@@ -354,10 +388,10 @@
 		688906921AB9583D0079F67B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				688906931AB958620079F67B /* UIColor+FireDoorTrackerColors.h */,
-				688906941AB958620079F67B /* UIColor+FireDoorTrackerColors.m */,
-				688906A01AB9A8850079F67B /* UIFont+FDTFonts.h */,
-				688906A11AB9A8850079F67B /* UIFont+FDTFonts.m */,
+				683F0CE01ABAC8B3008B3A1B /* UIFont+FDTFonts */,
+				F9DA37A01AB9E0BC0075BCB6 /* UIImage+Utilities */,
+				F9DA379C1AB9E0870075BCB6 /* UIColor+FireDoorTrackerColors */,
+				F9DA379B1AB9E0760075BCB6 /* UIColor+additionalInitializers */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -375,23 +409,12 @@
 		6889069C1AB97F620079F67B /* QuestionsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				683F0CD61ABAC84F008B3A1B /* QuestionTreeViewController.h */,
+				683F0CD71ABAC84F008B3A1B /* QuestionTreeViewController.m */,
 				6889069D1AB98AE00079F67B /* StartInterviewViewController.h */,
 				6889069E1AB98AE00079F67B /* StartInterviewViewController.m */,
-				688906A71ABAA84E0079F67B /* QuestionTreeViewController.h */,
-				688906A81ABAA84E0079F67B /* QuestionTreeViewController.m */,
 			);
 			name = QuestionsViewControllers;
-			sourceTree = "<group>";
-		};
-		688906A31AB9E38F0079F67B /* Issues */ = {
-			isa = PBXGroup;
-			children = (
-				688906A41AB9E3A30079F67B /* Tab.h */,
-				688906A51AB9E3A30079F67B /* Tab.m */,
-				688906AA1ABAA9F50079F67B /* QuestionOrAnswer.h */,
-				688906AB1ABAA9F50079F67B /* QuestionOrAnswer.m */,
-			);
-			name = Issues;
 			sourceTree = "<group>";
 		};
 		68B27A191AB714CC00990DCA /* Model */ = {
@@ -447,6 +470,59 @@
 				650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F9DA37911AB9A2D80075BCB6 /* ContainerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA378E1AB9A2D50075BCB6 /* ContainerViewController.h */,
+				F9DA378F1AB9A2D50075BCB6 /* ContainerViewController.m */,
+			);
+			name = ContainerViewController;
+			sourceTree = "<group>";
+		};
+		F9DA37921AB9A2FB0075BCB6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA379A1AB9AA810075BCB6 /* NiceTabBarView */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F9DA379A1AB9AA810075BCB6 /* NiceTabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA37931AB9A30D0075BCB6 /* NiceTabBarView.h */,
+				F9DA37941AB9A30D0075BCB6 /* NiceTabBarView.m */,
+			);
+			name = NiceTabBarView;
+			sourceTree = "<group>";
+		};
+		F9DA379B1AB9E0760075BCB6 /* UIColor+additionalInitializers */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA37971AB9A3230075BCB6 /* UIColor+additionalInitializers.h */,
+				F9DA37981AB9A3230075BCB6 /* UIColor+additionalInitializers.m */,
+			);
+			name = "UIColor+additionalInitializers";
+			sourceTree = "<group>";
+		};
+		F9DA379C1AB9E0870075BCB6 /* UIColor+FireDoorTrackerColors */ = {
+			isa = PBXGroup;
+			children = (
+				688906931AB958620079F67B /* UIColor+FireDoorTrackerColors.h */,
+				688906941AB958620079F67B /* UIColor+FireDoorTrackerColors.m */,
+			);
+			name = "UIColor+FireDoorTrackerColors";
+			sourceTree = "<group>";
+		};
+		F9DA37A01AB9E0BC0075BCB6 /* UIImage+Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F9DA379D1AB9E0B50075BCB6 /* UIImage+Utilities.h */,
+				F9DA379E1AB9E0B50075BCB6 /* UIImage+Utilities.m */,
+			);
+			name = "UIImage+Utilities";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,30 +659,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				683F0CD81ABAC84F008B3A1B /* QuestionTreeViewController.m in Sources */,
 				6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */,
+				F9DA37951AB9A30D0075BCB6 /* NiceTabBarView.m in Sources */,
 				686634B71AB5E7CA003EA804 /* DoorReviewViewController.m in Sources */,
-				688906AC1ABAA9F50079F67B /* QuestionOrAnswer.m in Sources */,
 				6851D3941AB5EDA10085965E /* LogoutViewController.m in Sources */,
 				686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */,
+				683F0CDE1ABAC8A6008B3A1B /* QuestionOrAnswer.m in Sources */,
 				6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */,
 				6889069B1AB96F910079F67B /* InterviewPageViewController.m in Sources */,
 				688906911AB8858F0079F67B /* DoorInfoOveriviewViewController.m in Sources */,
 				6851D3901AB5ED890085965E /* SettingViewController.m in Sources */,
 				68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
+				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
 				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
+				683F0CDF1ABAC8A6008B3A1B /* Tab.m in Sources */,
+				683F0CE31ABAC8C6008B3A1B /* UIFont+FDTFonts.m in Sources */,
 				6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
-				688906A61AB9E3A30079F67B /* Tab.m in Sources */,
 				68B27A1D1AB7157C00990DCA /* Term.m in Sources */,
+				F9DA37901AB9A2D50075BCB6 /* ContainerViewController.m in Sources */,
 				688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */,
 				688906851AB85CA10079F67B /* Inspection.m in Sources */,
 				6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */,
-				688906A21AB9A8850079F67B /* UIFont+FDTFonts.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
+				F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */,
 				688906951AB958620079F67B /* UIColor+FireDoorTrackerColors.m in Sources */,
-				688906A91ABAA84E0079F67B /* QuestionTreeViewController.m in Sources */,
 				6889069F1AB98AE00079F67B /* StartInterviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

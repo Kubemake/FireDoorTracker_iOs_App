@@ -48,6 +48,18 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// CoconutKit
+#define COCOAPODS_POD_AVAILABLE_CoconutKit
+#define COCOAPODS_VERSION_MAJOR_CoconutKit 3
+#define COCOAPODS_VERSION_MINOR_CoconutKit 0
+#define COCOAPODS_VERSION_PATCH_CoconutKit 0
+
+// CoconutKit/zeroing-weak-ref
+#define COCOAPODS_POD_AVAILABLE_CoconutKit_zeroing_weak_ref
+#define COCOAPODS_VERSION_MAJOR_CoconutKit_zeroing_weak_ref 3
+#define COCOAPODS_VERSION_MINOR_CoconutKit_zeroing_weak_ref 0
+#define COCOAPODS_VERSION_PATCH_CoconutKit_zeroing_weak_ref 0
+
 // HMSegmentedControl
 #define COCOAPODS_POD_AVAILABLE_HMSegmentedControl
 #define COCOAPODS_VERSION_MAJOR_HMSegmentedControl 1

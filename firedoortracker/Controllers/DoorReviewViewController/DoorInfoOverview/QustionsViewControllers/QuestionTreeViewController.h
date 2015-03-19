@@ -14,7 +14,6 @@
 @interface QuestionTreeViewController : UIViewController
 
 @property (nonatomic, weak) NSArray* questionForReview;
-
-- (void)displayTab:(Tab *)tabForReview;
+@property (nonatomic, weak) Tab *tabForDisplaying;
 
 @end
