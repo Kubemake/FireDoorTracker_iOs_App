@@ -11,6 +11,7 @@
 
 //Import Model
 #import "QuestionOrAnswer.h"
+#import "Inspection.h"
 
 //Import Extension
 #import "UIFont+FDTFonts.h"
@@ -24,9 +25,11 @@ static const CGFloat answerButtonPadding = 5.0f;
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UILabel *questionTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *questionBodyView;
+@property (nonatomic, strong) NSArray* answerButtons;
 
 //User Data
 @property (nonatomic, weak) QuestionOrAnswer *currentQuestion;
+@property (nonatomic, weak) QuestionOrAnswer *selectedAnswer;
 
 @end
 
@@ -56,6 +59,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     [self removeAllButtonsFromView];
     CGFloat answerButtonHeight = self.questionBodyView.bounds.size.height / self.currentQuestion.answers.count;
     CGFloat answerButtonY = 0;
+    NSMutableArray *answerButtons = [NSMutableArray array];
     for (QuestionOrAnswer *answer in question.answers) {
         UIButton *answerButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
                                                                             answerButtonY,
@@ -64,15 +68,22 @@ static const CGFloat answerButtonPadding = 5.0f;
         //TODO: Change to answer collor
         [answerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [answerButton.titleLabel setFont:[UIFont FDTTimesNewRomanBoldWithSize:24.0f]];
-        [answerButton setBackgroundColor:[UIColor FDTDeepBlueColor]];
+        
+        if ([answer.selected boolValue] && answer.status.integerValue) {
+            [answerButton setBackgroundColor:[Inspection colorForStatus:answer.status.integerValue]];
+        } else {
+            [answerButton setBackgroundColor:[UIColor FDTDeepBlueColor]];
+        }
         
         answerButton.tag = [answer.idFormField integerValue];
         [answerButton setTitle:answer.label forState:UIControlStateNormal];
         
         [answerButton addTarget:self action:@selector(answerSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self.questionBodyView addSubview:answerButton];
+        [answerButtons addObject:answerButton];
         answerButtonY += answerButtonHeight;
     }
+    self.answerButtons = answerButtons;
 }
 
 - (void)removeAllButtonsFromView {
@@ -86,8 +97,27 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 - (void)answerSelected:(UIButton *)sender {
     //TODO: Save current Answer for the crump breads
-    QuestionOrAnswer *currentAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%ld",(long)sender.tag]];
-    QuestionOrAnswer *nextAnswer = [self questionByID:currentAnswer.nextQuiestionID];
+    self.selectedAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%ld",(long)sender.tag]];
+    self.selectedAnswer.selected = [NSNumber numberWithBool:![self.selectedAnswer.selected boolValue]];
+    if ([self.selectedAnswer.status integerValue] == inspectionStatusCompliant) {
+        [self resetAllAnswerSelectionWithousStatus:inspectionStatusCompliant];
+    }
+    //Reset UI View
+    [self displayQuestion:self.currentQuestion];
+}
+
+- (void)resetAllAnswerSelectionWithousStatus:(inspectionStatus)status {
+    //Reset Moodel State
+    for (QuestionOrAnswer *answers in self.selectedAnswer.answers) {
+        if (answers.status.integerValue != status) {
+            answers.selected = [NSNumber numberWithBool:NO];
+        }
+    }
+}
+
+
+- (IBAction)nextQuestionButtonPressed:(id)sender {
+    QuestionOrAnswer *nextAnswer = [self questionByID:self.selectedAnswer.nextQuiestionID];
     [self displayQuestion:nextAnswer];
 }
 

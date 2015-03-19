@@ -8,6 +8,8 @@
 
 #import "Inspection.h"
 
+#import "UIColor+FireDoorTrackerColors.h"
+
 @implementation Inspection
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
@@ -26,6 +28,38 @@
         self.apertureName = [dictionary objectForKey:@"aperture_name"];
     }
     return self;
+}
+
+#pragma mark - status properties
+
++ (NSString *)stringForStatus:(inspectionStatus)status {
+    switch (status) {
+        case inspectionStatusCompliant:
+            return @"Compliant";
+        case inspectionStatusMaintenance:
+            return @"Maintenance";
+        case inspectionStatusRepair:
+            return @"Repair";
+        case inspectionStatusReplace:
+            return @"Replace";
+        case inspectionStatusRecertify:
+            return @"Recertify";
+    }
+}
+
++ (UIColor *)colorForStatus:(inspectionStatus)status {
+    switch (status) {
+        case inspectionStatusCompliant:
+            return [UIColor FDTcompliant];
+        case inspectionStatusMaintenance:
+            return [UIColor FDTmaintenance];
+        case inspectionStatusRepair:
+            return [UIColor FDTrepair];
+        case inspectionStatusReplace:
+            return [UIColor FDTreplace];
+        case inspectionStatusRecertify:
+            return [UIColor FDTrecertify];
+    }
 }
 
 @end

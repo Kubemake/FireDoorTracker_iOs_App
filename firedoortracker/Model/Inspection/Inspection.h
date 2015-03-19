@@ -7,6 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef enum{
+    inspectionStatusCompliant = 1,
+    inspectionStatusMaintenance,
+    inspectionStatusRepair,
+    inspectionStatusReplace,
+    inspectionStatusRecertify
+}inspectionStatus;
 
 @interface Inspection : NSObject
 
@@ -24,5 +33,8 @@
 @property (nonatomic, copy) NSString* apertureName;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
++ (NSString *)stringForStatus:(inspectionStatus)status;
++ (UIColor *)colorForStatus:(inspectionStatus)status;
 
 @end

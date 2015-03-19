@@ -32,6 +32,26 @@
     return self;
 }
 
+#pragma mark - Public Setters and Getter
+
+- (NSNumber *)selected {
+    if (_selected == [NSNull null]) {
+        return @(NO);
+    } else  {
+        return _selected;
+    }
+}
+
+- (NSNumber *)status {
+    if (_status == [NSNull null]) {
+        return @(0);
+    } else {
+        return _status;
+    }
+}
+
+#pragma mark - Supporting Methods
+
 - (QuestionOrAnswer *)answerByID:(NSString *)answerID {
     for (QuestionOrAnswer *answer in self.answers) {
         if ([answer.idFormField isEqualToString:answerID]) {

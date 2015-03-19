@@ -897,6 +897,9 @@ No Data</string>
                                 <state key="normal" image="nextButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextQuestionButtonPressed:" destination="45x-8O-B7S" eventType="touchUpInside" id="sWc-2g-P8Z"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
