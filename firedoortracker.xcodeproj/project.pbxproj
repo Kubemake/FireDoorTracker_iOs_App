@@ -650,6 +650,7 @@
 				TargetAttributes = {
 					686634A71AB5E7CA003EA804 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 9XVU48JZV7;
 					};
 					686634C31AB5E7CA003EA804 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -894,6 +895,7 @@
 			baseConfigurationReference = 00B0C653FC2A3B21007B85DC /* Pods-firedoortracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = firedoortracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -906,6 +908,7 @@
 			baseConfigurationReference = 650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = firedoortracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
