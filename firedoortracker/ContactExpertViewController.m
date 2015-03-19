@@ -62,13 +62,6 @@
     return [self.expertObjects count];
 }
 
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 #pragma mark - Private Logic
 
 - (void)loadData

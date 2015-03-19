@@ -42,7 +42,8 @@
 
 - (void)websiteButtonPressed
 {
-    
+    NSURL *url = [NSURL URLWithString:[@"http://" stringByAppendingString:self.website]];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 #pragma mark - Public
