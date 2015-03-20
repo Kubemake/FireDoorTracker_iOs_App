@@ -130,6 +130,7 @@ static NSString* kApertureID = @"aperture_id";
 #pragma mark - Interview Page Delegate 
 
 - (void)enableMenuTitles:(NSArray *)menuItems {
+    [self.doorInfoMenu setSelectedSegmentIndex:1];
     [self.embededInterviewController setSelectedPage:1];
 }
 

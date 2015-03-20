@@ -138,7 +138,6 @@ static NSString* kQuestions = @"issues";
                                                  }
                                                  NSMutableArray *mutableTabs = [NSMutableArray array];
                                                  for (NSDictionary *tabDictionary in [[responseObject objectForKey:kTabs] allObjects]) {
-                                                     //Server Bloody Issue fix
                                                      [mutableTabs addObject:[[Tab alloc] initWithDictionary:tabDictionary]];
                                                  }
                                                  welf.tabs = mutableTabs;
