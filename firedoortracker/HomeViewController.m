@@ -75,7 +75,7 @@ static NSString* homeCellIdentifier = @"HomeMenuCollectionViewCell";
             break;
         case homeMenuItemLogOut:
             [cell displayWithIcon:[UIImage imageNamed:@"signOut"]
-                         andTitle:NSLocalizedString(@"LOGOUT OUT", nil)];
+                         andTitle:NSLocalizedString(@"LOG OUT", nil)];
             break;
 
     }

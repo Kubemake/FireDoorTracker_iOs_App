@@ -44,8 +44,8 @@ static NSString* kUserInspections = @"inspections";
     [self changeViewStatus:YES];
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:AuthorizationRequestType
-                                                  andParams:@{@"login" : @"stasionok@gmail.com",
-                                                              @"password" : @"124"}
+                                                  andParams:@{@"login" : @"nicholas.palamar@gmail.com",
+                                                              @"password" : @"2236"}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  [welf changeViewStatus:NO];
                                                  if (error) {
