@@ -70,7 +70,8 @@
             if ([currentAnswer.selected boolValue]) {
                 switch (currentAnswer.status.integerValue) {
                     case inspectionStatusCompliant: {
-                        if (![scanedStatuses containsObject:@(inspectionStatusCompliant)]) {
+                        if (![scanedStatuses containsObject:@(inspectionStatusCompliant)]
+                            && [scanedStatuses count] == 0) {
                             [scanedStatuses addObject:@(inspectionStatusCompliant)];
                         }
                         break;
