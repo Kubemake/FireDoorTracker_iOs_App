@@ -19,6 +19,7 @@
 //Import Extension
 #import "UIColor+FireDoorTrackerColors.h"
 #import "UIFont+FDTFonts.h"
+#import "UIImage+Utilities.h"
 
 #import "NavigationBarButtons.h"
 
@@ -156,16 +157,38 @@ static NSString* kApertureID = @"aperture_id";
 
 - (void)addAndDisplayStatusView:(inspectionStatus)status {
     NSString *statusName = [Inspection stringForStatus:status];
+    
     CGSize statusTextSize = [statusName sizeWithAttributes:@{NSFontAttributeName:[UIFont FDTRobotoLightWithSize:17.0f]}];
-    UILabel *statusNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.doorStatusLabel.bounds.size.width,
-                                                                        0,
-                                                                        statusTextSize.width,
+    UILabel *statusNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                         0,
+                                                                         statusTextSize.width,
                                                                          statusTextSize.height)];
     [statusNameLabel setFont:[UIFont FDTRobotoLightWithSize:17.0f]];
     [statusNameLabel setTextColor:[UIColor FDTDarkGrayColor]];
     statusNameLabel.text = statusName;
-    [self.doorStatusLabel addSubview:statusNameLabel];
-    [self.statusViews addObject:statusNameLabel];
+    
+    UIImageView *statusIcon = [[UIImageView alloc] initWithImage:[UIImage imageForReviewStaton:status]];
+    statusIcon.frame = CGRectMake(statusNameLabel.bounds.size.width + 5.0f,
+                                  0,
+                                  statusIcon.bounds.size.width,
+                                  statusIcon.bounds.size.height);
+    
+    //Get Last Label Position
+    CGFloat lastStatusLabelXWithWidth = self.doorStatusLabel.bounds.size.width;
+    if ([self.statusViews lastObject]) {
+        UIView *lastStatusView = (UIView *)[self.statusViews lastObject];
+        lastStatusLabelXWithWidth = lastStatusView.frame.origin.x + lastStatusView.bounds.size.width + 10.0f;
+    }
+    
+    UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake(lastStatusLabelXWithWidth,
+                                                                 0,
+                                                                 statusNameLabel.bounds.size.width + statusIcon.bounds.size.width,
+                                                                 statusNameLabel.bounds.size.height)];
+    [statusView addSubview:statusNameLabel];
+    [statusView addSubview:statusIcon];
+    
+    [self.doorStatusLabel addSubview:statusView];
+    [self.statusViews addObject:statusView];
 }
 
 @end
