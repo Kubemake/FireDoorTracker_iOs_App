@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Inspection.h"
+
 @interface UIImage (Utilities)
 
 + (UIImage *)imageWithColor:(UIColor *)color;
+
+//Image For Door Review
++ (UIImage *)imageForReviewStaton:(inspectionStatus)status;
 
 @end
