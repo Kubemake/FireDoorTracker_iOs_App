@@ -7,9 +7,17 @@
 //
 
 #import "SettingViewController.h"
+#import "NetworkManager.h"
 #import "UIColor+additionalInitializers.h"
 
+static NSString *const firstNameKey = @"firstName";
+static NSString *const lastNameKey = @"lastName";
+static NSString *const emailKey = @"email";
+static NSString *const phoneNumberKey = @"mobilePhone";
+
 @interface SettingViewController ()
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
@@ -41,7 +49,7 @@
 
 - (IBAction)saveButtonPressed:(id)sender
 {
-    
+    [self updateUserProfile];
 }
 
 #pragma mark - Private Logic
@@ -49,7 +57,18 @@
 
 - (void)loadData
 {
+    [self.activityIndicatorView startAnimating];
     
+    __weak typeof (self) weakSelf = self;
+    void(^completion)(id responseObject, NSError *error) = ^(id responseObject, NSError *error) {
+        [weakSelf.activityIndicatorView stopAnimating];
+        [weakSelf fillFieldsFromResponceObject:responseObject];
+    };
+    
+    NSDictionary *params  = @{};
+    [[NetworkManager sharedInstance] performRequestWithType:GetProfileInfoRequestType
+                                                  andParams:params
+                                             withCompletion:completion];
 }
 
 - (void)setupApearance
@@ -60,5 +79,38 @@
 
 #pragma mark - Utilities
 #pragma mark -
+
+- (void)fillFieldsFromResponceObject:(id)responseObject
+{
+    NSString *firstName = responseObject[firstNameKey];
+    NSString *lastName = responseObject[lastNameKey];
+    NSString *phoneNumber = responseObject[phoneNumberKey];
+    NSString *email = responseObject[emailKey];
+    
+    self.firstNameTextField.text = firstName;
+    self.lastNameTextField.text = lastName;
+    self.phoneNoTextField.text = phoneNumber;
+    self.emailTextField.text = email;
+}
+
+- (void)updateUserProfile
+{
+    [self.activityIndicatorView startAnimating];
+    
+    __weak typeof (self) weakSelf = self;
+    
+    NSDictionary *params = @{ firstNameKey   : self.firstNameTextField.text,
+                              lastNameKey    : self.lastNameTextField.text,
+                              phoneNumberKey : self.phoneNoTextField.text,
+                              emailKey       : self.emailTextField.text };
+    
+    void(^completion)(id responseObject, NSError *error) = ^(id responseObject, NSError *error) {
+        [weakSelf.activityIndicatorView stopAnimating];
+    };
+    
+    [[NetworkManager sharedInstance] performRequestWithType:UpdateProfileInfoRequestType
+                                                  andParams:params
+                                             withCompletion:completion];
+}
 
 @end

@@ -19,6 +19,8 @@ static NSString* glossaryKeyWordSearch = @"search_glossary_terms";
 static NSString* inspectionListByUser = @"get_inspection_list_by_user";
 static NSString* inspectionquestionsList = @"get_issues_list";
 static NSString* inspectionDoorOverview = @"get_aperture_overview_info";
+static NSString* getProfileInfo = @"get_profile_data";
+static NSString* updateProfileInfoKey = @"update_profile_data";
 
 static NSString* kToken = @"token";
 
@@ -125,6 +127,12 @@ static bool isFirstAccess = YES;
             break;
         case InspectionDoorOverviewRequestType:
             [requestParams setObject:inspectionDoorOverview forKey:kRequestType];
+            break;
+        case GetProfileInfoRequestType:
+            [requestParams setObject:getProfileInfo forKey:kRequestType];
+            break;
+            case UpdateProfileInfoRequestType:
+            [requestParams setObject:updateProfileInfoKey forKey:kRequestType];
             break;
         default:
             //TODO: Unknow request type, return Error

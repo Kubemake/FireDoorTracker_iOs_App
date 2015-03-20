@@ -10,6 +10,8 @@
 
 typedef enum {
     AuthorizationRequestType = 0,
+    GetProfileInfoRequestType,
+    UpdateProfileInfoRequestType,
     GlossaryLettersRequestType,
     GlossaryTermsByLetterRequestType,
     GlossaryKeyWordSearchRequestType,
