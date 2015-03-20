@@ -32,6 +32,7 @@ static NSString* kSmokeRating = @"smoke_Rating";
 static NSString* kMaterial = @"material";
 static NSString* kRating = @"rating";
 static NSString* kSelected = @"selected";
+static NSString* kidFormField = @"idFormFields";
 
 static NSString* kTabs = @"tabs";
 static NSString* kQuestions = @"issues";
@@ -163,11 +164,22 @@ static NSString* kQuestions = @"issues";
 #pragma mark - Question-Answer delegate
 
 - (void)userSelectAnswer:(QuestionOrAnswer *)answer {
-    //TODO: answer not used
+    //TODO: Maybe call this method ever
     if ([self.interviewDelegate respondsToSelector:@selector(changeInspectionStatusTo:)]) {
         [self.interviewDelegate
          changeInspectionStatusTo:[QuestionOrAnswer statusesByQuestionAndAnswersArray:self.questions]];
     }
+    //Save info and server
+    [[NetworkManager sharedInstance] performRequestWithType:InspectionUpdateDataRequestType
+                                                  andParams:@{kInspectionID : self.inspectionID,
+                                                              kidFormField : answer.idFormField,
+                                                              kSelected : answer.selected}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     //TODO: Display Error
+                                                     return;
+                                                 }
+                                             }];
 }
 
 #pragma mark - Display Methods
