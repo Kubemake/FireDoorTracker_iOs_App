@@ -21,6 +21,8 @@ static NSString* kUserInspections = @"inspections";
 @interface AuthorizationViewController ()
 
 //IBOutlets
+@property (weak, nonatomic) IBOutlet UITextField *loginTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *logInButton;
@@ -34,7 +36,7 @@ static NSString* kUserInspections = @"inspections";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self logInWithCashedCredentials];
+//    [self logInWithCashedCredentials];
 }
 
 #pragma mark - API Methods
@@ -44,8 +46,8 @@ static NSString* kUserInspections = @"inspections";
     [self changeViewStatus:YES];
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:AuthorizationRequestType
-                                                  andParams:@{@"login" : @"stasionok@gmail.com",
-                                                              @"password" : @"124"}
+                                                  andParams:@{@"login" : (self.loginTextField.text) ? : [NSNull null],
+                                                              @"password" : (self.passwordTextField.text) ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  [welf changeViewStatus:NO];
                                                  if (error) {
@@ -80,18 +82,23 @@ static NSString* kUserInspections = @"inspections";
 - (void)changeViewStatus:(BOOL)isLoading {
     if (isLoading) {
         [self.activityIndicator startAnimating];
-#warning Debug logic
-//        [self.descriptionLabel setHidden:YES];
+        [self.descriptionLabel setHidden:NO];
         [self.logInButton setEnabled:NO];
     } else {
         [self.activityIndicator stopAnimating];
-        [self.descriptionLabel setHidden:NO];
+        [self.descriptionLabel setHidden:YES];
         [self.logInButton setEnabled:YES];
         
     }
 }
 
 #pragma mark Segue methods
+
+#pragma mark - IBActions
+
+- (IBAction)loginButtonPressed:(id)sender {
+    [self logInWithCashedCredentials];
+}
 
 
 @end
