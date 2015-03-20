@@ -43,6 +43,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userInfoKey"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Private UI

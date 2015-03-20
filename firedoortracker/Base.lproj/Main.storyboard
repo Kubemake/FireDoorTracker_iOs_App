@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Cc-l1-CJD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Cc-l1-CJD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--HOME-->
@@ -16,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f59-r0-ZgJ">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f59-r0-ZgJ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="wWz-01-vTJ">
@@ -386,7 +387,7 @@ No Data</string>
                         <outlet property="logInButton" destination="qRJ-Iu-DtW" id="ieo-Hm-ZAh"/>
                         <outlet property="loginTextField" destination="qdG-qx-2ap" id="DtK-4D-vgh"/>
                         <outlet property="passwordTextField" destination="egW-DZ-kZi" id="Au2-vc-ppo"/>
-                        <segue destination="D3H-nf-ngR" kind="show" identifier="showTabBarFlowSegueIdentifier" id="gP5-zx-q2v"/>
+                        <segue destination="D3H-nf-ngR" kind="showDetail" identifier="showTabBarFlowSegueIdentifier" id="gP5-zx-q2v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAk-eL-WEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -753,40 +754,292 @@ No Data</string>
             </objects>
             <point key="canvasLocation" x="1562" y="1670"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--SETTINGS-->
         <scene sceneID="orf-Oh-fO9">
             <objects>
-                <viewController id="pvz-dc-COa" customClass="SettingViewController" sceneMemberID="viewController">
+                <viewController title="SETTINGS" id="pvz-dc-COa" customClass="SettingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyx-sX-79I"/>
                         <viewControllerLayoutGuide type="bottom" id="QxR-HO-XpB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="joe-zR-SJ4">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="joe-zR-SJ4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" WORK IN PROGRESS..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZX-6R-aDV">
-                                <rect key="frame" x="83" y="234" width="434" height="132"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="434" id="Iu4-gY-cfd"/>
-                                    <constraint firstAttribute="height" constant="132" id="jD8-cI-vyI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0e-p6-gka" userLabel="ContainerView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="186" y="284" width="376" height="273"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUs-VA-IjE" userLabel="ContainerView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFF-73-9c0">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="26" width="88.5" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8al-gb-ciB" userLabel="FirstNameTextField">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="117" y="22" width="239" height="30"/>
+                                        </variation>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLA-xD-KoI">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="51" width="335" height="1"/>
+                                        </variation>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cD1-qJ-JRR">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="55" width="92" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vWk-jD-PXC" userLabel="LastNameTextField">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="117" y="51" width="239" height="30"/>
+                                        </variation>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4H-u3-Kk6">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="80" width="335" height="1"/>
+                                        </variation>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone No.:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV9-ub-GF0">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="84" width="86" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1YB-p8-NfM" userLabel="PhoneTextField">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="117" y="80" width="239" height="30"/>
+                                        </variation>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8A-jT-0PH">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="109" width="335" height="1"/>
+                                        </variation>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZv-E8-Xzd">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="113" width="47" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ap4-L5-Rd7" userLabel="EmailTextField">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="76" y="109" width="280" height="30"/>
+                                        </variation>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQQ-HD-tI9">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="138" width="335" height="1"/>
+                                        </variation>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmV-ll-Ghn">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="201" width="120" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J2N-Hr-2rX" userLabel="NewPasswordTextField">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="149" y="197" width="207" height="30"/>
+                                        </variation>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Peu-j9-g5p">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="226" width="335" height="1"/>
+                                        </variation>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hp2-EV-w7t">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="230" width="146.5" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GUT-tl-7ze" userLabel="ConfirPasswordTextField">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="177" y="226" width="179" height="30"/>
+                                        </variation>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIK-xx-sSQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="21" y="255" width="335" height="1"/>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="pFF-73-9c0"/>
+                                        <exclude reference="8al-gb-ciB"/>
+                                        <exclude reference="vLA-xD-KoI"/>
+                                        <exclude reference="cD1-qJ-JRR"/>
+                                        <exclude reference="vWk-jD-PXC"/>
+                                        <exclude reference="t4H-u3-Kk6"/>
+                                        <exclude reference="eV9-ub-GF0"/>
+                                        <exclude reference="1YB-p8-NfM"/>
+                                        <exclude reference="M8A-jT-0PH"/>
+                                        <exclude reference="HZv-E8-Xzd"/>
+                                        <exclude reference="Ap4-L5-Rd7"/>
+                                        <exclude reference="lQQ-HD-tI9"/>
+                                        <exclude reference="pmV-ll-Ghn"/>
+                                        <exclude reference="J2N-Hr-2rX"/>
+                                        <exclude reference="Peu-j9-g5p"/>
+                                        <exclude reference="hp2-EV-w7t"/>
+                                        <exclude reference="GUT-tl-7ze"/>
+                                        <exclude reference="gIK-xx-sSQ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="184" y="282" width="376" height="273"/>
+                                    <mask key="subviews">
+                                        <include reference="pFF-73-9c0"/>
+                                        <include reference="8al-gb-ciB"/>
+                                        <include reference="vLA-xD-KoI"/>
+                                        <include reference="cD1-qJ-JRR"/>
+                                        <include reference="vWk-jD-PXC"/>
+                                        <include reference="t4H-u3-Kk6"/>
+                                        <include reference="eV9-ub-GF0"/>
+                                        <include reference="1YB-p8-NfM"/>
+                                        <include reference="M8A-jT-0PH"/>
+                                        <include reference="HZv-E8-Xzd"/>
+                                        <include reference="Ap4-L5-Rd7"/>
+                                        <include reference="lQQ-HD-tI9"/>
+                                        <include reference="pmV-ll-Ghn"/>
+                                        <include reference="J2N-Hr-2rX"/>
+                                        <include reference="Peu-j9-g5p"/>
+                                        <include reference="hp2-EV-w7t"/>
+                                        <include reference="GUT-tl-7ze"/>
+                                        <include reference="gIK-xx-sSQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="mFc-bm-1Mi">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="SAVE" backgroundImage="save-button"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                    <rect key="frame" x="242" y="581" width="260" height="31"/>
+                                </variation>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="pvz-dc-COa" eventType="touchUpInside" id="NJ7-He-eUb"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NYE-O3-oNk">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <color key="color" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="356" y="437" width="37" height="37"/>
+                                </variation>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="5ZX-6R-aDV" secondAttribute="centerY" id="7sM-5E-zcA"/>
-                            <constraint firstAttribute="centerX" secondItem="5ZX-6R-aDV" secondAttribute="centerX" id="x5Q-cz-KXH"/>
-                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="q0e-p6-gka"/>
+                                <exclude reference="LUs-VA-IjE"/>
+                                <exclude reference="mFc-bm-1Mi"/>
+                                <exclude reference="NYE-O3-oNk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="q0e-p6-gka"/>
+                                <include reference="LUs-VA-IjE"/>
+                                <include reference="mFc-bm-1Mi"/>
+                                <include reference="NYE-O3-oNk"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="pd3-fV-R7r"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="NYE-O3-oNk" id="2J3-1l-gXk"/>
+                        <outlet property="confirmPasswordTextField" destination="GUT-tl-7ze" id="9Ny-e6-iaa"/>
+                        <outlet property="containerView" destination="LUs-VA-IjE" id="bDF-Cf-3cD"/>
+                        <outlet property="emailTextField" destination="Ap4-L5-Rd7" id="Tn1-J8-oDZ"/>
+                        <outlet property="firstNameTextField" destination="8al-gb-ciB" id="lx2-4A-Psb"/>
+                        <outlet property="lNewPasswordTextField" destination="J2N-Hr-2rX" id="ugb-KR-CWY"/>
+                        <outlet property="lastNameTextField" destination="vWk-jD-PXC" id="SVA-oR-gxO"/>
+                        <outlet property="phoneNoTextField" destination="1YB-p8-NfM" id="Km9-vW-fI0"/>
+                        <outlet property="saveButton" destination="mFc-bm-1Mi" id="O7B-1Z-cub"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9t-Ro-ueA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="2325"/>
+            <point key="canvasLocation" x="1576.5" y="2326.5"/>
         </scene>
         <!--Reources-->
         <scene sceneID="UuS-eS-PbX">
@@ -827,7 +1080,7 @@ No Data</string>
             <point key="canvasLocation" x="750" y="2325"/>
         </scene>
         <!--Interview Page View Controller-->
-        <scene sceneID="vym-nU-LPO">
+        <scene sceneID="lHd-ru-vK8">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="s4U-DZ-gVs" customClass="InterviewPageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlw-Lj-EZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1010,6 +1263,7 @@ No Data</string>
         <image name="nextButton" width="37" height="37"/>
         <image name="photoIcon" width="137" height="106"/>
         <image name="resources" width="37" height="37"/>
+        <image name="save-button" width="250" height="31"/>
         <image name="scanQRIcon" width="137" height="136"/>
         <image name="settingIcon" width="37" height="37"/>
     </resources>

@@ -19,6 +19,8 @@ static NSString* glossaryKeyWordSearch = @"search_glossary_terms";
 static NSString* inspectionListByUser = @"get_inspection_list_by_user";
 static NSString* inspectionquestionsList = @"get_aperture_issues";
 static NSString* inspectionDoorOverview = @"get_aperture_overview_info";
+static NSString* getProfileInfo = @"get_profile_data";
+static NSString* updateProfileInfoKey = @"update_profile_data";
 static NSString* inspectionUpdateData = @"update_inspection_data";
 
 static NSString* kToken = @"token";
@@ -127,6 +129,11 @@ static bool isFirstAccess = YES;
         case InspectionDoorOverviewRequestType:
             [requestParams setObject:inspectionDoorOverview forKey:kRequestType];
             break;
+        case GetProfileInfoRequestType:
+            [requestParams setObject:getProfileInfo forKey:kRequestType];
+            break;
+        case UpdateProfileInfoRequestType:
+            [requestParams setObject:updateProfileInfoKey forKey:kRequestType];
         case InspectionUpdateDataRequestType:
             [requestParams setObject:inspectionUpdateData forKey:kRequestType];
             break;

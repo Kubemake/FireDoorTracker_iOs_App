@@ -8,6 +8,7 @@ pod 'HMSegmentedControl'
 pod 'CoconutKit', '~> 3.0.rc4'
 pod 'IQDropDownTextField'
 pod 'TestFairy'
+pod 'NPAAViewHelper'
 pod 'SVProgressHUD', '~> 1.1'
 
 end
