@@ -15,9 +15,12 @@
 
 //Import View
 #import <HMSegmentedControl.h>
+#import <SVProgressHUD.h>
 
 //Import Extension
 #import "UIColor+FireDoorTrackerColors.h"
+#import "UIFont+FDTFonts.h"
+#import "UIImage+Utilities.h"
 
 #import "NavigationBarButtons.h"
 
@@ -29,12 +32,15 @@ static NSString* segueEmbededInterviewControllerIdentifier = @"EmbededInterviewC
 
 static NSString* kApertureID = @"aperture_id";
 
-@interface DoorInfoOveriviewViewController ()
+@interface DoorInfoOveriviewViewController ()<InterviewPageDelegate>
 
 //IBOutlets and View Properties
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *doorInfoHeightConstraint;
 @property (assign, nonatomic) BOOL isDoorInfoHidden;
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *doorInfoMenu;
+
+@property (weak, nonatomic) IBOutlet UILabel *doorStatusLabel;
+@property (nonatomic, strong) NSMutableArray *statusViews;
 
 //Embeded View Controller
 @property (weak, nonatomic) InterviewPageViewController* embededInterviewController;
@@ -46,8 +52,7 @@ static NSString* kApertureID = @"aperture_id";
 #pragma mark - View Controller Lyfecircle
 #pragma mark -
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     self.navigationItem.leftBarButtonItem = [NavigationBarButtons backBarButtonItem];
     [self.navigationItem.leftBarButtonItem setTarget:self];
@@ -63,8 +68,7 @@ static NSString* kApertureID = @"aperture_id";
 #pragma mark - Actions
 #pragma mark -
 
-- (void)backButtonPressed
-{
+- (void)backButtonPressed {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -74,6 +78,8 @@ static NSString* kApertureID = @"aperture_id";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:segueEmbededInterviewControllerIdentifier]) {
         self.embededInterviewController = segue.destinationViewController;
+        self.embededInterviewController.inspectionID = self.selectedInspection.uid;
+        self.embededInterviewController.interviewDelegate = self;
     }
 }
 
@@ -99,13 +105,15 @@ static NSString* kApertureID = @"aperture_id";
 
 - (void)loadDoorOverview {
     __weak typeof(self) welf = self;
+    [SVProgressHUD show];
     [[NetworkManager sharedInstance] performRequestWithType:InspectionDoorOverviewRequestType
                                                   andParams:@{kApertureID : self.selectedInspection.apertureId}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
-                                                     //TODO: Display Error
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
+                                                 [SVProgressHUD dismiss];
                                                  welf.embededInterviewController.doorOverviewDictionary = [responseObject objectForKey:@"info"];
                                              }];
 }
@@ -123,10 +131,67 @@ static NSString* kApertureID = @"aperture_id";
 }
 
 - (void)doorInfoMenuChangedValue:(id)sender {
-    
+    [self.embededInterviewController setSelectedPage:self.doorInfoMenu.selectedSegmentIndex];
 }
 
 #pragma mark - Delegation Methods
+#pragma mark - Interview Page Delegate 
 
+- (void)enableMenuTitles:(NSArray *)menuItems {
+    [self.doorInfoMenu setSelectedSegmentIndex:1];
+    [self.embededInterviewController setSelectedPage:1];
+}
+
+- (void)changeInspectionStatusTo:(NSArray *)newStatuses {
+    //Remove preious statuses
+    for (UIView *statusSubview in self.statusViews) {
+        [statusSubview removeFromSuperview];
+    }
+    [self.statusViews removeAllObjects];
+    self.statusViews = [NSMutableArray array];
+    
+    for (NSNumber *nextStatus in newStatuses) {
+        inspectionStatus encodedStatus = (inspectionStatus)[nextStatus integerValue];
+        [self addAndDisplayStatusView:encodedStatus];
+    }
+}
+
+#pragma mark - Display Methods 
+
+- (void)addAndDisplayStatusView:(inspectionStatus)status {
+    NSString *statusName = [Inspection stringForStatus:status];
+    
+    CGSize statusTextSize = [statusName sizeWithAttributes:@{NSFontAttributeName:[UIFont FDTRobotoLightWithSize:17.0f]}];
+    UILabel *statusNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                         0,
+                                                                         statusTextSize.width,
+                                                                         statusTextSize.height)];
+    [statusNameLabel setFont:[UIFont FDTRobotoLightWithSize:17.0f]];
+    [statusNameLabel setTextColor:[UIColor FDTDarkGrayColor]];
+    statusNameLabel.text = statusName;
+    
+    UIImageView *statusIcon = [[UIImageView alloc] initWithImage:[UIImage imageForReviewStaton:status]];
+    statusIcon.frame = CGRectMake(statusNameLabel.bounds.size.width + 5.0f,
+                                  0,
+                                  statusIcon.bounds.size.width,
+                                  statusIcon.bounds.size.height);
+    
+    //Get Last Label Position
+    CGFloat lastStatusLabelXWithWidth = self.doorStatusLabel.bounds.size.width;
+    if ([self.statusViews lastObject]) {
+        UIView *lastStatusView = (UIView *)[self.statusViews lastObject];
+        lastStatusLabelXWithWidth = lastStatusView.frame.origin.x + lastStatusView.bounds.size.width + 10.0f;
+    }
+    
+    UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake(lastStatusLabelXWithWidth,
+                                                                 0,
+                                                                 statusNameLabel.bounds.size.width + statusIcon.bounds.size.width,
+                                                                 statusNameLabel.bounds.size.height)];
+    [statusView addSubview:statusNameLabel];
+    [statusView addSubview:statusIcon];
+    
+    [self.doorStatusLabel addSubview:statusView];
+    [self.statusViews addObject:statusView];
+}
 
 @end

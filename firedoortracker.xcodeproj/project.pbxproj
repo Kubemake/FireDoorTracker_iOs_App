@@ -33,6 +33,11 @@
 		68B27A1D1AB7157C00990DCA /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A1C1AB7157C00990DCA /* Term.m */; };
 		68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A201AB717E900990DCA /* TermTableViewCell.m */; };
 		68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B27A2E1AB85AD300990DCA /* CurrentUser.m */; };
+		68BAA31E1ABB42D300D56EF0 /* QuestionOrAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA31B1ABB42D300D56EF0 /* QuestionOrAnswer.m */; };
+		68BAA31F1ABB42D300D56EF0 /* Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA31D1ABB42D300D56EF0 /* Tab.m */; };
+		68BAA3251ABB42F700D56EF0 /* InterviewConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3221ABB42F700D56EF0 /* InterviewConfirmationViewController.m */; };
+		68BAA3261ABB42F700D56EF0 /* QuestionTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3241ABB42F700D56EF0 /* QuestionTreeViewController.m */; };
+		68BAA3291ABB430F00D56EF0 /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */; };
 		D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */; };
 		F94A8BFB1ABB18CD00A3AC06 /* CellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */; };
 		F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */; };
@@ -110,6 +115,16 @@
 		68B27A201AB717E900990DCA /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermTableViewCell.m; path = Controllers/ResourcesViewController/View/TermTableViewCell.m; sourceTree = "<group>"; };
 		68B27A2D1AB85AD300990DCA /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentUser.h; path = Model/CurrentUser/CurrentUser.h; sourceTree = "<group>"; };
 		68B27A2E1AB85AD300990DCA /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentUser.m; path = Model/CurrentUser/CurrentUser.m; sourceTree = "<group>"; };
+		68BAA31A1ABB42D300D56EF0 /* QuestionOrAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionOrAnswer.h; path = Model/Inspection/QuestionOrAnswer.h; sourceTree = "<group>"; };
+		68BAA31B1ABB42D300D56EF0 /* QuestionOrAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionOrAnswer.m; path = Model/Inspection/QuestionOrAnswer.m; sourceTree = "<group>"; };
+		68BAA31C1ABB42D300D56EF0 /* Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tab.h; path = Model/Inspection/Tab.h; sourceTree = "<group>"; };
+		68BAA31D1ABB42D300D56EF0 /* Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tab.m; path = Model/Inspection/Tab.m; sourceTree = "<group>"; };
+		68BAA3211ABB42F700D56EF0 /* InterviewConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InterviewConfirmationViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/InterviewConfirmationViewController.h; sourceTree = "<group>"; };
+		68BAA3221ABB42F700D56EF0 /* InterviewConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InterviewConfirmationViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/InterviewConfirmationViewController.m; sourceTree = "<group>"; };
+		68BAA3231ABB42F700D56EF0 /* QuestionTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionTreeViewController.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.h; sourceTree = "<group>"; };
+		68BAA3241ABB42F700D56EF0 /* QuestionTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTreeViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.m; sourceTree = "<group>"; };
+		68BAA3271ABB430F00D56EF0 /* UIFont+FDTFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FDTFonts.h"; path = "Extensions/UIFont+FDTFonts.h"; sourceTree = "<group>"; };
+		68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
 		F94A8BF31ABB18CD00A3AC06 /* CellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellDataModel.h; sourceTree = "<group>"; };
 		F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellDataModel.m; sourceTree = "<group>"; };
 		F94A8BF71ABB18CD00A3AC06 /* ContactExpertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertView.h; sourceTree = "<group>"; };
@@ -152,6 +167,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6812ECDC1ABC2A3F00121B43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6851D3831AB5ECAC0085965E /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +360,10 @@
 		688906821AB85C860079F67B /* Inspection */ = {
 			isa = PBXGroup;
 			children = (
+				68BAA31A1ABB42D300D56EF0 /* QuestionOrAnswer.h */,
+				68BAA31B1ABB42D300D56EF0 /* QuestionOrAnswer.m */,
+				68BAA31C1ABB42D300D56EF0 /* Tab.h */,
+				68BAA31D1ABB42D300D56EF0 /* Tab.m */,
 				688906831AB85CA10079F67B /* Inspection.h */,
 				688906841AB85CA10079F67B /* Inspection.m */,
 			);
@@ -365,6 +391,7 @@
 		6889068E1AB8853A0079F67B /* DoorInfoOverviewViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6812ECDC1ABC2A3F00121B43 /* View */,
 				688906981AB96F510079F67B /* InterviewPagingViewController */,
 				6889068F1AB8858F0079F67B /* DoorInfoOveriviewViewController.h */,
 				688906901AB8858F0079F67B /* DoorInfoOveriviewViewController.m */,
@@ -375,6 +402,8 @@
 		688906921AB9583D0079F67B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				68BAA3271ABB430F00D56EF0 /* UIFont+FDTFonts.h */,
+				68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */,
 				F9DA37A01AB9E0BC0075BCB6 /* UIImage+Utilities */,
 				F9DA379C1AB9E0870075BCB6 /* UIColor+FireDoorTrackerColors */,
 				F9DA379B1AB9E0760075BCB6 /* UIColor+additionalInitializers */,
@@ -395,6 +424,10 @@
 		6889069C1AB97F620079F67B /* QuestionsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				68BAA3211ABB42F700D56EF0 /* InterviewConfirmationViewController.h */,
+				68BAA3221ABB42F700D56EF0 /* InterviewConfirmationViewController.m */,
+				68BAA3231ABB42F700D56EF0 /* QuestionTreeViewController.h */,
+				68BAA3241ABB42F700D56EF0 /* QuestionTreeViewController.m */,
 				6889069D1AB98AE00079F67B /* StartInterviewViewController.h */,
 				6889069E1AB98AE00079F67B /* StartInterviewViewController.m */,
 			);
@@ -625,6 +658,7 @@
 				TargetAttributes = {
 					686634A71AB5E7CA003EA804 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 9XVU48JZV7;
 					};
 					686634C31AB5E7CA003EA804 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -709,6 +743,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68BAA31F1ABB42D300D56EF0 /* Tab.m in Sources */,
 				6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */,
 				F9DA37951AB9A30D0075BCB6 /* NiceTabBarView.m in Sources */,
 				F94A8C041ABB1B5600A3AC06 /* ContactExpertCell.m in Sources */,
@@ -720,6 +755,7 @@
 				6889069B1AB96F910079F67B /* InterviewPageViewController.m in Sources */,
 				688906911AB8858F0079F67B /* DoorInfoOveriviewViewController.m in Sources */,
 				6851D3901AB5ED890085965E /* SettingViewController.m in Sources */,
+				68BAA3291ABB430F00D56EF0 /* UIFont+FDTFonts.m in Sources */,
 				68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
@@ -731,12 +767,15 @@
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
 				68B27A1D1AB7157C00990DCA /* Term.m in Sources */,
 				F94A8BFB1ABB18CD00A3AC06 /* CellDataModel.m in Sources */,
+				68BAA31E1ABB42D300D56EF0 /* QuestionOrAnswer.m in Sources */,
 				F9DA37901AB9A2D50075BCB6 /* ContainerViewController.m in Sources */,
 				688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */,
 				688906851AB85CA10079F67B /* Inspection.m in Sources */,
 				6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */,
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
+				68BAA3251ABB42F700D56EF0 /* InterviewConfirmationViewController.m in Sources */,
 				F94A8BFE1ABB18CD00A3AC06 /* ContactExpertViewController.m in Sources */,
+				68BAA3261ABB42F700D56EF0 /* QuestionTreeViewController.m in Sources */,
 				F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */,
 				688906951AB958620079F67B /* UIColor+FireDoorTrackerColors.m in Sources */,
 				6889069F1AB98AE00079F67B /* StartInterviewViewController.m in Sources */,
@@ -864,8 +903,9 @@
 			baseConfigurationReference = 00B0C653FC2A3B21007B85DC /* Pods-firedoortracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = firedoortracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -876,8 +916,9 @@
 			baseConfigurationReference = 650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = firedoortracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

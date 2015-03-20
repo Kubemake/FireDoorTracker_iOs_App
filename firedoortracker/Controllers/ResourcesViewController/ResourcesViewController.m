@@ -11,6 +11,7 @@
 //Import View
 #import "AlphabetView.h"
 #import "TermTableViewCell.h"
+#import <SVProgressHUD.h>
 
 //Import Model
 #import "Term.h"
@@ -61,26 +62,30 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 
 - (void)loadAndDisplayAvailableLetters {
     __weak typeof(self) welf = self;
+    [SVProgressHUD show];
     [[NetworkManager sharedInstance] performRequestWithType:GlossaryLettersRequestType
                                                   andParams:@{}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
-                                                     //TODO: Display Error
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
+                                                 [SVProgressHUD dismiss];
                                                  [welf.alphabetView displayActiveLetters:[responseObject objectForKey:kLetters]];
                                              }];
 }
 
 - (void)loadAndDispayGlossaryTermsByLetter:(NSString *)letter {
     __weak typeof(self) welf = self;
+    [SVProgressHUD show];
     [[NetworkManager sharedInstance] performRequestWithType:GlossaryTermsByLetterRequestType
                                                   andParams:@{kLetter : letter ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
-                                                     //TODO: Display error
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
+                                                 [SVProgressHUD dismiss];
                                                  welf.terms = [NSMutableArray array];
                                                  for (NSDictionary *termDictionary in [responseObject objectForKey:kTerms]) {
                                                      [welf.terms addObject:[[Term alloc] initWithDictionary:termDictionary]];
@@ -102,13 +107,15 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     __weak typeof(self) welf = self;
     [self.backButton setEnabled:YES];
+    [SVProgressHUD show];
     [[NetworkManager sharedInstance] performRequestWithType:GlossaryKeyWordSearchRequestType
                                                   andParams:@{kKeyWord : searchBar.text ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
-                                                     //TODO: Display Error
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
+                                                 [SVProgressHUD dismiss];
                                                  welf.terms = [NSMutableArray array];
                                                  for (NSDictionary *termDictionary in [responseObject objectForKey:kTerms]) {
                                                      [welf.terms addObject:[[Term alloc] initWithDictionary:termDictionary]];
