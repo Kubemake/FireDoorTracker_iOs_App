@@ -20,11 +20,31 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - CoconutKit (3.0):
+    - CoconutKit/zeroing-weak-ref (= 3.0)
+  - CoconutKit/zeroing-weak-ref (3.0)
+  - HMSegmentedControl (1.5)
+  - IQDropDownTextField (1.0.4.1)
+  - NPAAViewHelper (0.0.1)
+  - SVProgressHUD (1.1.2)
+  - TestFairy (1.3.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
+  - CoconutKit (~> 3.0.rc4)
+  - HMSegmentedControl
+  - IQDropDownTextField
+  - NPAAViewHelper
+  - SVProgressHUD (~> 1.1)
+  - TestFairy
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  CoconutKit: 56926e077589280873203c0a6effd0c2a6881550
+  HMSegmentedControl: 5bb76002ce529ad83855a06cbdb5c6e48732141b
+  IQDropDownTextField: 3a6709eea98b91900e33368ab31a99fa54cb3021
+  NPAAViewHelper: 45f9a4d22648b25f0053d8622315503a7c341d06
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  TestFairy: 5852e8e7b7149bb1add629da2bae3008d39d0752
 
-COCOAPODS: 0.36.0.beta.2
+COCOAPODS: 0.36.0
