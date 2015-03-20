@@ -76,8 +76,6 @@ static const CGFloat answerButtonPadding = 5.0f;
         
         if ([answer.selected boolValue]) {
             //TODO: Add to the question array
-            self.nextQuestionButton.enabled = YES;
-            self.selectedAnswer = answer;
             [answerButton setBackgroundColor:[Inspection colorForStatus:answer.status.integerValue]];
         } else {
             [answerButton setBackgroundColor:[UIColor FDTDeepBlueColor]];
@@ -110,7 +108,7 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 - (void)answerSelected:(UIButton *)sender {
     //TODO: Save current Answer for the crump breads
-    self.selectedAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%ld",(long)sender.tag]];
+    self.selectedAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%d",sender.tag]];
     self.selectedAnswer.selected = [NSNumber numberWithBool:![self.selectedAnswer.selected boolValue]];
     if ([self.selectedAnswer.status integerValue] == inspectionStatusCompliant) {
         [self resetAllAnswerSelectionWithousStatus:inspectionStatusCompliant];
@@ -119,6 +117,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     }
     //Reset UI View
     [self displayQuestion:self.currentQuestion];
+    self.nextQuestionButton.enabled = YES;
     
     //TODO: Colorize Previous Answer Status as selected
     
