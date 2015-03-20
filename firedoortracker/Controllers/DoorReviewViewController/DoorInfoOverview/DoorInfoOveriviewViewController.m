@@ -18,6 +18,7 @@
 
 //Import Extension
 #import "UIColor+FireDoorTrackerColors.h"
+#import "UIFont+FDTFonts.h"
 
 #import "NavigationBarButtons.h"
 
@@ -35,6 +36,9 @@ static NSString* kApertureID = @"aperture_id";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *doorInfoHeightConstraint;
 @property (assign, nonatomic) BOOL isDoorInfoHidden;
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *doorInfoMenu;
+
+@property (weak, nonatomic) IBOutlet UILabel *doorStatusLabel;
+@property (nonatomic, strong) NSMutableArray *statusViews;
 
 //Embeded View Controller
 @property (weak, nonatomic) InterviewPageViewController* embededInterviewController;
@@ -134,5 +138,34 @@ static NSString* kApertureID = @"aperture_id";
     [self.embededInterviewController setSelectedPage:1];
 }
 
+- (void)changeInspectionStatusTo:(NSArray *)newStatuses {
+    //Remove preious statuses
+    for (UIView *statusSubview in self.statusViews) {
+        [statusSubview removeFromSuperview];
+    }
+    [self.statusViews removeAllObjects];
+    self.statusViews = [NSMutableArray array];
+    
+    for (NSNumber *nextStatus in newStatuses) {
+        inspectionStatus encodedStatus = (inspectionStatus)[nextStatus integerValue];
+        [self addAndDisplayStatusView:encodedStatus];
+    }
+}
+
+#pragma mark - Display Methods 
+
+- (void)addAndDisplayStatusView:(inspectionStatus)status {
+    NSString *statusName = [Inspection stringForStatus:status];
+    CGSize statusTextSize = [statusName sizeWithAttributes:@{NSFontAttributeName:[UIFont FDTRobotoLightWithSize:17.0f]}];
+    UILabel *statusNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.doorStatusLabel.bounds.size.width,
+                                                                        0,
+                                                                        statusTextSize.width,
+                                                                         statusTextSize.height)];
+    [statusNameLabel setFont:[UIFont FDTRobotoLightWithSize:17.0f]];
+    [statusNameLabel setTextColor:[UIColor FDTDarkGrayColor]];
+    statusNameLabel.text = statusName;
+    [self.doorStatusLabel addSubview:statusNameLabel];
+    [self.statusViews addObject:statusNameLabel];
+}
 
 @end

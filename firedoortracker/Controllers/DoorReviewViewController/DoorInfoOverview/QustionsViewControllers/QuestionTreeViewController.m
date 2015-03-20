@@ -10,7 +10,6 @@
 #import "QuestionTreeViewController.h"
 
 //Import Model
-#import "QuestionOrAnswer.h"
 #import "Inspection.h"
 
 //Import Extension
@@ -151,6 +150,12 @@ static const CGFloat answerButtonPadding = 5.0f;
 - (IBAction)nextQuestionButtonPressed:(id)sender {
     self.previosQuestion = self.currentQuestion;
     QuestionOrAnswer *nextQuestion = [self questionByID:self.selectedAnswer.nextQuiestionID];
+    
+    //Delegate Notifyng
+    if ([self.questionDelegate respondsToSelector:@selector(userSelectAnswer:)]) {
+        [self.questionDelegate userSelectAnswer:self.selectedAnswer];
+    }
+    
     [self displayQuestion:nextQuestion];
 }
 

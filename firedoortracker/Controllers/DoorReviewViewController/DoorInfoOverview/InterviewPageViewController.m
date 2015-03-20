@@ -36,7 +36,10 @@ static NSString* kSelected = @"selected";
 static NSString* kTabs = @"tabs";
 static NSString* kQuestions = @"issues";
 
-@interface InterviewPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, startInterviewDelegate>
+@interface InterviewPageViewController () <UIPageViewControllerDataSource,
+                                           UIPageViewControllerDelegate,
+                                           startInterviewDelegate,
+                                           QuestionTreeDelegate>
 
 //Child View Controllers
 @property (nonatomic, strong) StartInterviewViewController* startInterviewController;
@@ -157,6 +160,16 @@ static NSString* kQuestions = @"issues";
     return [[self.doorOverviewDictionary objectForKey:key] objectForKey:kSelected];
 }
 
+#pragma mark - Question-Answer delegate
+
+- (void)userSelectAnswer:(QuestionOrAnswer *)answer {
+    //TODO: answer not used
+    if ([self.interviewDelegate respondsToSelector:@selector(changeInspectionStatusTo:)]) {
+        [self.interviewDelegate
+         changeInspectionStatusTo:[QuestionOrAnswer statusesByQuestionAndAnswersArray:self.questions]];
+    }
+}
+
 #pragma mark - Display Methods
 #pragma mark - Interview Page Delegate Methods
 
@@ -178,6 +191,7 @@ static NSString* kQuestions = @"issues";
         QuestionTreeViewController *questionVC = [self.storyboard instantiateViewControllerWithIdentifier:questionTreeViewControllerIdentifier];
         questionVC.questionForReview = self.questions;
         questionVC.tabForDisplaying = currentTab;
+        questionVC.questionDelegate = self;
         [contentViewControllersMutable addObject:questionVC];
     }
     //Add Confirmation View Controller

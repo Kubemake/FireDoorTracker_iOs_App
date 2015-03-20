@@ -12,6 +12,7 @@
 
 @required
 - (void)enableMenuTitles:(NSArray *)menuItems;
+- (void)changeInspectionStatusTo:(NSArray *)newStatuses;
 
 @end
 

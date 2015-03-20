@@ -10,8 +10,18 @@
 
 //Import Model
 #import "Tab.h"
+#import "QuestionOrAnswer.h"
+
+@protocol QuestionTreeDelegate <NSObject>
+
+@required
+- (void)userSelectAnswer:(QuestionOrAnswer *)answer;
+
+@end
 
 @interface QuestionTreeViewController : UIViewController
+
+@property (nonatomic, weak) id<QuestionTreeDelegate> questionDelegate;
 
 @property (nonatomic, weak) NSArray* questionForReview;
 @property (nonatomic, weak) Tab *tabForDisplaying;

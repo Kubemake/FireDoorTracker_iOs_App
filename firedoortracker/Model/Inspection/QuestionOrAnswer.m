@@ -64,25 +64,38 @@
 #pragma mark - Inspection Status
 
 + (NSArray *)statusesByQuestionAndAnswersArray:(NSArray *)questionAndAnswers {
-    NSMutableArray *scanedStatuses = [NSMutableArray arrayWithObject:inspectionStatusUnknow];
+    NSMutableArray *scanedStatuses = [NSMutableArray array];
     for (QuestionOrAnswer *currentQuestion in questionAndAnswers) {
         for (QuestionOrAnswer *currentAnswer in currentQuestion.answers) {
             if ([currentAnswer.selected boolValue]) {
-                //TODO:! save selected answers and recet in if conflicted
                 switch (currentAnswer.status.integerValue) {
-                    case inspectionStatusCompliant:
+                    case inspectionStatusCompliant: {
+                        if (![scanedStatuses containsObject:@(inspectionStatusCompliant)]) {
+                            [scanedStatuses addObject:@(inspectionStatusCompliant)];
+                        }
                         break;
+                    }
                     case inspectionStatusMaintenance:
                     case inspectionStatusRecertify:
                     case inspectionStatusRepair:
-                    case inspectionStatusReplace:
+                    case inspectionStatusReplace: {
+                        if ([scanedStatuses containsObject:@(inspectionStatusCompliant)]) {
+                            [scanedStatuses removeObject:@(inspectionStatusCompliant)];
+                        }
+                        if (![scanedStatuses containsObject:currentAnswer.status]) {
+                            [scanedStatuses addObject:currentAnswer.status];
+                        }
                         break;
+                    }
                         
                     default:
                         break;
                 }
             }
         }
+    }
+    if ([scanedStatuses count] == 0) {
+        [scanedStatuses addObject:@(inspectionStatusUnknow)];
     }
     return scanedStatuses;
 }

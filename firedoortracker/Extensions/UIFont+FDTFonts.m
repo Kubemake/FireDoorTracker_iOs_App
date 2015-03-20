@@ -18,4 +18,8 @@
     return [UIFont fontWithName:@"TimesNewRomanPSMT" size:size];
 }
 
++ (UIFont *)FDTRobotoLightWithSize:(CGFloat) size {
+   return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
+}
+
 @end

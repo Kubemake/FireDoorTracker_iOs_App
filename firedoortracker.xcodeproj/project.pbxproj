@@ -167,6 +167,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6812ECDC1ABC2A3F00121B43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6851D3831AB5ECAC0085965E /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +391,7 @@
 		6889068E1AB8853A0079F67B /* DoorInfoOverviewViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6812ECDC1ABC2A3F00121B43 /* View */,
 				688906981AB96F510079F67B /* InterviewPagingViewController */,
 				6889068F1AB8858F0079F67B /* DoorInfoOveriviewViewController.h */,
 				688906901AB8858F0079F67B /* DoorInfoOveriviewViewController.m */,

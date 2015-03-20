@@ -238,10 +238,10 @@
                                             <action selector="showDoorInfoStatusButtonPressed:" destination="79p-Zy-XWy" eventType="touchUpInside" id="yjE-Q3-61F"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status: In Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTd-wu-X9I">
-                                        <rect key="frame" x="159" y="21" width="282" height="21.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTd-wu-X9I">
+                                        <rect key="frame" x="230" y="21" width="140" height="21.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="282" id="zC4-dX-vO5"/>
+                                            <constraint firstAttribute="width" constant="140" id="zC4-dX-vO5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -272,13 +272,13 @@ No Data</string>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="EjA-rk-yU4" secondAttribute="centerX" id="6hV-1w-w2y"/>
                                     <constraint firstItem="x7D-2K-Scs" firstAttribute="top" secondItem="mTd-wu-X9I" secondAttribute="bottom" constant="9" id="AAd-93-93v"/>
-                                    <constraint firstItem="mTd-wu-X9I" firstAttribute="trailing" secondItem="8hJ-Hb-Mi9" secondAttribute="trailing" constant="-70" id="JrM-DC-UIa"/>
-                                    <constraint firstItem="mTd-wu-X9I" firstAttribute="leading" secondItem="x7D-2K-Scs" secondAttribute="leading" constant="26" id="Mku-XN-LrZ"/>
                                     <constraint firstItem="mTd-wu-X9I" firstAttribute="top" secondItem="kTw-Hf-3tc" secondAttribute="top" constant="21" id="aYh-Xh-Gu6"/>
+                                    <constraint firstItem="8hJ-Hb-Mi9" firstAttribute="trailing" secondItem="EjA-rk-yU4" secondAttribute="trailing" constant="167" id="cyU-tV-6gL"/>
                                     <constraint firstAttribute="centerX" secondItem="mTd-wu-X9I" secondAttribute="centerX" id="eoP-8X-ohu"/>
                                     <constraint firstAttribute="bottom" secondItem="EjA-rk-yU4" secondAttribute="bottom" id="gjZ-9B-eRi"/>
                                     <constraint firstItem="8hJ-Hb-Mi9" firstAttribute="top" secondItem="mTd-wu-X9I" secondAttribute="bottom" constant="9" id="qYg-KB-7NM"/>
                                     <constraint firstAttribute="height" constant="200" id="xMZ-DZ-4Ev"/>
+                                    <constraint firstItem="EjA-rk-yU4" firstAttribute="leading" secondItem="x7D-2K-Scs" secondAttribute="leading" constant="124" id="yYI-24-c3e"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -301,6 +301,7 @@ No Data</string>
                     <connections>
                         <outlet property="doorInfoHeightConstraint" destination="xMZ-DZ-4Ev" id="pBW-BU-4eK"/>
                         <outlet property="doorInfoMenu" destination="h2M-LO-cWs" id="Ifr-ep-Z5z"/>
+                        <outlet property="doorStatusLabel" destination="mTd-wu-X9I" id="LG2-V4-zzA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xK4-PQ-JSo" userLabel="First Responder" sceneMemberID="firstResponder"/>

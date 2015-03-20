@@ -44,6 +44,8 @@
             return @"Replace";
         case inspectionStatusRecertify:
             return @"Recertify";
+        default:
+            return @"In Progress";
     }
 }
 
