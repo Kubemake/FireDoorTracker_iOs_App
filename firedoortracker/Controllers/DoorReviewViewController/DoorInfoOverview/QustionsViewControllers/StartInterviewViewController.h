@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol startInterviewDelegate <NSObject>
+
+@required
+- (void)submitDoorOverview;
+
+@end
+
 @interface StartInterviewViewController : UIViewController
+
+@property (nonatomic, weak) id<startInterviewDelegate> delegate;
 
 - (void)displayDoorProperties:(NSDictionary *)doorProperties;
 
