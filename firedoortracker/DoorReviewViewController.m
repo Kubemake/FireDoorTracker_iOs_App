@@ -16,6 +16,7 @@
 
 //Import View
 #import "InspectionCollectionViewCell.h"
+#import <SVProgressHUD.h>
 
 static NSString* inspectionCellIdentifier = @"InspectionCollectionViewCell";
 static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifier";
@@ -57,21 +58,27 @@ static NSString* kUserInspections = @"inspections";
     [refreshControl addTarget:self action:@selector(refreshInspectionList:) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:refreshControl];
     self.collectionView.alwaysBounceVertical = YES;
+    
+    if (!self.inspectionsForDisplaying) [refreshControl beginRefreshing];
 }
 
 #pragma mark - API Methods
 #pragma mark -
 
 - (void)refreshInspectionList:(UIRefreshControl *)sender {
+    [SVProgressHUD show];
+    __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:InspectionListByUserRequestType
                                                   andParams:@{}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  [sender endRefreshing];
                                                  if (error) {
-                                                     //TODO: Display Error
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
+                                                 [SVProgressHUD showSuccessWithStatus:nil];
                                                  [CurrentUser sharedInstance].userInscpetions = [responseObject objectForKey:kUserInspections];
+                                                 [welf.collectionView reloadData];
                                              }];
     
 }

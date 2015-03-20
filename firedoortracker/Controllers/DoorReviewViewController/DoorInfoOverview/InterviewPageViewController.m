@@ -17,6 +17,9 @@
 #import "QuestionTreeViewController.h"
 #import "InterviewConfirmationViewController.h"
 
+//Import View
+#import <SVProgressHUD.h>
+
 typedef enum{
     interviewPageControllerOverview = 0,
     interviewPageControllerQuestion = 1
@@ -129,6 +132,7 @@ static NSString* kQuestions = @"issues";
 
 - (void)submitDoorOverview {
     __weak typeof(self) welf = self;
+    [SVProgressHUD show];
     [[NetworkManager sharedInstance] performRequestWithType:InspectionQuestionListRequestType
                                                   andParams:@{kInspectionID : self.inspectionID,
                                                               kWallRating : [self doorOverviewPropertyByKey:kWallRating],
@@ -137,9 +141,10 @@ static NSString* kQuestions = @"issues";
                                                               kRating : [self doorOverviewPropertyByKey:kRating]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
-                                                     //TODO: Display Error
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
+                                                 [SVProgressHUD showSuccessWithStatus:nil];
                                                  NSMutableArray *mutableTabs = [NSMutableArray array];
                                                  for (NSDictionary *tabDictionary in [[responseObject objectForKey:kTabs] allObjects]) {
                                                      [mutableTabs addObject:[[Tab alloc] initWithDictionary:tabDictionary]];

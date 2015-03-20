@@ -15,6 +15,7 @@
 
 //Import View
 #import <HMSegmentedControl.h>
+#import <SVProgressHUD.h>
 
 //Import Extension
 #import "UIColor+FireDoorTrackerColors.h"
@@ -104,13 +105,15 @@ static NSString* kApertureID = @"aperture_id";
 
 - (void)loadDoorOverview {
     __weak typeof(self) welf = self;
+    [SVProgressHUD show];
     [[NetworkManager sharedInstance] performRequestWithType:InspectionDoorOverviewRequestType
                                                   andParams:@{kApertureID : self.selectedInspection.apertureId}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
-                                                     //TODO: Display Error
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
+                                                 [SVProgressHUD dismiss];
                                                  welf.embededInterviewController.doorOverviewDictionary = [responseObject objectForKey:@"info"];
                                              }];
 }
