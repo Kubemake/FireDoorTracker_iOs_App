@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Inspection.h"
 
 @interface QuestionOrAnswer : NSObject
 
@@ -24,5 +25,8 @@
 
 //Public accessory methods
 - (QuestionOrAnswer *)answerByID:(NSString *)answerID;
+
+//Status for Door Review
++ (NSArray *)statusesByQuestionAndAnswersArray:(NSArray *)questionAndAnswers;
 
 @end

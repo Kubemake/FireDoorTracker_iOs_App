@@ -61,4 +61,30 @@
     return nil;
 }
 
+#pragma mark - Inspection Status
+
++ (NSArray *)statusesByQuestionAndAnswersArray:(NSArray *)questionAndAnswers {
+    NSMutableArray *scanedStatuses = [NSMutableArray arrayWithObject:inspectionStatusUnknow];
+    for (QuestionOrAnswer *currentQuestion in questionAndAnswers) {
+        for (QuestionOrAnswer *currentAnswer in currentQuestion.answers) {
+            if ([currentAnswer.selected boolValue]) {
+                //TODO:! save selected answers and recet in if conflicted
+                switch (currentAnswer.status.integerValue) {
+                    case inspectionStatusCompliant:
+                        break;
+                    case inspectionStatusMaintenance:
+                    case inspectionStatusRecertify:
+                    case inspectionStatusRepair:
+                    case inspectionStatusReplace:
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    return scanedStatuses;
+}
+
 @end

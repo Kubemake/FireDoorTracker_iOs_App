@@ -10,7 +10,8 @@
 #import <UIKit/UIKit.h>
 
 typedef enum{
-    inspectionStatusCompliant = 1,
+    inspectionStatusUnknow = 0,
+    inspectionStatusCompliant,
     inspectionStatusMaintenance,
     inspectionStatusRepair,
     inspectionStatusReplace,
