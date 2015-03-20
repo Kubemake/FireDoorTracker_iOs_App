@@ -18,8 +18,9 @@
 #import "InspectionCollectionViewCell.h"
 
 static NSString* inspectionCellIdentifier = @"InspectionCollectionViewCell";
-
 static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifier";
+
+static NSString* kUserInspections = @"inspections";
 
 @interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -51,13 +52,28 @@ static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifi
 }
 
 - (void)addRefreshControll {
-    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor grayColor];
+    [refreshControl addTarget:self action:@selector(refreshInspectionList:) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:refreshControl];
+    self.collectionView.alwaysBounceVertical = YES;
 }
 
 #pragma mark - API Methods
 #pragma mark -
 
-- (void)refreshInspectionList {
+- (void)refreshInspectionList:(UIRefreshControl *)sender {
+    [[NetworkManager sharedInstance] performRequestWithType:InspectionListByUserRequestType
+                                                  andParams:@{}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 [sender endRefreshing];
+                                                 if (error) {
+                                                     //TODO: Display Error
+                                                     return;
+                                                 }
+                                                 [CurrentUser sharedInstance].userInscpetions = [responseObject objectForKey:kUserInspections];
+                                             }];
+    
 }
 
 #pragma mark - CollectionView
