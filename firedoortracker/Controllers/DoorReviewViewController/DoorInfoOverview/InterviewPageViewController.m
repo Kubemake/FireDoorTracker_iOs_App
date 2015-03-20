@@ -159,6 +159,7 @@ static NSString* kQuestions = @"issues";
                                                  welf.questions = mutableQuestions;
                                                  [welf displayTabQuestionsViewControllers];
                                                  [welf displayTabsOnDoorInfoOverview];
+                                                 [welf notifyDelagateAboutStatusChanges];
                                              }];
 }
 
@@ -170,10 +171,7 @@ static NSString* kQuestions = @"issues";
 
 - (void)userSelectAnswer:(QuestionOrAnswer *)answer {
     //TODO: Maybe call this method ever
-    if ([self.interviewDelegate respondsToSelector:@selector(changeInspectionStatusTo:)]) {
-        [self.interviewDelegate
-         changeInspectionStatusTo:[QuestionOrAnswer statusesByQuestionAndAnswersArray:self.questions]];
-    }
+    [self notifyDelagateAboutStatusChanges];
     //Save info and server
     [[NetworkManager sharedInstance] performRequestWithType:InspectionUpdateDataRequestType
                                                   andParams:@{kInspectionID : self.inspectionID,
@@ -185,6 +183,13 @@ static NSString* kQuestions = @"issues";
                                                      return;
                                                  }
                                              }];
+}
+
+- (void)notifyDelagateAboutStatusChanges {
+    if ([self.interviewDelegate respondsToSelector:@selector(changeInspectionStatusTo:)]) {
+        [self.interviewDelegate
+         changeInspectionStatusTo:[QuestionOrAnswer statusesByQuestionAndAnswersArray:self.questions]];
+    }
 }
 
 #pragma mark - Display Methods
