@@ -35,6 +35,7 @@ static NSString* kSmokeRating = @"smoke_Rating";
 static NSString* kMaterial = @"material";
 static NSString* kRating = @"rating";
 static NSString* kSelected = @"selected";
+static NSString* kStatus = @"status";
 static NSString* kidFormField = @"idFormFields";
 
 static NSString* kTabs = @"tabs";
@@ -43,7 +44,8 @@ static NSString* kQuestions = @"issues";
 @interface InterviewPageViewController () <UIPageViewControllerDataSource,
                                            UIPageViewControllerDelegate,
                                            startInterviewDelegate,
-                                           QuestionTreeDelegate>
+                                           QuestionTreeDelegate,
+                                           InterviewConfirmationProtocol>
 
 //Child View Controllers
 @property (nonatomic, strong) StartInterviewViewController* startInterviewController;
@@ -176,7 +178,8 @@ static NSString* kQuestions = @"issues";
     [[NetworkManager sharedInstance] performRequestWithType:InspectionUpdateDataRequestType
                                                   andParams:@{kInspectionID : self.inspectionID,
                                                               kidFormField : answer.idFormField,
-                                                              kSelected : (answer.selected.integerValue) ? answer.selected : [NSNull null]}
+                                                              kSelected : (answer.selected.integerValue) ? answer.selected : [NSNull null],
+                                                              kStatus : answer.status}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      //TODO: Display Error
@@ -190,6 +193,24 @@ static NSString* kQuestions = @"issues";
         [self.interviewDelegate
          changeInspectionStatusTo:[QuestionOrAnswer statusesByQuestionAndAnswersArray:self.questions]];
     }
+}
+
+#pragma mark - Review Confirmation Delegate
+
+- (void)interviewConfirmed {
+    [SVProgressHUD show];
+    __weak typeof(self) welf = self;
+    [[NetworkManager sharedInstance] performRequestWithType:InspectionConfirmationRequestType
+                                                  andParams:@{kInspectionID : self.inspectionID}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                     return;
+                                                 }
+                                                 [welf.navigationController dismissViewControllerAnimated:YES
+                                                                                               completion:nil];
+                                                 [SVProgressHUD showSuccessWithStatus:@"Inspection Sent to the Server"];
+                                             }];
 }
 
 #pragma mark - Display Methods
@@ -218,6 +239,9 @@ static NSString* kQuestions = @"issues";
     }
     //Add Confirmation View Controller
     InterviewConfirmationViewController *confVC = [self.storyboard instantiateViewControllerWithIdentifier:confirmationViewControllerIdentifier];
+    confVC.tabs = self.tabs;
+    confVC.questionAndAnswers = self.questions;
+    confVC.confirmationDelegate = self;
     [contentViewControllersMutable addObject:confVC];
     
     self.contentViewControllers = contentViewControllersMutable;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68280EC71ABD92640041C570 /* ConfirmationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68280EC61ABD92640041C570 /* ConfirmationTableViewCell.m */; };
 		6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3871AB5ED2D0085965E /* MediaViewController.m */; };
 		6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38B1AB5ED530085965E /* ResourcesViewController.m */; };
 		6851D3901AB5ED890085965E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38F1AB5ED890085965E /* SettingViewController.m */; };
@@ -65,6 +66,8 @@
 		00B0C653FC2A3B21007B85DC /* Pods-firedoortracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-firedoortracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-firedoortracker/Pods-firedoortracker.debug.xcconfig"; sourceTree = "<group>"; };
 		062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-firedoortracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		650CE47C06DA39D4C8CBF059 /* Pods-firedoortracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-firedoortracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-firedoortracker/Pods-firedoortracker.release.xcconfig"; sourceTree = "<group>"; };
+		68280EC51ABD92640041C570 /* ConfirmationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmationTableViewCell.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/ConfirmationTableViewCell.h; sourceTree = "<group>"; };
+		68280EC61ABD92640041C570 /* ConfirmationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmationTableViewCell.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/ConfirmationTableViewCell.m; sourceTree = "<group>"; };
 		6851D3861AB5ED2D0085965E /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaViewController.h; path = Controllers/MediaViewController/MediaViewController.h; sourceTree = "<group>"; };
 		6851D3871AB5ED2D0085965E /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaViewController.m; path = Controllers/MediaViewController/MediaViewController.m; sourceTree = "<group>"; };
 		6851D38A1AB5ED530085965E /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcesViewController.h; path = Controllers/ResourcesViewController/ResourcesViewController.h; sourceTree = "<group>"; };
@@ -170,6 +173,15 @@
 		6812ECDC1ABC2A3F00121B43 /* View */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		68280EC41ABD92480041C570 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				68280EC51ABD92640041C570 /* ConfirmationTableViewCell.h */,
+				68280EC61ABD92640041C570 /* ConfirmationTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -424,6 +436,7 @@
 		6889069C1AB97F620079F67B /* QuestionsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				68280EC41ABD92480041C570 /* View */,
 				68BAA3211ABB42F700D56EF0 /* InterviewConfirmationViewController.h */,
 				68BAA3221ABB42F700D56EF0 /* InterviewConfirmationViewController.m */,
 				68BAA3231ABB42F700D56EF0 /* QuestionTreeViewController.h */,
@@ -775,6 +788,7 @@
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
 				68BAA3251ABB42F700D56EF0 /* InterviewConfirmationViewController.m in Sources */,
 				F94A8BFE1ABB18CD00A3AC06 /* ContactExpertViewController.m in Sources */,
+				68280EC71ABD92640041C570 /* ConfirmationTableViewCell.m in Sources */,
 				68BAA3261ABB42F700D56EF0 /* QuestionTreeViewController.m in Sources */,
 				F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */,
 				688906951AB958620079F67B /* UIColor+FireDoorTrackerColors.m in Sources */,
