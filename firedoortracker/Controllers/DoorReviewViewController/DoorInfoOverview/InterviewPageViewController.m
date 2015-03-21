@@ -207,8 +207,7 @@ static NSString* kQuestions = @"issues";
                                                      [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
-                                                 [welf.navigationController dismissViewControllerAnimated:YES
-                                                                                               completion:nil];
+                                                 [welf.navigationController popToRootViewControllerAnimated:YES];
                                                  [SVProgressHUD showSuccessWithStatus:@"Inspection Sent to the Server"];
                                              }];
 }
