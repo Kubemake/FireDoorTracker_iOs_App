@@ -121,6 +121,8 @@ static NSString* homeCellIdentifier = @"HomeMenuCollectionViewCell";
             break;
         case homeMenuItemLogOut: {
             [parentViewController.niceTabBarView setSelectedButton:5];
+            [parentViewController performSegueWithIdentifier:loginViewControllerSegueIdentifier
+                                                      sender:parentViewController];
         }
             break;
     }
