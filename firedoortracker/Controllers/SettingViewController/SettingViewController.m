@@ -10,6 +10,7 @@
 #import "NetworkManager.h"
 #import "NPAlertViewHelper.h"
 #import "UIColor+additionalInitializers.h"
+#import "ContainerViewController.h"
 
 static NSString *const userInfoKey = @"userInfoKey";
 
@@ -132,7 +133,11 @@ static NSString *const passwordKey = @"password";
                                         withMessage:@"Profile succesfully updated!"
                                           presenter:self];
             if (weakSelf.isPasswordChanged) {
-#warning move to login
+                UINavigationController *navController = (UINavigationController *)self.parentViewController;
+                ContainerViewController *parentViewController = (ContainerViewController *)navController.parentViewController;
+                [parentViewController.niceTabBarView setSelectedButton:5];
+                [parentViewController performSegueWithIdentifier:loginViewControllerSegueIdentifier
+                                                          sender:parentViewController];
             }
         }
     };
