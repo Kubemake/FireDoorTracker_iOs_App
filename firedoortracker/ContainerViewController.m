@@ -18,15 +18,13 @@
 
 #pragma mark - HiceTabBarViewDelegate
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.niceTabBarView.delegate = self;
 }
 
-- (void)niceTabBarViewButtonPressed:(NiceTabBarButtonType)button
-{
+- (void)niceTabBarViewButtonPressed:(NiceTabBarButtonType)button {
     if (button == NiceTabBarButtonTypeHome) {
         [self performSegueWithIdentifier:homeViewControllerSegueIdentifier sender:self];
     }
@@ -43,7 +41,7 @@
         [self performSegueWithIdentifier:settingsViewControllerSegueIdentifier sender:self];
     }
     else if (button == NiceTabBarButtonTypeLogOut) {
-#warning add logic for logout
+        [self performSegueWithIdentifier:loginViewControllerSegueIdentifier sender:self];
     }
 }
 
