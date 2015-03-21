@@ -14,6 +14,9 @@
 //Import Model
 #import "CurrentUser.h"
 
+//Import View
+#import <SVProgressHUD.H>
+
 static NSString* showTabBarFlowSegueIdentifier = @"showTabBarFlowSegueIdentifier";
 
 static NSString* kUserInspections = @"inspections";
@@ -51,7 +54,8 @@ static NSString* kUserInspections = @"inspections";
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  [welf changeViewStatus:NO];
                                                  if (error) {
-                                                     [welf.descriptionLabel setText:NSLocalizedString(@"Connection Problem", nil)];
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                     return;
                                                  }
                                                  [welf.descriptionLabel setText:NSLocalizedString(@"Authorization Completed",nil)];
                                                  [welf loadIssuesListFromServer];
