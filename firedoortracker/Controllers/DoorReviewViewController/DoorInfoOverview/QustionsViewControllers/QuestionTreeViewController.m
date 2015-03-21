@@ -15,6 +15,7 @@
 //Import Extension
 #import "UIFont+FDTFonts.h"
 #import "UIColor+FireDoorTrackerColors.h"
+#import "UIImage+Utilities.h"
 
 static const CGFloat maxAnswerButtonHeight = 65.0f;
 static const CGFloat answerButtonPadding = 5.0f;
@@ -88,10 +89,25 @@ static const CGFloat answerButtonPadding = 5.0f;
         
         [answerButton addTarget:self action:@selector(answerSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self.questionBodyView addSubview:answerButton];
+        [self addStatusIconsToButton:answerButton withAnswer:answer];
+        
         [answerButtons addObject:answerButton];
         answerButtonY += answerButtonHeight;
     }
     self.answerButtons = answerButtons;
+}
+
+- (void)addStatusIconsToButton:(UIButton *)button withAnswer:(QuestionOrAnswer *)answer {
+    CGFloat statusIconX = button.frame.origin.x + button.bounds.size.width + 2.0f;
+    QuestionOrAnswer *nextQuestionWithAnswers = [self questionByID:answer.nextQuiestionID];
+    for (QuestionOrAnswer *subQuestions in nextQuestionWithAnswers.answers) {
+        if ([subQuestions.selected boolValue]) {
+            UIImageView *statusIcon = [[UIImageView alloc] initWithImage:[UIImage imageForReviewStaton:subQuestions.status.integerValue]];
+            statusIcon.frame = CGRectMake(statusIconX, 0, statusIcon.bounds.size.width, statusIcon.bounds.size.height);
+            [button addSubview:statusIcon];
+            statusIconX += statusIcon.bounds.size.width + 2.0f;
+        }
+    }
 }
 
 #pragma mark - Supporting Methods
