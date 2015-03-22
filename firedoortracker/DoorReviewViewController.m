@@ -77,7 +77,7 @@ static NSString* kUserInspections = @"inspections";
                                                      return;
                                                  }
                                                  [SVProgressHUD showSuccessWithStatus:nil];
-                                                 [CurrentUser sharedInstance].userInscpetions = [responseObject objectForKey:kUserInspections];
+                                                 [CurrentUser sharedInstance].userInscpetions = [[responseObject objectForKey:kUserInspections] allObjects];
                                                  [welf.collectionView reloadData];
                                              }];
     

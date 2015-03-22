@@ -77,7 +77,7 @@ static NSString* kUserInspections = @"inspections";
                                                      [welf.descriptionLabel setText:NSLocalizedString(@"Error in Issues List Loading", nil)];
                                                  }
                                                  [welf.descriptionLabel setText:NSLocalizedString(@"Issues List Loading Completed",nil)];
-                                                 [CurrentUser sharedInstance].userInscpetions = [responseObject objectForKey:kUserInspections];
+                                                 [CurrentUser sharedInstance].userInscpetions = [[responseObject objectForKey:kUserInspections] allObjects];
                                                  [welf performSegueWithIdentifier:showTabBarFlowSegueIdentifier
                                                                            sender:welf];
                                              }];
