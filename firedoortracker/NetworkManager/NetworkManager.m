@@ -9,7 +9,7 @@
 #import "NetworkManager.h"
 #import <AFNetworking.h>
 
-static NSString* baseURL = @"http://superpizdato.com/service/dispatcher";
+static NSString* baseURL = @"http://firedoortracker.org/service/dispatcher";
 
 static NSString* kRequestType = @"type";
 static NSString* AuthRequestType = @"auth";
