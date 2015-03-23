@@ -25,6 +25,7 @@
 
 //Public accessory methods
 - (QuestionOrAnswer *)answerByID:(NSString *)answerID;
+- (NSArray *)selectedAnswersLabels;
 
 //Status for Door Review
 + (NSArray *)statusesByQuestionAndAnswersArray:(NSArray *)questionAndAnswers;

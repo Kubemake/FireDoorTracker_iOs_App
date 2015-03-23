@@ -18,7 +18,8 @@ typedef enum {
     InspectionListByUserRequestType,
     InspectionQuestionListRequestType,
     InspectionDoorOverviewRequestType,
-    InspectionUpdateDataRequestType
+    InspectionUpdateDataRequestType,
+    InspectionConfirmationRequestType
 }RequestType ;
 
 @interface NetworkManager : NSObject

@@ -27,6 +27,7 @@ static NSString* kUserInspections = @"inspections";
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UILabel *noInspectionsLabel;
 
 //User Data
 @property (strong, nonatomic) NSArray* inspectionsForDisplaying;
@@ -49,6 +50,7 @@ static NSString* kUserInspections = @"inspections";
 
 - (void)displayCurrentUserInspections {
     self.inspectionsForDisplaying = [CurrentUser sharedInstance].userInscpetions;
+    self.noInspectionsLabel.hidden = (self.inspectionsForDisplaying.count) ? YES : NO;
     [self.collectionView reloadData];
 }
 
@@ -77,7 +79,10 @@ static NSString* kUserInspections = @"inspections";
                                                      return;
                                                  }
                                                  [SVProgressHUD showSuccessWithStatus:nil];
-                                                 [CurrentUser sharedInstance].userInscpetions = [responseObject objectForKey:kUserInspections];
+                                                 [CurrentUser sharedInstance].userInscpetions = [[responseObject objectForKey:kUserInspections] allObjects];
+                                                 welf.inspectionsForDisplaying = [CurrentUser sharedInstance].userInscpetions;
+                                                 welf.noInspectionsLabel.hidden = (welf.inspectionsForDisplaying.count) ? YES : NO;
+
                                                  [welf.collectionView reloadData];
                                              }];
     
