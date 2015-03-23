@@ -592,8 +592,16 @@ No Data</string>
                                     <constraint firstItem="Sx6-Ul-NOA" firstAttribute="leading" secondItem="mpY-Jf-9as" secondAttribute="trailing" constant="100" id="sdK-Kj-A2v"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please input description here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-gB-jYF">
+                                <rect key="frame" x="0.0" y="307" width="600" height="275"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UWy-Xt-lAu" id="xPV-0N-7vY"/>
+                                </connections>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPB-nh-JKd">
-                                <rect key="frame" x="175.5" y="555" width="250" height="30"/>
+                                <rect key="frame" x="175" y="266" width="250" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Kg5-Um-6HH"/>
                                     <constraint firstAttribute="width" constant="250" id="yXc-dt-wm1"/>
@@ -607,25 +615,17 @@ No Data</string>
                                     <action selector="submitButtomPressed:" destination="UWy-Xt-lAu" eventType="touchUpInside" id="CFZ-Zn-jMQ"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please input description here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-gB-jYF">
-                                <rect key="frame" x="0.0" y="272" width="600" height="275"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="UWy-Xt-lAu" id="xPV-0N-7vY"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PBf-0j-5XP" firstAttribute="leading" secondItem="rLE-Bk-eJc" secondAttribute="leading" id="07T-kr-udm"/>
+                            <constraint firstItem="7UF-gB-jYF" firstAttribute="top" secondItem="qPB-nh-JKd" secondAttribute="bottom" constant="11" id="4gU-dk-KEQ"/>
                             <constraint firstAttribute="trailing" secondItem="PBf-0j-5XP" secondAttribute="trailing" id="9WK-kE-KZy"/>
                             <constraint firstItem="PBf-0j-5XP" firstAttribute="top" secondItem="bhS-Vz-MuU" secondAttribute="bottom" id="Efb-3Z-J7f"/>
                             <constraint firstItem="7UF-gB-jYF" firstAttribute="leading" secondItem="rLE-Bk-eJc" secondAttribute="leading" id="OG2-eB-pdr"/>
-                            <constraint firstItem="qPB-nh-JKd" firstAttribute="top" secondItem="7UF-gB-jYF" secondAttribute="bottom" constant="8" id="aNW-2f-WcU"/>
-                            <constraint firstItem="lfM-dy-MXD" firstAttribute="top" secondItem="qPB-nh-JKd" secondAttribute="bottom" constant="15" id="ghe-27-a1F"/>
-                            <constraint firstItem="7UF-gB-jYF" firstAttribute="top" secondItem="PBf-0j-5XP" secondAttribute="bottom" constant="8" id="lbr-qu-nFI"/>
+                            <constraint firstItem="lfM-dy-MXD" firstAttribute="top" secondItem="7UF-gB-jYF" secondAttribute="bottom" constant="18" id="frN-c1-Zrd"/>
                             <constraint firstAttribute="centerX" secondItem="qPB-nh-JKd" secondAttribute="centerX" id="nlc-je-onx"/>
+                            <constraint firstItem="qPB-nh-JKd" firstAttribute="top" secondItem="PBf-0j-5XP" secondAttribute="bottom" constant="2" id="rgV-7N-i5E"/>
                             <constraint firstAttribute="trailing" secondItem="7UF-gB-jYF" secondAttribute="trailing" id="zof-5i-lbz"/>
                         </constraints>
                     </view>
