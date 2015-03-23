@@ -41,6 +41,9 @@
         [self performSegueWithIdentifier:settingsViewControllerSegueIdentifier sender:self];
     }
     else if (button == NiceTabBarButtonTypeLogOut) {
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userInfoKey"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         [self performSegueWithIdentifier:loginViewControllerSegueIdentifier sender:self];
     }
 }

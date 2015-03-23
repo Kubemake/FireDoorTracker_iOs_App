@@ -135,6 +135,7 @@ static bool isFirstAccess = YES;
             break;
         case UpdateProfileInfoRequestType:
             [requestParams setObject:updateProfileInfoKey forKey:kRequestType];
+            break;
         case InspectionUpdateDataRequestType:
             [requestParams setObject:inspectionUpdateData forKey:kRequestType];
             break;
