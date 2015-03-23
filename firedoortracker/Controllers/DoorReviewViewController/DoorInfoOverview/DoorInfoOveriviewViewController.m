@@ -40,6 +40,7 @@ static NSString* kApertureID = @"aperture_id";
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *doorInfoMenu;
 
 @property (weak, nonatomic) IBOutlet UILabel *doorStatusLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusLabelXConstraint;
 @property (nonatomic, strong) NSMutableArray *statusViews;
 
 //Embeded View Controller
@@ -150,6 +151,10 @@ static NSString* kApertureID = @"aperture_id";
     [self.statusViews removeAllObjects];
     self.statusViews = [NSMutableArray array];
     
+    //move status label to new position to display new statuses
+    self.statusLabelXConstraint.constant = newStatuses.count * 50.0f;
+    [self.view layoutIfNeeded];
+    
     for (NSNumber *nextStatus in newStatuses) {
         inspectionStatus encodedStatus = (inspectionStatus)[nextStatus integerValue];
         [self addAndDisplayStatusView:encodedStatus];
@@ -176,8 +181,8 @@ static NSString* kApertureID = @"aperture_id";
                                   statusIcon.bounds.size.width,
                                   statusIcon.bounds.size.height);
     
-    //Get Last Label Position
     CGFloat lastStatusLabelXWithWidth = self.doorStatusLabel.bounds.size.width;
+    
     if ([self.statusViews lastObject]) {
         UIView *lastStatusView = (UIView *)[self.statusViews lastObject];
         lastStatusLabelXWithWidth = lastStatusView.frame.origin.x + lastStatusView.bounds.size.width + 10.0f;

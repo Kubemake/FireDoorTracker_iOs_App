@@ -10,14 +10,15 @@
 #import "NetworkManager.h"
 #import "NPAlertViewHelper.h"
 #import "UIColor+additionalInitializers.h"
+#import "ContainerViewController.h"
 
 static NSString *const userInfoKey = @"userInfoKey";
 
-static NSString *const firstNameKey = @"firstName";
-static NSString *const lastNameKey = @"lastName";
-static NSString *const emailKey = @"email";
+static NSString *const firstNameKey   = @"firstName";
+static NSString *const lastNameKey    = @"lastName";
+static NSString *const emailKey       = @"email";
 static NSString *const phoneNumberKey = @"mobilePhone";
-static NSString *const passwordKey = @"password";
+static NSString *const passwordKey    = @"password";
 
 @interface SettingViewController ()
 
@@ -128,11 +129,20 @@ static NSString *const passwordKey = @"password";
         }
         else {
             [self writeUserToUserDefaults];
-            [NPAlertViewHelper showOkAlertWithTitle:nil
-                                        withMessage:@"Profile succesfully updated!"
-                                          presenter:self];
             if (weakSelf.isPasswordChanged) {
-#warning move to login
+                [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userInfoKey"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                UINavigationController *navController = (UINavigationController *)self.parentViewController;
+                ContainerViewController *parentViewController = (ContainerViewController *)navController.parentViewController;
+                [parentViewController.niceTabBarView setSelectedButton:5];
+                [parentViewController performSegueWithIdentifier:loginViewControllerSegueIdentifier
+                                                          sender:self];
+            }
+            else {
+                [NPAlertViewHelper showOkAlertWithTitle:nil
+                                            withMessage:@"Profile succesfully updated!"
+                                              presenter:self];
             }
         }
     };

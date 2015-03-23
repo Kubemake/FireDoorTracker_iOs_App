@@ -15,6 +15,7 @@ static NSString *const doorReviewViewControllerSegueIdentifier = @"DoorReviewVie
 static NSString *const mediaViewControllerSegueIdentifier = @"MediaViewControllerSegue";
 static NSString *const resourcesViewControllerSegueIdentifier = @"ResourcesViewControllerSegue";
 static NSString *const settingsViewControllerSegueIdentifier = @"SettingsViewController";
+static NSString *const loginViewControllerSegueIdentifier = @"loginViewControllerSegueIdentifier";
 
 @interface ContainerViewController : HLSPlaceholderViewController
 

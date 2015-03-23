@@ -61,6 +61,16 @@
     return nil;
 }
 
+- (NSArray *)selectedAnswersLabels {
+    NSMutableArray *answersLabels = [NSMutableArray array];
+    for (QuestionOrAnswer *answer in self.answers) {
+        if ([answer.selected boolValue]) {
+            [answersLabels addObject:answer.label];
+        }
+    }
+    return answersLabels;
+}
+
 #pragma mark - Inspection Status
 
 + (NSArray *)statusesByQuestionAndAnswersArray:(NSArray *)questionAndAnswers {

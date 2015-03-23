@@ -9,7 +9,7 @@
 #import "NetworkManager.h"
 #import <AFNetworking.h>
 
-static NSString* baseURL = @"http://superpizdato.com/service/dispatcher";
+static NSString* baseURL = @"http://firedoortracker.org/service/dispatcher";
 
 static NSString* kRequestType = @"type";
 static NSString* AuthRequestType = @"auth";
@@ -22,6 +22,7 @@ static NSString* inspectionDoorOverview = @"get_aperture_overview_info";
 static NSString* getProfileInfo = @"get_profile_data";
 static NSString* updateProfileInfoKey = @"update_profile_data";
 static NSString* inspectionUpdateData = @"update_inspection_data";
+static NSString* inspectionConfirmation = @"set_inspection_confirmation";
 
 static NSString* kToken = @"token";
 
@@ -134,8 +135,12 @@ static bool isFirstAccess = YES;
             break;
         case UpdateProfileInfoRequestType:
             [requestParams setObject:updateProfileInfoKey forKey:kRequestType];
+            break;
         case InspectionUpdateDataRequestType:
             [requestParams setObject:inspectionUpdateData forKey:kRequestType];
+            break;
+        case InspectionConfirmationRequestType:
+            [requestParams setObject:inspectionConfirmation forKey:kRequestType];
             break;
         default:
             //TODO: Unknow request type, return Error
