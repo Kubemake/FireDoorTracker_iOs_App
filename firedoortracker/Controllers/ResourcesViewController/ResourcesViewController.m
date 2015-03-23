@@ -32,6 +32,8 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet AlphabetView *alphabetView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchBarWidthConstraint;
+@property (nonatomic, assign) CGFloat alphabetCanoneWidth;
 
 //Display Data
 @property (nonatomic, strong) NSMutableArray* terms;
@@ -131,10 +133,23 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [searchBar setShowsCancelButton:YES];
+    self.alphabetCanoneWidth = self.alphabetView.bounds.size.width;
+    self.searchBarWidthConstraint.constant += self.alphabetCanoneWidth;
+    [UIView animateWithDuration:0.25f
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     [searchBar setShowsCancelButton:NO];
+    self.searchBarWidthConstraint.constant -= self.alphabetCanoneWidth;
+    [UIView animateWithDuration:0.25f
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     } completion:^(BOOL finished) {
+                         [self backButtonTouched:nil];
+                     }];
 }
 
 #pragma mark - Table View Delegate

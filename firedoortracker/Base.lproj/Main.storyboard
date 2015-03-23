@@ -768,6 +768,7 @@ No Data</string>
                     <connections>
                         <outlet property="alphabetView" destination="Bha-iG-x4V" id="3Rj-iI-dEY"/>
                         <outlet property="backButton" destination="xUb-s0-nid" id="VgK-0T-c89"/>
+                        <outlet property="searchBarWidthConstraint" destination="Civ-z2-NhK" id="t6J-dw-JEG"/>
                         <outlet property="tableView" destination="8Mb-xY-tiP" id="1gF-of-Iur"/>
                     </connections>
                 </viewController>
