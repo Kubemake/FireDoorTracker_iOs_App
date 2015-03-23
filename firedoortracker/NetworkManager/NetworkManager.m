@@ -165,10 +165,12 @@ static bool isFirstAccess = YES;
     
     if (type == uploadFileRequestType) {
         //Special method for upload
+        NSData *dataForUpload = UIImagePNGRepresentation([requestParams objectForKey:kFile]);
+        [requestParams removeObjectForKey:kFile];
         [self.networkManager POST:uploadURL
                        parameters:requestParams
         constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-            [formData appendPartWithFormData:UIImagePNGRepresentation([requestParams objectForKey:kFile]) name:kFile];
+            [formData appendPartWithFormData:dataForUpload name:kFile];
         }
                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                               if (completion) {

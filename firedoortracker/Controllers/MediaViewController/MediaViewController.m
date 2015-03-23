@@ -81,6 +81,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
       doorReviewController:(UIViewController *)controller {
     [self.navigationController popViewControllerAnimated:YES];
     [SVProgressHUD show];
+    __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType
                                                   andParams:@{kFile : self.photoImageView.image,
                                                               kFileName : self.descriptiontextField.text,
@@ -91,6 +92,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                      return;
                                                  }
                                                  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"File Attached to the Inspection and Sent to the Server", nil)];
+                                                 [welf displayImage:nil andHideImageSelectionButtons:NO];
                                              }];
 }
 
