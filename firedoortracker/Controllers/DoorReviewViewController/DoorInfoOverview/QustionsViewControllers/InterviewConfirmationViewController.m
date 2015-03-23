@@ -41,6 +41,14 @@ static NSString* confirmationCellIdentifier = @"ConfirmationTableViewCell";
 #pragma mark - TableView
 #pragma mark - Table View Datasource
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     Tab *sectionTab = [self.tabs objectAtIndex:section];
     return sectionTab.label;
@@ -54,15 +62,6 @@ static NSString* confirmationCellIdentifier = @"ConfirmationTableViewCell";
     Tab *sectionTab = [self.tabs objectAtIndex:section];
     QuestionOrAnswer *rootQuestion = [self questionByID:sectionTab.nextQuiestionID];
     return rootQuestion.answers.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Tab *sectionTab = [self.tabs objectAtIndex:indexPath.section];
-    QuestionOrAnswer *rootQuestion = [self questionByID:sectionTab.nextQuiestionID];
-    QuestionOrAnswer *cellQuestion = [rootQuestion.answers objectAtIndex:indexPath.row];
-    cellQuestion = [self questionByID:cellQuestion.nextQuiestionID];
-    
-    return [ConfirmationTableViewCell heightForAnswers:[cellQuestion selectedAnswersLabels]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

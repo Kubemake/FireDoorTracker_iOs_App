@@ -22,27 +22,11 @@
 - (void)displayQuestion:(NSString *)question andAnswers:(NSArray *)answers {
     self.questionLabel.text = question;
     NSMutableString *answersString = [NSMutableString new];
-    for (NSString *answer in answers) {
-        [answersString appendString:[NSString stringWithFormat:@"%@,/n ",answer]];
+    for (int i = 0; i < answers.count; i++) {
+        [answersString appendString:[NSString stringWithFormat:@"%@",[answers objectAtIndex:i]]];
+        if ((i + 1) < answers.count) [answersString appendString:@",\n"];
     }
     self.answersLabel.text = answersString.length ? answersString : @"No Information";
-}
-
-/**
- *  return dynamic height for the answers string length
- *
- *  @param answers answers for displaying in method display question
- *
- *  @return height of cell
- */
-
-+ (CGFloat)heightForAnswers:(NSArray *)answers {
-    NSMutableString *answersString = [NSMutableString new];
-    for (NSString *answer in answers) {
-        [answersString appendString:[NSString stringWithFormat:@"%@,/n ",answer]];
-    }
-    CGSize answersLabelSize = [answersString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0f]}];
-    return answersLabelSize.height;
 }
 
 @end
