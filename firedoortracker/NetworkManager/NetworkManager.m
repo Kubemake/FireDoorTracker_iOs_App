@@ -170,7 +170,10 @@ static bool isFirstAccess = YES;
         [self.networkManager POST:uploadURL
                        parameters:requestParams
         constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-            [formData appendPartWithFormData:dataForUpload name:kFile];
+            [formData appendPartWithFileData:dataForUpload
+                                        name:kFile
+                                    fileName:[requestParams objectForKey:@"file_name"]
+                                    mimeType:@"image/png"];
         }
                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                               if (completion) {
@@ -185,6 +188,9 @@ static bool isFirstAccess = YES;
                               
                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                               if (completion) completion(nil, error);
+//                              NSData *theData = [error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"];
+//                              NSString *string = [NSString stringWithUTF8String:[theData bytes]];
+//                              NSLog(@"%@",string);
                           }];
         return;
     }
