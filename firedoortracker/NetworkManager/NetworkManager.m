@@ -9,7 +9,9 @@
 #import "NetworkManager.h"
 #import <AFNetworking.h>
 
-static NSString* baseURL = @"http://firedoortracker.org/service/dispatcher";
+static NSString* baseURL = @"http://firedoortracker.org/service/";
+static NSString* dispatcherURL = @"dispatcher";
+static NSString* uploadURL = @"upload";
 
 static NSString* kRequestType = @"type";
 static NSString* AuthRequestType = @"auth";
@@ -25,8 +27,10 @@ static NSString* inspectionUpdateData = @"update_inspection_data";
 static NSString* inspectionConfirmation = @"set_inspection_confirmation";
 
 static NSString* kToken = @"token";
+static NSString* kFile = @"file";
 
 static NSString* kStatus = @"status";
+static NSString* kError = @"error";
 static NSString* statusOK = @"ok";
 
 typedef enum {
@@ -52,7 +56,7 @@ static bool isFirstAccess = YES;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         isFirstAccess = NO;
-        SINGLETON = [[super allocWithZone:NULL] init];    
+        SINGLETON = [[super allocWithZone:NULL] init];
     });
     
     return SINGLETON;
@@ -141,6 +145,8 @@ static bool isFirstAccess = YES;
         case InspectionConfirmationRequestType:
             [requestParams setObject:inspectionConfirmation forKey:kRequestType];
             break;
+        case uploadFileRequestType:
+            break;
         default:
             //TODO: Unknow request type, return Error
             break;
@@ -157,41 +163,49 @@ static bool isFirstAccess = YES;
         }
     }
     
-    switch (requestMethod) {
-        case RequestMethodGET: {
-            [self.networkManager GET:@""
-                          parameters:requestParams
-                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                 if (completion) completion(responseObject, nil);
-                             }
-                             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                 if (completion) completion(nil, error);
-                             }];
-            break;
+    if (type == uploadFileRequestType) {
+        //Special method for upload
+        [self.networkManager POST:uploadURL
+                       parameters:requestParams
+        constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFormData:UIImagePNGRepresentation([requestParams objectForKey:kFile]) name:kFile];
         }
-
-        case RequestMethodPOST:
-            [self.networkManager POST:@""
-                           parameters:requestParams
-                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                  if ([responseObject objectForKey:kToken]) {
-                                      self.userToken = [responseObject objectForKey:kToken];
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              if (completion) {
+                                  if ([[responseObject objectForKey:kStatus] isEqualToString:statusOK]) {
+                                      completion(responseObject, nil);
+                                  } else {
+                                      completion(nil, [NSError errorWithDomain:[responseObject objectForKey:kError]
+                                                                          code:0
+                                                                      userInfo:responseObject]);
                                   }
-                                  
-                                  if (completion) {
-                                      if ([[responseObject objectForKey:kStatus] isEqualToString:statusOK]) {
-                                          completion(responseObject, nil);
-                                      } else {
-                                          completion(nil, [NSError errorWithDomain:@"Request Error"
-                                                                              code:-100500
-                                                                          userInfo:responseObject]);
-                                      }
-                                  }
-                              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                  if (completion) completion(nil, error);
-                              }];
-            break;
+                              }
+                              
+                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              if (completion) completion(nil, error);
+                          }];
+        return;
     }
+    
+    [self.networkManager POST:dispatcherURL
+                   parameters:requestParams
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          if ([responseObject objectForKey:kToken]) {
+                              self.userToken = [responseObject objectForKey:kToken];
+                          }
+                          
+                          if (completion) {
+                              if ([[responseObject objectForKey:kStatus] isEqualToString:statusOK]) {
+                                  completion(responseObject, nil);
+                              } else {
+                                  completion(nil, [NSError errorWithDomain:[responseObject objectForKey:kError]
+                                                                      code:0
+                                                                  userInfo:responseObject]);
+                              }
+                          }
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          if (completion) completion(nil, error);
+                      }];
 }
 
 

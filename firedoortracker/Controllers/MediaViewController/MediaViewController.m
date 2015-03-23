@@ -6,9 +6,26 @@
 //
 //
 
+//Import Controllers
 #import "MediaViewController.h"
+#import "DoorReviewViewController.h"
 
-@interface MediaViewController() <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+//Import View
+#import <SVProgressHUD.h>
+
+//Imprt Model
+#import "NetworkManager.h"
+
+static NSString* inspectionSelectorID = @"DoorReviewViewController";
+
+static NSString* kFile = @"file";
+static NSString* kFileName = @"file_name";
+static NSString* kAperture = @"aperture_id";
+
+@interface MediaViewController() <UITextFieldDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate,
+DoorReviewSelectionProtocol>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
@@ -58,6 +75,25 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Inspection Selector Delegate
+
+- (void)inspectionSelected:(Inspection *)inspection
+      doorReviewController:(UIViewController *)controller {
+    [self.navigationController popViewControllerAnimated:YES];
+    [SVProgressHUD show];
+    [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType
+                                                  andParams:@{kFile : self.photoImageView.image,
+                                                              kFileName : self.descriptiontextField.text,
+                                                              kAperture : inspection.apertureId}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                     return;
+                                                 }
+                                                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"File Attached to the Inspection and Sent to the Server", nil)];
+                                             }];
+}
+
 #pragma mark - UI Modifying methods
 #pragma mark -
 
@@ -68,6 +104,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [self.photoButton setHidden:hideButtons];
     [self.galleryButton setHidden:hideButtons];
     [self.scanQRCodeButton setHidden:hideButtons];
+}
+
+- (BOOL)validateIFilledInfo {
+    if (!self.descriptiontextField.text.length) {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please input Description first", nil)];
+        return NO;
+    } else if (!self.photoImageView.image) {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please select Image or Scan QR", nil)];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - IBActions
@@ -99,6 +146,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (IBAction)submitButtomPressed:(id)sender {
+    if ([self validateIFilledInfo]) {
+        DoorReviewViewController *inspectionSelector = [self.storyboard instantiateViewControllerWithIdentifier:inspectionSelectorID];
+        inspectionSelector.inspectionSelectionDelegate = self;
+        [self.navigationController pushViewController:inspectionSelector animated:YES];
+    }
 }
 
 @end
