@@ -109,6 +109,13 @@ static NSString* kUserInspections = @"inspections";
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedInspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.row];
+    
+    if ([self.inspectionSelectionDelegate respondsToSelector:@selector(inspectionSelected:doorReviewController:)]) {
+        [self.inspectionSelectionDelegate inspectionSelected:self.selectedInspection
+                                        doorReviewController:self];
+        return;
+    }
+    
     [self performSegueWithIdentifier:showDoorInfoOverviewSegue sender:self];
 }
 
