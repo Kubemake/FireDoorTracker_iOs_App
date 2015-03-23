@@ -120,6 +120,8 @@
         UIButton *button = (UIButton *)[self viewWithTag:i + 10];
         [button sizeToFit];
         frame = button.frame;
+        frame.size.height = self.bounds.size.height;
+        frame.size.width = self.bounds.size.height;
         frame.origin.x = i ? (offset * i) + roundf(offset / 2 - frame.size.width / 2)
                            : roundf(offset / 2 - frame.size.width / 2);
         frame.origin.y = (self.bounds.size.height - frame.size.height) / 2 - 4.0f;
@@ -128,7 +130,7 @@
         UILabel *label = (UILabel *)[self viewWithTag:i + 100];
         [label sizeToFit];
         frame = label.frame;
-        frame.origin.y = CGRectGetMaxY(button.frame) + 4.0f;
+        frame.origin.y = self.bounds.size.height - frame.size.height - 10.0f;
         frame.origin.x = CGRectGetMidX(button.frame) - frame.size.width / 2;
         label.frame = frame;
         
