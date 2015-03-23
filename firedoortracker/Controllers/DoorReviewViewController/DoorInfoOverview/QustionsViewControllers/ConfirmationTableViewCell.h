@@ -12,4 +12,6 @@
 
 - (void)displayQuestion:(NSString *)question andAnswers:(NSArray *)answers;
 
++ (CGFloat)heightForAnswers:(NSArray *)answers;
+
 @end

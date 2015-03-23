@@ -178,9 +178,17 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="bgv-vx-jS6"/>
                                 </connections>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Inspections" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRm-oL-gRE">
+                                <rect key="frame" x="232" y="287.5" width="137" height="26"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="MRm-oL-gRE" secondAttribute="centerX" id="4Py-Sk-M6z"/>
+                            <constraint firstAttribute="centerY" secondItem="MRm-oL-gRE" secondAttribute="centerY" id="DCb-QY-21r"/>
                             <constraint firstAttribute="bottom" secondItem="Qbu-7N-a7j" secondAttribute="bottom" id="JjP-Xz-qbf"/>
                             <constraint firstAttribute="trailing" secondItem="Qbu-7N-a7j" secondAttribute="trailing" id="NMD-r6-cmk"/>
                             <constraint firstItem="Qbu-7N-a7j" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="RdM-pt-lfC"/>
@@ -190,6 +198,7 @@
                     <navigationItem key="navigationItem" title="DOOR REVIEWS" id="lep-hP-b63"/>
                     <connections>
                         <outlet property="collectionView" destination="Qbu-7N-a7j" id="1LT-sR-eQW"/>
+                        <outlet property="noInspectionsLabel" destination="MRm-oL-gRE" id="WBx-e4-Y0Q"/>
                         <segue destination="79p-Zy-XWy" kind="show" identifier="showDoorInfoOverviewSegueIdentifier" id="x4s-q2-hNI"/>
                     </connections>
                 </viewController>
@@ -302,6 +311,7 @@ No Data</string>
                         <outlet property="doorInfoHeightConstraint" destination="xMZ-DZ-4Ev" id="pBW-BU-4eK"/>
                         <outlet property="doorInfoMenu" destination="h2M-LO-cWs" id="Ifr-ep-Z5z"/>
                         <outlet property="doorStatusLabel" destination="mTd-wu-X9I" id="LG2-V4-zzA"/>
+                        <outlet property="statusLabelXConstraint" destination="eoP-8X-ohu" id="NNu-mA-bLU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xK4-PQ-JSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1267,7 +1277,7 @@ No Data</string>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCI-su-mZg">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answers" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCI-su-mZg">
                                                     <rect key="frame" x="289" y="12" width="203" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

@@ -56,6 +56,15 @@ static NSString* confirmationCellIdentifier = @"ConfirmationTableViewCell";
     return rootQuestion.answers.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Tab *sectionTab = [self.tabs objectAtIndex:indexPath.section];
+    QuestionOrAnswer *rootQuestion = [self questionByID:sectionTab.nextQuiestionID];
+    QuestionOrAnswer *cellQuestion = [rootQuestion.answers objectAtIndex:indexPath.row];
+    cellQuestion = [self questionByID:cellQuestion.nextQuiestionID];
+    
+    return [ConfirmationTableViewCell heightForAnswers:[cellQuestion selectedAnswersLabels]];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Tab *sectionTab = [self.tabs objectAtIndex:indexPath.section];
     QuestionOrAnswer *rootQuestion = [self questionByID:sectionTab.nextQuiestionID];
