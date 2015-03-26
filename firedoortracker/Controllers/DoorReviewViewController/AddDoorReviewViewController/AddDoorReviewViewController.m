@@ -11,6 +11,7 @@
 
 //Inport View
 #import <IQDropDownTextField.h>
+#import <SVProgressHUD.h>
 
 typedef enum{
     NewInspectionInputFieldDoorID = 0,
@@ -21,7 +22,7 @@ typedef enum{
     NewInspectionInputFieldCount
 } NewInspectionInputField;
 
-@interface AddDoorReviewViewController ()
+@interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate>
 
 //IBOutlets
 @property (strong, nonatomic) IBOutletCollection(IQDropDownTextField) NSArray *inspetionInfoFields;
@@ -44,22 +45,35 @@ typedef enum{
 - (void)setupInputFields {
     for (int i = 0; i < NewInspectionInputFieldCount; i++) {
         IQDropDownTextField *field = [self fieldByType:i];
-        field.isOptionalDropDown = NO;
+        //        field.delegate = self;
         switch (i) {
             case NewInspectionInputFieldDoorID:
+                [self loadAndDisplayDoorsOnInputField:field];
             case NewInspectionInputFieldBuilding:
             case NewInspectionInputFieldLocation:
             case NewInspectionInputFieldStartDate: {
                 field.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reviewLeftViewField"]];
+                field.isOptionalDropDown = NO;
+                
+                if (i == NewInspectionInputFieldStartDate) {
+                    field.dropDownMode = IQDropDownModeDatePicker;
+                }
+                
                 break;
             }
             case NewInspectionInputFieldSummary:
                 field.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyLeftView"]];
-                
+                break;
             default:
                 break;
         }
         field.leftViewMode = UITextFieldViewModeAlways;
+        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,42)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                    target:field
+                                                                                    action:@selector(resignFirstResponder)];
+        [toolBar setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
+        [field setInputAccessoryView:toolBar];
     }
 }
 
@@ -73,6 +87,115 @@ typedef enum{
         }
     }
     return nil;
+}
+
+- (NewInspectionInputField)typeByField:(UITextField *)field {
+    for (UITextField *inputField in self.inspetionInfoFields) {
+        if (inputField == field) {
+            return inputField.tag;
+        }
+    }
+    return -1;
+}
+
+#pragma mark - Delegate methods
+#pragma mark - IQDropDawnFieldDelegate
+
+- (void)textField:(IQDropDownTextField *)textField didSelectItem:(NSString *)item {
+    NewInspectionInputField selectedFieldType = [self typeByField:textField];
+    switch (selectedFieldType) {
+        case NewInspectionInputFieldDoorID: {
+            NSString *selectedDoorID = [self fieldByType:NewInspectionInputFieldDoorID].text;
+            if (selectedDoorID.length) {
+                [self loadAndDisplayBuildingsByDoorID:selectedDoorID
+                                         OnInputField:textField];
+            } else {
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unknow Door ID", nil)];
+            }
+            break;
+        }
+        case NewInspectionInputFieldBuilding: {
+            NSString *selectedBuildingID = [self fieldByType:NewInspectionInputFieldBuilding].text;
+            if (selectedBuildingID.length) {
+                [self loadAndDisplayLocationsByBuildingID:selectedBuildingID
+                                             OnInputField:textField];
+            } else {
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unknow Building ID", nil)];
+            }
+            break;
+        }
+        case NewInspectionInputFieldLocation:
+            break;
+        case NewInspectionInputFieldStartDate:
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NewInspectionInputField selectedFieldType = [self typeByField:textField];
+    switch (selectedFieldType) {
+        case NewInspectionInputFieldDoorID:
+            break;
+        case NewInspectionInputFieldBuilding: {
+            NSString *selectedDoorID = [self fieldByType:NewInspectionInputFieldDoorID].text;
+            if (!selectedDoorID.length) {
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Door ID First", nil)];
+                [textField resignFirstResponder];
+            }
+            break;
+        }
+        case NewInspectionInputFieldLocation: {
+            NSString *selectedBuildingID = [self fieldByType:NewInspectionInputFieldLocation].text;
+            if (!selectedBuildingID.length) {
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Building First", nil)];
+                [textField resignFirstResponder];
+            }
+            break;
+        }
+        case NewInspectionInputFieldStartDate: {
+            break;
+        }
+        case NewInspectionInputFieldSummary:
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - API callers
+
+#pragma mark - Load Door ID's
+
+- (void)loadAndDisplayDoorsOnInputField:(IQDropDownTextField *)field {
+    
+}
+
+#pragma mark - Load Buildings By Door ID
+
+- (void)loadAndDisplayBuildingsByDoorID:(NSString *)doorID
+                           OnInputField:(IQDropDownTextField *)field {
+    
+}
+
+#pragma mark - Load Location By Building ID
+
+- (void)loadAndDisplayLocationsByBuildingID:(NSString *)buildingID
+                               OnInputField:(IQDropDownTextField *)field {
+    
+}
+
+#pragma mark - UI Actions
+#pragma mark - scan qr code action
+
+- (IBAction)scanQrButtonPressed:(id)sender {
+}
+
+#pragma mark - Save created Inspection
+
+- (IBAction)saveButtonPressed:(id)sender {
 }
 
 @end
