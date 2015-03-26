@@ -126,7 +126,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                                           self.view.bounds.size.height / 3.0f,
                                           self.view.bounds.size.width * 2.0f / 3.0f,
                                           self.view.bounds.size.height * 2.0f / 3.0f);
-        [self presentPopupViewController:addDoorVC animationType:MJPopupViewAnimationFade];
+        [self presentPopupViewController:addDoorVC animationType:MJPopupViewAnimationSlideTopTop];
         return;
     }
     
