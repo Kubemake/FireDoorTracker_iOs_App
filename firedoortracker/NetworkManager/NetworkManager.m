@@ -25,6 +25,7 @@ static NSString* getProfileInfo = @"get_profile_data";
 static NSString* updateProfileInfoKey = @"update_profile_data";
 static NSString* inspectionUpdateData = @"update_inspection_data";
 static NSString* inspectionConfirmation = @"set_inspection_confirmation";
+static NSString* inspectionCreateCheckDoorID = @"check_door_uid";
 
 static NSString* kToken = @"token";
 static NSString* kFile = @"file";
@@ -110,7 +111,6 @@ static bool isFirstAccess = YES;
                      andParams:(NSDictionary *)params
                 withCompletion:(void (^)(id responseObject, NSError* error))completion {
     NSMutableDictionary* requestParams = [NSMutableDictionary dictionary];
-    RequestMethod requestMethod = RequestMethodPOST;
     
     switch (type) {
         case AuthorizationRequestType:
@@ -147,6 +147,9 @@ static bool isFirstAccess = YES;
             [requestParams setObject:inspectionConfirmation forKey:kRequestType];
             break;
         case uploadFileRequestType:
+            break;
+        case InspectionCreateChackDoorID:
+            [requestParams setObject:inspectionCreateCheckDoorID forKey:kRequestType];
             break;
         default:
             //TODO: Unknow request type, return Error

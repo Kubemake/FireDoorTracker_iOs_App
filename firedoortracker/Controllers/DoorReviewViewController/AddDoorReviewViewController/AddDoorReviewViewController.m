@@ -9,6 +9,10 @@
 //Controllers
 #import "AddDoorReviewViewController.h"
 
+//Import Model
+#import "NetworkManager.h"
+#import "BuildingOrLocation.h"
+
 //Inport View
 #import <IQDropDownTextField.h>
 #import <SVProgressHUD.h>
@@ -22,10 +26,16 @@ typedef enum{
     NewInspectionInputFieldCount
 } NewInspectionInputField;
 
+static NSString* kDoorID = @"barcode";
+static NSString* kLocations = @"location";
+
 @interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate>
 
 //IBOutlets
 @property (strong, nonatomic) IBOutletCollection(IQDropDownTextField) NSArray *inspetionInfoFields;
+
+//Model
+@property (nonatomic, strong) NSMutableArray *buildingsAndLocations;
 
 
 @end
@@ -45,10 +55,7 @@ typedef enum{
 - (void)setupInputFields {
     for (int i = 0; i < NewInspectionInputFieldCount; i++) {
         IQDropDownTextField *field = [self fieldByType:i];
-        //        field.delegate = self;
         switch (i) {
-            case NewInspectionInputFieldDoorID:
-                [self loadAndDisplayDoorsOnInputField:field];
             case NewInspectionInputFieldBuilding:
             case NewInspectionInputFieldLocation:
             case NewInspectionInputFieldStartDate: {
@@ -61,6 +68,7 @@ typedef enum{
                 
                 break;
             }
+            case NewInspectionInputFieldDoorID:
             case NewInspectionInputFieldSummary:
                 field.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyLeftView"]];
                 break;
@@ -98,6 +106,10 @@ typedef enum{
     return -1;
 }
 
+#pragma mark - Get Locations by Building
+
+#pragma mark - HGet Buildings
+
 #pragma mark - Delegate methods
 #pragma mark - IQDropDawnFieldDelegate
 
@@ -105,13 +117,6 @@ typedef enum{
     NewInspectionInputField selectedFieldType = [self typeByField:textField];
     switch (selectedFieldType) {
         case NewInspectionInputFieldDoorID: {
-            NSString *selectedDoorID = [self fieldByType:NewInspectionInputFieldDoorID].text;
-            if (selectedDoorID.length) {
-                [self loadAndDisplayBuildingsByDoorID:selectedDoorID
-                                         OnInputField:textField];
-            } else {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unknow Door ID", nil)];
-            }
             break;
         }
         case NewInspectionInputFieldBuilding: {
@@ -165,18 +170,51 @@ typedef enum{
     }
 }
 
-#pragma mark - API callers
-
-#pragma mark - Load Door ID's
-
-- (void)loadAndDisplayDoorsOnInputField:(IQDropDownTextField *)field {
-    
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    NewInspectionInputField selectedFieldType = [self typeByField:textField];
+    switch (selectedFieldType) {
+        case NewInspectionInputFieldDoorID: {
+            NSString *selectedDoorID = textField.text;
+            IQDropDownTextField *buildingTextField = [self fieldByType:NewInspectionInputFieldBuilding];
+            if (selectedDoorID.length) {
+                [self loadAndDisplayBuildingsByDoorID:selectedDoorID
+                                         OnInputField:buildingTextField];
+            } else {
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unknow Door ID", nil)];
+            }
+            
+            break;
+        }
+        default:
+            break;
+    }
 }
+
+#pragma mark - API callers
 
 #pragma mark - Load Buildings By Door ID
 
 - (void)loadAndDisplayBuildingsByDoorID:(NSString *)doorID
                            OnInputField:(IQDropDownTextField *)field {
+    __weak typeof(self) welf = self;
+    [SVProgressHUD show];
+    [[NetworkManager sharedInstance] performRequestWithType:InspectionCreateChackDoorID
+                                                  andParams:@{kDoorID : doorID}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     [welf fieldByType:NewInspectionInputFieldDoorID].text = nil;
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                     return;
+                                                 }
+                                                 //TODO: Display Case
+                                                 [SVProgressHUD showSuccessWithStatus:@""];
+                                                 welf.buildingsAndLocations = [NSMutableArray array];
+                                                 for (NSDictionary *dict in [responseObject objectForKey:kLocations]) {
+                                                     BuildingOrLocation *buildingOrLocation = [[BuildingOrLocation alloc] initWithDictionary:dict];
+                                                     [welf.buildingsAndLocations addObject:buildingOrLocation];
+                                                     //TODO: Display Buildings and Locations
+                                                 }
+                                             }];
     
 }
 

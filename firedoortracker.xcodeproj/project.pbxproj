@@ -41,6 +41,7 @@
 		68BAA3251ABB42F700D56EF0 /* InterviewConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3221ABB42F700D56EF0 /* InterviewConfirmationViewController.m */; };
 		68BAA3261ABB42F700D56EF0 /* QuestionTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3241ABB42F700D56EF0 /* QuestionTreeViewController.m */; };
 		68BAA3291ABB430F00D56EF0 /* UIFont+FDTFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */; };
+		68E93E611AC40C3F002EF138 /* BuildingOrLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E93E601AC40C3F002EF138 /* BuildingOrLocation.m */; };
 		D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */; };
 		F94A8BFB1ABB18CD00A3AC06 /* CellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */; };
 		F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */; };
@@ -134,6 +135,8 @@
 		68BAA3241ABB42F700D56EF0 /* QuestionTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionTreeViewController.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/QuestionTreeViewController.m; sourceTree = "<group>"; };
 		68BAA3271ABB430F00D56EF0 /* UIFont+FDTFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FDTFonts.h"; path = "Extensions/UIFont+FDTFonts.h"; sourceTree = "<group>"; };
 		68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FDTFonts.m"; path = "Extensions/UIFont+FDTFonts.m"; sourceTree = "<group>"; };
+		68E93E5F1AC40C3F002EF138 /* BuildingOrLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuildingOrLocation.h; path = Model/Inspection/BuildingOrLocation.h; sourceTree = "<group>"; };
+		68E93E601AC40C3F002EF138 /* BuildingOrLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuildingOrLocation.m; path = Model/Inspection/BuildingOrLocation.m; sourceTree = "<group>"; };
 		F94A8BF31ABB18CD00A3AC06 /* CellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellDataModel.h; sourceTree = "<group>"; };
 		F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellDataModel.m; sourceTree = "<group>"; };
 		F94A8BF71ABB18CD00A3AC06 /* ContactExpertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertView.h; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				68BAA31D1ABB42D300D56EF0 /* Tab.m */,
 				688906831AB85CA10079F67B /* Inspection.h */,
 				688906841AB85CA10079F67B /* Inspection.m */,
+				68E93E5F1AC40C3F002EF138 /* BuildingOrLocation.h */,
+				68E93E601AC40C3F002EF138 /* BuildingOrLocation.m */,
 			);
 			name = Inspection;
 			sourceTree = "<group>";
@@ -789,6 +794,7 @@
 				6851D3901AB5ED890085965E /* SettingViewController.m in Sources */,
 				68BAA3291ABB430F00D56EF0 /* UIFont+FDTFonts.m in Sources */,
 				68B27A2F1AB85AD300990DCA /* CurrentUser.m in Sources */,
+				68E93E611AC40C3F002EF138 /* BuildingOrLocation.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
 				F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */,
