@@ -29,7 +29,7 @@ static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifi
 
 static NSString* kUserInspections = @"inspections";
 
-@interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AddDoorReviewDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -126,6 +126,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                                           self.view.bounds.size.height / 3.0f,
                                           self.view.bounds.size.width * 2.0f / 3.0f,
                                           self.view.bounds.size.height * 2.0f / 3.0f);
+        addDoorVC.delegate = self;
         [self presentPopupViewController:addDoorVC animationType:MJPopupViewAnimationSlideTopTop];
         return;
     }
@@ -148,6 +149,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //TODO: Check for segue identifier
     DoorInfoOveriviewViewController *destionationVC = [segue destinationViewController];
     destionationVC.selectedInspection = self.selectedInspection;
+}
+
+#pragma mark - Add New Inspection Delegate
+
+- (void)inspectionSuccessfullyCreated {
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopTop];
 }
 
 @end
