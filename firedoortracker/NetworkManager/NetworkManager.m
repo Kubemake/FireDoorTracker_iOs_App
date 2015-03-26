@@ -26,6 +26,7 @@ static NSString* updateProfileInfoKey = @"update_profile_data";
 static NSString* inspectionUpdateData = @"update_inspection_data";
 static NSString* inspectionConfirmation = @"set_inspection_confirmation";
 static NSString* inspectionCreateCheckDoorID = @"check_door_uid";
+static NSString* inspectionAdd = @"add_inspection";
 
 static NSString* kToken = @"token";
 static NSString* kFile = @"file";
@@ -151,6 +152,8 @@ static bool isFirstAccess = YES;
         case InspectionCreateChackDoorID:
             [requestParams setObject:inspectionCreateCheckDoorID forKey:kRequestType];
             break;
+        case InspectionAddRequestType:
+            [requestParams setObject:inspectionAdd forKey:kRequestType];
         default:
             //TODO: Unknow request type, return Error
             break;

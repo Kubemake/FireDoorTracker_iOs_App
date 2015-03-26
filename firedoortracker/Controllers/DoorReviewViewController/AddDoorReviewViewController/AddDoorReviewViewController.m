@@ -28,6 +28,9 @@ typedef enum{
 
 static NSString* kDoorID = @"barcode";
 static NSString* kLocations = @"location";
+static NSString* kApertureID = @"aperture_id";
+static NSString* kStartDate = @"StartDate";
+static NSString* kLocationID = @"location_id";
 
 @interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate>
 
@@ -66,6 +69,10 @@ static NSString* kLocations = @"location";
                 
                 if (i == NewInspectionInputFieldStartDate) {
                     field.dropDownMode = IQDropDownModeDatePicker;
+                    [field setDate:[NSDate date]];
+                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+                    field.dateFormatter = dateFormatter;
                 }
                 
                 break;
@@ -121,8 +128,8 @@ static NSString* kLocations = @"location";
     return buildings;
 }
 
-- (BuildingOrLocation *)buildingByName:(NSString *)name {
-    for (BuildingOrLocation *building in self.buildings) {
+- (BuildingOrLocation *)buildingOrLocationByName:(NSString *)name {
+    for (BuildingOrLocation *building in self.buildingsAndLocations) {
         if ([building.name isEqualToString:name]) {
             return building;
         }
@@ -134,8 +141,8 @@ static NSString* kLocations = @"location";
 
 - (NSArray *)locationListByCurrentBuilding {
     NSMutableArray *locations = [NSMutableArray array];
-
-    BuildingOrLocation *selectedBuilding = [self buildingByName:[self fieldByType:NewInspectionInputFieldBuilding].text];
+    
+    BuildingOrLocation *selectedBuilding = [self buildingOrLocationByName:[self fieldByType:NewInspectionInputFieldBuilding].text];
     for (BuildingOrLocation *location in self.buildingsAndLocations) {
         if ([location.root integerValue] == [selectedBuilding.idBuildings integerValue] &&
             [location.parent integerValue] != 0) {
@@ -248,6 +255,9 @@ static NSString* kLocations = @"location";
     
 }
 
+#pragma mark - Display Methods
+#pragma mark -
+
 - (void)displayBuildingsAndLocations {
     self.buildings = [self buildingsList];
     NSMutableArray *buildingNames = [NSMutableArray array];
@@ -270,13 +280,6 @@ static NSString* kLocations = @"location";
     locationsField.text = [locationNames firstObject];
 }
 
-#pragma mark - Load Location By Building ID
-
-- (void)loadAndDisplayLocationsByBuildingID:(NSString *)buildingID
-                               OnInputField:(IQDropDownTextField *)field {
-    
-}
-
 #pragma mark - UI Actions
 #pragma mark - scan qr code action
 
@@ -286,6 +289,60 @@ static NSString* kLocations = @"location";
 #pragma mark - Save created Inspection
 
 - (IBAction)saveButtonPressed:(id)sender {
+    __weak typeof(self) welf = self;
+    NSDictionary *newInspectionInfo = [self validNewInspectionInfo];
+    if (newInspectionInfo) {
+        [[NetworkManager sharedInstance] performRequestWithType:InspectionAddRequestType
+                                                      andParams:newInspectionInfo
+                                                 withCompletion:^(id responseObject, NSError *error) {
+                                                     if (error) {
+                                                         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                         return;
+                                                     }
+                                                     if ([welf.delegate respondsToSelector:@selector(inspectionSuccessfullyCreated)]) {
+                                                         [welf.delegate inspectionSuccessfullyCreated];
+                                                     }
+                                                 }];
+    }
+}
+
+#pragma mark - Validation Methods
+#pragma mark - New Inspection Validation
+
+/**
+ *  Validate inputed by user info
+ *
+ *  @return return nil if user new inspection didn't valid
+ */
+
+- (NSDictionary *)validNewInspectionInfo {
+    NSMutableDictionary *inspectionDictionary = [NSMutableDictionary dictionary];
+    
+    if ([self fieldByType:NewInspectionInputFieldDoorID].text.length) {
+        [inspectionDictionary setObject:[self fieldByType:NewInspectionInputFieldDoorID].text
+                                 forKey:kApertureID];
+    } else {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Input Door ID First", nil)];
+        return nil;
+    }
+    BuildingOrLocation *selectedLocation = [self buildingOrLocationByName:[self fieldByType:NewInspectionInputFieldLocation].text];
+    if (selectedLocation.idBuildings) {
+        [inspectionDictionary setObject:selectedLocation.idBuildings
+                                 forKey:kLocationID];
+    } else {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Building ID First", nil)];
+        return nil;
+    }
+    
+    if ([self fieldByType:NewInspectionInputFieldStartDate].text.length) {
+        [inspectionDictionary setObject:[self fieldByType:NewInspectionInputFieldStartDate].text
+                                 forKey:kStartDate];
+    } else {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Inspection Start Date", nil)];
+        return nil;
+    }
+    
+    return inspectionDictionary;
 }
 
 @end

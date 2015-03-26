@@ -21,7 +21,8 @@ typedef enum {
     InspectionUpdateDataRequestType,
     InspectionConfirmationRequestType,
     uploadFileRequestType,
-    InspectionCreateChackDoorID
+    InspectionCreateChackDoorID,
+    InspectionAddRequestType
 }RequestType ;
 
 @interface NetworkManager : NSObject

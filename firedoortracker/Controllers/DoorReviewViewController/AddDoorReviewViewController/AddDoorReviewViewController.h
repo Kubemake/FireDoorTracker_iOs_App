@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AddDoorReviewDelegate <NSObject>
+
+@required
+- (void)inspectionSuccessfullyCreated;
+
+@end
+
 @interface AddDoorReviewViewController : UIViewController
+
+@property (nonatomic, weak) id<AddDoorReviewDelegate> delegate;
 
 @end

@@ -390,7 +390,7 @@
                                     <action selector="scanQrButtonPressed:" destination="e71-ey-8ls" eventType="touchUpInside" id="4rS-tp-kxu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RZ-eS-EMg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RZ-eS-EMg">
                                 <rect key="frame" x="16" y="485" width="480" height="45"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.25490196079999999" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -402,7 +402,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveButtonPressed:" destination="e71-ey-8ls" eventType="touchUpInside" id="Pn3-Oy-5hU"/>
+                                    <action selector="saveButtonPressed:" destination="e71-ey-8ls" eventType="touchUpInside" id="Jme-JR-Qfg"/>
                                 </connections>
                             </button>
                         </subviews>
