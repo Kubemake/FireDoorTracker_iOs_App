@@ -137,7 +137,8 @@ static NSString* kLocations = @"location";
 
     BuildingOrLocation *selectedBuilding = [self buildingByName:[self fieldByType:NewInspectionInputFieldBuilding].text];
     for (BuildingOrLocation *location in self.buildingsAndLocations) {
-        if ([location.root integerValue] == [selectedBuilding.idBuildings integerValue]) {
+        if ([location.root integerValue] == [selectedBuilding.idBuildings integerValue] &&
+            [location.parent integerValue] != 0) {
             [locations addObject:location];
         }
     }
