@@ -28,8 +28,13 @@ static const CGFloat maxInputFieldHeght = 37.0f;
 
 @interface StartInterviewViewController () <IQDropDownTextFieldDelegate, UITextFieldDelegate>
 
+//IBOutlets
 @property (weak, nonatomic) IBOutlet UIView *doorPropertiesView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+
+//Model
+@property (weak, nonatomic) NSDictionary *answersDictionary;
+@property (strong, nonatomic) NSMutableDictionary *resultDictionary;
 
 @end
 
@@ -46,6 +51,9 @@ static const CGFloat maxInputFieldHeght = 37.0f;
 #pragma mark -
 
 - (void)displayDoorProperties:(NSDictionary *)doorProperties {
+    self.answersDictionary = doorProperties;
+    self.resultDictionary = [NSMutableDictionary dictionary];
+
     CGFloat propertyLabelHeight = self.doorPropertiesView.bounds.size.height / (doorProperties.count + 1);
     CGFloat propertyTitleLabelWidth = self.doorPropertiesView.bounds.size.width / 3.0f;
     CGFloat propertyValueLabelWidth = self.doorPropertiesView.bounds.size.width - propertyTitleLabelWidth;
@@ -77,6 +85,7 @@ static const CGFloat maxInputFieldHeght = 37.0f;
                 dropDownField.itemList = [[property objectForKey:kValues] componentsSeparatedByString:@"\n"];
             }
             dropDownField.text = ([property objectForKey:kSelected] != [NSNull null]) ? [[property objectForKey:kSelected] stringValue] : [dropDownField.itemList firstObject];
+            [self textField:dropDownField didSelectItem:dropDownField.text];
             [self.doorPropertiesView addSubview:dropDownField];
         } else {
             UITextField *inputField = [[UITextField alloc] initWithFrame:CGRectMake(propertyTitleLabelWidth,
@@ -109,7 +118,8 @@ static const CGFloat maxInputFieldHeght = 37.0f;
 #pragma mark - IQDropDownTextField
 
 -(void)textField:(IQDropDownTextField*)textField didSelectItem:(NSString*)item {
-    //TODO: Save changed data to dictionary
+    NSDictionary *selectedDict = [self dictionaryByValue:item];
+    [self.resultDictionary setObject:item forKey:[[selectedDict allKeys] firstObject]];
 }
 
 #pragma mark - UITextfield Delegate
@@ -133,13 +143,24 @@ static const CGFloat maxInputFieldHeght = 37.0f;
     [textField setInputAccessoryView:toolBar];
 }
 
+- (NSDictionary *)dictionaryByValue:(NSString *)value {
+    for (NSDictionary* answerDict in [self.answersDictionary allValues]) {
+        for(NSString *possibleValue in [[answerDict objectForKey:kValues] allValues]) {
+            if ([value isEqualToString:possibleValue]) {
+                return @{[[self.answersDictionary allKeysForObject:answerDict] firstObject] : answerDict};
+            }
+        }
+    }
+    return nil;
+}
+
 #pragma mark - IBActions
 #pragma mark -
 
 - (void)submitButtonPressed:(id)sender {
     //TODO: Add Validation
-    if ([self.delegate respondsToSelector:@selector(submitDoorOverview)]) {
-        [self.delegate submitDoorOverview];
+    if ([self.delegate respondsToSelector:@selector(submitDoorOverview:)]) {
+        [self.delegate submitDoorOverview:self.resultDictionary];
 //        [sender setEnabled:NO];
     }
 }

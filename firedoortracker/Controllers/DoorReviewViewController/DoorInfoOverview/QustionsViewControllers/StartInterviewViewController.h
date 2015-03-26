@@ -11,7 +11,7 @@
 @protocol startInterviewDelegate <NSObject>
 
 @required
-- (void)submitDoorOverview;
+- (void)submitDoorOverview:(NSDictionary *)answersDictionary;
 
 @end
 

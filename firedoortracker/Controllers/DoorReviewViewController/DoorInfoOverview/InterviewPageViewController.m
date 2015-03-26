@@ -132,15 +132,13 @@ static NSString* kQuestions = @"issues";
 
 #pragma mark - Start Interview Delegate
 
-- (void)submitDoorOverview {
+- (void)submitDoorOverview:(NSDictionary *)answersDictionary {
     __weak typeof(self) welf = self;
     [SVProgressHUD show];
+    NSMutableDictionary *answersWithInspectionID = [NSMutableDictionary dictionaryWithDictionary:answersDictionary];
+    [answersWithInspectionID setObject:self.inspectionID forKey:kInspectionID];
     [[NetworkManager sharedInstance] performRequestWithType:InspectionQuestionListRequestType
-                                                  andParams:@{kInspectionID : self.inspectionID,
-                                                              kWallRating : [self doorOverviewPropertyByKey:kWallRating],
-                                                              kSmokeRating : [self doorOverviewPropertyByKey:kSmokeRating],
-                                                              kMaterial : [self doorOverviewPropertyByKey:kMaterial],
-                                                              kRating : [self doorOverviewPropertyByKey:kRating]}
+                                                  andParams:answersWithInspectionID
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      [SVProgressHUD showErrorWithStatus:error.localizedDescription];
