@@ -42,6 +42,7 @@ static NSString* kApertureID = @"aperture_id";
 @property (weak, nonatomic) IBOutlet UILabel *doorStatusLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusLabelXConstraint;
 @property (nonatomic, strong) NSMutableArray *statusViews;
+@property (weak, nonatomic) IBOutlet UILabel *inspectionInfoLabel;
 
 //Embeded View Controller
 @property (weak, nonatomic) InterviewPageViewController* embededInterviewController;
@@ -64,6 +65,7 @@ static NSString* kApertureID = @"aperture_id";
     [super viewDidLoad];
     [self setupDoorInfoMenu];
     [self loadDoorOverview];
+    [self setupInspectionInfo];
 }
 
 #pragma mark - Actions
@@ -86,6 +88,14 @@ static NSString* kApertureID = @"aperture_id";
 
 #pragma mark - Setup Methods
 #pragma mark - 
+
+- (void)setupInspectionInfo {
+    self.inspectionInfoLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",self.selectedInspection.apertureId,
+                                 self.selectedInspection.locationName,
+                                 (self.selectedInspection.inspector) ? : @"-",
+                                 self.selectedInspection.completionDate ? : @"-"
+                                 ];
+}
 
 - (void)setupDoorInfoMenu {
     //TODO: Change section titles

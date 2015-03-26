@@ -305,7 +305,7 @@
                                         <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door ID: Door Location: Previous Reviewer: Previous Review Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-2K-Scs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door ID: Door Location: Inspector: Previous Review Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-2K-Scs">
                                         <rect key="frame" x="133" y="51" width="185" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="bYU-f2-rIC"/>
@@ -360,6 +360,7 @@ No Data</string>
                         <outlet property="doorInfoHeightConstraint" destination="xMZ-DZ-4Ev" id="pBW-BU-4eK"/>
                         <outlet property="doorInfoMenu" destination="h2M-LO-cWs" id="Ifr-ep-Z5z"/>
                         <outlet property="doorStatusLabel" destination="mTd-wu-X9I" id="LG2-V4-zzA"/>
+                        <outlet property="inspectionInfoLabel" destination="8hJ-Hb-Mi9" id="Bed-C8-j2w"/>
                         <outlet property="statusLabelXConstraint" destination="eoP-8X-ohu" id="NNu-mA-bLU"/>
                     </connections>
                 </viewController>
