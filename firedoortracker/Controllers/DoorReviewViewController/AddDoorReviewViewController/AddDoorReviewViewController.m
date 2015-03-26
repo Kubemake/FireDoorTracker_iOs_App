@@ -36,6 +36,8 @@ static NSString* kLocations = @"location";
 
 //Model
 @property (nonatomic, strong) NSMutableArray *buildingsAndLocations;
+@property (nonatomic, strong) NSArray *buildings;
+@property (nonatomic, strong) NSArray *buildingLocations;
 
 
 @end
@@ -106,9 +108,41 @@ static NSString* kLocations = @"location";
     return -1;
 }
 
-#pragma mark - Get Locations by Building
+#pragma mark - Get Buildings
 
-#pragma mark - HGet Buildings
+- (NSArray *)buildingsList {
+    NSMutableArray *buildings = [NSMutableArray array];
+    for (BuildingOrLocation *buildingOrLocation in self.buildingsAndLocations) {
+        if ([buildingOrLocation.root integerValue] == [buildingOrLocation.idBuildings integerValue]
+            || [buildingOrLocation.parent integerValue] == 0) {
+            [buildings addObject:buildingOrLocation];
+        }
+    }
+    return buildings;
+}
+
+- (BuildingOrLocation *)buildingByName:(NSString *)name {
+    for (BuildingOrLocation *building in self.buildings) {
+        if ([building.name isEqualToString:name]) {
+            return building;
+        }
+    }
+    return nil;
+}
+
+#pragma mark - Get Locations by Selected Building
+
+- (NSArray *)locationListByCurrentBuilding {
+    NSMutableArray *locations = [NSMutableArray array];
+
+    BuildingOrLocation *selectedBuilding = [self buildingByName:[self fieldByType:NewInspectionInputFieldBuilding].text];
+    for (BuildingOrLocation *location in self.buildingsAndLocations) {
+        if ([location.root integerValue] == [selectedBuilding.idBuildings integerValue]) {
+            [locations addObject:location];
+        }
+    }
+    return locations;
+}
 
 #pragma mark - Delegate methods
 #pragma mark - IQDropDawnFieldDelegate
@@ -116,14 +150,9 @@ static NSString* kLocations = @"location";
 - (void)textField:(IQDropDownTextField *)textField didSelectItem:(NSString *)item {
     NewInspectionInputField selectedFieldType = [self typeByField:textField];
     switch (selectedFieldType) {
-        case NewInspectionInputFieldDoorID: {
-            break;
-        }
         case NewInspectionInputFieldBuilding: {
-            NSString *selectedBuildingID = [self fieldByType:NewInspectionInputFieldBuilding].text;
-            if (selectedBuildingID.length) {
-                [self loadAndDisplayLocationsByBuildingID:selectedBuildingID
-                                             OnInputField:textField];
+            if (textField.text.length) {
+                [self displayLocations];
             } else {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unknow Building ID", nil)];
             }
@@ -153,7 +182,7 @@ static NSString* kLocations = @"location";
             break;
         }
         case NewInspectionInputFieldLocation: {
-            NSString *selectedBuildingID = [self fieldByType:NewInspectionInputFieldLocation].text;
+            NSString *selectedBuildingID = [self fieldByType:NewInspectionInputFieldBuilding].text;
             if (!selectedBuildingID.length) {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Building First", nil)];
                 [textField resignFirstResponder];
@@ -212,10 +241,32 @@ static NSString* kLocations = @"location";
                                                  for (NSDictionary *dict in [responseObject objectForKey:kLocations]) {
                                                      BuildingOrLocation *buildingOrLocation = [[BuildingOrLocation alloc] initWithDictionary:dict];
                                                      [welf.buildingsAndLocations addObject:buildingOrLocation];
-                                                     //TODO: Display Buildings and Locations
                                                  }
+                                                 [welf displayBuildingsAndLocations];
                                              }];
     
+}
+
+- (void)displayBuildingsAndLocations {
+    self.buildings = [self buildingsList];
+    NSMutableArray *buildingNames = [NSMutableArray array];
+    for (BuildingOrLocation *building in self.buildings) {
+        [buildingNames addObject:building.name];
+    }
+    IQDropDownTextField *buildingsField = [self fieldByType:NewInspectionInputFieldBuilding];
+    buildingsField.itemList = buildingNames;
+    [self displayLocations];
+}
+
+- (void)displayLocations {
+    self.buildingLocations = [self locationListByCurrentBuilding];
+    NSMutableArray *locationNames = [NSMutableArray array];
+    for (BuildingOrLocation *location in self.buildingLocations) {
+        [locationNames addObject:location.name];
+    }
+    IQDropDownTextField *locationsField = [self fieldByType:NewInspectionInputFieldLocation];
+    locationsField.itemList = locationNames;
+    locationsField.text = [locationNames firstObject];
 }
 
 #pragma mark - Load Location By Building ID
