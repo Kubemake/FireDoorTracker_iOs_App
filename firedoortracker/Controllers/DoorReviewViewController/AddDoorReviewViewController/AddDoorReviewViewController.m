@@ -69,9 +69,6 @@ static NSString* kLocationID = @"location_id";
                 if (i == NewInspectionInputFieldStartDate) {
                     field.dropDownMode = IQDropDownModeDatePicker;
                     [field setDate:[NSDate date]];
-                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-                    field.dateFormatter = dateFormatter;
                 }
                 
                 break;
@@ -335,7 +332,10 @@ static NSString* kLocationID = @"location_id";
     }
     
     if ([self fieldByType:NewInspectionInputFieldStartDate].text.length) {
-        [inspectionDictionary setObject:[self fieldByType:NewInspectionInputFieldStartDate].text
+        IQDropDownTextField *dateField = [self fieldByType:NewInspectionInputFieldStartDate];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        [inspectionDictionary setObject:[dateFormatter stringFromDate:dateField.date]
                                  forKey:kStartDate];
     } else {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Inspection Start Date", nil)];
