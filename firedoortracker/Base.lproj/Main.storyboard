@@ -290,7 +290,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Location" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="rqg-LA-4Fq" customClass="IQDropDownTextField">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Location" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="rqg-LA-4Fq" customClass="IQDropDownTextField">
                                 <rect key="frame" x="173" y="188" width="323" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="a85-Aw-N4E"/>
@@ -308,7 +308,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Input Summary Info" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ylC-sf-trg" customClass="IQDropDownTextField">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Input Summary Info" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ylC-sf-trg" customClass="IQDropDownTextField">
                                 <rect key="frame" x="173" y="254" width="323" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="or6-3c-dsz"/>
@@ -336,7 +336,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Start Date" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="AVd-DB-Jkl" customClass="IQDropDownTextField">
+                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Start Date" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="AVd-DB-Jkl" customClass="IQDropDownTextField">
                                 <rect key="frame" x="173" y="317" width="323" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="OOQ-Rc-xv1"/>
@@ -354,7 +354,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Building" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HTx-pm-X4K" customClass="IQDropDownTextField">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Building" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HTx-pm-X4K" customClass="IQDropDownTextField">
                                 <rect key="frame" x="173" y="127" width="323" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="IL3-Iw-vYV"/>
@@ -372,7 +372,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RZ-eS-EMg">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RZ-eS-EMg">
                                 <rect key="frame" x="16" y="485" width="480" height="45"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.25490196079999999" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -427,6 +427,13 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="512" height="550"/>
+                    <connections>
+                        <outletCollection property="inspetionInfoFields" destination="uFQ-IG-Oxu" id="ckF-gP-tDw"/>
+                        <outletCollection property="inspetionInfoFields" destination="HTx-pm-X4K" id="MM2-lH-36i"/>
+                        <outletCollection property="inspetionInfoFields" destination="rqg-LA-4Fq" id="Z3A-bG-JBf"/>
+                        <outletCollection property="inspetionInfoFields" destination="ylC-sf-trg" id="8Bp-Ep-SsV"/>
+                        <outletCollection property="inspetionInfoFields" destination="AVd-DB-Jkl" id="sjm-bv-aa1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jmj-lq-stU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

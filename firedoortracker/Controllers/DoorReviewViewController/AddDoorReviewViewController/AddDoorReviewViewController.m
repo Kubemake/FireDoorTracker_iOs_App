@@ -6,20 +6,71 @@
 //
 //
 
+//Controllers
 #import "AddDoorReviewViewController.h"
 
+//Inport View
+#import <IQDropDownTextField.h>
+
+typedef enum{
+    NewInspectionInputFieldDoorID = 0,
+    NewInspectionInputFieldBuilding,
+    NewInspectionInputFieldLocation,
+    NewInspectionInputFieldSummary,
+    NewInspectionInputFieldStartDate,
+    NewInspectionInputFieldCount
+} NewInspectionInputField;
+
 @interface AddDoorReviewViewController ()
+
+//IBOutlets
+@property (strong, nonatomic) IBOutletCollection(IQDropDownTextField) NSArray *inspetionInfoFields;
+
 
 @end
 
 @implementation AddDoorReviewViewController
 
 #pragma mark - View Controller Lyfecircle
-#pragma mark - 
+#pragma mark -
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setupInputFields];
+}
+
+#pragma mark - Setup Methods
+
+- (void)setupInputFields {
+    for (int i = 0; i < NewInspectionInputFieldCount; i++) {
+        IQDropDownTextField *field = [self fieldByType:i];
+        switch (i) {
+            case NewInspectionInputFieldDoorID:
+            case NewInspectionInputFieldBuilding:
+            case NewInspectionInputFieldLocation:
+            case NewInspectionInputFieldStartDate: {
+                field.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reviewLeftViewField"]];
+                break;
+            }
+            case NewInspectionInputFieldSummary:
+                field.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyLeftView"]];
+                
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - Supporting Methods
+#pragma mark - Get Inspection Field by Type
+
+- (IQDropDownTextField *)fieldByType:(NewInspectionInputField)type {
+    for (IQDropDownTextField *inputField in self.inspetionInfoFields) {
+        if (inputField.tag == type) {
+            return inputField;
+        }
+    }
+    return nil;
 }
 
 @end
