@@ -155,6 +155,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)inspectionSuccessfullyCreated {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopTop];
+    [self refreshInspectionList:nil];
 }
 
 @end

@@ -292,6 +292,7 @@ static NSString* kLocationID = @"location_id";
     __weak typeof(self) welf = self;
     NSDictionary *newInspectionInfo = [self validNewInspectionInfo];
     if (newInspectionInfo) {
+        [SVProgressHUD show];
         [[NetworkManager sharedInstance] performRequestWithType:InspectionAddRequestType
                                                       andParams:newInspectionInfo
                                                  withCompletion:^(id responseObject, NSError *error) {
