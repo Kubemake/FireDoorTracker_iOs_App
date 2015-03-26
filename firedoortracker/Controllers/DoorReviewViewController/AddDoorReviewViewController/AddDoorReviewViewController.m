@@ -28,7 +28,6 @@ typedef enum{
 
 static NSString* kDoorID = @"barcode";
 static NSString* kLocations = @"location";
-static NSString* kApertureID = @"aperture_id";
 static NSString* kStartDate = @"StartDate";
 static NSString* kLocationID = @"location_id";
 
@@ -321,7 +320,7 @@ static NSString* kLocationID = @"location_id";
     
     if ([self fieldByType:NewInspectionInputFieldDoorID].text.length) {
         [inspectionDictionary setObject:[self fieldByType:NewInspectionInputFieldDoorID].text
-                                 forKey:kApertureID];
+                                 forKey:kDoorID];
     } else {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Input Door ID First", nil)];
         return nil;
