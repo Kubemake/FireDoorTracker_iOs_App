@@ -172,6 +172,27 @@
                                             <outlet property="titleLabel" destination="R8c-1D-QW8" id="Enf-h2-mW8"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddDoorReviewCollectionViewCell" id="l2u-2s-lIt" customClass="AddDoorReviewCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="225" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plusIcon" translatesAutoresizingMaskIntoConstraints="NO" id="cm6-cb-I73">
+                                                    <rect key="frame" x="0.0" y="0.0" width="225" height="75"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="cm6-cb-I73" firstAttribute="leading" secondItem="l2u-2s-lIt" secondAttribute="leading" id="3Qn-zN-fhJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="cm6-cb-I73" secondAttribute="bottom" id="iL4-pc-mA0"/>
+                                            <constraint firstItem="cm6-cb-I73" firstAttribute="top" secondItem="l2u-2s-lIt" secondAttribute="top" id="jKR-Dt-CdN"/>
+                                            <constraint firstAttribute="trailing" secondItem="cm6-cb-I73" secondAttribute="trailing" id="qSn-AU-jit"/>
+                                        </constraints>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="8rJ-Kc-sve" id="R9T-ef-Lrj"/>
@@ -205,6 +226,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1562" y="360"/>
+        </scene>
+        <!--Add Door Review View Controller-->
+        <scene sceneID="ZEn-k8-qG8">
+            <objects>
+                <viewController storyboardIdentifier="AddDoorReviewViewController" id="e71-ey-8ls" customClass="AddDoorReviewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bLn-cA-y4q"/>
+                        <viewControllerLayoutGuide type="bottom" id="lOd-DE-ceF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dJ3-Aw-CLh">
+                        <rect key="frame" x="0.0" y="0.0" width="512" height="682"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Work In Progress..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-Pq-Aaj">
+                                <rect key="frame" x="183" y="330" width="146" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="512" height="682"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jmj-lq-stU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2275" y="62"/>
         </scene>
         <!--DOOR INFO OVERVIEW-->
         <scene sceneID="at9-mT-LPa">
@@ -316,7 +365,7 @@ No Data</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xK4-PQ-JSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2228" y="360"/>
+            <point key="canvasLocation" x="2272" y="812"/>
         </scene>
         <!--Authorization View Controller-->
         <scene sceneID="dqJ-oR-9YN">
@@ -1107,7 +1156,7 @@ No Data</string>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="s4U-DZ-gVs" customClass="InterviewPageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlw-Lj-EZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2900" y="511"/>
+            <point key="canvasLocation" x="2916" y="947"/>
         </scene>
         <!--Start Interview View Controller-->
         <scene sceneID="M70-Vw-jzJ">
@@ -1152,7 +1201,7 @@ No Data</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJY-97-9tV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3576" y="191"/>
+            <point key="canvasLocation" x="3560" y="635"/>
         </scene>
         <!--Question Tree View Controller-->
         <scene sceneID="TWd-QQ-s6t">
@@ -1234,7 +1283,7 @@ No Data</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HeJ-tx-5K7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3576" y="867"/>
+            <point key="canvasLocation" x="3560" y="1359"/>
         </scene>
         <!--Interview Confirmation View Controller-->
         <scene sceneID="Sc2-3b-K1d">
@@ -1342,7 +1391,7 @@ No Data</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1S-wr-hOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4224" y="596"/>
+            <point key="canvasLocation" x="4236" y="1013"/>
         </scene>
     </scenes>
     <resources>
@@ -1358,6 +1407,7 @@ No Data</string>
         <image name="mediaIcon" width="37" height="37"/>
         <image name="nextButton" width="37" height="37"/>
         <image name="photoIcon" width="137" height="106"/>
+        <image name="plusIcon" width="42" height="42"/>
         <image name="resources" width="37" height="37"/>
         <image name="save-button" width="250" height="31"/>
         <image name="scanQRIcon" width="137" height="136"/>

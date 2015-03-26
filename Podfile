@@ -10,6 +10,7 @@ pod 'IQDropDownTextField'
 pod 'TestFairy'
 pod 'NPAAViewHelper'
 pod 'SVProgressHUD', '~> 1.1'
+pod 'MJPopupViewController', '~> 0.4'
 
 end
 

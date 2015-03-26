@@ -9,6 +9,7 @@
 //Import Controller
 #import "DoorReviewViewController.h"
 #import "DoorInfoOveriviewViewController.h"
+#import "AddDoorReviewViewController.h"
 
 //Import Model and API
 #import "NetworkManager.h"
@@ -16,9 +17,14 @@
 
 //Import View
 #import "InspectionCollectionViewCell.h"
+#import "AddDoorReviewCollectionViewCell.h"
 #import <SVProgressHUD.h>
+#import <UIViewController+MJPopupViewController.h>
 
 static NSString* inspectionCellIdentifier = @"InspectionCollectionViewCell";
+static NSString* addInspectionCellIdentifier = @"AddDoorReviewCollectionViewCell";
+static NSString* addDoorViewControllerIdentifier = @"AddDoorReviewViewController";
+
 static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifier";
 
 static NSString* kUserInspections = @"inspections";
@@ -93,14 +99,20 @@ static NSString* kUserInspections = @"inspections";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    return self.inspectionsForDisplaying.count;
+    return self.inspectionsForDisplaying.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        AddDoorReviewCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addInspectionCellIdentifier
+                                                                                          forIndexPath:indexPath];
+        return cell;
+    }
+    
     InspectionCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:inspectionCellIdentifier
                                                                                    forIndexPath:indexPath];
-    [cell displayInspection:[self.inspectionsForDisplaying objectAtIndex:indexPath.row]];
+    [cell displayInspection:[self.inspectionsForDisplaying objectAtIndex:indexPath.row - 1]];
     return cell;
 }
 
@@ -108,7 +120,17 @@ static NSString* kUserInspections = @"inspections";
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedInspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.row];
+    if (indexPath.row == 0) {
+        AddDoorReviewViewController *addDoorVC = [self.storyboard instantiateViewControllerWithIdentifier:addDoorViewControllerIdentifier];
+        addDoorVC.view.frame = CGRectMake(self.view.bounds.size.width / 3.0f,
+                                          self.view.bounds.size.height / 3.0f,
+                                          self.view.bounds.size.width * 2.0f / 3.0f,
+                                          self.view.bounds.size.height * 2.0f / 3.0f);
+        [self presentPopupViewController:addDoorVC animationType:MJPopupViewAnimationFade];
+        return;
+    }
+    
+    self.selectedInspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.row - 1];
     
     if ([self.inspectionSelectionDelegate respondsToSelector:@selector(inspectionSelected:doorReviewController:)]) {
         [self.inspectionSelectionDelegate inspectionSelected:self.selectedInspection
