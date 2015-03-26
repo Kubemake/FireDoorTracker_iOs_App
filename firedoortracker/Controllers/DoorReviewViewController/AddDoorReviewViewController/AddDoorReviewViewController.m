@@ -44,6 +44,7 @@ typedef enum{
 - (void)setupInputFields {
     for (int i = 0; i < NewInspectionInputFieldCount; i++) {
         IQDropDownTextField *field = [self fieldByType:i];
+        field.isOptionalDropDown = NO;
         switch (i) {
             case NewInspectionInputFieldDoorID:
             case NewInspectionInputFieldBuilding:
@@ -58,6 +59,7 @@ typedef enum{
             default:
                 break;
         }
+        field.leftViewMode = UITextFieldViewModeAlways;
     }
 }
 
