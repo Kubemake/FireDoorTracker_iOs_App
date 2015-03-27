@@ -629,9 +629,6 @@ No Data</string>
                                     <action selector="loginButtonPressed:" destination="0Cc-l1-CJD" eventType="touchUpInside" id="6c5-tN-Ew7"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Itk-uo-2UI">
-                                <rect key="frame" x="290" y="340" width="20" height="20"/>
-                            </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="1Da-vl-43U">
                                 <rect key="frame" x="180" y="124" width="240" height="95"/>
                                 <constraints>
@@ -643,12 +640,10 @@ No Data</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="1Da-vl-43U" secondAttribute="centerX" id="1eY-dI-cGA"/>
-                            <constraint firstAttribute="centerY" secondItem="Itk-uo-2UI" secondAttribute="centerY" constant="-50" id="2ei-3a-okL"/>
                             <constraint firstItem="qdG-qx-2ap" firstAttribute="centerX" secondItem="wW5-Vk-cCt" secondAttribute="centerX" id="8XS-c8-8Fy"/>
                             <constraint firstAttribute="centerY" secondItem="wW5-Vk-cCt" secondAttribute="centerY" id="EQo-zY-ZR9"/>
                             <constraint firstItem="wW5-Vk-cCt" firstAttribute="top" secondItem="qdG-qx-2ap" secondAttribute="bottom" constant="-96" id="F5w-Il-wXQ"/>
                             <constraint firstItem="qRJ-Iu-DtW" firstAttribute="top" secondItem="wW5-Vk-cCt" secondAttribute="bottom" constant="20" id="MLe-FY-B3m"/>
-                            <constraint firstAttribute="centerX" secondItem="Itk-uo-2UI" secondAttribute="centerX" id="Q6U-eQ-9rE"/>
                             <constraint firstAttribute="centerX" secondItem="qRJ-Iu-DtW" secondAttribute="centerX" id="ZtG-cj-3DO"/>
                             <constraint firstItem="egW-DZ-kZi" firstAttribute="width" secondItem="qRJ-Iu-DtW" secondAttribute="width" id="bLR-Bw-oYd"/>
                             <constraint firstAttribute="centerX" secondItem="wW5-Vk-cCt" secondAttribute="centerX" id="lu8-bt-dru"/>
@@ -658,7 +653,6 @@ No Data</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="Itk-uo-2UI" id="ahu-Ri-epA"/>
                         <outlet property="descriptionLabel" destination="wW5-Vk-cCt" id="UZb-rD-KcY"/>
                         <outlet property="logInButton" destination="qRJ-Iu-DtW" id="ieo-Hm-ZAh"/>
                         <outlet property="loginTextField" destination="qdG-qx-2ap" id="DtK-4D-vgh"/>
@@ -1305,7 +1299,6 @@ No Data</string>
                     </view>
                     <navigationItem key="navigationItem" id="pd3-fV-R7r"/>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="NYE-O3-oNk" id="2J3-1l-gXk"/>
                         <outlet property="confirmPasswordTextField" destination="GUT-tl-7ze" id="9Ny-e6-iaa"/>
                         <outlet property="containerView" destination="LUs-VA-IjE" id="bDF-Cf-3cD"/>
                         <outlet property="emailTextField" destination="Ap4-L5-Rd7" id="Tn1-J8-oDZ"/>

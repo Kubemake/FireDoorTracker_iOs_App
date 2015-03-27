@@ -51,6 +51,8 @@
 
 - (void)setupNavigationBarAppearance
 {
+    [[UINavigationBar appearance] setTranslucent:NO];
+    
     UIImage *backgroundImage = [UIImage imageWithColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[UIImage imageNamed:@"nav-bar-shadow-image"]];

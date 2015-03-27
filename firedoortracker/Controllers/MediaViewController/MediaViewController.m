@@ -11,7 +11,6 @@
 #import "NetworkManager.h"
 #import <QRCodeReaderViewController.h>
 #import <SVProgressHUD.h>
-#import <NPAlertViewHelper.h>
 
 static NSString* inspectionSelectorID = @"DoorReviewViewController";
 static NSString* kAperture = @"aperture_id";
@@ -88,7 +87,7 @@ static NSString* kFileName = @"file_name";
     [self dismissViewControllerAnimated:YES completion:^{
         [[UIPasteboard generalPasteboard] setString:result];
         NSString *message = NSLocalizedString(@"QR Information was copied to clipboard!", @"");
-        [NPAlertViewHelper showOkAlertWithTitle:nil withMessage:message presenter:self];
+        [SVProgressHUD showInfoWithStatus:message];
     }];
 }
 
