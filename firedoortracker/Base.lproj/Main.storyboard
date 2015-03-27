@@ -636,9 +636,20 @@ No Data</string>
                                     <constraint firstAttribute="height" constant="95" id="XjG-fo-Fio"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remember me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vE6-c6-Zgj">
-                                <rect key="frame" x="204" y="383" width="233" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n27-yw-hO6" customClass="M13Checkbox">
+                                <rect key="frame" x="163" y="383" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5vH-so-fXk"/>
+                                    <constraint firstAttribute="width" constant="20" id="CzP-bU-qqb"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vE6-c6-Zgj">
+                                <rect key="frame" x="191" y="383" width="233" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="233" id="sV8-Ol-VXj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -647,18 +658,25 @@ No Data</string>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="1Da-vl-43U" secondAttribute="centerX" id="1eY-dI-cGA"/>
                             <constraint firstItem="qdG-qx-2ap" firstAttribute="centerX" secondItem="wW5-Vk-cCt" secondAttribute="centerX" id="8XS-c8-8Fy"/>
+                            <constraint firstItem="n27-yw-hO6" firstAttribute="top" secondItem="wW5-Vk-cCt" secondAttribute="bottom" constant="8" id="B4J-Kf-Gio"/>
                             <constraint firstAttribute="centerY" secondItem="wW5-Vk-cCt" secondAttribute="centerY" id="EQo-zY-ZR9"/>
                             <constraint firstItem="wW5-Vk-cCt" firstAttribute="top" secondItem="qdG-qx-2ap" secondAttribute="bottom" constant="-96" id="F5w-Il-wXQ"/>
                             <constraint firstItem="qRJ-Iu-DtW" firstAttribute="top" secondItem="wW5-Vk-cCt" secondAttribute="bottom" constant="45" id="MLe-FY-B3m"/>
+                            <constraint firstItem="qRJ-Iu-DtW" firstAttribute="top" secondItem="vE6-c6-Zgj" secondAttribute="bottom" constant="16" id="NjM-Th-vg2"/>
+                            <constraint firstItem="n27-yw-hO6" firstAttribute="leading" secondItem="qRJ-Iu-DtW" secondAttribute="leading" id="Q2H-55-7f1"/>
+                            <constraint firstItem="qRJ-Iu-DtW" firstAttribute="top" secondItem="n27-yw-hO6" secondAttribute="bottom" constant="17" id="Tzm-IR-H6C"/>
                             <constraint firstAttribute="centerX" secondItem="qRJ-Iu-DtW" secondAttribute="centerX" id="ZtG-cj-3DO"/>
                             <constraint firstItem="egW-DZ-kZi" firstAttribute="width" secondItem="qRJ-Iu-DtW" secondAttribute="width" id="bLR-Bw-oYd"/>
+                            <constraint firstItem="vE6-c6-Zgj" firstAttribute="top" secondItem="wW5-Vk-cCt" secondAttribute="bottom" constant="8" id="fYe-LI-hlw"/>
                             <constraint firstAttribute="centerX" secondItem="wW5-Vk-cCt" secondAttribute="centerX" id="lu8-bt-dru"/>
                             <constraint firstItem="wW5-Vk-cCt" firstAttribute="top" secondItem="1Da-vl-43U" secondAttribute="bottom" constant="6" id="ooF-aS-1XV"/>
+                            <constraint firstItem="vE6-c6-Zgj" firstAttribute="trailing" secondItem="qRJ-Iu-DtW" secondAttribute="trailing" constant="-13" id="pBS-X6-kdz"/>
                             <constraint firstItem="qdG-qx-2ap" firstAttribute="leading" secondItem="egW-DZ-kZi" secondAttribute="leading" id="prK-3Y-gib"/>
                             <constraint firstItem="egW-DZ-kZi" firstAttribute="top" secondItem="qdG-qx-2ap" secondAttribute="bottom" constant="6" id="wjG-59-juW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="checkBoxView" destination="n27-yw-hO6" id="1Y5-qv-geQ"/>
                         <outlet property="descriptionLabel" destination="wW5-Vk-cCt" id="UZb-rD-KcY"/>
                         <outlet property="logInButton" destination="qRJ-Iu-DtW" id="ieo-Hm-ZAh"/>
                         <outlet property="loginTextField" destination="qdG-qx-2ap" id="DtK-4D-vgh"/>
@@ -668,7 +686,7 @@ No Data</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAk-eL-WEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-753" y="-16"/>
+            <point key="canvasLocation" x="-542" y="183"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="da7-u1-VNw">

@@ -10,6 +10,7 @@
 #import "NetworkManager.h"
 #import "CurrentUser.h"
 #import <SVProgressHUD.H>
+#import <M13Checkbox.h>
 
 static NSString* showTabBarFlowSegueIdentifier = @"showTabBarFlowSegueIdentifier";
 static NSString* kUserInspections = @"inspections";
@@ -20,10 +21,19 @@ static NSString* kUserInspections = @"inspections";
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logInButton;
+@property (weak, nonatomic) IBOutlet M13Checkbox *checkBoxView;
 
 @end
 
 @implementation AuthorizationViewController
+
+#pragma mark - Lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setupCheckBoxAppearance];
+}
 
 #pragma mark - API Methods
 #pragma mark - Login
@@ -91,8 +101,12 @@ static NSString* kUserInspections = @"inspections";
     }
 }
 
-#pragma mark Segue methods
+- (void)setupCheckBoxAppearance
+{
+    self.checkBoxView.strokeColor = [UIColor lightGrayColor];
+}
 
+#pragma mark Segue methods
 #pragma mark - IBActions
 
 - (IBAction)loginButtonPressed:(id)sender {

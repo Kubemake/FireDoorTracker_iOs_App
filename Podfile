@@ -12,7 +12,7 @@ pod 'NPAAViewHelper'
 pod 'SVProgressHUD', '~> 1.1'
 pod 'MJPopupViewController', '~> 0.4'
 pod 'QRCodeReaderViewController', '~> 3.2.3'
-pod 'TNCheckBoxGroup', '~> 0.1'
+pod 'M13Checkbox', '~> 1.1.0'
 
 end
 
