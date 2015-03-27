@@ -81,6 +81,7 @@ static NSString* kFileName = @"file_name";
 }
 
 #pragma mark - QRCodeReader Delegate Methods
+#pragma mark -
 
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {

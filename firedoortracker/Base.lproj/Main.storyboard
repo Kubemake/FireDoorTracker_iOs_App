@@ -450,6 +450,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="512" height="550"/>
                     <connections>
+                        <outlet property="doorIdTextField" destination="uFQ-IG-Oxu" id="TSs-kk-2ww"/>
                         <outletCollection property="inspetionInfoFields" destination="uFQ-IG-Oxu" id="ckF-gP-tDw"/>
                         <outletCollection property="inspetionInfoFields" destination="HTx-pm-X4K" id="MM2-lH-36i"/>
                         <outletCollection property="inspetionInfoFields" destination="rqg-LA-4Fq" id="Z3A-bG-JBf"/>
