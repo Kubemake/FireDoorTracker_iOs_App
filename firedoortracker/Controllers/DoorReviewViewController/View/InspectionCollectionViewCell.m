@@ -22,12 +22,13 @@
 
 - (void)displayInspection:(Inspection *)inspection {
     self.titleLabel.text = [NSString stringWithFormat:@"Inspection %@",inspection.uid];
+    //TODO: Display Result Statuses
     self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
-                                  inspection.buildingName,
+                                  inspection.apertureId,
+                                  inspection.locationName,
                                   inspection.inspectionStatus,
                                   inspection.startDate,
-                                  inspection.locationName,
-                                  (inspection.inspector) ? : @"-"];
+                                  @"-"];
 }
 
 @end
