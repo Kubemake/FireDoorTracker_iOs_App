@@ -124,6 +124,7 @@ static NSString *const passwordKey    = @"password";
             [self writeUserToUserDefaults];
             if (weakSelf.isPasswordChanged) {
                 [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userInfoKey"];
+                [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"password"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
                 UINavigationController *navController = (UINavigationController *)self.parentViewController;

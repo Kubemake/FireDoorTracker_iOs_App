@@ -29,14 +29,26 @@ static NSString* kUserInspections = @"inspections";
 
 #pragma mark - Lifecycle
 
+- (void)awakeFromNib
+{
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setupCheckBoxAppearance];
+    [self loadInitialData];
 }
 
 #pragma mark - API Methods
 #pragma mark - Login
+
+- (void)loadInitialData
+{
+    self.loginTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"login"];
+    self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
+    self.checkBoxView.checkState = [[NSUserDefaults standardUserDefaults] boolForKey:@"is_checked"];
+}
 
 - (void)logInWithCashedCredentials
 {
@@ -44,6 +56,19 @@ static NSString* kUserInspections = @"inspections";
     
     NSDictionary *params = @{ @"login"    : (self.loginTextField.text) ?    : [NSNull null],
                               @"password" : (self.passwordTextField.text) ? : [NSNull null] };
+ 
+    BOOL isChecked = (self.checkBoxView.checkState == M13CheckboxStateChecked);
+    if (isChecked) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.loginTextField.text forKey:@"login"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.passwordTextField.text forKey:@"password"];
+        [[NSUserDefaults standardUserDefaults] setBool:isChecked forKey:@"is_checked"];
+    }
+    else {
+         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"login"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"password"];
+        [[NSUserDefaults standardUserDefaults] setBool:isChecked forKey:@"is_checked"];    
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     __weak typeof(self) welf = self;
     void(^completion)(id responseObject, NSError *error) = ^(id responseObject, NSError *error) {
@@ -109,9 +134,9 @@ static NSString* kUserInspections = @"inspections";
 #pragma mark Segue methods
 #pragma mark - IBActions
 
-- (IBAction)loginButtonPressed:(id)sender {
+- (IBAction)loginButtonPressed:(id)sender
+{
     [self logInWithCashedCredentials];
 }
-
 
 @end
