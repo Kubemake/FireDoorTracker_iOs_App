@@ -6,16 +6,12 @@
 //
 //
 
-//Controllers
 #import "AddDoorReviewViewController.h"
-
-//Import Model
-#import "NetworkManager.h"
 #import "BuildingOrLocation.h"
-
-//Inport View
+#import "NetworkManager.h"
 #import <IQDropDownTextField.h>
 #import <SVProgressHUD.h>
+#import <QRCodeReaderViewController.h>
 
 typedef enum{
     NewInspectionInputFieldDoorID = 0,
@@ -31,16 +27,14 @@ static NSString* kLocations = @"location";
 static NSString* kStartDate = @"StartDate";
 static NSString* kLocationID = @"location_id";
 
-@interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate>
+@interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate, QRCodeReaderDelegate>
 
-//IBOutlets
+@property (weak,   nonatomic) IBOutlet UITextField *doorIdTextField;
 @property (strong, nonatomic) IBOutletCollection(IQDropDownTextField) NSArray *inspetionInfoFields;
 
-//Model
 @property (nonatomic, strong) NSMutableArray *buildingsAndLocations;
 @property (nonatomic, strong) NSArray *buildings;
 @property (nonatomic, strong) NSArray *buildingLocations;
-
 
 @end
 
@@ -49,14 +43,16 @@ static NSString* kLocationID = @"location_id";
 #pragma mark - View Controller Lyfecircle
 #pragma mark -
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setupInputFields];
 }
 
 #pragma mark - Setup Methods
 
-- (void)setupInputFields {
+- (void)setupInputFields
+{
     for (int i = 0; i < NewInspectionInputFieldCount; i++) {
         IQDropDownTextField *field = [self fieldByType:i];
         switch (i) {
@@ -93,7 +89,8 @@ static NSString* kLocationID = @"location_id";
 #pragma mark - Supporting Methods
 #pragma mark - Get Inspection Field by Type
 
-- (IQDropDownTextField *)fieldByType:(NewInspectionInputField)type {
+- (IQDropDownTextField *)fieldByType:(NewInspectionInputField)type
+{
     for (IQDropDownTextField *inputField in self.inspetionInfoFields) {
         if (inputField.tag == type) {
             return inputField;
@@ -102,10 +99,11 @@ static NSString* kLocationID = @"location_id";
     return nil;
 }
 
-- (NewInspectionInputField)typeByField:(UITextField *)field {
+- (NewInspectionInputField)typeByField:(UITextField *)field
+{
     for (UITextField *inputField in self.inspetionInfoFields) {
         if (inputField == field) {
-            return inputField.tag;
+            return (NewInspectionInputField)inputField.tag;
         }
     }
     return -1;
@@ -113,7 +111,8 @@ static NSString* kLocationID = @"location_id";
 
 #pragma mark - Get Buildings
 
-- (NSArray *)buildingsList {
+- (NSArray *)buildingsList
+{
     NSMutableArray *buildings = [NSMutableArray array];
     for (BuildingOrLocation *buildingOrLocation in self.buildingsAndLocations) {
         if ([buildingOrLocation.root integerValue] == [buildingOrLocation.idBuildings integerValue]
@@ -148,8 +147,25 @@ static NSString* kLocationID = @"location_id";
     return locations;
 }
 
-#pragma mark - Delegate methods
+#pragma mark - QRCodeReader Delegate Methods
+#pragma mark -
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    __weak typeof (self) weakSelf = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        weakSelf.doorIdTextField.text = result;
+    }];
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
 #pragma mark - IQDropDawnFieldDelegate
+#pragma mark - 
 
 - (void)textField:(IQDropDownTextField *)textField didSelectItem:(NSString *)item {
     NewInspectionInputField selectedFieldType = [self typeByField:textField];
@@ -279,7 +295,16 @@ static NSString* kLocationID = @"location_id";
 #pragma mark - UI Actions
 #pragma mark - scan qr code action
 
-- (IBAction)scanQrButtonPressed:(id)sender {
+- (IBAction)scanQrButtonPressed:(id)sender
+{
+    NSArray *types = @[AVMetadataObjectTypeQRCode];
+    QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
+                                                             readerWithMetadataObjectTypes:types];
+    qrCodeReaderViewConroller.modalPresentationStyle = UIModalPresentationFormSheet;
+    qrCodeReaderViewConroller.delegate = self;
+  
+    [self presentViewController:qrCodeReaderViewConroller animated:YES completion:NULL];
+    
 }
 
 #pragma mark - Save created Inspection
