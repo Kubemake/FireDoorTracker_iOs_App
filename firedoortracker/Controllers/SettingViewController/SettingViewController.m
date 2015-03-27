@@ -8,9 +8,9 @@
 
 #import "SettingViewController.h"
 #import "NetworkManager.h"
-#import "NPAlertViewHelper.h"
 #import "UIColor+additionalInitializers.h"
 #import "ContainerViewController.h"
+#import <SVProgressHUD.h>
 
 static NSString *const userInfoKey = @"userInfoKey";
 
@@ -21,8 +21,6 @@ static NSString *const phoneNumberKey = @"mobilePhone";
 static NSString *const passwordKey    = @"password";
 
 @interface SettingViewController ()
-
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
@@ -69,15 +67,13 @@ static NSString *const passwordKey    = @"password";
         [self fillFieldsFromUserDefaults];
     }
     else {
-        [self.activityIndicatorView startAnimating];
+        [SVProgressHUD show];
         
         __weak typeof (self) weakSelf = self;
         void(^completion)(id responseObject, NSError *error) = ^(id responseObject, NSError *error) {
-            [weakSelf.activityIndicatorView stopAnimating];
+            [SVProgressHUD dismiss];
             if (error) {
-                [NPAlertViewHelper showOkAlertWithTitle:nil
-                                            withMessage:@"Connection problems!"
-                                              presenter:self];
+                [SVProgressHUD showErrorWithStatus:@"Connection problems!"];
             }
             else {
                 [weakSelf fillFieldsFromResponceObject:responseObject];
@@ -121,11 +117,8 @@ static NSString *const passwordKey    = @"password";
 {
     __weak typeof (self) weakSelf = self;
     void(^completion)(id responseObject, NSError *error) = ^(id responseObject, NSError *error) {
-        [weakSelf.activityIndicatorView stopAnimating];
         if (error) {
-            [NPAlertViewHelper showOkAlertWithTitle:nil
-                                        withMessage:@"Something wrong!"
-                                          presenter:self];
+            [SVProgressHUD showErrorWithStatus:@"Something wrong!"];
         }
         else {
             [self writeUserToUserDefaults];
@@ -140,9 +133,7 @@ static NSString *const passwordKey    = @"password";
                                                           sender:self];
             }
             else {
-                [NPAlertViewHelper showOkAlertWithTitle:nil
-                                            withMessage:@"Profile succesfully updated!"
-                                              presenter:self];
+                [SVProgressHUD showSuccessWithStatus:@"Profile succesfullty updated!"];
             }
         }
     };
@@ -161,14 +152,12 @@ static NSString *const passwordKey    = @"password";
                 self.passwordChanged = YES;
             }
             else {
-                [NPAlertViewHelper showOkAlertWithTitle:nil
-                                            withMessage:@"Please check new and confirm passwords!"
-                                              presenter:self];
+                [SVProgressHUD showErrorWithStatus:@"Please check passwords!"];
                 return;
             }
         }
-        
-        [self.activityIndicatorView startAnimating];
+
+        [SVProgressHUD show];
         [[NetworkManager sharedInstance] performRequestWithType:UpdateProfileInfoRequestType
                                                       andParams:[params copy]
                                                  withCompletion:completion];
@@ -181,19 +170,19 @@ static NSString *const passwordKey    = @"password";
     
     if (self.firstNameTextField.text.length == 0) {
         correct = NO;
-        [NPAlertViewHelper showOkAlertWithTitle:nil withMessage:@"Incorrect first name!" presenter:self];
+        [SVProgressHUD showErrorWithStatus:@"Incorrect first name!"];
     }
     else if (self.lastNameTextField.text.length == 0) {
         correct = NO;
-        [NPAlertViewHelper showOkAlertWithTitle:nil withMessage:@"Incorrect last name!" presenter:self];
+        [SVProgressHUD showErrorWithStatus:@"Incorrect last name!"];
     }
     else if (self.phoneNoTextField.text.length == 0) {
-         correct = NO;
-        [NPAlertViewHelper showOkAlertWithTitle:nil withMessage:@"Incorrect phone number!" presenter:self];
+        correct = NO;
+        [SVProgressHUD showErrorWithStatus:@"Incorrect phone number!"];
     }
     else if (self.emailTextField.text.length == 0) {
-         correct = NO;
-        [NPAlertViewHelper showOkAlertWithTitle:nil withMessage:@"Incorrect email!" presenter:self];
+        correct = NO;
+        [SVProgressHUD showErrorWithStatus:@"Incorrect email!"];
     }
     
     return correct;

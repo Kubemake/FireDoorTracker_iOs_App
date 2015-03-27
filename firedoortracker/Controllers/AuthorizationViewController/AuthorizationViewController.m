@@ -7,66 +7,60 @@
 //
 
 #import "AuthorizationViewController.h"
-
-//Import Network part
 #import "NetworkManager.h"
-
-//Import Model
 #import "CurrentUser.h"
-
-//Import View
 #import <SVProgressHUD.H>
 
 static NSString* showTabBarFlowSegueIdentifier = @"showTabBarFlowSegueIdentifier";
-
 static NSString* kUserInspections = @"inspections";
 
 @interface AuthorizationViewController ()
 
-//IBOutlets
 @property (weak, nonatomic) IBOutlet UITextField *loginTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *logInButton;
 
 @end
 
 @implementation AuthorizationViewController
 
-#pragma mark - view controller lyfecircle
-#pragma mark -
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-//    [self logInWithCashedCredentials];
-}
-
 #pragma mark - API Methods
 #pragma mark - Login
 
-- (void)logInWithCashedCredentials {
+- (void)logInWithCashedCredentials
+{
     [self changeViewStatus:YES];
+    
+    NSDictionary *params = @{ @"login"    : (self.loginTextField.text) ?    : [NSNull null],
+                              @"password" : (self.passwordTextField.text) ? : [NSNull null] };
+    
     __weak typeof(self) welf = self;
+    void(^completion)(id responseObject, NSError *error) = ^(id responseObject, NSError *error) {
+        [welf changeViewStatus:NO];
+        
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            return;
+        }
+       
+        NSString *text = NSLocalizedString(@"Authorization Completed",nil);
+        [welf.descriptionLabel setText:text];
+        [welf loadIssuesListFromServer];
+        
+        [SVProgressHUD dismiss];
+    };
+   
+    [SVProgressHUD show];
     [[NetworkManager sharedInstance] performRequestWithType:AuthorizationRequestType
-                                                  andParams:@{@"login" : (self.loginTextField.text) ? : [NSNull null],
-                                                              @"password" : (self.passwordTextField.text) ? : [NSNull null]}
-                                             withCompletion:^(id responseObject, NSError *error) {
-                                                 [welf changeViewStatus:NO];
-                                                 if (error) {
-                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                                                     return;
-                                                 }
-                                                 [welf.descriptionLabel setText:NSLocalizedString(@"Authorization Completed",nil)];
-                                                 [welf loadIssuesListFromServer];
-                                             }];
+                                                  andParams:params
+                                             withCompletion:completion];
 }
-
-
 
 #pragma mark - Issues List
 
-- (void)loadIssuesListFromServer {
+- (void)loadIssuesListFromServer
+{
     [self changeViewStatus:YES];
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:InspectionListByUserRequestType
@@ -85,16 +79,15 @@ static NSString* kUserInspections = @"inspections";
 
 #pragma mark - UI Supporting methods
 
-- (void)changeViewStatus:(BOOL)isLoading {
+- (void)changeViewStatus:(BOOL)isLoading
+{
     if (isLoading) {
-        [self.activityIndicator startAnimating];
         [self.descriptionLabel setHidden:NO];
-        [self.logInButton setEnabled:NO];
-    } else {
-        [self.activityIndicator stopAnimating];
+        [self.logInButton      setEnabled:NO];
+    }
+    else {
         [self.descriptionLabel setHidden:YES];
-        [self.logInButton setEnabled:YES];
-        
+        [self.logInButton      setEnabled:YES];
     }
 }
 
