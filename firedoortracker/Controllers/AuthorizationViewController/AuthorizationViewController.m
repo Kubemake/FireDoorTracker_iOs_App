@@ -64,9 +64,9 @@ static NSString* kUserInspections = @"inspections";
         [[NSUserDefaults standardUserDefaults] setBool:isChecked forKey:@"is_checked"];
     }
     else {
-         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"login"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"login"];
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"password"];
-        [[NSUserDefaults standardUserDefaults] setBool:isChecked forKey:@"is_checked"];    
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"is_checked"];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
     
