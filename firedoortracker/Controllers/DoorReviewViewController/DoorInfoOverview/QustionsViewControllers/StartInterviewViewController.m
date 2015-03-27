@@ -84,7 +84,7 @@ static const CGFloat maxInputFieldHeght = 37.0f;
             } else if ([[property objectForKey:kValues] isKindOfClass:[NSString class]]) {
                 dropDownField.itemList = [[property objectForKey:kValues] componentsSeparatedByString:@"\n"];
             }
-            dropDownField.text = ([property objectForKey:kSelected] != [NSNull null]) ? [[property objectForKey:kSelected] stringValue] : [dropDownField.itemList firstObject];
+            dropDownField.text = ([property objectForKey:kSelected] != [NSNull null]) ? [property objectForKey:kSelected] : [dropDownField.itemList firstObject];
             [self textField:dropDownField didSelectItem:dropDownField.text];
             [self.doorPropertiesView addSubview:dropDownField];
         } else {
