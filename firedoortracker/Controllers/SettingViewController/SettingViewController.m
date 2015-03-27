@@ -123,9 +123,11 @@ static NSString *const passwordKey    = @"password";
         else {
             [self writeUserToUserDefaults];
             if (weakSelf.isPasswordChanged) {
-                [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userInfoKey"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"login"];
+                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"password"];
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"is_checked"];
                 
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 UINavigationController *navController = (UINavigationController *)self.parentViewController;
                 ContainerViewController *parentViewController = (ContainerViewController *)navController.parentViewController;
                 [parentViewController.niceTabBarView setSelectedButton:5];

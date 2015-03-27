@@ -25,6 +25,7 @@ PODS:
   - CoconutKit/zeroing-weak-ref (3.0)
   - HMSegmentedControl (1.5)
   - IQDropDownTextField (1.0.4.1)
+  - M13Checkbox (1.1.2)
   - MJPopupViewController (0.4)
   - NPAAViewHelper (0.0.1)
   - QRCodeReaderViewController (3.2.3)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - CoconutKit (~> 3.0.rc4)
   - HMSegmentedControl
   - IQDropDownTextField
+  - M13Checkbox (~> 1.1.0)
   - MJPopupViewController (~> 0.4)
   - NPAAViewHelper
   - QRCodeReaderViewController (~> 3.2.3)
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   CoconutKit: 56926e077589280873203c0a6effd0c2a6881550
   HMSegmentedControl: 5bb76002ce529ad83855a06cbdb5c6e48732141b
   IQDropDownTextField: 3a6709eea98b91900e33368ab31a99fa54cb3021
+  M13Checkbox: e87ebe28627368b1c6d2233282d711a3854dfe3f
   MJPopupViewController: b087684832981731f3d11b7a2ae6293a9073e011
   NPAAViewHelper: 45f9a4d22648b25f0053d8622315503a7c341d06
   QRCodeReaderViewController: 875032a407082d9c598794aa1433e7013c9ac468
