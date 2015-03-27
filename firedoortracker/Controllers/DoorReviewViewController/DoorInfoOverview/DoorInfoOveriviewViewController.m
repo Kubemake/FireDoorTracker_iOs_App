@@ -93,7 +93,7 @@ static NSString* kApertureID = @"aperture_id";
     self.inspectionInfoLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",self.selectedInspection.apertureId,
                                  self.selectedInspection.locationName,
                                  (self.selectedInspection.inspector) ? : @"-",
-                                 (self.selectedInspection.completionDate) ? : @"-"
+                                 self.selectedInspection.completionDate
                                  ];
 }
 

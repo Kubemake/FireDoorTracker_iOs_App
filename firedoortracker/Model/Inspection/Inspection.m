@@ -30,6 +30,15 @@
     return self;
 }
 
+#pragma mark - public getters
+
+- (NSString *)completionDate {
+    if ([_completionDate isEqual:[NSNull null]]) {
+        return @"-";
+    }
+    return _completionDate;
+}
+
 #pragma mark - status properties
 
 + (NSString *)stringForStatus:(inspectionStatus)status {
