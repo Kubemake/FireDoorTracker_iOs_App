@@ -26,6 +26,7 @@
         self.completionDate = [dictionary objectForKey:@"Completion"];
         self.apertureId = [dictionary objectForKey:@"aperture_id"];
         self.apertureName = [dictionary objectForKey:@"aperture_name"];
+        self.colorStatus = [dictionary objectForKey:@"colorcode"];
     }
     return self;
 }

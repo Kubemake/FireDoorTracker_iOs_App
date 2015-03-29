@@ -52,6 +52,11 @@ static NSString* kUserInspections = @"inspections";
     [self addRefreshControll];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.collectionView reloadData];
+}
+
 #pragma mark - display methods
 
 - (void)displayCurrentUserInspections {

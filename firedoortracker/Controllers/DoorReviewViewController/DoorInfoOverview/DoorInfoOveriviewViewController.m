@@ -154,7 +154,7 @@ static NSString* kApertureID = @"aperture_id";
 }
 
 - (void)changeInspectionStatusTo:(NSArray *)newStatuses {
-    //Remove preious statuses
+    //Remove previous statuses
     for (UIView *statusSubview in self.statusViews) {
         [statusSubview removeFromSuperview];
     }
@@ -169,6 +169,8 @@ static NSString* kApertureID = @"aperture_id";
         inspectionStatus encodedStatus = (inspectionStatus)[nextStatus integerValue];
         [self addAndDisplayStatusView:encodedStatus];
     }
+    //save changes ins inspection object
+    self.selectedInspection.colorStatus = newStatuses;
 }
 
 #pragma mark - Display Methods 
