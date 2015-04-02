@@ -13,6 +13,7 @@ typedef NS_ENUM(NSUInteger, NiceTabBarButtonType) {
     NiceTabBarButtonTypeDoorReview,
     NiceTabBarButtonTypeMedia,
     NiceTabBarButtonTypeResources,
+    NiceTabBarButtonTypeContactAnExpert,
     NiceTabBarButtonTypeSettings,
     NiceTabBarButtonTypeLogOut,
     NiceTabBarButtonTypeTotalCount          // Don't use this value

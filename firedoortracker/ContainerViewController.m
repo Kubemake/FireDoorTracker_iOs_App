@@ -37,6 +37,9 @@
     else if (button == NiceTabBarButtonTypeResources) {
         [self performSegueWithIdentifier:resourcesViewControllerSegueIdentifier sender:self];
     }
+    else if (button == NiceTabBarButtonTypeContactAnExpert) {
+        [self performSegueWithIdentifier:contactAnExpertControllerSegueIdentifier sender:self];
+    }
     else if (button == NiceTabBarButtonTypeSettings) {
         [self performSegueWithIdentifier:settingsViewControllerSegueIdentifier sender:self];
     }

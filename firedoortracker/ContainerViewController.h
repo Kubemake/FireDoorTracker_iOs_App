@@ -14,6 +14,7 @@ static NSString *const homeViewControllerSegueIdentifier = @"HomeViewControllerS
 static NSString *const doorReviewViewControllerSegueIdentifier = @"DoorReviewViewControllerSegue";
 static NSString *const mediaViewControllerSegueIdentifier = @"MediaViewControllerSegue";
 static NSString *const resourcesViewControllerSegueIdentifier = @"ResourcesViewControllerSegue";
+static NSString *const contactAnExpertControllerSegueIdentifier = @"showContactAnExpertSegue";
 static NSString *const settingsViewControllerSegueIdentifier = @"SettingsViewController";
 static NSString *const loginViewControllerSegueIdentifier = @"loginViewControllerSegueIdentifier";
 

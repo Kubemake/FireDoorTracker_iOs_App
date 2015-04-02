@@ -113,7 +113,7 @@
 
 - (void)commonLayoutSubviews
 {
-    CGFloat offset = roundf(self.bounds.size.width / 6);
+    CGFloat offset = roundf(self.bounds.size.width / NiceTabBarButtonTypeTotalCount);
     CGRect frame = CGRectZero;
     
     for (int i = 0; i < NiceTabBarButtonTypeTotalCount; i++) {
@@ -165,6 +165,9 @@
     else if (NiceTabBarButtonTypeResources == buttonType) {
         image = [UIImage imageNamed:@"tab-bar-resources"];
     }
+    else if (NiceTabBarButtonTypeContactAnExpert == buttonType) {
+        image = [UIImage imageNamed:@"tabBarContactAnExpert"];
+    }
     else if (NiceTabBarButtonTypeSettings == buttonType) {
         image = [UIImage imageNamed:@"tab-bar-settings"];
     }
@@ -190,6 +193,9 @@
     else if (NiceTabBarButtonTypeResources == buttonType) {
         image = [UIImage imageNamed:@"tab-bar-resources-selected"];
     }
+    else if (NiceTabBarButtonTypeContactAnExpert == buttonType) {
+        image = [UIImage imageNamed:@"tabBarContactAnExpert-selected"];
+    }
     else if (NiceTabBarButtonTypeSettings == buttonType) {
         image = [UIImage imageNamed:@"tab-bar-settings-selected"];
     }
@@ -214,6 +220,9 @@
     }
     else if (NiceTabBarButtonTypeResources == buttonType) {
         title = NSLocalizedString(@"Resources", @"");
+    }
+    else if (NiceTabBarButtonTypeContactAnExpert == buttonType) {
+        title = NSLocalizedString(@"Contact An Expert", @"");
     }
     else if (NiceTabBarButtonTypeSettings == buttonType) {
         title = NSLocalizedString(@"Settings", @"");

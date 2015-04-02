@@ -96,11 +96,6 @@ static NSString* homeCellIdentifier = @"HomeMenuCollectionViewCell";
                                                       sender:parentViewController];
         }
             break;
-        case homeMenuItemContactAnExpert: {
-            ContactExpertViewController *contactExpertViewController = [ContactExpertViewController new];
-            [self.navigationController pushViewController:contactExpertViewController animated:YES];
-        }
-            break;
         case homeMenuItemMedia: {
             [parentViewController.niceTabBarView setSelectedButton:2];
             [parentViewController performSegueWithIdentifier:mediaViewControllerSegueIdentifier
@@ -113,14 +108,21 @@ static NSString* homeCellIdentifier = @"HomeMenuCollectionViewCell";
                                                       sender:parentViewController];
         }
             break;
-        case homeMenuItemUserSettings: {
+        case homeMenuItemContactAnExpert: {
             [parentViewController.niceTabBarView setSelectedButton:4];
+            [parentViewController performSegueWithIdentifier:contactAnExpertControllerSegueIdentifier
+                                                      sender:parentViewController];
+        }
+            break;
+            
+        case homeMenuItemUserSettings: {
+            [parentViewController.niceTabBarView setSelectedButton:5];
             [parentViewController performSegueWithIdentifier:settingsViewControllerSegueIdentifier
                                                       sender:parentViewController];
         }
             break;
         case homeMenuItemLogOut: {
-            [parentViewController.niceTabBarView setSelectedButton:5];
+            [parentViewController.niceTabBarView setSelectedButton:6];
             [parentViewController performSegueWithIdentifier:loginViewControllerSegueIdentifier
                                                       sender:parentViewController];
         }

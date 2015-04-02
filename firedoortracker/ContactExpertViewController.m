@@ -30,10 +30,7 @@
     self.view.collectionView.dataSource = self;
     
     self.title = @"CONTACT AN EXPERT";
-    
-    self.navigationItem.leftBarButtonItem = [NavigationBarButtons backBarButtonItem];
-    [self.navigationItem.leftBarButtonItem setTarget:self];
-    [self.navigationItem.leftBarButtonItem setAction:@selector(backButtonPressed)];
+
 }
 
 - (void)viewDidLoad
@@ -43,11 +40,6 @@
 }
 
 #pragma mark - Actions
-
-- (void)backButtonPressed
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 #pragma mark - UICollectionViewDataSource
 
