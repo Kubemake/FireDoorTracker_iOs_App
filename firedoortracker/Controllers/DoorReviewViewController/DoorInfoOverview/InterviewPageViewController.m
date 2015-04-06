@@ -130,6 +130,19 @@ static NSString* kQuestions = @"issues";
 
 #pragma mark - UIPageViewControllerDelegate
 
+- (void)pageViewController:(UIPageViewController *)pageViewController
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray *)previousViewControllers
+       transitionCompleted:(BOOL)completed {
+    if (completed) {
+        UIViewController *currentVC = [pageViewController.viewControllers lastObject];
+        NSInteger indexOfCurrentVC = [self indexOfContentViewController:currentVC];
+        if ([self.interviewDelegate respondsToSelector:@selector(didScrollToMenuItem:)]) {
+            [self.interviewDelegate didScrollToMenuItem:indexOfCurrentVC];
+        }
+    }
+}
+
 #pragma mark - Start Interview Delegate
 
 - (void)submitDoorOverview:(NSDictionary *)answersDictionary {

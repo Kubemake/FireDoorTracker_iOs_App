@@ -29,7 +29,7 @@ static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifi
 
 static NSString* kUserInspections = @"inspections";
 
-@interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AddDoorReviewDelegate>
+@interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate,  AddDoorReviewDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -145,6 +145,21 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     [self performSegueWithIdentifier:showDoorInfoOverviewSegue sender:self];
+}
+
+#pragma mark - Search Bar Delegate
+#pragma mark -
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = NO;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - Segue delegate

@@ -153,6 +153,10 @@ static NSString* kApertureID = @"aperture_id";
     [self.embededInterviewController setSelectedPage:1];
 }
 
+- (void)didScrollToMenuItem:(NSInteger)menuItem {
+    [self.doorInfoMenu setSelectedSegmentIndex:menuItem animated:YES];
+}
+
 - (void)changeInspectionStatusTo:(NSArray *)newStatuses {
     //Remove previous statuses
     for (UIView *statusSubview in self.statusViews) {

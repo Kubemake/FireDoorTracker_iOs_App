@@ -11,7 +11,11 @@
 @protocol InterviewPageDelegate <NSObject>
 
 @required
+//Interaction with top menu
 - (void)enableMenuTitles:(NSArray *)menuItems;
+- (void)didScrollToMenuItem:(NSInteger)menuItem;
+
+//Review Status
 - (void)changeInspectionStatusTo:(NSArray *)newStatuses;
 
 @end
