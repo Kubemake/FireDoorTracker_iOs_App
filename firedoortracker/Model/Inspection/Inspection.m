@@ -25,6 +25,7 @@
         self.startDate = [dictionary objectForKey:@"StartDate"];
         self.completionDate = [dictionary objectForKey:@"Completion"];
         self.apertureId = [dictionary objectForKey:@"aperture_id"];
+        self.barCode = [dictionary objectForKey:@"barcode"];
         self.apertureName = [dictionary objectForKey:@"aperture_name"];
         self.colorStatus = [dictionary objectForKey:@"colorcode"];
     }

@@ -28,6 +28,7 @@ static NSString* addDoorViewControllerIdentifier = @"AddDoorReviewViewController
 static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifier";
 
 static NSString* kUserInspections = @"inspections";
+static NSString* kKeyword = @"keyword";
 
 @interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate,  AddDoorReviewDelegate>
 
@@ -68,7 +69,7 @@ static NSString* kUserInspections = @"inspections";
 - (void)addRefreshControll {
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = [UIColor grayColor];
-    [refreshControl addTarget:self action:@selector(refreshInspectionList:) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(loadAndDisplayInspectionList:withKeyword:) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:refreshControl];
     self.collectionView.alwaysBounceVertical = YES;
     
@@ -78,11 +79,11 @@ static NSString* kUserInspections = @"inspections";
 #pragma mark - API Methods
 #pragma mark -
 
-- (void)refreshInspectionList:(UIRefreshControl *)sender {
+- (void)loadAndDisplayInspectionList:(UIRefreshControl *)sender withKeyword:(NSString *)keyword {
     [SVProgressHUD show];
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:InspectionListByUserRequestType
-                                                  andParams:@{}
+                                                  andParams:@{kKeyword : (keyword) ? : @""}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  [sender endRefreshing];
                                                  if (error) {
@@ -160,6 +161,15 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
+    [self loadAndDisplayInspectionList:nil withKeyword:nil];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self loadAndDisplayInspectionList:nil withKeyword:searchText];
 }
 
 #pragma mark - Segue delegate
@@ -175,7 +185,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)inspectionSuccessfullyCreated {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopTop];
-    [self refreshInspectionList:nil];
+    [self loadAndDisplayInspectionList:nil withKeyword:nil];
 }
 
 @end

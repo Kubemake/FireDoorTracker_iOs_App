@@ -31,6 +31,7 @@ typedef enum{
 @property (nonatomic, copy) NSString* startDate;
 @property (nonatomic, copy) NSString* completionDate;
 @property (nonatomic, copy) NSString* apertureId;
+@property (nonatomic, copy) NSString* barCode;
 @property (nonatomic, copy) NSString* apertureName;
 @property (nonatomic, strong) NSArray* colorStatus;
 

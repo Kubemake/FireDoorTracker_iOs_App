@@ -137,7 +137,7 @@
                                                                 <constraint firstAttribute="height" constant="25" id="0xf-o1-YOs"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door ID: Location: Review Status: Start Date: Result:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8MF-rQ-EFO">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code: Location: Review Status: Start Date: Result:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8MF-rQ-EFO">
                                                             <rect key="frame" x="8" y="28" width="93" height="68"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="93" id="Zlk-PF-yrc"/>
@@ -526,7 +526,7 @@
                                         <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door ID: Door Location: Inspector: Previous Review Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-2K-Scs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code: Door Location: Inspector: Previous Review Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-2K-Scs">
                                         <rect key="frame" x="133" y="51" width="185" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="bYU-f2-rIC"/>
