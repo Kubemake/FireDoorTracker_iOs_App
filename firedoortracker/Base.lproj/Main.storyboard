@@ -1073,12 +1073,6 @@ No Data</string>
                                 <action selector="backButtonTouched:" destination="MRp-bh-LVg" id="5Nv-9e-nww"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="FAQ" id="1aC-sc-hku">
-                            <color key="tintColor" red="0.1450980392" green="0.25490196079999999" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="faqButtonPressed:" destination="MRp-bh-LVg" id="TNq-wM-efn"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="alphabetView" destination="Bha-iG-x4V" id="3Rj-iI-dEY"/>

@@ -24,7 +24,10 @@ static NSString *const videoTutorialUrl = @"http://firedoortracker.org/service/v
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self loadWebViewWithSelectedType];
+}
+
+- (void)loadWebViewWithSelectedType {
     NSURL *url;
     switch (self.typeForDisplaying) {
         case WebViewPageTypeFAQ:

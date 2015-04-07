@@ -21,6 +21,9 @@
 //Import Network
 #import "NetworkManager.h"
 
+//Import Extension
+#import "UIColor+FireDoorTrackerColors.h"
+
 static NSString* kLetters = @"letters";
 static NSString* kLetter = @"letter";
 static NSString* kTerms = @"terms";
@@ -51,6 +54,7 @@ static NSString* webViewControllerIdentifier = @"WebViewController";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupBarButtonItems];
     [self setupDelegates];
     [self loadAndDisplayAvailableLetters];
     [self loadAndDispayGlossaryTermsByLetter:nil];
@@ -61,6 +65,20 @@ static NSString* webViewControllerIdentifier = @"WebViewController";
 
 - (void)setupDelegates {
     self.alphabetView.delegate = self;
+}
+
+- (void)setupBarButtonItems {
+    UIBarButtonItem *faqButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"faqIcon"]
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(faqButtonPressed:)];
+    faqButton.tintColor = [UIColor FDTDarkGrayColor];
+    UIBarButtonItem *videoTutorialButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"videoTutorIcon"]
+                                                                            style:UIBarButtonItemStylePlain
+                                                                           target:self
+                                                                           action:@selector(videoTutorialButtonPressed:)];
+    videoTutorialButton.tintColor = [UIColor FDTDarkGrayColor];
+    self.navigationItem.rightBarButtonItems = @[faqButton, videoTutorialButton];
 }
 
 #pragma mark - API methods
@@ -179,9 +197,17 @@ static NSString* webViewControllerIdentifier = @"WebViewController";
 }
 
 
-- (IBAction)faqButtonPressed:(id)sender {
+- (void)faqButtonPressed:(id)sender {
     WebViewController *webController = [self.storyboard instantiateViewControllerWithIdentifier:webViewControllerIdentifier];
     webController.typeForDisplaying = WebViewPageTypeFAQ;
+    
+    [self.navigationController pushViewController:webController
+                                         animated:YES];
+}
+
+- (IBAction)videoTutorialButtonPressed:(id)sender {
+    WebViewController *webController = [self.storyboard instantiateViewControllerWithIdentifier:webViewControllerIdentifier];
+    webController.typeForDisplaying = WebViewPageTypeVideoTutorial;
     
     [self.navigationController pushViewController:webController
                                          animated:YES];
