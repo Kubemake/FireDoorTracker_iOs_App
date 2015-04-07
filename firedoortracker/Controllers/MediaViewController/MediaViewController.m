@@ -145,7 +145,7 @@ static NSString* kFileName = @"file_name";
 
 - (IBAction)scanQRCodePressed:(id)sender
 {
-    NSArray *types = @[AVMetadataObjectTypeQRCode];
+    NSArray *types = @[AVMetadataObjectTypeUPCECode, AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode93Code];
     QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
                                                              readerWithMetadataObjectTypes:types];
     qrCodeReaderViewConroller.modalPresentationStyle = UIModalPresentationFormSheet;
