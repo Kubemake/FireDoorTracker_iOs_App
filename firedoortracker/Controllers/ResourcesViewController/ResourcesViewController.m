@@ -6,7 +6,9 @@
 //
 //
 
+//Import Controllers
 #import "ResourcesViewController.h"
+#import "WebViewController.h"
 
 //Import View
 #import "AlphabetView.h"
@@ -25,6 +27,8 @@ static NSString* kTerms = @"terms";
 static NSString* kKeyWord = @"needle";
 
 static NSString* termCellIdentifier = @"TermTableViewCell";
+
+static NSString* webViewControllerIdentifier = @"WebViewController";
 
 @interface ResourcesViewController() <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, AlphabetViewDelegate>
 
@@ -172,6 +176,15 @@ static NSString* termCellIdentifier = @"TermTableViewCell";
 - (IBAction)backButtonTouched:(UIBarButtonItem *)sender {
     [self.backButton setEnabled:NO];
     [self loadAndDispayGlossaryTermsByLetter:nil];
+}
+
+
+- (IBAction)faqButtonPressed:(id)sender {
+    WebViewController *webController = [self.storyboard instantiateViewControllerWithIdentifier:webViewControllerIdentifier];
+    webController.typeForDisplaying = WebViewPageTypeFAQ;
+    
+    [self.navigationController pushViewController:webController
+                                         animated:YES];
 }
 
 @end

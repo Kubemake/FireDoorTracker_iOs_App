@@ -27,7 +27,7 @@
     self.titleLabel.text = [NSString stringWithFormat:@"Review %@",inspection.uid];
     //TODO: Display Result Statuses
     self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
-                                  inspection.barCode,
+                                  inspection.apertureId,
                                   inspection.locationName,
                                   inspection.inspectionStatus,
                                   inspection.startDate,

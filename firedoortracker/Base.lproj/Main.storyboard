@@ -1075,6 +1075,9 @@ No Data</string>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="FAQ" id="1aC-sc-hku">
                             <color key="tintColor" red="0.1450980392" green="0.25490196079999999" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="faqButtonPressed:" destination="MRp-bh-LVg" id="TNq-wM-efn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1419,6 +1422,39 @@ No Data</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlw-Lj-EZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2916" y="947"/>
+        </scene>
+        <!--Tutorials-->
+        <scene sceneID="UEh-0x-vVS">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="YhY-yO-sPQ" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OfN-Wm-iSN"/>
+                        <viewControllerLayoutGuide type="bottom" id="8xx-Yp-gNd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mc7-qr-sVN" customClass="UIWebView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="delegate" destination="YhY-yO-sPQ" id="dbS-m2-dE3"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tutorials" id="TKT-2B-gs1">
+                        <barButtonItem key="leftBarButtonItem" image="backButton" id="AO3-Kq-XMN">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="YhY-yO-sPQ" id="dnV-xc-trk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="webView" destination="mc7-qr-sVN" id="7Zw-ec-1No"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="keR-8s-cpl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2244" y="1670"/>
         </scene>
         <!--Start Interview View Controller-->
         <scene sceneID="M70-Vw-jzJ">
