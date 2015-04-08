@@ -8,9 +8,18 @@
 
 #import "ContainerViewController.h"
 
+//Import Extension
+#import "UINavigationController+FireDoorTrackerOptions.h"
+
+static NSString *const segueRestorationStateIdentidier = @"segueRestorationStateIdentidier";
+
 @interface ContainerViewController () <NiceTabBarViewDeleage>
 
 @property (weak, nonatomic, readwrite) IBOutlet NiceTabBarView *niceTabBarView;
+
+//View Controllers Storage
+@property (nonatomic, strong) NSMutableArray *displayedControllers;
+@property (nonatomic, assign) NiceTabBarButtonType selectedType;
 
 @end
 
@@ -22,9 +31,24 @@
     [super viewDidLoad];
     
     self.niceTabBarView.delegate = self;
+    self.displayedControllers = [NSMutableArray array];
 }
 
 - (void)niceTabBarViewButtonPressed:(NiceTabBarButtonType)button {
+    self.selectedType = button;
+    //TODO: If Controller cached, display that
+    UIViewController *cachedVC = [self cachedViewControllerByType:button];
+    //HOTFIX: Instead Home VC (crash)
+    if (cachedVC && button != NiceTabBarButtonTypeHome) {
+        HLSPlaceholderInsetStandardSegue *displaySegue = [[HLSPlaceholderInsetStandardSegue alloc] initWithIdentifier:segueRestorationStateIdentidier
+                                                                                                               source:self
+                                                                                                          destination:cachedVC
+                                                                                                      transitionClass:[HLSTransitionNone class]];
+        [self prepareForSegue:displaySegue sender:self];
+        [displaySegue perform];
+        return;
+    }
+    
     if (button == NiceTabBarButtonTypeHome) {
         [self performSegueWithIdentifier:homeViewControllerSegueIdentifier sender:self];
     }
@@ -48,6 +72,29 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         [self performSegueWithIdentifier:loginViewControllerSegueIdentifier sender:self];
+    }
+}
+
+- (UIViewController *)cachedViewControllerByType:(NiceTabBarButtonType)type {
+    for (UINavigationController_FireDoorTrackerOptions *navController in self.displayedControllers) {
+        if (navController.typeOfNavigationFlow == type) {
+            return navController;
+        }
+    }
+    return nil;
+}
+
+#pragma mark - Segue Delegate
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController_FireDoorTrackerOptions *destinationVC = segue.destinationViewController;
+
+    if (![self.displayedControllers containsObject:destinationVC]) {
+        [self.displayedControllers addObject:segue.destinationViewController];
+    }
+    
+    if ([destinationVC respondsToSelector:@selector(setTypeOfNavigationFlow:)]) {
+        destinationVC.typeOfNavigationFlow = self.selectedType;
     }
 }
 

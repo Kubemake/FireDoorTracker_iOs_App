@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, NiceTabBarButtonType) {
-    NiceTabBarButtonTypeHome,
+    NiceTabBarButtonTypeHome = 0,
     NiceTabBarButtonTypeDoorReview,
     NiceTabBarButtonTypeMedia,
     NiceTabBarButtonTypeResources,

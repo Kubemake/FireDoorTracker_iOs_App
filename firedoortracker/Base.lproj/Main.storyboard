@@ -776,7 +776,7 @@ No Data</string>
         <!--Home-->
         <scene sceneID="NtT-4i-CYH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yV7-eB-X2C" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yV7-eB-X2C" customClass="UINavigationController_FireDoorTrackerOptions" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="homeIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nka-of-Fbk">
@@ -795,7 +795,7 @@ No Data</string>
         <!--Door Review-->
         <scene sceneID="DrE-AG-lEe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w3A-6A-IWa" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w3A-6A-IWa" customClass="UINavigationController_FireDoorTrackerOptions" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Door Review" image="doorReviewIcon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nDG-mE-Dpe">
@@ -955,7 +955,7 @@ No Data</string>
         <!--Media-->
         <scene sceneID="C2p-ZS-E3g">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k9G-6X-Gc0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k9G-6X-Gc0" customClass="UINavigationController_FireDoorTrackerOptions" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Media" image="mediaIcon" id="8Jg-ko-KgF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PnZ-gj-10G">
@@ -1374,7 +1374,7 @@ No Data</string>
         <!--Reources-->
         <scene sceneID="UuS-eS-PbX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lBB-jn-xNf" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lBB-jn-xNf" customClass="UINavigationController_FireDoorTrackerOptions" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Reources" image="resources" id="zJh-ii-haD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zhp-Ma-zgI">
@@ -1393,7 +1393,7 @@ No Data</string>
         <!--Settings-->
         <scene sceneID="0hh-nd-yRn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GTs-wD-ZMY" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GTs-wD-ZMY" customClass="UINavigationController_FireDoorTrackerOptions" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settingIcon" id="msv-VP-jQ1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="k6g-vm-afX">
@@ -1685,10 +1685,10 @@ No Data</string>
             </objects>
             <point key="canvasLocation" x="4236" y="1013"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller Fire Door Tracker Options-->
         <scene sceneID="iOk-wO-D2c">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wCB-Os-TO7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wCB-Os-TO7" customClass="UINavigationController_FireDoorTrackerOptions" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TD4-Ra-4iS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1725,6 +1725,6 @@ No Data</string>
         <image name="settingIcon" width="37" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NuS-bI-fTJ"/>
+        <segue reference="YRW-li-5uA"/>
     </inferredMetricsTieBreakers>
 </document>

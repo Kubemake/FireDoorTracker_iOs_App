@@ -24,6 +24,7 @@
 		686634BF1AB5E7CA003EA804 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686634BD1AB5E7CA003EA804 /* LaunchScreen.xib */; };
 		686634CB1AB5E7CA003EA804 /* firedoortrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634CA1AB5E7CA003EA804 /* firedoortrackerTests.m */; };
 		6868264A1AD4204800684AE9 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686826491AD4204800684AE9 /* WebViewController.m */; };
+		686826531AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 686826521AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m */; };
 		688906851AB85CA10079F67B /* Inspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906841AB85CA10079F67B /* Inspection.m */; };
 		688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906881AB861180079F67B /* InspectionCollectionViewCell.m */; };
 		6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889068C1AB879360079F67B /* HomeMenuCollectionViewCell.m */; };
@@ -103,6 +104,8 @@
 		686634CA1AB5E7CA003EA804 /* firedoortrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = firedoortrackerTests.m; sourceTree = "<group>"; };
 		686826481AD4204800684AE9 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = Controllers/WebViewController/WebViewController.h; sourceTree = "<group>"; };
 		686826491AD4204800684AE9 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = Controllers/WebViewController/WebViewController.m; sourceTree = "<group>"; };
+		686826511AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+FireDoorTrackerOptions.h"; path = "Extensions/UINavigationController+FireDoorTrackerOptions/UINavigationController+FireDoorTrackerOptions.h"; sourceTree = "<group>"; };
+		686826521AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+FireDoorTrackerOptions.m"; path = "Extensions/UINavigationController+FireDoorTrackerOptions/UINavigationController+FireDoorTrackerOptions.m"; sourceTree = "<group>"; };
 		688906831AB85CA10079F67B /* Inspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Inspection.h; path = Model/Inspection/Inspection.h; sourceTree = "<group>"; };
 		688906841AB85CA10079F67B /* Inspection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Inspection.m; path = Model/Inspection/Inspection.m; sourceTree = "<group>"; };
 		688906871AB861180079F67B /* InspectionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InspectionCollectionViewCell.h; path = Controllers/DoorReviewViewController/View/InspectionCollectionViewCell.h; sourceTree = "<group>"; };
@@ -392,6 +395,15 @@
 			name = WebViewController;
 			sourceTree = "<group>";
 		};
+		686826501AD4FBFD00684AE9 /* UINavigationController+FireDoorTrackerOptions */ = {
+			isa = PBXGroup;
+			children = (
+				686826511AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.h */,
+				686826521AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m */,
+			);
+			name = "UINavigationController+FireDoorTrackerOptions";
+			sourceTree = "<group>";
+		};
 		688906821AB85C860079F67B /* Inspection */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +453,7 @@
 		688906921AB9583D0079F67B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				686826501AD4FBFD00684AE9 /* UINavigationController+FireDoorTrackerOptions */,
 				68BAA3271ABB430F00D56EF0 /* UIFont+FDTFonts.h */,
 				68BAA3281ABB430F00D56EF0 /* UIFont+FDTFonts.m */,
 				F9DA37A01AB9E0BC0075BCB6 /* UIImage+Utilities */,
@@ -827,6 +840,7 @@
 				6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */,
 				68BAA3251ABB42F700D56EF0 /* InterviewConfirmationViewController.m in Sources */,
 				F94A8BFE1ABB18CD00A3AC06 /* ContactExpertViewController.m in Sources */,
+				686826531AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m in Sources */,
 				68280EC71ABD92640041C570 /* ConfirmationTableViewCell.m in Sources */,
 				68BAA3261ABB42F700D56EF0 /* QuestionTreeViewController.m in Sources */,
 				F9DA37991AB9A3230075BCB6 /* UIColor+additionalInitializers.m in Sources */,
