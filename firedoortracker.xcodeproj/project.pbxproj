@@ -46,7 +46,6 @@
 		68E93E611AC40C3F002EF138 /* BuildingOrLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E93E601AC40C3F002EF138 /* BuildingOrLocation.m */; };
 		D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */; };
 		F94A8BFB1ABB18CD00A3AC06 /* CellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */; };
-		F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */; };
 		F94A8BFE1ABB18CD00A3AC06 /* ContactExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8BFA1ABB18CD00A3AC06 /* ContactExpertViewController.m */; };
 		F94A8C041ABB1B5600A3AC06 /* ContactExpertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */; };
 		F94A8C091ABB1BEB00A3AC06 /* CustomFontUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A8C071ABB1BEB00A3AC06 /* CustomFontUtilities.m */; };
@@ -145,8 +144,6 @@
 		68E93E601AC40C3F002EF138 /* BuildingOrLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuildingOrLocation.m; path = Model/Inspection/BuildingOrLocation.m; sourceTree = "<group>"; };
 		F94A8BF31ABB18CD00A3AC06 /* CellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellDataModel.h; sourceTree = "<group>"; };
 		F94A8BF41ABB18CD00A3AC06 /* CellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellDataModel.m; sourceTree = "<group>"; };
-		F94A8BF71ABB18CD00A3AC06 /* ContactExpertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertView.h; sourceTree = "<group>"; };
-		F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertView.m; sourceTree = "<group>"; };
 		F94A8BF91ABB18CD00A3AC06 /* ContactExpertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactExpertViewController.h; sourceTree = "<group>"; };
 		F94A8BFA1ABB18CD00A3AC06 /* ContactExpertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertViewController.m; sourceTree = "<group>"; };
 		F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactExpertCell.m; sourceTree = "<group>"; };
@@ -554,7 +551,6 @@
 		F94A8BF11ABB182500A3AC06 /* ContactAnExpertViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F94A8C011ABB19AD00A3AC06 /* ContactExpertView */,
 				F94A8C001ABB193F00A3AC06 /* ContactExpertCell */,
 				F94A8BFF1ABB18D100A3AC06 /* CellDataModel */,
 				F94A8BF91ABB18CD00A3AC06 /* ContactExpertViewController.h */,
@@ -575,19 +571,10 @@
 		F94A8C001ABB193F00A3AC06 /* ContactExpertCell */ = {
 			isa = PBXGroup;
 			children = (
-				F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */,
 				F94A8C031ABB1B5600A3AC06 /* ContactExpertCell.h */,
+				F94A8C021ABB1B5600A3AC06 /* ContactExpertCell.m */,
 			);
 			name = ContactExpertCell;
-			sourceTree = "<group>";
-		};
-		F94A8C011ABB19AD00A3AC06 /* ContactExpertView */ = {
-			isa = PBXGroup;
-			children = (
-				F94A8BF71ABB18CD00A3AC06 /* ContactExpertView.h */,
-				F94A8BF81ABB18CD00A3AC06 /* ContactExpertView.m */,
-			);
-			name = ContactExpertView;
 			sourceTree = "<group>";
 		};
 		F94A8C051ABB1B6C00A3AC06 /* Utilies */ = {
@@ -823,7 +810,6 @@
 				68E93E611AC40C3F002EF138 /* BuildingOrLocation.m in Sources */,
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
-				F94A8BFD1ABB18CD00A3AC06 /* ContactExpertView.m in Sources */,
 				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
 				689BFD231AC3D5850068733D /* AddDoorReviewViewController.m in Sources */,
 				F94A8C0D1ABB21DE00A3AC06 /* NavigationBarButtons.m in Sources */,

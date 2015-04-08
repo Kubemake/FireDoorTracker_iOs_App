@@ -29,6 +29,9 @@ PODS:
   - MJPopupViewController (0.4)
   - NPAAViewHelper (0.0.1)
   - QRCodeReaderViewController (3.2.3)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
   - SVProgressHUD (1.1.2)
   - TestFairy (1.3.6)
 
@@ -41,6 +44,7 @@ DEPENDENCIES:
   - MJPopupViewController (~> 0.4)
   - NPAAViewHelper
   - QRCodeReaderViewController (~> 3.2.3)
+  - SDWebImage (~> 3.7)
   - SVProgressHUD (~> 1.1)
   - TestFairy
 
@@ -53,6 +57,7 @@ SPEC CHECKSUMS:
   MJPopupViewController: e9ad553a3145eb8126ba2748e872ae7fb25cc605
   NPAAViewHelper: 94af85631e0ada6c446e04641a1799d46e8dffea
   QRCodeReaderViewController: 875032a407082d9c598794aa1433e7013c9ac468
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
   TestFairy: d4d805d6312008f136b347df510239460c15b141
 

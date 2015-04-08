@@ -10,10 +10,11 @@
 
 @interface CellDataModel : NSObject
 
-@property (strong, nonatomic) UIImage  *logo;
+@property (strong, nonatomic) NSString *logoUrl;
 @property (copy,   nonatomic) NSString *expertName;
-@property (copy,   nonatomic) NSString *phoneNumber;
-@property (copy,   nonatomic) NSString *address;
+@property (copy,   nonatomic) NSString *expertDescription;
 @property (copy,   nonatomic) NSString *website;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
 
 @end
