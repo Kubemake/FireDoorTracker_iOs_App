@@ -19,6 +19,7 @@
 
 static const CGFloat maxAnswerButtonHeight = 65.0f;
 static const CGFloat answerButtonPadding = 5.0f;
+static const CGFloat makePhotoButtonSize = 35.0f;
 
 @interface QuestionTreeViewController ()
 
@@ -140,7 +141,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     //If Answer not have side effect -> go to next question
     if (self.selectedAnswer.status.integerValue == 0) {
         [self nextQuestionButtonPressed:sender];
-    }
+    } 
 }
 
 - (void)resetAllAnswerSelectionWithousStatus:(inspectionStatus)status {
@@ -177,6 +178,10 @@ static const CGFloat answerButtonPadding = 5.0f;
 - (IBAction)previousQuestionButtonPressed:(id)sender {
     self.currentQuestion = self.previosQuestion;
     [self displayQuestion:self.currentQuestion];
+}
+
+- (void)makePhotoButonPressed:(UIButton *)answerButton {
+    
 }
 
 #pragma mark - Support Question Methods
