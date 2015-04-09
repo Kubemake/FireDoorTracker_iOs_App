@@ -20,6 +20,9 @@
 //Import View
 #import "PhotoCollectionViewCell.h"
 
+//Import Pods
+#import <IDMPhotoBrowser.h>
+
 static const CGFloat maxAnswerButtonHeight = 65.0f;
 static const CGFloat answerButtonPadding = 5.0f;
 
@@ -266,7 +269,18 @@ static const CGFloat answerButtonPadding = 5.0f;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *photos = [NSMutableArray new];
     
+    for (NSString *url in self.currentQuestion.images) {
+        IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:url]];
+        [photos addObject:photo];
+    }
+    
+    IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos:photos
+                                                      animatedFromView:self.view];
+    [browser setInitialPageIndex:indexPath.row];
+    [self presentViewController:browser animated:YES completion:nil];
+
 }
 
 @end

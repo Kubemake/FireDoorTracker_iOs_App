@@ -23,11 +23,17 @@ PODS:
   - CoconutKit (3.0):
     - CoconutKit/zeroing-weak-ref (= 3.0)
   - CoconutKit/zeroing-weak-ref (3.0)
+  - DACircularProgress (2.2.0)
   - HMSegmentedControl (1.5)
+  - IDMPhotoBrowser (1.6.2):
+    - AFNetworking
+    - DACircularProgress
+    - pop
   - IQDropDownTextField (1.0.4.1)
   - M13Checkbox (1.1.2)
   - MJPopupViewController (0.4)
   - NPAAViewHelper (0.0.1)
+  - pop (1.0.7)
   - QRCodeReaderViewController (3.2.3)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
@@ -39,6 +45,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - CoconutKit (~> 3.0.rc4)
   - HMSegmentedControl
+  - IDMPhotoBrowser (~> 1.6)
   - IQDropDownTextField
   - M13Checkbox (~> 1.1.0)
   - MJPopupViewController (~> 0.4)
@@ -51,11 +58,14 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
   CoconutKit: 56926e077589280873203c0a6effd0c2a6881550
+  DACircularProgress: 0f92b77239d5f3c612fc66185e2998391ac8e054
   HMSegmentedControl: 23b6155cd3670f73ffc6eb836af1cfc440e81780
+  IDMPhotoBrowser: ebbfa6690456b72dd92d93b7bc11d71519f4d06d
   IQDropDownTextField: 4e6fc6dbfd46a922fbc3fb76ac855d05ccfdc962
   M13Checkbox: 0c0bb08dcd144c4ea33f883b68270f3f56908ea2
   MJPopupViewController: e9ad553a3145eb8126ba2748e872ae7fb25cc605
   NPAAViewHelper: 94af85631e0ada6c446e04641a1799d46e8dffea
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   QRCodeReaderViewController: 875032a407082d9c598794aa1433e7013c9ac468
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
