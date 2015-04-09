@@ -17,11 +17,14 @@
 #import "UIColor+FireDoorTrackerColors.h"
 #import "UIImage+Utilities.h"
 
+//Import View
+#import "PhotoCollectionViewCell.h"
+
 static const CGFloat maxAnswerButtonHeight = 65.0f;
 static const CGFloat answerButtonPadding = 5.0f;
 static const CGFloat makePhotoButtonSize = 35.0f;
 
-@interface QuestionTreeViewController ()
+@interface QuestionTreeViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UILabel *questionTitleLabel;
@@ -29,6 +32,7 @@ static const CGFloat makePhotoButtonSize = 35.0f;
 @property (nonatomic, strong) NSArray* answerButtons;
 @property (weak, nonatomic) IBOutlet UIButton *previousQuestionButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextQuestionButton;
+@property (weak, nonatomic) IBOutlet UICollectionView *photosCollectionView;
 
 //User Data
 @property (nonatomic, weak) QuestionOrAnswer *previosQuestion;
@@ -212,10 +216,7 @@ static const CGFloat makePhotoButtonSize = 35.0f;
 }
 
 - (void)makePhotoButonPressed:(UIButton *)sender {
-    if ([self.questionDelegate respondsToSelector:@selector(userPressedMakePhotoButtonOnQuestion:)]) {
-        [self.questionDelegate
-         userPressedMakePhotoButtonOnQuestion:[self questionByID:[NSString stringWithFormat:@"%ld",sender.tag]]];
-    }
+
 }
 
 #pragma mark - Support Question Methods
@@ -228,6 +229,25 @@ static const CGFloat makePhotoButtonSize = 35.0f;
         }
     }
     return nil;
+}
+
+#pragma mark - Images Collection View
+#pragma mark -
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.currentQuestion.images.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[PhotoCollectionViewCell reuseIdentifier]
+                                                                              forIndexPath:indexPath];
+    [cell displayImage:[self.currentQuestion.images objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 @end

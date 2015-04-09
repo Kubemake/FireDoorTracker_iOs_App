@@ -199,10 +199,6 @@ static NSString* kQuestions = @"issues";
                                              }];
 }
 
-- (void)userPressedMakePhotoButtonOnQuestion:(QuestionOrAnswer *)selectedAnswer {
-     
-}
-
 - (void)notifyDelagateAboutStatusChanges {
     if ([self.interviewDelegate respondsToSelector:@selector(changeInspectionStatusTo:)]) {
         [self.interviewDelegate

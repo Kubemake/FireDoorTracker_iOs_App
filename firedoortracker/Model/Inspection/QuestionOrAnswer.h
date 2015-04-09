@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, strong) NSArray* answers;
+@property (nonatomic, strong) NSArray *images;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

@@ -16,7 +16,6 @@
 
 @required
 - (void)userSelectAnswer:(QuestionOrAnswer *)answer;
-- (void)userPressedMakePhotoButtonOnQuestion:(QuestionOrAnswer *)selectedAnswer;
 
 @end
 

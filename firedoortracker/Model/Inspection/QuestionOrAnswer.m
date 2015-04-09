@@ -28,6 +28,7 @@
             }
             self.answers = answers;
         }
+        self.images = [dict objectForKey:@"images"];
     }
     return self;
 }
