@@ -121,7 +121,7 @@ static const CGFloat makePhotoButtonSize = 35.0f;
 }
 
 #pragma mark - Actions
-#pragma mark - 
+#pragma mark -
 
 - (void)answerSelected:(UIButton *)sender {
     //TODO: Save current Answer for the crump breads
@@ -141,7 +141,37 @@ static const CGFloat makePhotoButtonSize = 35.0f;
     //If Answer not have side effect -> go to next question
     if (self.selectedAnswer.status.integerValue == 0) {
         [self nextQuestionButtonPressed:sender];
-    } 
+    } else if ([self.selectedAnswer.selected boolValue]) {
+        [self showPhotoButtonOppositeButton:sender];
+    }
+}
+
+- (void)showPhotoButtonOppositeButton:(UIButton *)button {
+    //If button already added -  display it
+    for (UIButton *photoButton in button.subviews) {
+        if([photoButton isKindOfClass:[UIButton class]]) {
+            photoButton.hidden = NO;
+            return;
+        }
+    }
+    UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [photoButton addTarget:self action:@selector(makePhotoButonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [photoButton setBackgroundImage:[UIImage imageNamed:@"photoIcon"] forState:UIControlStateNormal];
+    
+    photoButton.frame = CGRectMake(button.frame.origin.x + button.bounds.size.width + 15.0f,
+                                   button.frame.origin.y + (button.bounds.size.height / 2.0f - makePhotoButtonSize / 2.0f),
+                                   makePhotoButtonSize,
+                                   makePhotoButtonSize);
+    
+    [self.questionBodyView addSubview:photoButton];
+}
+
+- (void)dismissPhotoButtonOppositeButton:(UIButton *)button {
+    for (UIButton *photoButton in button.subviews) {
+        photoButton.hidden = YES;
+        return;
+    }
 }
 
 - (void)resetAllAnswerSelectionWithousStatus:(inspectionStatus)status {
