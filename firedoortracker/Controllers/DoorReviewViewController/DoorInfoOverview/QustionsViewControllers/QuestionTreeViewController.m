@@ -155,14 +155,15 @@ static const CGFloat makePhotoButtonSize = 35.0f;
         }
     }
     UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [photoButton addTarget:self action:@selector(makePhotoButonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    [photoButton setBackgroundImage:[UIImage imageNamed:@"photoIcon"] forState:UIControlStateNormal];
+    [photoButton setBackgroundImage:[UIImage imageNamed:@"makePhotoButton"] forState:UIControlStateNormal];
     
     photoButton.frame = CGRectMake(button.frame.origin.x + button.bounds.size.width + 15.0f,
                                    button.frame.origin.y + (button.bounds.size.height / 2.0f - makePhotoButtonSize / 2.0f),
                                    makePhotoButtonSize,
                                    makePhotoButtonSize);
+    photoButton.tag = [self.selectedAnswer.idFormField integerValue];
+    [photoButton addTarget:self action:@selector(makePhotoButonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.questionBodyView addSubview:photoButton];
 }
@@ -210,8 +211,11 @@ static const CGFloat makePhotoButtonSize = 35.0f;
     [self displayQuestion:self.currentQuestion];
 }
 
-- (void)makePhotoButonPressed:(UIButton *)answerButton {
-    
+- (void)makePhotoButonPressed:(UIButton *)sender {
+    if ([self.questionDelegate respondsToSelector:@selector(userPressedMakePhotoButtonOnQuestion:)]) {
+        [self.questionDelegate
+         userPressedMakePhotoButtonOnQuestion:[self questionByID:[NSString stringWithFormat:@"%ld",sender.tag]]];
+    }
 }
 
 #pragma mark - Support Question Methods

@@ -200,7 +200,7 @@ static NSString* kQuestions = @"issues";
 }
 
 - (void)userPressedMakePhotoButtonOnQuestion:(QuestionOrAnswer *)selectedAnswer {
-    
+     
 }
 
 - (void)notifyDelagateAboutStatusChanges {
