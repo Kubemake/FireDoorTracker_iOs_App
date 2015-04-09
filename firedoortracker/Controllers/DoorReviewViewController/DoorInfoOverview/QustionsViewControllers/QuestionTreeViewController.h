@@ -16,7 +16,9 @@
 
 @required
 - (void)userSelectAnswer:(QuestionOrAnswer *)answer;
-- (void)userMakePhoto:(UIImage *)photo toAnswer:(QuestionOrAnswer *)answer;
+- (void)userMakePhoto:(UIImage *)photo
+             toAnswer:(QuestionOrAnswer *)answer
+questionTreeController:(id)controller;
 
 @end
 
@@ -26,5 +28,7 @@
 
 @property (nonatomic, weak) NSArray* questionForReview;
 @property (nonatomic, weak) Tab *tabForDisplaying;
+
+- (void)refreshViewWithNewImages:(NSArray *)images;
 
 @end

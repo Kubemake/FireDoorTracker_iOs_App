@@ -202,7 +202,9 @@ static NSString* kQuestions = @"issues";
                                              }];
 }
 
-- (void)userMakePhoto:(UIImage *)photo toAnswer:(QuestionOrAnswer *)answer {
+- (void)userMakePhoto:(UIImage *)photo
+             toAnswer:(QuestionOrAnswer *)answer
+questionTreeController:(id)controller {
     [SVProgressHUD show];
     __weak typeof(self) welf = self;
     
@@ -211,15 +213,16 @@ static NSString* kQuestions = @"issues";
                               kInspectionID : self.inspectionID,
                               kidFormField : answer.idFormField};
     
-    [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType andParams:params withCompletion:^(id responseObject, NSError *error)
-     {
-         if (error) {
-             [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-             return;
-         }
-         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"File Attached to the Inspection and Sent to the Server", nil)];
+    [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType
+                                                  andParams:params
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                     return;
+                                                 }
+                                                 [SVProgressHUD showSuccessWithStatus:@""];
+                                                 [controller refreshViewWithNewImages:[responseObject objectForKey:@"images"]];
      }];
-
 }
 
 - (void)notifyDelagateAboutStatusChanges {

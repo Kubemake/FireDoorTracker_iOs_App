@@ -10,7 +10,7 @@
 
 @interface PhotoCollectionViewCell : UICollectionViewCell
 
-- (void)displayImage:(UIImage *)image;
+- (void)displayImage:(NSString *)imageUrl;
 
 + (NSString *)reuseIdentifier;
 

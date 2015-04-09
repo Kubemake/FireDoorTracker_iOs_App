@@ -8,6 +8,8 @@
 
 #import "PhotoCollectionViewCell.h"
 
+#import <UIImageView+WebCache.h>
+
 @interface PhotoCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -17,8 +19,8 @@
 
 @implementation PhotoCollectionViewCell
 
-- (void)displayImage:(UIImage *)image {
-    self.imageView.image = image;
+- (void)displayImage:(NSString *)imageUrl {
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
 }
 
 + (NSString *)reuseIdentifier {

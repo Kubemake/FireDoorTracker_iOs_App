@@ -52,6 +52,11 @@ static const CGFloat answerButtonPadding = 5.0f;
     [self displayTab:self.tabForDisplaying];
 }
 
+- (void)refreshViewWithNewImages:(NSArray *)images {
+    self.currentQuestion.images = images;
+    [self.photosCollectionView reloadData];
+}
+
 #pragma mark - Display Methods
 
 - (void)displayTab:(Tab *)tabForReview {
@@ -63,6 +68,7 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 - (void)displayQuestion:(QuestionOrAnswer *)question {
     self.makePhotoButton.hidden = YES;
+    [self.photosCollectionView reloadData];
     self.currentQuestion = question;
     self.questionTitleLabel.text = question.label;
     
@@ -219,8 +225,10 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    if ([self.questionDelegate respondsToSelector:@selector(userMakePhoto:toAnswer:)]) {
-        [self.questionDelegate userMakePhoto:chosenImage toAnswer:self.selectedAnswer];
+    if ([self.questionDelegate respondsToSelector:@selector(userMakePhoto:toAnswer:questionTreeController:)]) {
+        [self.questionDelegate userMakePhoto:chosenImage
+                                    toAnswer:self.selectedAnswer
+         questionTreeController:self];
     }
     
     [picker dismissViewControllerAnimated:YES completion:nil];
