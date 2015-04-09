@@ -33,6 +33,8 @@ static const CGFloat makePhotoButtonSize = 35.0f;
 @property (weak, nonatomic) IBOutlet UIButton *previousQuestionButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextQuestionButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *photosCollectionView;
+@property (weak, nonatomic) IBOutlet UIButton *makePhotoButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *makePhotoButtonTopConstraint;
 
 //User Data
 @property (nonatomic, weak) QuestionOrAnswer *previosQuestion;
@@ -74,7 +76,7 @@ static const CGFloat makePhotoButtonSize = 35.0f;
     for (QuestionOrAnswer *answer in question.answers) {
         UIButton *answerButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
                                                                             answerButtonY,
-                                                                            self.questionBodyView.bounds.size.width,
+                                                                            self.questionBodyView.bounds.size.width - 45.0f,
                                                                             MIN(answerButtonHeight-answerButtonPadding,maxAnswerButtonHeight))];
         //TODO: Change to answer collor
         [answerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -120,7 +122,9 @@ static const CGFloat makePhotoButtonSize = 35.0f;
 
 - (void)removeAllButtonsFromView {
     for (UIButton* button in self.questionBodyView.subviews) {
-        [button removeFromSuperview];
+        if (button != self.makePhotoButton) {
+            [button removeFromSuperview];
+        }
     }
 }
 
@@ -151,32 +155,19 @@ static const CGFloat makePhotoButtonSize = 35.0f;
 }
 
 - (void)showPhotoButtonOppositeButton:(UIButton *)button {
-    //If button already added -  display it
-    for (UIButton *photoButton in button.subviews) {
-        if([photoButton isKindOfClass:[UIButton class]]) {
-            photoButton.hidden = NO;
-            return;
-        }
-    }
-    UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.makePhotoButtonTopConstraint.constant = button.frame.origin.y + (button.bounds.size.height / 2.0f) - (self.makePhotoButton.bounds.size.height / 2.0f);
     
-    [photoButton setBackgroundImage:[UIImage imageNamed:@"makePhotoButton"] forState:UIControlStateNormal];
+    self.makePhotoButton.tag = [self.selectedAnswer.idFormField integerValue];
+    self.makePhotoButton.hidden = NO;
     
-    photoButton.frame = CGRectMake(button.frame.origin.x + button.bounds.size.width + 15.0f,
-                                   button.frame.origin.y + (button.bounds.size.height / 2.0f - makePhotoButtonSize / 2.0f),
-                                   makePhotoButtonSize,
-                                   makePhotoButtonSize);
-    photoButton.tag = [self.selectedAnswer.idFormField integerValue];
-    [photoButton addTarget:self action:@selector(makePhotoButonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.questionBodyView addSubview:photoButton];
-}
-
-- (void)dismissPhotoButtonOppositeButton:(UIButton *)button {
-    for (UIButton *photoButton in button.subviews) {
-        photoButton.hidden = YES;
-        return;
-    }
+    [UIView animateWithDuration:0.25f
+                          delay:0
+         usingSpringWithDamping:0.75f
+          initialSpringVelocity:0.05f
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         [self.makePhotoButton layoutIfNeeded];
+                     } completion:nil];
 }
 
 - (void)resetAllAnswerSelectionWithousStatus:(inspectionStatus)status {
@@ -215,8 +206,8 @@ static const CGFloat makePhotoButtonSize = 35.0f;
     [self displayQuestion:self.currentQuestion];
 }
 
-- (void)makePhotoButonPressed:(UIButton *)sender {
-
+- (IBAction)makePhotoButonPressed:(UIButton *)sender {
+    
 }
 
 #pragma mark - Support Question Methods

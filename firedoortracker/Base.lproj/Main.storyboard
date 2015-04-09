@@ -1593,11 +1593,28 @@ No Data</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DF-ZA-dhT">
-                                <rect key="frame" x="33" y="85" width="535" height="444"/>
+                                <rect key="frame" x="25.5" y="85" width="550" height="444"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAD-TF-q4V">
+                                        <rect key="frame" x="515" y="0.0" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="ZDd-EJ-hzH"/>
+                                            <constraint firstAttribute="height" constant="35" id="mX1-nn-Ky1"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="makePhotoButton">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="makePhotoButonPressed:" destination="45x-8O-B7S" eventType="touchUpInside" id="kkC-6x-O4M"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YAD-TF-q4V" secondAttribute="trailing" id="2qK-r0-5qf"/>
                                     <constraint firstAttribute="height" constant="444" id="MBe-lM-YvH"/>
-                                    <constraint firstAttribute="width" constant="535" id="X9G-m8-1kX"/>
+                                    <constraint firstItem="YAD-TF-q4V" firstAttribute="top" secondItem="0DF-ZA-dhT" secondAttribute="top" id="ONB-2s-FoD"/>
+                                    <constraint firstAttribute="width" constant="550" id="X9G-m8-1kX"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqV-MD-RAe">
@@ -1685,6 +1702,8 @@ No Data</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="makePhotoButton" destination="YAD-TF-q4V" id="m5w-Rm-jpV"/>
+                        <outlet property="makePhotoButtonTopConstraint" destination="ONB-2s-FoD" id="FpV-mk-tWp"/>
                         <outlet property="nextQuestionButton" destination="dxj-QR-Zlu" id="6nO-EL-GOs"/>
                         <outlet property="photosCollectionView" destination="qyl-dr-Vqg" id="Ek0-Zo-2Jf"/>
                         <outlet property="previousQuestionButton" destination="QqV-MD-RAe" id="XXD-JP-4L5"/>
@@ -1833,6 +1852,7 @@ No Data</string>
         <image name="homeIcon" width="37" height="37"/>
         <image name="login_button_bg" width="250" height="31"/>
         <image name="logo" width="352" height="126"/>
+        <image name="makePhotoButton" width="37" height="36"/>
         <image name="mediaIcon" width="37" height="37"/>
         <image name="nextButton" width="37" height="37"/>
         <image name="photoIcon" width="137" height="106"/>
