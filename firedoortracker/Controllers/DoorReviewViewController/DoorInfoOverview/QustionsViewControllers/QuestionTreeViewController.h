@@ -16,6 +16,7 @@
 
 @required
 - (void)userSelectAnswer:(QuestionOrAnswer *)answer;
+- (void)userMakePhoto:(UIImage *)photo toAnswer:(QuestionOrAnswer *)answer;
 
 @end
 

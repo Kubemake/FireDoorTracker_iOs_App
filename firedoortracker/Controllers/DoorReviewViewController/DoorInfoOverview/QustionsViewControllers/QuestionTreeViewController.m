@@ -22,9 +22,8 @@
 
 static const CGFloat maxAnswerButtonHeight = 65.0f;
 static const CGFloat answerButtonPadding = 5.0f;
-static const CGFloat makePhotoButtonSize = 35.0f;
 
-@interface QuestionTreeViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface QuestionTreeViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UILabel *questionTitleLabel;
@@ -63,6 +62,7 @@ static const CGFloat makePhotoButtonSize = 35.0f;
 #pragma mark - Display Question
 
 - (void)displayQuestion:(QuestionOrAnswer *)question {
+    self.makePhotoButton.hidden = YES;
     self.currentQuestion = question;
     self.questionTitleLabel.text = question.label;
     
@@ -207,7 +207,27 @@ static const CGFloat makePhotoButtonSize = 35.0f;
 }
 
 - (IBAction)makePhotoButonPressed:(UIButton *)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePickerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    if ([self.questionDelegate respondsToSelector:@selector(userMakePhoto:toAnswer:)]) {
+        [self.questionDelegate userMakePhoto:chosenImage toAnswer:self.selectedAnswer];
+    }
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Support Question Methods

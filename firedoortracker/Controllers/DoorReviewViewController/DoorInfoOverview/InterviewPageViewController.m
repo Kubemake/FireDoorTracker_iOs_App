@@ -37,6 +37,9 @@ static NSString* kRating = @"rating";
 static NSString* kSelected = @"selected";
 static NSString* kStatus = @"status";
 static NSString* kidFormField = @"idFormFields";
+static NSString* kAperture = @"aperture_id";
+static NSString* kFile = @"file";
+static NSString* kFileName = @"file_name";
 
 static NSString* kTabs = @"tabs";
 static NSString* kQuestions = @"issues";
@@ -197,6 +200,26 @@ static NSString* kQuestions = @"issues";
                                                      return;
                                                  }
                                              }];
+}
+
+- (void)userMakePhoto:(UIImage *)photo toAnswer:(QuestionOrAnswer *)answer {
+    [SVProgressHUD show];
+    __weak typeof(self) welf = self;
+    
+    NSDictionary *params = @{ kFile     : photo,
+                              kFileName : answer.label,
+                              kInspectionID : self.inspectionID,
+                              kidFormField : answer.idFormField};
+    
+    [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType andParams:params withCompletion:^(id responseObject, NSError *error)
+     {
+         if (error) {
+             [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+             return;
+         }
+         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"File Attached to the Inspection and Sent to the Server", nil)];
+     }];
+
 }
 
 - (void)notifyDelagateAboutStatusChanges {
