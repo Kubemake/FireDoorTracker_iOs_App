@@ -506,7 +506,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTd-wu-X9I">
-                                        <rect key="frame" x="230" y="21" width="140" height="21.5"/>
+                                        <rect key="frame" x="230" y="21" width="140" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="zC4-dX-vO5"/>
                                         </constraints>
@@ -514,8 +514,8 @@
                                         <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Door ID: Door Location: Inspector: Previous Review Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-2K-Scs">
-                                        <rect key="frame" x="133" y="51" width="185" height="120"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door ID: Door Location: Inspector: Previous Review Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-2K-Scs">
+                                        <rect key="frame" x="133" y="52" width="185" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="bYU-f2-rIC"/>
                                             <constraint firstAttribute="width" constant="185" id="gI4-ws-qcO"/>
@@ -523,8 +523,8 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Hb-Mi9">
-                                        <rect key="frame" x="326" y="51" width="185" height="120"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Hb-Mi9">
+                                        <rect key="frame" x="326" y="52" width="185" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="ltq-d3-vxX"/>
                                             <constraint firstAttribute="width" constant="185" id="uEA-fx-hLh"/>

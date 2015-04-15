@@ -192,7 +192,7 @@ static NSString* kQuestions = @"issues";
     [[NetworkManager sharedInstance] performRequestWithType:InspectionUpdateDataRequestType
                                                   andParams:@{kInspectionID : self.inspectionID,
                                                               kidFormField : answer.idFormField,
-                                                              kSelected : (answer.selected.integerValue) ? answer.selected : [NSNull null],
+                                                              kSelected : (answer.selected) ? : [NSNull null],
                                                               kStatus : answer.status}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {

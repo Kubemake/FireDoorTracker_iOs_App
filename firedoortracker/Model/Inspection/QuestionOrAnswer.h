@@ -16,7 +16,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *questionID;
 @property (nonatomic, copy) NSString *nextQuiestionID;
-@property (nonatomic, strong) NSNumber *selected;
+@property (nonatomic, copy) NSString *selected;
 @property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, strong) NSArray* answers;

@@ -200,9 +200,9 @@ static bool isFirstAccess = YES;
                               
                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                               if (completion) completion(nil, error);
-//                              NSData *theData = [error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"];
-//                              NSString *string = [NSString stringWithUTF8String:[theData bytes]];
-//                              NSLog(@"%@",string);
+                              //                              NSData *theData = [error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"];
+                              //                              NSString *string = [NSString stringWithUTF8String:[theData bytes]];
+                              //                              NSLog(@"%@",string);
                           }];
         return;
     }
@@ -225,6 +225,9 @@ static bool isFirstAccess = YES;
                           }
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                           if (completion) completion(nil, error);
+                          NSData *theData = [error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"];
+                          NSString *string = [NSString stringWithUTF8String:[theData bytes]];
+                          NSLog(@"%@",string);
                       }];
 }
 

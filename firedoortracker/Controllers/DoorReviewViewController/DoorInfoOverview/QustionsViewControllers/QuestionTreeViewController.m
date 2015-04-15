@@ -143,7 +143,11 @@ static const CGFloat answerButtonPadding = 5.0f;
 - (void)answerSelected:(UIButton *)sender {
     //TODO: Save current Answer for the crump breads
     self.selectedAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%d",sender.tag]];
-    self.selectedAnswer.selected = [NSNumber numberWithBool:![self.selectedAnswer.selected boolValue]];
+    if ([self.selectedAnswer.label isEqualToString:@"Other"]) {
+        [self showOtherAlertView];
+        return;
+    }
+    self.selectedAnswer.selected = ([self.selectedAnswer.selected boolValue]) ? @"NO" : @"YES";
     if ([self.selectedAnswer.status integerValue] == inspectionStatusCompliant) {
         [self resetAllAnswerSelectionWithousStatus:inspectionStatusCompliant];
     } else {
@@ -161,6 +165,36 @@ static const CGFloat answerButtonPadding = 5.0f;
     } else if ([self.selectedAnswer.selected boolValue]) {
         [self showPhotoButtonOppositeButton:sender];
     }
+}
+
+- (void)showOtherAlertView {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Other", nil)
+                                                                   message:NSLocalizedString(@"Please input description", nil)
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    __weak typeof(self) welf = self;
+    UIAlertAction *submit = [UIAlertAction actionWithTitle:NSLocalizedString(@"Submit", nil)
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *action) {
+                                                       UITextField *descriptionInput = (UITextField *)[[alert textFields] firstObject];
+                                                       welf.selectedAnswer.selected = descriptionInput.text;
+                                                       if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:)]) {
+                                                           [welf.questionDelegate userSelectAnswer:welf.selectedAnswer];
+                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                                       }
+                                                   }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil)
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    [alert addAction:submit];
+    [alert addAction:cancel];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = NSLocalizedString(@"Description...", nil);
+    }];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)showPhotoButtonOppositeButton:(UIButton *)button {
@@ -183,7 +217,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     //Reset Model State
     for (QuestionOrAnswer *answers in self.currentQuestion.answers) {
         if (answers.status.integerValue != status) {
-            answers.selected = [NSNumber numberWithBool:NO];
+            answers.selected = @"NO";
         }
     }
 }
@@ -192,7 +226,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     //Reset Model State
     for (QuestionOrAnswer *answers in self.currentQuestion.answers) {
         if (answers.status.integerValue == status) {
-            answers.selected = [NSNumber numberWithBool:NO];
+            answers.selected = @"NO";
         }
     }
 }
