@@ -26,7 +26,7 @@
 static const CGFloat maxAnswerButtonHeight = 65.0f;
 static const CGFloat answerButtonPadding = 5.0f;
 
-@interface QuestionTreeViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate>
+@interface QuestionTreeViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UILabel *questionTitleLabel;
