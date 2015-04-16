@@ -296,7 +296,7 @@ static NSString* kLocationID = @"location_id";
 #pragma mark - scan qr code action
 
 - (IBAction)scanQrButtonPressed:(id)sender {
-    NSArray *types = @[AVMetadataObjectTypeUPCECode, AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode93Code];
+    NSArray *types = @[AVMetadataObjectTypeQRCode];
     QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
                                                              readerWithMetadataObjectTypes:types];
     qrCodeReaderViewConroller.modalPresentationStyle = UIModalPresentationFormSheet;
