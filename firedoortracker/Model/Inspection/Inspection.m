@@ -41,6 +41,13 @@
     return _completionDate;
 }
 
+- (NSString *)startDate {
+    if ([_startDate isEqual:[NSNull null]]) {
+        return @"-";
+    }
+    return _startDate;
+}
+
 #pragma mark - status properties
 
 + (NSString *)stringForStatus:(inspectionStatus)status {
