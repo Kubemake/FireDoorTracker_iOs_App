@@ -29,14 +29,22 @@ static NSString* kUserInspections = @"inspections";
 
 static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectionViewCellIdentifier";
 
-@interface MediaViewController() <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
-                                  QRCodeReaderDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
+typedef enum {
+    NewPhotoButtonTypeTakePicture = 0,
+    NewPhotoButtonTypeFromLibrary
+} NewPhotoButtonType;
+
+
+@interface MediaViewController() <UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+QRCodeReaderDelegate, UICollectionViewDataSource, UICollectionViewDelegate,
+UISearchBarDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 //User Data
 @property (strong, nonatomic) NSArray* inspectionsForDisplaying;
+@property (weak, nonatomic) Inspection *selectedInspection;
 
 
 @end
@@ -47,11 +55,6 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
     [self loadAndDisplayInspectionList:nil withKeyword:nil];
 }
 
@@ -59,8 +62,11 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    
     [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    [self uploadImage:chosenImage
+         toInspection:self.selectedInspection
+      withDescription:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -74,8 +80,8 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
     __weak typeof(self) welf = self;
     
     NSDictionary *params = @{ kFile     : image,
-                              kFileName : description,
-                              kAperture : inspection.apertureId };
+                              kFileName : (description) ? : @"From iPad",
+                              kAperture : (inspection.apertureId) ? : @"" };
     
     [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType
                                                   andParams:params
@@ -119,7 +125,14 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        //TODO: Display Make/Select photo flow
+        self.selectedInspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.section];
+        UIActionSheet *attachPhoto = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"New image source?", nil)
+                                                                 delegate:self
+                                                        cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"To Take Picture", @"From Library", nil];
+//        attachPhoto.delegate = self;
+        [attachPhoto showInView:self.view];
         return;
     }
     
@@ -199,7 +212,7 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 }
 
 #pragma mark - SearchBar Delegate
-#pragma mark - 
+#pragma mark -
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self loadAndDisplayInspectionList:nil withKeyword:searchBar.text];
@@ -218,6 +231,29 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     searchBar.showsCancelButton = NO;
+}
+
+#pragma mark - Action Sheet Delegate
+#pragma mark - 
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    //    picker.allowsEditing = YES;
+    
+    switch (buttonIndex) {
+        case NewPhotoButtonTypeTakePicture:
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            break;
+        case NewPhotoButtonTypeFromLibrary:
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            break;
+        default:
+            return;
+    }
+    
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 @end
