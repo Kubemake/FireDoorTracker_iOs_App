@@ -13,6 +13,7 @@
 
 //Import View
 #import "MediaCollectionViewCell.h"
+#import "MediaHeaderCollectionReusableView.h"
 
 //Import Pods
 #import <QRCodeReaderViewController.h>
@@ -136,6 +137,17 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
     [self presentViewController:browser animated:YES completion:nil];
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath {
+    MediaHeaderCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                   withReuseIdentifier:[MediaHeaderCollectionReusableView identifier]
+                                                                                          forIndexPath:indexPath];
+    Inspection *inspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.section];
+    [header displayInspectionInfo:inspection];
+    return header;
+}
+
 #pragma mark - API Methods
 #pragma mark -
 
@@ -196,7 +208,7 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
-    searchBar.text = nil;
+    searchBar.text = @"";
     [self loadAndDisplayInspectionList:nil withKeyword:nil];
 }
 

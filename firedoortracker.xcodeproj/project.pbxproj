@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		68280EC71ABD92640041C570 /* ConfirmationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68280EC61ABD92640041C570 /* ConfirmationTableViewCell.m */; };
 		682C11631AE26F5E00CDD219 /* MediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 682C11621AE26F5E00CDD219 /* MediaCollectionViewCell.m */; };
+		682C11661AE286B600CDD219 /* MediaHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682C11651AE286B600CDD219 /* MediaHeaderCollectionReusableView.m */; };
 		6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3871AB5ED2D0085965E /* MediaViewController.m */; };
 		6851D38C1AB5ED530085965E /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38B1AB5ED530085965E /* ResourcesViewController.m */; };
 		6851D3901AB5ED890085965E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D38F1AB5ED890085965E /* SettingViewController.m */; };
@@ -76,6 +77,8 @@
 		68280EC61ABD92640041C570 /* ConfirmationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmationTableViewCell.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/ConfirmationTableViewCell.m; sourceTree = "<group>"; };
 		682C11611AE26F5E00CDD219 /* MediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaCollectionViewCell.h; path = Controllers/MediaViewController/View/MediaCollectionViewCell.h; sourceTree = "<group>"; };
 		682C11621AE26F5E00CDD219 /* MediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaCollectionViewCell.m; path = Controllers/MediaViewController/View/MediaCollectionViewCell.m; sourceTree = "<group>"; };
+		682C11641AE286B600CDD219 /* MediaHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaHeaderCollectionReusableView.h; path = Controllers/MediaViewController/View/MediaHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		682C11651AE286B600CDD219 /* MediaHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaHeaderCollectionReusableView.m; path = Controllers/MediaViewController/View/MediaHeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		6851D3861AB5ED2D0085965E /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaViewController.h; path = Controllers/MediaViewController/MediaViewController.h; sourceTree = "<group>"; };
 		6851D3871AB5ED2D0085965E /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaViewController.m; path = Controllers/MediaViewController/MediaViewController.m; sourceTree = "<group>"; };
 		6851D38A1AB5ED530085965E /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcesViewController.h; path = Controllers/ResourcesViewController/ResourcesViewController.h; sourceTree = "<group>"; };
@@ -211,6 +214,8 @@
 			children = (
 				682C11611AE26F5E00CDD219 /* MediaCollectionViewCell.h */,
 				682C11621AE26F5E00CDD219 /* MediaCollectionViewCell.m */,
+				682C11641AE286B600CDD219 /* MediaHeaderCollectionReusableView.h */,
+				682C11651AE286B600CDD219 /* MediaHeaderCollectionReusableView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -831,6 +836,7 @@
 				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
 				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
 				689BFD231AC3D5850068733D /* AddDoorReviewViewController.m in Sources */,
+				682C11661AE286B600CDD219 /* MediaHeaderCollectionReusableView.m in Sources */,
 				F94A8C0D1ABB21DE00A3AC06 /* NavigationBarButtons.m in Sources */,
 				6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */,
 				682C11631AE26F5E00CDD219 /* MediaCollectionViewCell.m in Sources */,
