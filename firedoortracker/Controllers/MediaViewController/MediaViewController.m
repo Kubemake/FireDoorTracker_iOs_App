@@ -9,12 +9,15 @@
 #import "MediaViewController.h"
 #import "DoorReviewViewController.h"
 #import "NetworkManager.h"
-#import <QRCodeReaderViewController.h>
-#import <SVProgressHUD.h>
 #import "CurrentUser.h"
 
 //Import View
 #import "MediaCollectionViewCell.h"
+
+//Import Pods
+#import <QRCodeReaderViewController.h>
+#import <SVProgressHUD.h>
+#import <IDMPhotoBrowser.h>
 
 static NSString* inspectionSelectorID = @"DoorReviewViewController";
 static NSString* kAperture = @"aperture_id";
@@ -43,6 +46,11 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     [self loadAndDisplayInspectionList:nil withKeyword:nil];
 }
 
@@ -109,7 +117,23 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        //TODO: Display Make/Select photo flow
+        return;
+    }
     
+    NSMutableArray *photos = [NSMutableArray new];
+    Inspection *sectionInspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.section];
+    
+    for (NSString *url in sectionInspection.images) {
+        IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:url]];
+        [photos addObject:photo];
+    }
+    
+    IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos:photos
+                                                      animatedFromView:nil];
+    [browser setInitialPageIndex:indexPath.row-1];
+    [self presentViewController:browser animated:YES completion:nil];
 }
 
 #pragma mark - API Methods
@@ -172,6 +196,16 @@ static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectio
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
+    searchBar.text = nil;
+    [self loadAndDisplayInspectionList:nil withKeyword:nil];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = NO;
 }
 
 @end
