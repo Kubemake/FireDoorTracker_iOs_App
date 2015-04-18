@@ -28,6 +28,7 @@
         self.barCode = [dictionary objectForKey:@"barcode"];
         self.apertureName = [dictionary objectForKey:@"aperture_name"];
         self.colorStatus = [dictionary objectForKey:@"colorcode"];
+        self.images = [dictionary objectForKey:@"images"];
     }
     return self;
 }
