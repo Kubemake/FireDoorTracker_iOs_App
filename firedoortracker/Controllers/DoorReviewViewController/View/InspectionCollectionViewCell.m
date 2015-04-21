@@ -33,7 +33,7 @@
                                   inspection.startDate,
                                   inspection.completionDate,
                                   inspection.firstName, inspection.lastName,
-                                  inspection.inspectionStatus];
+                                  @"-"];
     [self displayColorStatuses:inspection.colorStatus];
 }
 
