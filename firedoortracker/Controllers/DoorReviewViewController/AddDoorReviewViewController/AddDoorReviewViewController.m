@@ -26,6 +26,7 @@ static NSString* kDoorID = @"barcode";
 static NSString* kLocations = @"location";
 static NSString* kStartDate = @"StartDate";
 static NSString* kLocationID = @"location_id";
+static NSString* kCreatedInspection = @"CreatedInspection";
 
 @interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate, QRCodeReaderDelegate>
 
@@ -320,8 +321,10 @@ static NSString* kLocationID = @"location_id";
                                                          [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                          return;
                                                      }
-                                                     if ([welf.delegate respondsToSelector:@selector(inspectionSuccessfullyCreated)]) {
-                                                         [welf.delegate inspectionSuccessfullyCreated];
+                                                     Inspection *createdInspection = [[Inspection alloc] initWithDictionary:[responseObject objectForKey:kCreatedInspection]];
+                                                     
+                                                     if ([welf.delegate respondsToSelector:@selector(inspectionSuccessfullyCreated:)]) {
+                                                         [welf.delegate inspectionSuccessfullyCreated:createdInspection];
                                                      }
                                                  }];
     }

@@ -20,7 +20,7 @@ typedef enum{
 
 @interface Inspection : NSObject
 
-@property (nonatomic, copy) NSString* uid;
+@property (nonatomic, copy) NSNumber* uid;
 @property (nonatomic, copy) NSString* firstName;
 @property (nonatomic, copy) NSString* lastName;
 @property (nonatomic, copy) NSString* creatorFirstName;

@@ -37,6 +37,7 @@ static NSString* kKeyword = @"keyword";
 @property (weak, nonatomic) IBOutlet UILabel *noInspectionsLabel;
 
 //User Data
+@property (strong, nonatomic) Inspection* createdInspection;
 @property (strong, nonatomic) NSArray* inspectionsForDisplaying;
 @property (weak, nonatomic) Inspection* selectedInspection;
 
@@ -93,11 +94,36 @@ static NSString* kKeyword = @"keyword";
                                                  [SVProgressHUD showSuccessWithStatus:nil];
                                                  [CurrentUser sharedInstance].userInscpetions = [[responseObject objectForKey:kUserInspections] allObjects];
                                                  welf.inspectionsForDisplaying = [CurrentUser sharedInstance].userInscpetions;
+                                                 
+                                                 //Move new inspection in beginning
+                                                 welf.inspectionsForDisplaying = [welf moveInspection:welf.createdInspection
+                                                                                     toArrayBeginning:welf.inspectionsForDisplaying];
+                                                 
                                                  welf.noInspectionsLabel.hidden = (welf.inspectionsForDisplaying.count) ? YES : NO;
 
                                                  [welf.collectionView reloadData];
                                              }];
     
+}
+
+#pragma mark - Support Data Methods
+#pragma mark - 
+
+- (NSArray *)moveInspection:(Inspection *)inspection toArrayBeginning:(NSArray *)array {
+    NSMutableArray *inspectionsMutable = [NSMutableArray arrayWithArray:array];
+    if (inspection && inspection.uid) {
+        Inspection *container = nil;
+        for(Inspection *insp in inspectionsMutable) {
+            if (inspection.uid.integerValue == insp.uid.integerValue) {
+                container = insp;
+            }
+        }
+        if (container) {
+            [inspectionsMutable removeObject:container];
+            [inspectionsMutable insertObject:container atIndex:0];
+        }
+    }
+    return inspectionsMutable;
 }
 
 #pragma mark - CollectionView
@@ -183,7 +209,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Add New Inspection Delegate
 
-- (void)inspectionSuccessfullyCreated {
+- (void)inspectionSuccessfullyCreated:(Inspection *)createdInspection {
+    self.createdInspection = createdInspection;
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopTop];
     [self loadAndDisplayInspectionList:nil withKeyword:nil];
 }

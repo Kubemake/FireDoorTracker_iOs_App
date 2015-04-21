@@ -22,7 +22,7 @@
 
 @interface InterviewPageViewController : UIPageViewController
 
-@property (nonatomic, copy) NSString* inspectionID;
+@property (nonatomic, strong) NSNumber* inspectionID;
 @property (nonatomic, strong) NSDictionary* doorOverviewDictionary;
 
 //Door Interview Delegate

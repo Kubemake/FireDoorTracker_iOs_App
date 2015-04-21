@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Inspection.h"
 
 @protocol AddDoorReviewDelegate <NSObject>
 
 @required
-- (void)inspectionSuccessfullyCreated;
+- (void)inspectionSuccessfullyCreated:(Inspection *)createdInspection;
 
 @end
 
