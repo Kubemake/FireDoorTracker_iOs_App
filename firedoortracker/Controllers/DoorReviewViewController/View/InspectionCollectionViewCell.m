@@ -26,13 +26,15 @@
 - (void)displayInspection:(Inspection *)inspection {
     self.titleLabel.text = [NSString stringWithFormat:@"Review %@",inspection.uid];
     //TODO: Display Result Statuses
-    self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@ %@\n%@",
+    self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@ %@\n%@ %@\n%@\n%@",
                                   inspection.barCode,
                                   inspection.locationName,
                                   inspection.inspectionStatus,
                                   inspection.startDate,
                                   inspection.completionDate,
                                   inspection.firstName, inspection.lastName,
+                                  inspection.creatorFirstName, inspection.creatorLastName,
+                                  inspection.creationDate,
                                   @"-"];
     [self displayColorStatuses:inspection.colorStatus];
 }

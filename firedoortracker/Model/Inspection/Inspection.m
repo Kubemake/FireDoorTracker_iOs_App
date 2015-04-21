@@ -17,6 +17,9 @@
         self.uid = [dictionary objectForKey:@"id"];
         self.firstName = [dictionary objectForKey:@"firstName"];
         self.lastName = [dictionary objectForKey:@"lastName"];
+        self.creatorFirstName = [dictionary objectForKey:@"CreatorfirstName"];
+        self.creatorLastName = [dictionary objectForKey:@"CreatorlastName"];
+        self.creationDate = [dictionary objectForKey:@"CreateDate"];
         self.locationId = [dictionary objectForKey:@"location_id"];
         self.buildingName = [dictionary objectForKey:@"building_name"];
         self.locationName = [dictionary objectForKey:@"location_name"];
@@ -47,6 +50,41 @@
         return @"-";
     }
     return _startDate;
+}
+
+- (NSString *)creationDate {
+    if ([_creationDate isEqual:[NSNull null]]) {
+        return @"-";
+    }
+    return _creationDate;
+}
+
+- (NSString *)creatorFirstName {
+    if ([_creatorFirstName isEqual:[NSNull null]]) {
+        return @"-";
+    }
+    return _creatorFirstName;
+}
+
+- (NSString *)creatorLastName {
+    if ([_creatorLastName isEqual:[NSNull null]]) {
+        return @"-";
+    }
+    return _creatorLastName;
+}
+
+- (NSString *)firstName {
+    if ([_firstName isEqual:[NSNull null]]) {
+        return @"-";
+    }
+    return _firstName;
+}
+
+- (NSString *)lastName {
+    if ([_lastName isEqual:[NSNull null]]) {
+        return @"-";
+    }
+    return _lastName;
 }
 
 #pragma mark - status properties

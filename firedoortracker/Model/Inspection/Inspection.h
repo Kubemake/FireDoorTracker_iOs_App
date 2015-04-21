@@ -23,6 +23,9 @@ typedef enum{
 @property (nonatomic, copy) NSString* uid;
 @property (nonatomic, copy) NSString* firstName;
 @property (nonatomic, copy) NSString* lastName;
+@property (nonatomic, copy) NSString* creatorFirstName;
+@property (nonatomic, copy) NSString* creatorLastName;
+@property (nonatomic, copy) NSString* creationDate;
 @property (nonatomic, copy) NSString* locationId;
 @property (nonatomic, copy) NSString* locationName;
 @property (nonatomic, copy) NSString* buildingName;
