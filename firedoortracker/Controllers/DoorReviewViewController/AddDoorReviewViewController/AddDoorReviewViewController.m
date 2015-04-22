@@ -27,6 +27,7 @@ static NSString* kLocations = @"location";
 static NSString* kStartDate = @"StartDate";
 static NSString* kLocationID = @"location_id";
 static NSString* kCreatedInspection = @"CreatedInspection";
+static NSString* kCase = @"case";
 
 @interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate, QRCodeReaderDelegate>
 
@@ -257,9 +258,9 @@ static NSString* kCreatedInspection = @"CreatedInspection";
                                                      return;
                                                  }
                                                  //TODO: Display Case
-                                                 [SVProgressHUD showSuccessWithStatus:@""];
+                                                 [SVProgressHUD showInfoWithStatus:[responseObject objectForKey:kCase]];
                                                  welf.buildingsAndLocations = [NSMutableArray array];
-                                                 for (NSDictionary *dict in [responseObject objectForKey:kLocations]) {
+                                                 for (NSDictionary *dict in [[responseObject objectForKey:kLocations] allObjects]) {
                                                      BuildingOrLocation *buildingOrLocation = [[BuildingOrLocation alloc] initWithDictionary:dict];
                                                      [welf.buildingsAndLocations addObject:buildingOrLocation];
                                                  }
@@ -279,6 +280,9 @@ static NSString* kCreatedInspection = @"CreatedInspection";
     }
     IQDropDownTextField *buildingsField = [self fieldByType:NewInspectionInputFieldBuilding];
     buildingsField.itemList = buildingNames;
+    UITextField *buildingField = (UITextField *)[self fieldByType:NewInspectionInputFieldBuilding];
+    buildingField.text = [buildingNames  firstObject];
+    
     [self displayLocations];
 }
 
