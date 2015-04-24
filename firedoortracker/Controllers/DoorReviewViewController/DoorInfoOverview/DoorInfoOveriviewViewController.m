@@ -215,4 +215,13 @@ static NSString* kApertureID = @"aperture_id";
     [self.statusViews addObject:statusView];
 }
 
+#pragma mark - Door Info Overview Delegate
+
+- (void)inspectionConfirmded {
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    self.selectedInspection.completionDate = [formatter stringFromDate:date];
+}
+
 @end

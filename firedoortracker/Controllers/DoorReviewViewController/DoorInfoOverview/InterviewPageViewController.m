@@ -245,6 +245,7 @@ questionTreeController:(id)controller {
                                                      return;
                                                  }
                                                  [welf.navigationController popToRootViewControllerAnimated:YES];
+                                                 [welf.interviewDelegate inspectionConfirmded];
                                                  [SVProgressHUD showSuccessWithStatus:@"Inspection Sent to the Server"];
                                              }];
 }

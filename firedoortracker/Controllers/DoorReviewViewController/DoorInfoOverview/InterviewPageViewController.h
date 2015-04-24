@@ -18,6 +18,8 @@
 //Review Status
 - (void)changeInspectionStatusTo:(NSArray *)newStatuses;
 
+- (void)inspectionConfirmded;
+
 @end
 
 @interface InterviewPageViewController : UIPageViewController
