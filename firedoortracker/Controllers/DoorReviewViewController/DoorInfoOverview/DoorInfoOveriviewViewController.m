@@ -90,9 +90,9 @@ static NSString* kApertureID = @"aperture_id";
 #pragma mark - 
 
 - (void)setupInspectionInfo {
-    self.inspectionInfoLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",self.selectedInspection.apertureId,
+    self.inspectionInfoLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@ %@\n%@",self.selectedInspection.apertureId,
                                  self.selectedInspection.locationName,
-                                 (self.selectedInspection.inspector) ? : @"-",
+                                 self.selectedInspection.firstName, self.selectedInspection.lastName,
                                  self.selectedInspection.completionDate
                                  ];
 }
