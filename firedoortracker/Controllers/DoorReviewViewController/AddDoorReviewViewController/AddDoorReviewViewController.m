@@ -113,8 +113,7 @@ static NSString* kCase = @"case";
 
 #pragma mark - Get Buildings
 
-- (NSArray *)buildingsList
-{
+- (NSArray *)buildingsList {
     NSMutableArray *buildings = [NSMutableArray array];
     for (BuildingOrLocation *buildingOrLocation in self.buildingsAndLocations) {
         if ([buildingOrLocation.root integerValue] == [buildingOrLocation.idBuildings integerValue]
@@ -293,6 +292,12 @@ static NSString* kCase = @"case";
         [locationNames addObject:location.name];
     }
     IQDropDownTextField *locationsField = [self fieldByType:NewInspectionInputFieldLocation];
+    
+    if (!locationNames.count) {
+        UITextField *buildingField = (UITextField *)[self fieldByType:NewInspectionInputFieldBuilding];
+        BuildingOrLocation *currentBuilding = (BuildingOrLocation *)[self buildingOrLocationByName:buildingField.text];
+        [locationNames addObject:currentBuilding.name];
+    }
     locationsField.itemList = locationNames;
     locationsField.text = [locationNames firstObject];
 }
