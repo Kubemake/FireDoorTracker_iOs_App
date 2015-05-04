@@ -191,9 +191,9 @@ static NSString* kQuestions = @"issues";
     //Save info and server
     [[NetworkManager sharedInstance] performRequestWithType:InspectionUpdateDataRequestType
                                                   andParams:@{kInspectionID : self.inspectionID,
-                                                              kidFormField : answer.idFormField,
+                                                              kidFormField : (answer.idFormField) ? : [NSNull null],
                                                               kSelected : (answer.selected) ? : [NSNull null],
-                                                              kStatus : answer.status}
+                                                              kStatus : (answer.status) ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      //TODO: Display Error
