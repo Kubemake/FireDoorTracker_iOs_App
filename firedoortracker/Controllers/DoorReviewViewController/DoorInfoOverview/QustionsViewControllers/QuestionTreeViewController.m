@@ -60,6 +60,10 @@ static const CGFloat answerButtonPadding = 5.0f;
     [self.photosCollectionView reloadData];
 }
 
+- (void)updateCurrentQuestion:(QuestionOrAnswer *)question {
+    [self displayQuestion:question];
+}
+
 #pragma mark - Display Methods
 
 - (void)displayTab:(Tab *)tabForReview {
@@ -177,8 +181,8 @@ static const CGFloat answerButtonPadding = 5.0f;
                                                    handler:^(UIAlertAction *action) {
                                                        UITextField *descriptionInput = (UITextField *)[[alert textFields] firstObject];
                                                        welf.selectedAnswer.selected = descriptionInput.text;
-                                                       if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:)]) {
-                                                           [welf.questionDelegate userSelectAnswer:welf.selectedAnswer];
+                                                       if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
+                                                           [welf.questionDelegate userSelectAnswer:welf.selectedAnswer questionTreeController:self];
                                                            [alert dismissViewControllerAnimated:YES completion:nil];
                                                        }
                                                    }];
@@ -192,6 +196,43 @@ static const CGFloat answerButtonPadding = 5.0f;
     
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = NSLocalizedString(@"Description...", nil);
+    }];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showDoorSizeAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Door Sign", nil)
+                                                                   message:NSLocalizedString(@"Please enter in dimensions of signs", nil)
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    __weak typeof(self) welf = self;
+    UIAlertAction *submit = [UIAlertAction actionWithTitle:NSLocalizedString(@"Submit", nil)
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *action) {
+                                                       for(UITextField* field in [alert textFields]) {
+                                                           if (welf.selectedAnswer.selected.length) {
+                                                               welf.selectedAnswer.selected = [welf.selectedAnswer.selected stringByAppendingString:@","];
+                                                           }
+                                                           welf.selectedAnswer.selected = [welf.selectedAnswer.selected stringByAppendingString:[NSString stringWithFormat:@"%@",field.text]];
+                                                       }
+                                                       if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
+                                                           [welf.questionDelegate userSelectAnswer:welf.selectedAnswer questionTreeController:self];
+                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                                       }
+                                                   }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil)
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    [alert addAction:submit];
+    [alert addAction:cancel];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = NSLocalizedString(@"Width...", nil);
+    }];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = NSLocalizedString(@"Height...", nil);
     }];
     
     [self presentViewController:alert animated:YES completion:nil];
@@ -237,8 +278,8 @@ static const CGFloat answerButtonPadding = 5.0f;
     QuestionOrAnswer *nextQuestion = [self questionByID:self.selectedAnswer.nextQuiestionID];
     
     //Delegate Notifyng
-    if ([self.questionDelegate respondsToSelector:@selector(userSelectAnswer:)]) {
-        [self.questionDelegate userSelectAnswer:self.selectedAnswer];
+    if ([self.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
+        [self.questionDelegate userSelectAnswer:self.selectedAnswer questionTreeController:self];
     }
     
     [self displayQuestion:nextQuestion];

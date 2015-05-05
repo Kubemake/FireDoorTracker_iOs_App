@@ -15,7 +15,8 @@
 @protocol QuestionTreeDelegate <NSObject>
 
 @required
-- (void)userSelectAnswer:(QuestionOrAnswer *)answer;
+- (void)userSelectAnswer:(QuestionOrAnswer *)answer
+  questionTreeController:(id)controller;
 - (void)userMakePhoto:(UIImage *)photo
              toAnswer:(QuestionOrAnswer *)answer
 questionTreeController:(id)controller;
@@ -30,5 +31,6 @@ questionTreeController:(id)controller;
 @property (nonatomic, weak) Tab *tabForDisplaying;
 
 - (void)refreshViewWithNewImages:(NSArray *)images;
+- (void)updateCurrentQuestion:(QuestionOrAnswer *)question;
 
 @end

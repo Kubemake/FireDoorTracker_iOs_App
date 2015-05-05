@@ -185,7 +185,7 @@ static NSString* kQuestions = @"issues";
 
 #pragma mark - Question-Answer delegate
 
-- (void)userSelectAnswer:(QuestionOrAnswer *)answer {
+- (void)userSelectAnswer:(QuestionOrAnswer *)answer questionTreeController:(id)controller {
     //TODO: Maybe call this method ever
     [self notifyDelagateAboutStatusChanges];
     //Save info and server
@@ -199,6 +199,7 @@ static NSString* kQuestions = @"issues";
                                                      //TODO: Display Error
                                                      return;
                                                  }
+                                                 //TODO: Update question on question tree controller
                                              }];
 }
 
