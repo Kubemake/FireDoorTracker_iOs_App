@@ -1,4 +1,4 @@
-//
+
 //  QuestionTreeViewController.m
 //  firedoortracker
 //
@@ -60,8 +60,9 @@ static const CGFloat answerButtonPadding = 5.0f;
     [self.photosCollectionView reloadData];
 }
 
-- (void)updateCurrentQuestion:(QuestionOrAnswer *)question {
-    [self displayQuestion:question];
+- (void)updateCurrentQuestionAnswers:(NSArray *)answers {
+    self.currentQuestion.answers = answers;
+    [self displayQuestion:self.currentQuestion];
 }
 
 #pragma mark - Display Methods
@@ -151,6 +152,10 @@ static const CGFloat answerButtonPadding = 5.0f;
         [self showOtherAlertView];
         return;
     }
+    if ([self.currentQuestion.name isEqualToString:@"EnterinDimensionsofSigns"]) {
+        [self showDoorSizeAlert];
+        return;
+    }
     self.selectedAnswer.selected = ([self.selectedAnswer.selected boolValue]) ? @"NO" : @"YES";
     if ([self.selectedAnswer.status integerValue] == inspectionStatusCompliant) {
         [self resetAllAnswerSelectionWithousStatus:inspectionStatusCompliant];
@@ -215,6 +220,7 @@ static const CGFloat answerButtonPadding = 5.0f;
                                                            }
                                                            welf.selectedAnswer.selected = [welf.selectedAnswer.selected stringByAppendingString:[NSString stringWithFormat:@"%@",field.text]];
                                                        }
+                                                       welf.selectedAnswer.special = @(1);
                                                        if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
                                                            [welf.questionDelegate userSelectAnswer:welf.selectedAnswer questionTreeController:self];
                                                            [alert dismissViewControllerAnimated:YES completion:nil];
@@ -225,14 +231,32 @@ static const CGFloat answerButtonPadding = 5.0f;
                                                    handler:^(UIAlertAction * action) {
                                                        [alert dismissViewControllerAnimated:YES completion:nil];
                                                    }];
+//    UIAlertAction* delete = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil)
+//                                                     style:UIAlertActionStyleCancel
+//                                                   handler:^(UIAlertAction * action) {
+//                                                       welf.selectedAnswer.selected = @"0,0";
+//                                                       if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
+//                                                           [welf.questionDelegate userSelectAnswer:welf.selectedAnswer questionTreeController:self];
+//                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+//                                                       }
+//                                                   }];
     [alert addAction:submit];
     [alert addAction:cancel];
+//    [alert addAction:delete];
+    
+    NSArray *oldSize = [self.selectedAnswer.selected componentsSeparatedByString:@","];
     
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = NSLocalizedString(@"Width...", nil);
+        if ([oldSize firstObject]) {
+            textField.text = (NSString *)[oldSize firstObject];
+        }
     }];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = NSLocalizedString(@"Height...", nil);
+        if ([oldSize lastObject]) {
+            textField.text = (NSString *)[oldSize lastObject];
+        }
     }];
     
     [self presentViewController:alert animated:YES completion:nil];

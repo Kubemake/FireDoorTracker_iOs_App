@@ -40,9 +40,11 @@ static NSString* kidFormField = @"idFormFields";
 static NSString* kAperture = @"aperture_id";
 static NSString* kFile = @"file";
 static NSString* kFileName = @"file_name";
+static NSString* kSpecial= @"Special";
 
 static NSString* kTabs = @"tabs";
 static NSString* kQuestions = @"issues";
+static NSString* kAnswers = @"answers";
 
 @interface InterviewPageViewController () <UIPageViewControllerDataSource,
                                            UIPageViewControllerDelegate,
@@ -193,13 +195,19 @@ static NSString* kQuestions = @"issues";
                                                   andParams:@{kInspectionID : self.inspectionID,
                                                               kidFormField : (answer.idFormField) ? : [NSNull null],
                                                               kSelected : (answer.selected) ? : [NSNull null],
-                                                              kStatus : (answer.status) ? : [NSNull null]}
+                                                              kStatus : (answer.status) ? : [NSNull null],
+                                                              kSpecial : (answer.special) ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      //TODO: Display Error
                                                      return;
                                                  }
-                                                 //TODO: Update question on question tree controller
+                                                 NSDictionary *updatedAnswers = [responseObject objectForKey:kAnswers];
+                                                 NSMutableArray *answers = [NSMutableArray array];
+                                                 for (NSDictionary *answer in updatedAnswers) {
+                                                     [answers addObject:[[QuestionOrAnswer alloc] initWithDictionary:answer]];
+                                                 }
+                                                 [controller updateCurrentQuestionAnswers:answers];
                                              }];
 }
 

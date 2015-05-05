@@ -31,6 +31,6 @@ questionTreeController:(id)controller;
 @property (nonatomic, weak) Tab *tabForDisplaying;
 
 - (void)refreshViewWithNewImages:(NSArray *)images;
-- (void)updateCurrentQuestion:(QuestionOrAnswer *)question;
+- (void)updateCurrentQuestionAnswers:(NSArray *)answers;
 
 @end

@@ -93,9 +93,13 @@ static const CGFloat maxInputFieldHeght = 37.0f;
                                                                                    propertyValueLabelWidth,
                                                                                    MIN(maxInputFieldHeght, propertyLabelHeight))];
             inputField.text = [property objectForKey:kSelected];
+            inputField.placeholder = [property objectForKey:kName];
             inputField.delegate = self;
             inputField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyLeftView"]];
             inputField.leftViewMode = UITextFieldViewModeAlways;
+            if (inputField.text.length) {
+                [inputField.delegate textFieldDidEndEditing:inputField];
+            }
             [self customizeAndAddToolBarToTextField:inputField];
             [self.doorPropertiesView addSubview:inputField];
         }
@@ -129,6 +133,11 @@ static const CGFloat maxInputFieldHeght = 37.0f;
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:[self dictinaryByName:textField.placeholder]];
+    [self.resultDictionary setObject:textField.text forKey:[[param allKeys] firstObject]];
+}
+
 #pragma mark - Support View Methods
 
 - (void)customizeAndAddToolBarToTextField:(UITextField *)textField {
@@ -151,6 +160,16 @@ static const CGFloat maxInputFieldHeght = 37.0f;
             }
         }
     }
+    return nil;
+}
+
+- (NSDictionary *)dictinaryByName:(NSString *)name {
+    for (NSDictionary* param in [self.answersDictionary allValues]) {
+        if ([[param objectForKey:kName] isEqualToString:name]) {
+            return @{[[self.answersDictionary allKeysForObject:param] firstObject] : param};
+        }
+    }
+    
     return nil;
 }
 

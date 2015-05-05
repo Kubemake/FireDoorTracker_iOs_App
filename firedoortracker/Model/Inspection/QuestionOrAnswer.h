@@ -21,6 +21,7 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, strong) NSArray* answers;
 @property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSNumber *special;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 
