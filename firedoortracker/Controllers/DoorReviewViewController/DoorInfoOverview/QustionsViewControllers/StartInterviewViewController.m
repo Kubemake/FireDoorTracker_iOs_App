@@ -135,7 +135,10 @@ static const CGFloat maxInputFieldHeght = 37.0f;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:[self dictinaryByName:textField.placeholder]];
-    [self.resultDictionary setObject:textField.text forKey:[[param allKeys] firstObject]];
+    
+    if ([param allKeys].count) {
+        [self.resultDictionary setObject:textField.text forKey:[[param allKeys] firstObject]];
+    }
 }
 
 #pragma mark - Support View Methods
