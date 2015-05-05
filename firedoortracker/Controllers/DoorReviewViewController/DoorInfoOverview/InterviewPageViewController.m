@@ -47,10 +47,10 @@ static NSString* kQuestions = @"issues";
 static NSString* kAnswers = @"answers";
 
 @interface InterviewPageViewController () <UIPageViewControllerDataSource,
-                                           UIPageViewControllerDelegate,
-                                           startInterviewDelegate,
-                                           QuestionTreeDelegate,
-                                           InterviewConfirmationProtocol>
+UIPageViewControllerDelegate,
+startInterviewDelegate,
+QuestionTreeDelegate,
+InterviewConfirmationProtocol>
 
 //Child View Controllers
 @property (nonatomic, strong) StartInterviewViewController* startInterviewController;
@@ -203,11 +203,13 @@ static NSString* kAnswers = @"answers";
                                                      return;
                                                  }
                                                  NSDictionary *updatedAnswers = [responseObject objectForKey:kAnswers];
-                                                 NSMutableArray *answers = [NSMutableArray array];
-                                                 for (NSDictionary *answer in updatedAnswers) {
-                                                     [answers addObject:[[QuestionOrAnswer alloc] initWithDictionary:answer]];
+                                                 if (updatedAnswers) {
+                                                     NSMutableArray *answers = [NSMutableArray array];
+                                                     for (NSDictionary *answer in updatedAnswers) {
+                                                         [answers addObject:[[QuestionOrAnswer alloc] initWithDictionary:answer]];
+                                                     }
+                                                     [controller updateCurrentQuestionAnswers:answers];
                                                  }
-                                                 [controller updateCurrentQuestionAnswers:answers];
                                              }];
 }
 
@@ -231,7 +233,7 @@ questionTreeController:(id)controller {
                                                  }
                                                  [SVProgressHUD showSuccessWithStatus:@""];
                                                  [controller refreshViewWithNewImages:[responseObject objectForKey:@"images"]];
-     }];
+                                             }];
 }
 
 - (void)notifyDelagateAboutStatusChanges {

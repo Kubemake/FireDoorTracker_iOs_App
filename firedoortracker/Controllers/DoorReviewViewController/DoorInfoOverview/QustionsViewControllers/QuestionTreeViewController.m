@@ -214,13 +214,14 @@ static const CGFloat answerButtonPadding = 5.0f;
     UIAlertAction *submit = [UIAlertAction actionWithTitle:NSLocalizedString(@"Submit", nil)
                                                      style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction *action) {
+                                                       welf.selectedAnswer.selected = @"";
                                                        for(UITextField* field in [alert textFields]) {
                                                            if (welf.selectedAnswer.selected.length) {
                                                                welf.selectedAnswer.selected = [welf.selectedAnswer.selected stringByAppendingString:@","];
                                                            }
                                                            welf.selectedAnswer.selected = [welf.selectedAnswer.selected stringByAppendingString:[NSString stringWithFormat:@"%@",field.text]];
                                                        }
-                                                       welf.selectedAnswer.special = @(1);
+                                                       welf.selectedAnswer.special = self.currentQuestion.idFormField;
                                                        if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
                                                            [welf.questionDelegate userSelectAnswer:welf.selectedAnswer questionTreeController:self];
                                                            [alert dismissViewControllerAnimated:YES completion:nil];
