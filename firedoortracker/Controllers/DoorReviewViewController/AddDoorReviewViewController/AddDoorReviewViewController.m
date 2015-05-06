@@ -53,8 +53,7 @@ static NSString* kCase = @"case";
 
 #pragma mark - Setup Methods
 
-- (void)setupInputFields
-{
+- (void)setupInputFields {
     for (int i = 0; i < NewInspectionInputFieldCount; i++) {
         IQDropDownTextField *field = [self fieldByType:i];
         switch (i) {
@@ -151,16 +150,14 @@ static NSString* kCase = @"case";
 #pragma mark - QRCodeReader Delegate Methods
 #pragma mark -
 
-- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
-{
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result {
     __weak typeof (self) weakSelf = self;
     [self dismissViewControllerAnimated:YES completion:^{
         weakSelf.doorIdTextField.text = result;
     }];
 }
 
-- (void)readerDidCancel:(QRCodeReaderViewController *)reader
-{
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -367,16 +364,11 @@ static NSString* kCase = @"case";
         return nil;
     }
     
-    if ([self fieldByType:NewInspectionInputFieldStartDate].text.length) {
-        IQDropDownTextField *dateField = [self fieldByType:NewInspectionInputFieldStartDate];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        [inspectionDictionary setObject:[dateFormatter stringFromDate:dateField.date]
-                                 forKey:kStartDate];
-    } else {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Inspection Start Date", nil)];
-        return nil;
-    }
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [inspectionDictionary setObject:[dateFormatter stringFromDate:[NSDate date]]
+                             forKey:kStartDate];
+
     
     return inspectionDictionary;
 }
