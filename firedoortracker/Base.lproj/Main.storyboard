@@ -139,7 +139,7 @@
                                                                 <constraint firstItem="R8c-1D-QW8" firstAttribute="leading" secondItem="ygO-qu-IYZ" secondAttribute="leading" constant="8" id="mDp-PB-dCr"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door ID: Location: Review Status: Start Date: End Date: Reviewer: Creator: Creation Date: Status:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8MF-rQ-EFO">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barcode: Location: Review Status: Start Date: End Date: Reviewer: Creator: Creation Date: Status:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8MF-rQ-EFO">
                                                             <rect key="frame" x="8" y="28" width="93" height="119"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="93" id="Zlk-PF-yrc"/>
