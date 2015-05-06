@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DoorOverviewTextFieldCellDelegate <NSObject>
+
+@required
+- (void)userUpdateDictionary:(NSDictionary *)dictionary doorOverviewTextFieldCell: (id)cell;
+
+@end
+
 @interface DoorOverviewTextFieldCell : UITableViewCell
 
-@property (nonatomic, weak) NSMutableDictionary *answerDictionary;
+@property (nonatomic, weak) NSDictionary *answerDictionary;
+
+@property (nonatomic, weak) id<DoorOverviewTextFieldCellDelegate> delegate;
 
 @end

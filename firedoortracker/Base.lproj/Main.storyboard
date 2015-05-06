@@ -1544,7 +1544,7 @@ No Data</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="textFieldDidChangeText:" destination="A1x-Q7-WiR" eventType="editingChanged" id="cvg-0q-Unu"/>
+                                                        <action selector="textFieldDidChangeText:" destination="A1x-Q7-WiR" eventType="editingDidEnd" id="0X4-1b-z8T"/>
                                                         <outlet property="delegate" destination="A1x-Q7-WiR" id="HNd-bd-B3g"/>
                                                     </connections>
                                                 </textField>
@@ -1582,6 +1582,9 @@ No Data</string>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="dropDawnDidEndEditing:" destination="x0r-r2-En9" eventType="editingDidEnd" id="CuI-y3-wqf"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HF8-gU-RcP">
                                                     <rect key="frame" x="15" y="10" width="42" height="23"/>

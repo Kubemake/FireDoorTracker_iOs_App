@@ -10,6 +10,10 @@
 
 #import <IQDropDownTextField/IQDropDownTextField.h>
 
+//Import Extensions
+#import "UIFont+FDTFonts.h"
+#import "UIColor+FireDoorTrackerColors.h"
+
 @interface DoorOverviewEnumTableViewCell() <IQDropDownTextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
@@ -23,11 +27,15 @@ static NSString* kLabel = @"label";
 
 @implementation DoorOverviewEnumTableViewCell
 
-- (void)setAnswerDictionary:(NSMutableDictionary *)answerDictionary {
-    [self setupDropDawnTextField:[answerDictionary objectForKey:kValues]];
+- (void)setAnswerDictionary:(NSDictionary *)answerDictionary {
+    NSArray *values = [answerDictionary objectForKey:kValues];
+    [self setupDropDawnTextField:values];
     self.answerLabel.text = [answerDictionary objectForKey:kLabel];
-    if ([answerDictionary objectForKey:kSelected]) {
-        [self.dropDawnTextField setSelectedItem:[answerDictionary objectForKey:kSelected]];
+    NSString *selectedString = (NSString *)[answerDictionary objectForKey:kSelected];
+    if (selectedString.length) {
+        [self.dropDawnTextField setText:selectedString];
+    } else {
+        [self.dropDawnTextField setText:[values firstObject]];
     }
     _answerDictionary = answerDictionary;
 }
@@ -37,12 +45,35 @@ static NSString* kLabel = @"label";
     self.dropDawnTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reviewLeftViewField"]];
     self.dropDawnTextField.leftViewMode = UITextFieldViewModeAlways;
     self.dropDawnTextField.delegate = self;
+    self.dropDawnTextField.isOptionalDropDown = NO;
+    [self customizeAndAddToolBarToTextField:self.dropDawnTextField];
+}
+
+#pragma mark - Support View Methods
+
+- (void)customizeAndAddToolBarToTextField:(UITextField *)textField {
+    textField.background = [UIImage imageNamed:@"reviewDropDownFieldBackground"];
+    textField.font = [UIFont FDTTimesNewRomanRegularWithSize:15.0f];
+    textField.textColor = [UIColor FDTMediumGayColor];
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,self.bounds.size.width,42)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:textField
+                                                                                action:@selector(resignFirstResponder)];
+    [toolBar setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
+    [textField setInputAccessoryView:toolBar];
 }
 
 #pragma mark - Delegate
 
-- (void)textField:(IQDropDownTextField *)textField didSelectItem:(NSString *)item {
-//    [self.answerDictionary setObject:item forKey:kSelected];
+- (IBAction)dropDawnDidEndEditing:(IQDropDownTextField *)sender {
+    NSMutableDictionary *changedDictionary = [self.answerDictionary mutableCopy];
+    NSString *selectedValue = (sender.selectedItem) ? : [sender.itemList firstObject];
+    
+    [changedDictionary setObject:selectedValue forKey:kSelected];
+    if ([self.delegate respondsToSelector:@selector(userUpdateDictionary:doorOverviewEnumTableViewCell:)]) {
+        [self.delegate userUpdateDictionary:changedDictionary doorOverviewEnumTableViewCell:self];
+    }
+
 }
 
 @end

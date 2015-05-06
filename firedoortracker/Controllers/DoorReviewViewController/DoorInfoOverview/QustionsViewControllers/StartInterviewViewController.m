@@ -14,27 +14,24 @@
 #import "DoorOverviewEnumTableViewCell.h"
 #import "DoorOverviewTextFieldCell.h"
 
-//Import Extensions
-#import "UIFont+FDTFonts.h"
-#import "UIColor+FireDoorTrackerColors.h"
-
 static NSString* kType = @"type";
 static NSString* vTypeEnum = @"enum";
 static NSString* vTypeString = @"string";
 static NSString* vTypeDouble = @"double";
 static NSString* kName = @"name";
+static NSString* kSelected = @"selected";
+
 
 static NSString* kCIDropDawnCellIdentifier = @"CIDoorInfoOverviewEnumInputCell";
 static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 
-@interface StartInterviewViewController () <IQDropDownTextFieldDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface StartInterviewViewController () <DoorOverviewTextFieldCellDelegate, DoorOverviewEnumTableViewCellDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 //Model
-@property (weak, nonatomic) NSDictionary *answersDictionary;
-@property (strong, nonatomic) NSMutableDictionary *resultDictionary;
+@property (strong, nonatomic) NSMutableDictionary *answersDictionary;
 
 @end
 
@@ -51,27 +48,16 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 #pragma mark -
 
 - (void)displayDoorProperties:(NSDictionary *)doorProperties {
-    self.answersDictionary = doorProperties;
-    self.resultDictionary = [NSMutableDictionary dictionary];
+    self.answersDictionary = [NSMutableDictionary dictionaryWithDictionary:doorProperties];
     [self.tableView reloadData];
-}
-
-#pragma mark - Support View Methods
-
-- (void)customizeAndAddToolBarToTextField:(UITextField *)textField {
-    textField.background = [UIImage imageNamed:@"reviewDropDownFieldBackground"];
-    textField.font = [UIFont FDTTimesNewRomanRegularWithSize:15.0f];
-    textField.textColor = [UIColor FDTMediumGayColor];
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,42)];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                target:textField
-                                                                                action:@selector(resignFirstResponder)];
-    [toolBar setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
-    [textField setInputAccessoryView:toolBar];
 }
 
 #pragma mark - UITableView Datasource
 #pragma mark -
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self sectionNameByIndex:section];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.answersDictionary allKeys].count;
@@ -89,14 +75,26 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
     if ([[answer objectForKey:kType] isEqualToString:vTypeEnum]) {
         DoorOverviewEnumTableViewCell *cell = (DoorOverviewEnumTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kCIDropDawnCellIdentifier];
         cell.answerDictionary = answer;
+        cell.delegate = self;
         return cell;
     } else {
         DoorOverviewTextFieldCell *cell = (DoorOverviewTextFieldCell *)[tableView dequeueReusableCellWithIdentifier:kCIStringCellIdentifier];
         cell.answerDictionary = answer;
+        cell.delegate = self;
         return cell;
     }
     
     return nil;
+}
+
+#pragma mark - Delegates
+
+- (void)userUpdateDictionary:(NSDictionary *)dictionary doorOverviewTextFieldCell:(id)cell {
+    [self updateAnswerDictionaryWithAnswer:dictionary atIndexPath:[self.tableView indexPathForCell:cell]];
+}
+
+- (void)userUpdateDictionary:(NSDictionary *)updatedDictionary doorOverviewEnumTableViewCell:(id)cell {
+    [self updateAnswerDictionaryWithAnswer:updatedDictionary atIndexPath:[self.tableView indexPathForCell:cell]];
 }
 
 #pragma mark - Answers Dictionary Access methods
@@ -123,12 +121,32 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
     return [self.answersDictionary objectForKey:[self sectionNameByIndex:index]];
 }
 
+- (void)updateAnswerDictionaryWithAnswer:(NSDictionary *)updatedAnswer atIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *answersForUpdate = [NSMutableArray arrayWithArray:[self answersBySectionIndex:indexPath.section]];
+    [answersForUpdate replaceObjectAtIndex:indexPath.row withObject:updatedAnswer];
+    [self.answersDictionary setObject:answersForUpdate forKey:[self sectionNameByIndex:indexPath.section]];
+    [self.tableView reloadData];
+}
+
+#pragma mark - Result Dictionary Accessory method
+
+- (NSDictionary *)createResultDictionary {
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    for (NSArray *sectionAnswers in [self.answersDictionary allValues]) {
+        for (NSDictionary *answer in sectionAnswers) {
+            [result setObject:[answer objectForKey:kSelected] forKey:[answer objectForKey:kName]];
+        }
+    }
+    
+    return result;
+}
+
 #pragma mark - IBActions
 #pragma mark -
 
 - (IBAction)submitButtonPressed:(id)sender {
     if ([self.delegate respondsToSelector:@selector(submitDoorOverview:)]) {
-        [self.delegate submitDoorOverview:self.resultDictionary];
+        [self.delegate submitDoorOverview:[self createResultDictionary]];
     }
 }
 

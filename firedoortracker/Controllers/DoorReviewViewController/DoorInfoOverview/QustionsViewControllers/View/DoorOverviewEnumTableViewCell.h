@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DoorOverviewEnumTableViewCellDelegate <NSObject>
+
+@required
+- (void)userUpdateDictionary:(NSDictionary *)updatedDictionary doorOverviewEnumTableViewCell:(id)cell;
+
+@end
+
 @interface DoorOverviewEnumTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) NSMutableDictionary *answerDictionary;
+@property (nonatomic, weak) NSDictionary *answerDictionary;
+@property (nonatomic, weak) id<DoorOverviewEnumTableViewCellDelegate> delegate;
+
 
 @end
