@@ -1529,6 +1529,82 @@ No Data</string>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YK7-B2-MZI">
                                 <rect key="frame" x="15" y="73" width="570" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CIDoorInfoOverviewTextInputCell" id="A1x-Q7-WiR" customClass="DoorOverviewTextFieldCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A1x-Q7-WiR" id="Qf7-P0-hEa">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="u37-gc-yfi">
+                                                    <rect key="frame" x="72" y="7" width="483" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="cYh-q8-ez8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldDidChangeText:" destination="A1x-Q7-WiR" eventType="editingChanged" id="cvg-0q-Unu"/>
+                                                        <outlet property="delegate" destination="A1x-Q7-WiR" id="HNd-bd-B3g"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjY-i5-ElY">
+                                                    <rect key="frame" x="15" y="10" width="42" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="u37-gc-yfi" secondAttribute="trailing" constant="15" id="4iI-6s-8Gf"/>
+                                                <constraint firstItem="AjY-i5-ElY" firstAttribute="leading" secondItem="Qf7-P0-hEa" secondAttribute="leading" constant="15" id="QJO-T8-a83"/>
+                                                <constraint firstAttribute="bottom" secondItem="AjY-i5-ElY" secondAttribute="bottom" constant="10" id="VTW-OE-6ti"/>
+                                                <constraint firstItem="AjY-i5-ElY" firstAttribute="top" secondItem="Qf7-P0-hEa" secondAttribute="top" constant="10" id="c9q-fd-8Ls"/>
+                                                <constraint firstAttribute="centerY" secondItem="u37-gc-yfi" secondAttribute="centerY" id="cJ6-9s-6Io"/>
+                                                <constraint firstItem="u37-gc-yfi" firstAttribute="leading" secondItem="AjY-i5-ElY" secondAttribute="trailing" constant="15" id="tgr-jx-XVP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="u37-gc-yfi" id="JUD-S3-eIu"/>
+                                            <outlet property="titleLabel" destination="AjY-i5-ElY" id="lo4-bX-TXj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CIDoorInfoOverviewEnumInputCell" id="x0r-r2-En9" customClass="DoorOverviewEnumTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x0r-r2-En9" id="cUf-bM-0eK">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="KN3-81-bui" customClass="IQDropDownTextField">
+                                                    <rect key="frame" x="72" y="7" width="483" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="0To-AW-trD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HF8-gU-RcP">
+                                                    <rect key="frame" x="15" y="10" width="42" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KN3-81-bui" firstAttribute="leading" secondItem="HF8-gU-RcP" secondAttribute="trailing" constant="15" id="BDM-o0-o9d"/>
+                                                <constraint firstAttribute="trailing" secondItem="KN3-81-bui" secondAttribute="trailing" constant="15" id="FHZ-c5-0LH"/>
+                                                <constraint firstAttribute="centerY" secondItem="KN3-81-bui" secondAttribute="centerY" id="MYV-iy-17R"/>
+                                                <constraint firstAttribute="bottom" secondItem="HF8-gU-RcP" secondAttribute="bottom" constant="10" id="k4U-vf-1kR"/>
+                                                <constraint firstItem="HF8-gU-RcP" firstAttribute="leading" secondItem="cUf-bM-0eK" secondAttribute="leading" constant="15" id="p6l-tV-4yT"/>
+                                                <constraint firstItem="HF8-gU-RcP" firstAttribute="top" secondItem="cUf-bM-0eK" secondAttribute="top" constant="10" id="sTX-Do-JC8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="answerLabel" destination="HF8-gU-RcP" id="hgj-Xa-ozM"/>
+                                            <outlet property="dropDawnTextField" destination="KN3-81-bui" id="aV6-NH-drv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="3AN-32-qbG" id="37r-ot-uxU"/>
                                     <outlet property="delegate" destination="3AN-32-qbG" id="nRv-cw-Oe8"/>
@@ -1561,6 +1637,9 @@ No Data</string>
                             <constraint firstAttribute="centerX" secondItem="oli-RY-Icg" secondAttribute="centerX" id="ybE-2E-iTx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="YK7-B2-MZI" id="ga0-v4-drO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJY-97-9tV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

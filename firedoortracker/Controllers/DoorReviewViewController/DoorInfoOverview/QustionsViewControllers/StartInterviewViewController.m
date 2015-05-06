@@ -11,24 +11,26 @@
 
 //Import View
 #import <IQDropDownTextField.h>
+#import "DoorOverviewEnumTableViewCell.h"
+#import "DoorOverviewTextFieldCell.h"
 
 //Import Extensions
 #import "UIFont+FDTFonts.h"
 #import "UIColor+FireDoorTrackerColors.h"
 
-static NSString* kSelected = @"selected";
 static NSString* kType = @"type";
 static NSString* vTypeEnum = @"enum";
 static NSString* vTypeString = @"string";
 static NSString* vTypeDouble = @"double";
-static NSString* kValues = @"values";
 static NSString* kName = @"name";
 
-static const CGFloat maxInputFieldHeght = 37.0f;
+static NSString* kCIDropDawnCellIdentifier = @"CIDoorInfoOverviewEnumInputCell";
+static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 
 @interface StartInterviewViewController () <IQDropDownTextFieldDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 //IBOutlets
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 //Model
 @property (weak, nonatomic) NSDictionary *answersDictionary;
@@ -51,19 +53,7 @@ static const CGFloat maxInputFieldHeght = 37.0f;
 - (void)displayDoorProperties:(NSDictionary *)doorProperties {
     self.answersDictionary = doorProperties;
     self.resultDictionary = [NSMutableDictionary dictionary];
-
-    }
-
-#pragma mark - Delegation Methods
-#pragma mark - IQDropDownTextField
-
--(void)textField:(IQDropDownTextField*)textField didSelectItem:(NSString*)item {
-}
-
-#pragma mark - UITextfield Delegate
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Support View Methods
@@ -83,12 +73,54 @@ static const CGFloat maxInputFieldHeght = 37.0f;
 #pragma mark - UITableView Datasource
 #pragma mark -
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.answersDictionary allKeys].count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    NSArray *answers = [self answersBySectionIndex:section];
+    return answers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *answers = [self answersBySectionIndex:indexPath.section];
+    NSDictionary *answer = [answers objectAtIndex:indexPath.row];
+    
+    if ([[answer objectForKey:kType] isEqualToString:vTypeEnum]) {
+        DoorOverviewEnumTableViewCell *cell = (DoorOverviewEnumTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kCIDropDawnCellIdentifier];
+        cell.answerDictionary = answer;
+        return cell;
+    } else {
+        DoorOverviewTextFieldCell *cell = (DoorOverviewTextFieldCell *)[tableView dequeueReusableCellWithIdentifier:kCIStringCellIdentifier];
+        cell.answerDictionary = answer;
+        return cell;
+    }
+    
     return nil;
+}
+
+#pragma mark - Answers Dictionary Access methods
+
+- (NSDictionary *)sectionByName:(NSString *)name {
+    for (NSString *key in [self.answersDictionary allKeys]) {
+        if ([key isEqualToString:name]) {
+            return [self.answersDictionary objectForKey:key];
+        }
+    }
+    return nil;
+}
+
+- (NSString *)sectionNameByIndex:(NSInteger)index {
+    NSArray *sections = @[@"Location", @"Door Label", @"Frame Label", @"Others"];
+    if (index >= sections.count) {
+        return @"Unknow Section";
+    } else {
+        return [sections objectAtIndex:index];
+    }
+}
+
+- (NSArray *)answersBySectionIndex:(NSInteger)index {
+    return [self.answersDictionary objectForKey:[self sectionNameByIndex:index]];
 }
 
 #pragma mark - IBActions
