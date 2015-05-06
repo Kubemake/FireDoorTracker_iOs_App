@@ -24,10 +24,9 @@
 #pragma mark - Display Methods
 
 - (void)displayInspection:(Inspection *)inspection {
-    self.titleLabel.text = [NSString stringWithFormat:@"Door ID %@",inspection.apertureId];
+    self.titleLabel.text = [NSString stringWithFormat:@"Door ID %@",inspection.barCode];
     //TODO: Display Result Statuses
-    self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@ %@\n%@ %@\n%@\n%@",
-                                  inspection.barCode,
+    self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@ %@\n%@ %@\n%@\n%@",
                                   inspection.locationName,
                                   inspection.inspectionStatus,
                                   inspection.startDate,
