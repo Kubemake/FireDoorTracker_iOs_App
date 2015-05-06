@@ -96,34 +96,31 @@ static NSString* kKeyword = @"keyword";
                                                  welf.inspectionsForDisplaying = [CurrentUser sharedInstance].userInscpetions;
                                                  
                                                  //Move new inspection in beginning
-                                                 welf.inspectionsForDisplaying = [welf moveInspection:welf.createdInspection
-                                                                                     toArrayBeginning:welf.inspectionsForDisplaying];
+                                                 if (welf.createdInspection) {
+                                                     [welf openCreatedInspection:welf.createdInspection
+                                                               inInspectionArray:welf.inspectionsForDisplaying];
+                                                 }
                                                  
                                                  welf.noInspectionsLabel.hidden = (welf.inspectionsForDisplaying.count) ? YES : NO;
-
+                                                 
                                                  [welf.collectionView reloadData];
                                              }];
     
 }
 
 #pragma mark - Support Data Methods
-#pragma mark - 
+#pragma mark -
 
-- (NSArray *)moveInspection:(Inspection *)inspection toArrayBeginning:(NSArray *)array {
-    NSMutableArray *inspectionsMutable = [NSMutableArray arrayWithArray:array];
+- (void)openCreatedInspection:(Inspection *)inspection inInspectionArray:(NSArray *)array {
     if (inspection && inspection.uid) {
-        Inspection *container = nil;
-        for(Inspection *insp in inspectionsMutable) {
+        for(Inspection *insp in array) {
             if (inspection.uid.integerValue == insp.uid.integerValue) {
-                container = insp;
+                self.selectedInspection = insp;
+                [self performSegueWithIdentifier:showDoorInfoOverviewSegue sender:self];
             }
         }
-        if (container) {
-            [inspectionsMutable removeObject:container];
-            [inspectionsMutable insertObject:container atIndex:0];
-        }
     }
-    return inspectionsMutable;
+    self.createdInspection = nil;
 }
 
 #pragma mark - CollectionView
