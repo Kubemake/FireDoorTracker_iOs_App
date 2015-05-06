@@ -1526,24 +1526,41 @@ No Data</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5t-jd-frt">
-                                <rect key="frame" x="108" y="71" width="384" height="529"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YK7-B2-MZI">
+                                <rect key="frame" x="15" y="73" width="570" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                                <connections>
+                                    <outlet property="dataSource" destination="3AN-32-qbG" id="37r-ot-uxU"/>
+                                    <outlet property="delegate" destination="3AN-32-qbG" id="nRv-cw-Oe8"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWi-ig-tS9">
+                                <rect key="frame" x="207" y="560" width="186" height="30"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.25490196079999999" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="186" id="DEd-0Y-xMw"/>
+                                </constraints>
+                                <state key="normal" title="SUBMIT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="3AN-32-qbG" eventType="touchUpInside" id="JCc-zg-Zi4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="w5t-jd-frt" firstAttribute="leading" secondItem="oUI-Ie-9KM" secondAttribute="leading" constant="108" id="Y3g-hS-tga"/>
-                            <constraint firstAttribute="trailing" secondItem="w5t-jd-frt" secondAttribute="trailing" constant="108" id="eZa-tz-ede"/>
-                            <constraint firstItem="w5t-jd-frt" firstAttribute="top" secondItem="oli-RY-Icg" secondAttribute="bottom" constant="8" id="kIE-eu-y9e"/>
+                            <constraint firstItem="YK7-B2-MZI" firstAttribute="top" secondItem="oli-RY-Icg" secondAttribute="bottom" constant="10" id="5bB-YN-CAa"/>
+                            <constraint firstAttribute="trailing" secondItem="YK7-B2-MZI" secondAttribute="trailing" constant="15" id="HNZ-Wd-xJh"/>
+                            <constraint firstItem="uWi-ig-tS9" firstAttribute="top" secondItem="YK7-B2-MZI" secondAttribute="bottom" constant="10" id="XCD-J6-g9m"/>
+                            <constraint firstAttribute="centerX" secondItem="uWi-ig-tS9" secondAttribute="centerX" id="Zwj-01-Psh"/>
+                            <constraint firstItem="YK7-B2-MZI" firstAttribute="leading" secondItem="oUI-Ie-9KM" secondAttribute="leading" constant="15" id="r9R-3M-dae"/>
                             <constraint firstItem="oli-RY-Icg" firstAttribute="top" secondItem="fj2-IA-zHB" secondAttribute="bottom" constant="8" id="urf-6N-TOk"/>
-                            <constraint firstItem="bFK-sS-D9f" firstAttribute="top" secondItem="w5t-jd-frt" secondAttribute="bottom" id="vaI-W0-glU"/>
+                            <constraint firstItem="bFK-sS-D9f" firstAttribute="top" secondItem="uWi-ig-tS9" secondAttribute="bottom" constant="10" id="yEs-0l-56g"/>
                             <constraint firstAttribute="centerX" secondItem="oli-RY-Icg" secondAttribute="centerX" id="ybE-2E-iTx"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="doorPropertiesView" destination="w5t-jd-frt" id="AO5-8c-9Z7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJY-97-9tV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
