@@ -255,12 +255,6 @@ static NSString* kCase = @"case";
                                                  }
                                                  //TODO: Display Case
                                                  [SVProgressHUD showInfoWithStatus:[responseObject objectForKey:kCase]];
-                                                 welf.buildingsAndLocations = [NSMutableArray array];
-                                                 for (NSDictionary *dict in [[responseObject objectForKey:kLocations] allObjects]) {
-                                                     BuildingOrLocation *buildingOrLocation = [[BuildingOrLocation alloc] initWithDictionary:dict];
-                                                     [welf.buildingsAndLocations addObject:buildingOrLocation];
-                                                 }
-                                                 [welf displayBuildingsAndLocations];
                                              }];
     
 }
@@ -353,14 +347,6 @@ static NSString* kCase = @"case";
                                  forKey:kDoorID];
     } else {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Input Door ID First", nil)];
-        return nil;
-    }
-    BuildingOrLocation *selectedLocation = [self buildingOrLocationByName:[self fieldByType:NewInspectionInputFieldLocation].text];
-    if (selectedLocation.idBuildings) {
-        [inspectionDictionary setObject:selectedLocation.idBuildings
-                                 forKey:kLocationID];
-    } else {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Building ID First", nil)];
         return nil;
     }
     
