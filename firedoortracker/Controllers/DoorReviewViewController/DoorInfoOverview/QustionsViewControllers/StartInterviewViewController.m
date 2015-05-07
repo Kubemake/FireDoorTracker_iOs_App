@@ -135,22 +135,24 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 }
 
 - (void)updateAnswerDictionaryWithAnswer:(NSDictionary *)updatedAnswer atIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *answersForUpdate = [NSMutableArray arrayWithArray:[self answersBySectionIndex:indexPath.section]];
-    [answersForUpdate replaceObjectAtIndex:indexPath.row withObject:updatedAnswer];
-    [self.answersDictionary setObject:answersForUpdate forKey:[self sectionNameByIndex:indexPath.section]];
-    if ([[updatedAnswer objectForKey:kFroceRefresh] integerValue]) {
-        [self forceRefreshAnswers];
-        return;
+    if (updatedAnswer) {
+        NSMutableArray *answersForUpdate = [NSMutableArray arrayWithArray:[self answersBySectionIndex:indexPath.section]];
+        [answersForUpdate replaceObjectAtIndex:indexPath.row withObject:updatedAnswer];
+        [self.answersDictionary setObject:answersForUpdate forKey:[self sectionNameByIndex:indexPath.section]];
+        if ([[updatedAnswer objectForKey:kFroceRefresh] integerValue]) {
+            [self forceRefreshAnswers];
+            return;
+        }
+        [self.tableView reloadData];
     }
-    [self.tableView reloadData];
 }
 
 - (void)forceRefreshAnswers {
-    [SVProgressHUD show];
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:InspectionDoorOverviewRequestType
-                                                  andParams:@{kOldData : self.previousAnswersDictionary,
-                                                              kNewData : self.answersDictionary,
+                                                  andParams:@{kNewData : [self createResultDictionary:self.answersDictionary],
+                                                              kOldData : [self createResultDictionary:self.previousAnswersDictionary],
                                                               kApertureId : self.apertureId
                                                               }
                                              withCompletion:^(id responseObject, NSError *error) {
@@ -158,6 +160,7 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
                                                      [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
+                                                 [SVProgressHUD showSuccessWithStatus:nil];
                                                  [welf displayDoorProperties:[responseObject objectForKey:@"info"]
                                                                   apertureId:welf.apertureId];
                                              }];
@@ -165,9 +168,9 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 
 #pragma mark - Result Dictionary Accessory method
 
-- (NSDictionary *)createResultDictionary {
+- (NSDictionary *)createResultDictionary:(NSDictionary *)inputDictionary {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
-    for (NSArray *sectionAnswers in [self.answersDictionary allValues]) {
+    for (NSArray *sectionAnswers in [inputDictionary allValues]) {
         for (NSDictionary *answer in sectionAnswers) {
             [result setObject:[answer objectForKey:kSelected] forKey:[answer objectForKey:kName]];
         }
@@ -181,7 +184,7 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 
 - (IBAction)submitButtonPressed:(id)sender {
     if ([self.delegate respondsToSelector:@selector(submitDoorOverview:)]) {
-        [self.delegate submitDoorOverview:[self createResultDictionary]];
+        [self.delegate submitDoorOverview:[self createResultDictionary:self.answersDictionary]];
     }
 }
 
