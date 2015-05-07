@@ -13,6 +13,7 @@
 #import <IQDropDownTextField.h>
 #import "DoorOverviewEnumTableViewCell.h"
 #import "DoorOverviewTextFieldCell.h"
+#import <SVProgressHUD.h>
 
 //Import Model
 #import "NetworkManager.h"
@@ -23,10 +24,11 @@ static NSString* vTypeString = @"string";
 static NSString* vTypeDouble = @"double";
 static NSString* kName = @"name";
 static NSString* kSelected = @"selected";
+static NSString* kFroceRefresh = @"force_refresh";
 
 static NSString* kOldData = @"olddata";
 static NSString* kNewData = @"newdata";
-static NSString* kAPertureId = @"aperture_id";
+static NSString* kApertureId = @"aperture_id";
 
 
 static NSString* kCIDropDawnCellIdentifier = @"CIDoorInfoOverviewEnumInputCell";
@@ -136,17 +138,28 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
     NSMutableArray *answersForUpdate = [NSMutableArray arrayWithArray:[self answersBySectionIndex:indexPath.section]];
     [answersForUpdate replaceObjectAtIndex:indexPath.row withObject:updatedAnswer];
     [self.answersDictionary setObject:answersForUpdate forKey:[self sectionNameByIndex:indexPath.section]];
+    if ([[updatedAnswer objectForKey:kFroceRefresh] integerValue]) {
+        [self forceRefreshAnswers];
+        return;
+    }
     [self.tableView reloadData];
 }
 
 - (void)forceRefreshAnswers {
+    [SVProgressHUD show];
+    __weak typeof(self) welf = self;
     [[NetworkManager sharedInstance] performRequestWithType:InspectionDoorOverviewRequestType
                                                   andParams:@{kOldData : self.previousAnswersDictionary,
                                                               kNewData : self.answersDictionary,
-                                                              kAPertureId : self.apertureId
+                                                              kApertureId : self.apertureId
                                                               }
                                              withCompletion:^(id responseObject, NSError *error) {
-                                                 
+                                                 if (error) {
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                     return;
+                                                 }
+                                                 [welf displayDoorProperties:[responseObject objectForKey:@"info"]
+                                                                  apertureId:welf.apertureId];
                                              }];
 }
 

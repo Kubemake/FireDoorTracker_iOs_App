@@ -1419,7 +1419,7 @@ No Data</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YK7-B2-MZI">
-                                <rect key="frame" x="15" y="73" width="570" height="477"/>
+                                <rect key="frame" x="15" y="73" width="570" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CIDoorInfoOverviewTextInputCell" id="A1x-Q7-WiR" customClass="DoorOverviewTextFieldCell">
@@ -1506,7 +1506,7 @@ No Data</string>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWi-ig-tS9">
-                                <rect key="frame" x="207" y="560" width="186" height="30"/>
+                                <rect key="frame" x="207" y="570" width="186" height="30"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.25490196079999999" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="186" id="DEd-0Y-xMw"/>
@@ -1528,7 +1528,7 @@ No Data</string>
                             <constraint firstAttribute="centerX" secondItem="uWi-ig-tS9" secondAttribute="centerX" id="Zwj-01-Psh"/>
                             <constraint firstItem="YK7-B2-MZI" firstAttribute="leading" secondItem="oUI-Ie-9KM" secondAttribute="leading" constant="15" id="r9R-3M-dae"/>
                             <constraint firstItem="oli-RY-Icg" firstAttribute="top" secondItem="fj2-IA-zHB" secondAttribute="bottom" constant="8" id="urf-6N-TOk"/>
-                            <constraint firstItem="bFK-sS-D9f" firstAttribute="top" secondItem="uWi-ig-tS9" secondAttribute="bottom" constant="10" id="yEs-0l-56g"/>
+                            <constraint firstItem="bFK-sS-D9f" firstAttribute="top" secondItem="uWi-ig-tS9" secondAttribute="bottom" id="yEs-0l-56g"/>
                             <constraint firstAttribute="centerX" secondItem="oli-RY-Icg" secondAttribute="centerX" id="ybE-2E-iTx"/>
                         </constraints>
                     </view>
