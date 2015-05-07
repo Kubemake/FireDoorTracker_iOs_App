@@ -25,11 +25,12 @@
 @interface InterviewPageViewController : UIPageViewController
 
 @property (nonatomic, strong) NSNumber* inspectionID;
-@property (nonatomic, strong) NSDictionary* doorOverviewDictionary;
 
 //Door Interview Delegate
 @property (nonatomic, weak) id <InterviewPageDelegate> interviewDelegate;
 
 - (void)setSelectedPage:(NSInteger)selectedPage;
+
+- (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary toApertureId:(NSString *)apertureId;
 
 @end

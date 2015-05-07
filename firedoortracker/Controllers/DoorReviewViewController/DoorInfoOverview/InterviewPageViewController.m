@@ -181,10 +181,6 @@ InterviewConfirmationProtocol>
                                              }];
 }
 
-- (NSString *)doorOverviewPropertyByKey:(NSString *)key {
-    return [[self.doorOverviewDictionary objectForKey:key] objectForKey:kSelected];
-}
-
 #pragma mark - Question-Answer delegate
 
 - (void)userSelectAnswer:(QuestionOrAnswer *)answer questionTreeController:(id)controller {
@@ -297,9 +293,8 @@ questionTreeController:(id)controller {
 
 #pragma mark - public setters
 
-- (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary {
-    [self.startInterviewController displayDoorProperties:doorOverviewDictionary];
-    _doorOverviewDictionary = doorOverviewDictionary;
+- (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary toApertureId:(NSString *)apertureId {
+    [self.startInterviewController displayDoorProperties:doorOverviewDictionary apertureId:apertureId];
 }
 
 - (void)setSelectedPage:(NSInteger)selectedPage {

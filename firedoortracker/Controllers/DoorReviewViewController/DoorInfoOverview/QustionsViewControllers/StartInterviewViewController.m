@@ -14,12 +14,19 @@
 #import "DoorOverviewEnumTableViewCell.h"
 #import "DoorOverviewTextFieldCell.h"
 
+//Import Model
+#import "NetworkManager.h"
+
 static NSString* kType = @"type";
 static NSString* vTypeEnum = @"enum";
 static NSString* vTypeString = @"string";
 static NSString* vTypeDouble = @"double";
 static NSString* kName = @"name";
 static NSString* kSelected = @"selected";
+
+static NSString* kOldData = @"olddata";
+static NSString* kNewData = @"newdata";
+static NSString* kAPertureId = @"aperture_id";
 
 
 static NSString* kCIDropDawnCellIdentifier = @"CIDoorInfoOverviewEnumInputCell";
@@ -31,7 +38,9 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 //Model
+@property (strong, nonatomic) NSDictionary *previousAnswersDictionary;
 @property (strong, nonatomic) NSMutableDictionary *answersDictionary;
+@property (copy, nonatomic) NSString *apertureId;
 
 @end
 
@@ -47,8 +56,10 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 #pragma mark - Display View Methods
 #pragma mark -
 
-- (void)displayDoorProperties:(NSDictionary *)doorProperties {
+- (void)displayDoorProperties:(NSDictionary *)doorProperties apertureId:(NSString *)apertureId {
     self.answersDictionary = [NSMutableDictionary dictionaryWithDictionary:doorProperties];
+    self.previousAnswersDictionary = [NSDictionary dictionaryWithDictionary:self.answersDictionary];
+    self.apertureId = apertureId;
     [self.tableView reloadData];
 }
 
@@ -126,6 +137,17 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
     [answersForUpdate replaceObjectAtIndex:indexPath.row withObject:updatedAnswer];
     [self.answersDictionary setObject:answersForUpdate forKey:[self sectionNameByIndex:indexPath.section]];
     [self.tableView reloadData];
+}
+
+- (void)forceRefreshAnswers {
+    [[NetworkManager sharedInstance] performRequestWithType:InspectionDoorOverviewRequestType
+                                                  andParams:@{kOldData : self.previousAnswersDictionary,
+                                                              kNewData : self.answersDictionary,
+                                                              kAPertureId : self.apertureId
+                                                              }
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 
+                                             }];
 }
 
 #pragma mark - Result Dictionary Accessory method

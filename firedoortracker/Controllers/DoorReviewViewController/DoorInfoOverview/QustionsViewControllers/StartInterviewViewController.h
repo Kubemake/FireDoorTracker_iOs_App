@@ -19,6 +19,6 @@
 
 @property (nonatomic, weak) id<startInterviewDelegate> delegate;
 
-- (void)displayDoorProperties:(NSDictionary *)doorProperties;
+- (void)displayDoorProperties:(NSDictionary *)doorProperties apertureId:(NSString *)apertureId;
 
 @end

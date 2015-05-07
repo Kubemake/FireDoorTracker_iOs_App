@@ -125,7 +125,8 @@ static NSString* kApertureID = @"aperture_id";
                                                      return;
                                                  }
                                                  [SVProgressHUD dismiss];
-                                                 welf.embededInterviewController.doorOverviewDictionary = [responseObject objectForKey:@"info"];
+                                                 [welf.embededInterviewController setDoorOverviewDictionary:[responseObject objectForKey:@"info"]
+                                                                                               toApertureId:self.selectedInspection.apertureId];
                                              }];
 }
 
