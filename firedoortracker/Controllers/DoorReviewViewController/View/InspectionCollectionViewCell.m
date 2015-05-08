@@ -29,7 +29,7 @@
     self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@ %@\n%@ %@\n%@",
                                   inspection.locationName,
                                   inspection.inspectionStatus,
-                                  inspection.startDate,
+                                  inspection.creationDate,
                                   inspection.completionDate,
                                   inspection.firstName, inspection.lastName,
                                   inspection.creatorFirstName, inspection.creatorLastName,
