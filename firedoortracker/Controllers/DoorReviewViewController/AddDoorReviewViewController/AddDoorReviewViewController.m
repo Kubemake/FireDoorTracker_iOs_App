@@ -163,7 +163,7 @@ static NSString* kCase = @"case";
 
 
 #pragma mark - IQDropDawnFieldDelegate
-#pragma mark - 
+#pragma mark -
 
 - (void)textField:(IQDropDownTextField *)textField didSelectItem:(NSString *)item {
     NewInspectionInputField selectedFieldType = [self typeByField:textField];
@@ -297,13 +297,23 @@ static NSString* kCase = @"case";
 #pragma mark - scan qr code action
 
 - (IBAction)scanQrButtonPressed:(id)sender {
-    NSArray *types = @[AVMetadataObjectTypeQRCode];
-    QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
-                                                             readerWithMetadataObjectTypes:types];
-    qrCodeReaderViewConroller.modalPresentationStyle = UIModalPresentationFormSheet;
-    qrCodeReaderViewConroller.delegate = self;
-  
-    [self presentViewController:qrCodeReaderViewConroller animated:YES completion:NULL];
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
+    if (status == AVAuthorizationStatusAuthorized) {
+        NSArray *types = @[AVMetadataObjectTypeQRCode];
+        QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
+                                                                 readerWithMetadataObjectTypes:types];
+        qrCodeReaderViewConroller.modalPresentationStyle = UIModalPresentationFormSheet;
+        qrCodeReaderViewConroller.delegate = self;
+        
+        [self presentViewController:qrCodeReaderViewConroller animated:YES completion:NULL];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                    message:NSLocalizedString(@"Please enable access to camera by firedoortracker in settings", nil)
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
     
 }
 
@@ -354,7 +364,7 @@ static NSString* kCase = @"case";
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [inspectionDictionary setObject:[dateFormatter stringFromDate:[NSDate date]]
                              forKey:kStartDate];
-
+    
     
     return inspectionDictionary;
 }
