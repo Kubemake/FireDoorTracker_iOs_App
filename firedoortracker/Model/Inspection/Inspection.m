@@ -87,6 +87,13 @@
     return _lastName;
 }
 
+- (NSString *)buildingName {
+    if (_buildingName) {
+        return _buildingName;
+    }
+    return @"-";
+}
+
 #pragma mark - status properties
 
 + (NSString *)stringForStatus:(inspectionStatus)status {

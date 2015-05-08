@@ -26,8 +26,8 @@
 - (void)displayInspection:(Inspection *)inspection {
     self.titleLabel.text = [NSString stringWithFormat:@"Door ID %@",inspection.barCode];
     //TODO: Display Result Statuses
-    self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@ %@\n%@ %@\n%@",
-                                  inspection.locationName,
+    self.descriptionLabel.text = [NSString stringWithFormat:@"%@ %@\n%@\n%@\n%@\n%@ %@\n%@ %@\n%@",
+                                  inspection.buildingName, inspection.locationName,
                                   inspection.inspectionStatus,
                                   inspection.creationDate,
                                   inspection.completionDate,
