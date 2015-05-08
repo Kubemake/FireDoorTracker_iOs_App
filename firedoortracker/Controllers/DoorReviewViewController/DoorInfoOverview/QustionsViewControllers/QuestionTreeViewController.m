@@ -149,7 +149,7 @@ static const CGFloat answerButtonPadding = 5.0f;
 - (void)answerSelected:(UIButton *)sender {
     //TODO: Save current Answer for the crump breads
     self.selectedAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%d",sender.tag]];
-    if ([self.selectedAnswer.label isEqualToString:@"Other"]) {
+    if ([self.selectedAnswer.label isEqualToString:@"Other"] || [self.selectedAnswer.label isEqualToString:@"Write-in Option"]) {
         [self showOtherAlertView];
         return;
     }
