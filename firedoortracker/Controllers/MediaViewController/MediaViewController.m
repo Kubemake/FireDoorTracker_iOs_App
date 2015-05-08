@@ -131,7 +131,7 @@ UISearchBarDelegate, UIActionSheetDelegate>
                                                         cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                                    destructiveButtonTitle:nil
                                                         otherButtonTitles:@"To Take Picture", @"From Library", nil];
-//        attachPhoto.delegate = self;
+        //        attachPhoto.delegate = self;
         [attachPhoto showInView:self.view];
         return;
     }
@@ -202,13 +202,23 @@ UISearchBarDelegate, UIActionSheetDelegate>
 #pragma mark - Actions from buttons
 
 - (IBAction)scanQRCodePressed:(id)sender {
-    NSArray *types = @[AVMetadataObjectTypeQRCode];
-    QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
-                                                             readerWithMetadataObjectTypes:types];
-    qrCodeReaderViewConroller.modalPresentationStyle = UIModalPresentationFormSheet;
-    qrCodeReaderViewConroller.delegate = self;
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     
-    [self presentViewController:qrCodeReaderViewConroller animated:YES completion:NULL];
+    if (status == AVAuthorizationStatusAuthorized) {
+        NSArray *types = @[AVMetadataObjectTypeQRCode];
+        QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
+                                                                 readerWithMetadataObjectTypes:types];
+        qrCodeReaderViewConroller.modalPresentationStyle = UIModalPresentationFormSheet;
+        qrCodeReaderViewConroller.delegate = self;
+        
+        [self presentViewController:qrCodeReaderViewConroller animated:YES completion:NULL];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                    message:NSLocalizedString(@"Please enable access to camera by firedoortracker in settings", nil)
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
 }
 
 #pragma mark - SearchBar Delegate
@@ -234,26 +244,37 @@ UISearchBarDelegate, UIActionSheetDelegate>
 }
 
 #pragma mark - Action Sheet Delegate
-#pragma mark - 
+#pragma mark -
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    //    picker.allowsEditing = YES;
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     
-    switch (buttonIndex) {
-        case NewPhotoButtonTypeTakePicture:
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            break;
-        case NewPhotoButtonTypeFromLibrary:
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            break;
-        default:
-            return;
+    if (status == AVAuthorizationStatusAuthorized) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        //    picker.allowsEditing = YES;
+        
+        switch (buttonIndex) {
+            case NewPhotoButtonTypeTakePicture:
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                break;
+            case NewPhotoButtonTypeFromLibrary:
+                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                break;
+            default:
+                return;
+        }
+        
+        [self presentViewController:picker animated:YES completion:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                    message:NSLocalizedString(@"Please enable access to camera by firedoortracker in settings", nil)
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
     }
-    
-    [self presentViewController:picker animated:YES completion:nil];
+
 }
 
 @end

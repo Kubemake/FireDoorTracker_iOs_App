@@ -22,6 +22,7 @@
 
 //Import Pods
 #import <IDMPhotoBrowser.h>
+#import <AVFoundation/AVFoundation.h>
 
 static const CGFloat maxAnswerButtonHeight = 65.0f;
 static const CGFloat answerButtonPadding = 5.0f;
@@ -316,12 +317,22 @@ static const CGFloat answerButtonPadding = 5.0f;
 }
 
 - (IBAction)makePhotoButonPressed:(UIButton *)sender {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    [self presentViewController:picker animated:YES completion:nil];
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+
+    if (status == AVAuthorizationStatusAuthorized) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        [self presentViewController:picker animated:YES completion:nil];
+    } else {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                       message:NSLocalizedString(@"Please enable access to camera by firedoortracker in settings", nil)
+                                      delegate:nil
+                             cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+    }
 }
 
 #pragma mark - UIImagePickerDelegate

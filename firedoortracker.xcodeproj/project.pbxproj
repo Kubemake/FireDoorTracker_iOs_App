@@ -30,6 +30,7 @@
 		6868264A1AD4204800684AE9 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686826491AD4204800684AE9 /* WebViewController.m */; };
 		686826531AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 686826521AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m */; };
 		686826561AD6AC2F00684AE9 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686826551AD6AC2F00684AE9 /* PhotoCollectionViewCell.m */; };
+		688188211AFC8A5D0084151A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688188201AFC8A5D0084151A /* AVFoundation.framework */; };
 		688906851AB85CA10079F67B /* Inspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906841AB85CA10079F67B /* Inspection.m */; };
 		688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906881AB861180079F67B /* InspectionCollectionViewCell.m */; };
 		6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889068C1AB879360079F67B /* HomeMenuCollectionViewCell.m */; };
@@ -120,6 +121,7 @@
 		686826521AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+FireDoorTrackerOptions.m"; path = "Extensions/UINavigationController+FireDoorTrackerOptions/UINavigationController+FireDoorTrackerOptions.m"; sourceTree = "<group>"; };
 		686826541AD6AC2F00684AE9 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCollectionViewCell.h; path = View/PhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		686826551AD6AC2F00684AE9 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCollectionViewCell.m; path = View/PhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		688188201AFC8A5D0084151A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		688906831AB85CA10079F67B /* Inspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Inspection.h; path = Model/Inspection/Inspection.h; sourceTree = "<group>"; };
 		688906841AB85CA10079F67B /* Inspection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Inspection.m; path = Model/Inspection/Inspection.m; sourceTree = "<group>"; };
 		688906871AB861180079F67B /* InspectionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InspectionCollectionViewCell.h; path = Controllers/DoorReviewViewController/View/InspectionCollectionViewCell.h; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				688188211AFC8A5D0084151A /* AVFoundation.framework in Frameworks */,
 				688906971AB95E680079F67B /* QuartzCore.framework in Frameworks */,
 				D0246490A306D9435A10BB13 /* libPods-firedoortracker.a in Frameworks */,
 			);
@@ -566,6 +569,7 @@
 		C0DA254AF651AD874067329D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				688188201AFC8A5D0084151A /* AVFoundation.framework */,
 				688906961AB95E680079F67B /* QuartzCore.framework */,
 				062E7148B8FB79F89B34D442 /* libPods-firedoortracker.a */,
 			);
