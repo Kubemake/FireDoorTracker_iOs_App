@@ -194,6 +194,7 @@ static NSString* webViewControllerIdentifier = @"WebViewController";
 - (IBAction)backButtonTouched:(UIBarButtonItem *)sender {
     [self.backButton setEnabled:NO];
     [self loadAndDispayGlossaryTermsByLetter:nil];
+    [self loadAndDisplayAvailableLetters];
 }
 
 
