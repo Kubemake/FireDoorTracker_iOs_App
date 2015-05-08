@@ -122,7 +122,7 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 }
 
 - (NSString *)sectionNameByIndex:(NSInteger)index {
-    NSArray *sections = @[@"Location", @"Door Label", @"Frame Label", @"Others"];
+    NSArray *sections = @[@"Location",@"Others", @"Door Label", @"Frame Label"];
     if (index >= sections.count) {
         return @"Unknow Section";
     } else {
