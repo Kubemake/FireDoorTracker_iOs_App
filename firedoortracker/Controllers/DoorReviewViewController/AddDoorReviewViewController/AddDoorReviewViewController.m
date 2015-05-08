@@ -299,7 +299,7 @@ static NSString* kCase = @"case";
 - (IBAction)scanQrButtonPressed:(id)sender {
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     
-    if (status == AVAuthorizationStatusAuthorized) {
+    if (status == AVAuthorizationStatusAuthorized || status == AVAuthorizationStatusNotDetermined) {
         NSArray *types = @[AVMetadataObjectTypeQRCode];
         QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
                                                                  readerWithMetadataObjectTypes:types];

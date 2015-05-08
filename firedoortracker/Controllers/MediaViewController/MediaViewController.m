@@ -204,7 +204,7 @@ UISearchBarDelegate, UIActionSheetDelegate>
 - (IBAction)scanQRCodePressed:(id)sender {
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     
-    if (status == AVAuthorizationStatusAuthorized) {
+    if (status == AVAuthorizationStatusAuthorized || status == AVAuthorizationStatusNotDetermined) {
         NSArray *types = @[AVMetadataObjectTypeQRCode];
         QRCodeReaderViewController *qrCodeReaderViewConroller = [QRCodeReaderViewController
                                                                  readerWithMetadataObjectTypes:types];
@@ -249,7 +249,7 @@ UISearchBarDelegate, UIActionSheetDelegate>
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     
-    if (status == AVAuthorizationStatusAuthorized) {
+    if (status == AVAuthorizationStatusAuthorized || status == AVAuthorizationStatusNotDetermined) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.allowsEditing = YES;
