@@ -1429,7 +1429,7 @@ No Data</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="u37-gc-yfi">
-                                                    <rect key="frame" x="72" y="7" width="483" height="30"/>
+                                                    <rect key="frame" x="280" y="7" width="275" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="cYh-q8-ez8"/>
                                                     </constraints>
@@ -1441,7 +1441,10 @@ No Data</string>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjY-i5-ElY">
-                                                    <rect key="frame" x="15" y="10" width="42" height="23"/>
+                                                    <rect key="frame" x="15" y="10" width="250" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" id="19E-8a-P9d"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1468,7 +1471,7 @@ No Data</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="reviewDropDownFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="KN3-81-bui" customClass="IQDropDownTextField">
-                                                    <rect key="frame" x="72" y="7" width="483" height="30"/>
+                                                    <rect key="frame" x="280" y="7" width="275" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="0To-AW-trD"/>
                                                     </constraints>
@@ -1479,7 +1482,10 @@ No Data</string>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HF8-gU-RcP">
-                                                    <rect key="frame" x="15" y="10" width="42" height="23"/>
+                                                    <rect key="frame" x="15" y="10" width="250" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" id="z31-hZ-v1f"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
