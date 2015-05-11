@@ -29,6 +29,8 @@ static NSString* kLocationID = @"location_id";
 static NSString* kCreatedInspection = @"CreatedInspection";
 static NSString* kCase = @"case";
 
+static const NSInteger cMaxDoorIdLength = 6;
+
 @interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate, QRCodeReaderDelegate>
 
 @property (weak,   nonatomic) IBOutlet UITextField *doorIdTextField;
@@ -170,7 +172,6 @@ static NSString* kCase = @"case";
     switch (selectedFieldType) {
         case NewInspectionInputFieldBuilding: {
             if (textField.text.length) {
-                [self displayLocations];
             } else {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unknow Building ID", nil)];
             }
@@ -237,6 +238,21 @@ static NSString* kCase = @"case";
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NewInspectionInputField selectedFieldType = [self typeByField:textField];
+    switch (selectedFieldType) {
+        case NewInspectionInputFieldDoorID: {
+            if (textField.text.length >= cMaxDoorIdLength && string.length) {
+                return NO;
+            }
+            return YES;
+        }
+            default:
+            return YES;
+    }
+}
+
+
 #pragma mark - API callers
 
 #pragma mark - Load Buildings By Door ID
@@ -257,40 +273,6 @@ static NSString* kCase = @"case";
                                                  [SVProgressHUD showInfoWithStatus:[responseObject objectForKey:kCase]];
                                              }];
     
-}
-
-#pragma mark - Display Methods
-#pragma mark -
-
-- (void)displayBuildingsAndLocations {
-    self.buildings = [self buildingsList];
-    NSMutableArray *buildingNames = [NSMutableArray array];
-    for (BuildingOrLocation *building in self.buildings) {
-        [buildingNames addObject:building.name];
-    }
-    IQDropDownTextField *buildingsField = [self fieldByType:NewInspectionInputFieldBuilding];
-    buildingsField.itemList = buildingNames;
-    UITextField *buildingField = (UITextField *)[self fieldByType:NewInspectionInputFieldBuilding];
-    buildingField.text = [buildingNames  firstObject];
-    
-    [self displayLocations];
-}
-
-- (void)displayLocations {
-    self.buildingLocations = [self locationListByCurrentBuilding];
-    NSMutableArray *locationNames = [NSMutableArray array];
-    for (BuildingOrLocation *location in self.buildingLocations) {
-        [locationNames addObject:location.name];
-    }
-    IQDropDownTextField *locationsField = [self fieldByType:NewInspectionInputFieldLocation];
-    
-    if (!locationNames.count) {
-        UITextField *buildingField = (UITextField *)[self fieldByType:NewInspectionInputFieldBuilding];
-        BuildingOrLocation *currentBuilding = (BuildingOrLocation *)[self buildingOrLocationByName:buildingField.text];
-        [locationNames addObject:currentBuilding.name];
-    }
-    locationsField.itemList = locationNames;
-    locationsField.text = [locationNames firstObject];
 }
 
 #pragma mark - UI Actions
