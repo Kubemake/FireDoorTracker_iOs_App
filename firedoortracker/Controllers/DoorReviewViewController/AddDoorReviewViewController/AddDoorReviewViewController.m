@@ -338,7 +338,7 @@ static const NSInteger cMaxDoorIdLength = 6;
         [inspectionDictionary setObject:[self fieldByType:NewInspectionInputFieldDoorID].text
                                  forKey:kDoorID];
     } else {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Door ID must contain 6 digits", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Door ID must contain 6 characters", nil)];
         return nil;
     }
     
