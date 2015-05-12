@@ -31,7 +31,14 @@ static NSString* kLabel = @"label";
     NSArray *values = [answerDictionary objectForKey:kValues];
     [self setupDropDawnTextField:values];
     self.answerLabel.text = [answerDictionary objectForKey:kLabel];
-    NSString *selectedString = (NSString *)[answerDictionary objectForKey:kSelected];
+    id selectedValue = [answerDictionary objectForKey:kSelected];
+    NSString *selectedString;
+    if ([selectedValue isKindOfClass:[NSNumber class]]) {
+        selectedString = [selectedValue stringValue];
+    } else {
+        selectedString = (NSString *)selectedValue;
+    }
+    
     if (selectedString.length) {
         [self.dropDawnTextField setText:selectedString];
     } else {
@@ -41,7 +48,16 @@ static NSString* kLabel = @"label";
 }
 
 - (void)setupDropDawnTextField:(NSArray *)values {
-    self.dropDawnTextField.itemList = values;
+    NSMutableArray *formattedValues = [NSMutableArray array];
+    for (id value in values) {
+        if ([value isKindOfClass:[NSNumber class]]) {
+            [formattedValues addObject:[value stringValue]];
+        } else if ([value isKindOfClass:[NSString class]]) {
+            [formattedValues addObject:value];
+        }
+    }
+    
+    self.dropDawnTextField.itemList = formattedValues;
     self.dropDawnTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reviewLeftViewField"]];
     self.dropDawnTextField.leftViewMode = UITextFieldViewModeAlways;
     self.dropDawnTextField.delegate = self;
