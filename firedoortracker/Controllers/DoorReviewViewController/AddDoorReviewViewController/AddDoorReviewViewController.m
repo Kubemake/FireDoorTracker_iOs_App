@@ -270,7 +270,7 @@ static const NSInteger cMaxDoorIdLength = 6;
                                                      return;
                                                  }
                                                  //TODO: Display Case
-                                                 [SVProgressHUD showInfoWithStatus:[responseObject objectForKey:kCase]];
+//                                                 [SVProgressHUD showInfoWithStatus:[responseObject objectForKey:kCase]];
                                              }];
     
 }
