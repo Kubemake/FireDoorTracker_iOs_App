@@ -334,11 +334,11 @@ static const NSInteger cMaxDoorIdLength = 6;
 - (NSDictionary *)validNewInspectionInfo {
     NSMutableDictionary *inspectionDictionary = [NSMutableDictionary dictionary];
     
-    if ([self fieldByType:NewInspectionInputFieldDoorID].text.length) {
+    if ([self fieldByType:NewInspectionInputFieldDoorID].text.length == cMaxDoorIdLength) {
         [inspectionDictionary setObject:[self fieldByType:NewInspectionInputFieldDoorID].text
                                  forKey:kDoorID];
     } else {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Input Door ID First", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Door ID must contain 6 digits", nil)];
         return nil;
     }
     
