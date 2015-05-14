@@ -147,6 +147,7 @@ static const NSInteger cMaxDoorIdLength = 6;
         default:
             break;
     }
+    [textField resignFirstResponder];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -242,6 +243,7 @@ static const NSInteger cMaxDoorIdLength = 6;
     for (int i = NewInspectionInputFieldBuilding; i < NewInspectionInputFieldCount; i++) {
         IQDropDownTextField *field = [self.inspetionInfoFields objectAtIndex:i];
         NSDictionary *fieldInfo = [self.locations objectAtIndex:i-1];
+        field.enabled = [[fieldInfo objectForKey:kEnabled] boolValue];
         field.itemList = [fieldInfo objectForKey:kValues];
         field.text = [fieldInfo objectForKey:kSelected];
     }
@@ -256,14 +258,14 @@ static const NSInteger cMaxDoorIdLength = 6;
     }
 }
 
-- (NSArray *)selectedValuesFromLocationsArray:(NSArray *)array {
-    NSMutableArray *selectedArray = [NSMutableArray array];
+- (NSDictionary *)selectedValuesFromLocationsArray:(NSArray *)array {
+    NSMutableDictionary *selectedDict = [NSMutableDictionary dictionary];
     for (NSDictionary *location in array) {
         if ([[location objectForKey:kEnabled] boolValue]) {
-            [selectedArray addObject:@{[location objectForKey:kName] : [location objectForKey:kSelected]}];
+            [selectedDict setObject:[location objectForKey:kSelected] forKey:[location objectForKey:kName]];
         }
     }
-    return selectedArray;
+    return selectedDict;
 }
 
 #pragma mark - UI Actions
