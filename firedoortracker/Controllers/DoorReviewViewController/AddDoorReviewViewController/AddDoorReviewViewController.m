@@ -16,25 +16,23 @@
 typedef enum{
     NewInspectionInputFieldDoorID = 0,
     NewInspectionInputFieldBuilding,
-    NewInspectionInputFieldLocation,
-    NewInspectionInputFieldSummary,
-    NewInspectionInputFieldStartDate,
+    NewInspectionInputFieldFloor,
+    NewInspectionInputFieldWing,
+    NewInspectionInputFieldArea,
+    NewInspectionInputFieldLevel,
     NewInspectionInputFieldCount
 } NewInspectionInputField;
 
 static NSString* kDoorID = @"barcode";
-static NSString* kLocations = @"location";
 static NSString* kStartDate = @"StartDate";
-static NSString* kLocationID = @"location_id";
 static NSString* kCreatedInspection = @"CreatedInspection";
-static NSString* kCase = @"case";
 
 static const NSInteger cMaxDoorIdLength = 6;
 
 @interface AddDoorReviewViewController () <IQDropDownTextFieldDelegate, QRCodeReaderDelegate>
 
 @property (weak,   nonatomic) IBOutlet UITextField *doorIdTextField;
-@property (strong, nonatomic) IBOutletCollection(IQDropDownTextField) NSArray *inspetionInfoFields;
+@property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *inspetionInfoFields;
 
 @property (nonatomic, strong) NSMutableArray *buildingsAndLocations;
 @property (nonatomic, strong) NSArray *buildings;
@@ -60,20 +58,16 @@ static const NSInteger cMaxDoorIdLength = 6;
         IQDropDownTextField *field = [self fieldByType:i];
         switch (i) {
             case NewInspectionInputFieldBuilding:
-            case NewInspectionInputFieldLocation:
-            case NewInspectionInputFieldStartDate: {
+            case NewInspectionInputFieldFloor:
+            case NewInspectionInputFieldWing:
+            case NewInspectionInputFieldArea:
+            case NewInspectionInputFieldLevel: {
                 field.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reviewLeftViewField"]];
                 field.isOptionalDropDown = NO;
-                
-                if (i == NewInspectionInputFieldStartDate) {
-                    field.dropDownMode = IQDropDownModeDatePicker;
-                    [field setDate:[NSDate date]];
-                }
                 
                 break;
             }
             case NewInspectionInputFieldDoorID:
-            case NewInspectionInputFieldSummary:
                 field.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"emptyLeftView"]];
                 break;
             default:
@@ -112,43 +106,6 @@ static const NSInteger cMaxDoorIdLength = 6;
     return -1;
 }
 
-#pragma mark - Get Buildings
-
-- (NSArray *)buildingsList {
-    NSMutableArray *buildings = [NSMutableArray array];
-    for (BuildingOrLocation *buildingOrLocation in self.buildingsAndLocations) {
-        if ([buildingOrLocation.root integerValue] == [buildingOrLocation.idBuildings integerValue]
-            || [buildingOrLocation.parent integerValue] == 0) {
-            [buildings addObject:buildingOrLocation];
-        }
-    }
-    return buildings;
-}
-
-- (BuildingOrLocation *)buildingOrLocationByName:(NSString *)name {
-    for (BuildingOrLocation *building in self.buildingsAndLocations) {
-        if ([building.name isEqualToString:name]) {
-            return building;
-        }
-    }
-    return nil;
-}
-
-#pragma mark - Get Locations by Selected Building
-
-- (NSArray *)locationListByCurrentBuilding {
-    NSMutableArray *locations = [NSMutableArray array];
-    
-    BuildingOrLocation *selectedBuilding = [self buildingOrLocationByName:[self fieldByType:NewInspectionInputFieldBuilding].text];
-    for (BuildingOrLocation *location in self.buildingsAndLocations) {
-        if ([location.root integerValue] == [selectedBuilding.idBuildings integerValue] &&
-            [location.parent integerValue] != 0) {
-            [locations addObject:location];
-        }
-    }
-    return locations;
-}
-
 #pragma mark - QRCodeReader Delegate Methods
 #pragma mark -
 
@@ -177,10 +134,6 @@ static const NSInteger cMaxDoorIdLength = 6;
             }
             break;
         }
-        case NewInspectionInputFieldLocation:
-            break;
-        case NewInspectionInputFieldStartDate:
-            break;
             
         default:
             break;
@@ -192,7 +145,11 @@ static const NSInteger cMaxDoorIdLength = 6;
     switch (selectedFieldType) {
         case NewInspectionInputFieldDoorID:
             break;
-        case NewInspectionInputFieldBuilding: {
+        case NewInspectionInputFieldBuilding:
+        case NewInspectionInputFieldFloor:
+        case NewInspectionInputFieldWing:
+        case NewInspectionInputFieldArea:
+        case NewInspectionInputFieldLevel: {
             NSString *selectedDoorID = [self fieldByType:NewInspectionInputFieldDoorID].text;
             if (!selectedDoorID.length) {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Door ID First", nil)];
@@ -200,19 +157,6 @@ static const NSInteger cMaxDoorIdLength = 6;
             }
             break;
         }
-        case NewInspectionInputFieldLocation: {
-            NSString *selectedBuildingID = [self fieldByType:NewInspectionInputFieldBuilding].text;
-            if (!selectedBuildingID.length) {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please Select Building First", nil)];
-                [textField resignFirstResponder];
-            }
-            break;
-        }
-        case NewInspectionInputFieldStartDate: {
-            break;
-        }
-        case NewInspectionInputFieldSummary:
-            break;
         default:
             break;
     }

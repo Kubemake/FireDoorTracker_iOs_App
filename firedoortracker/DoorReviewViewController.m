@@ -154,7 +154,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         addDoorVC.view.frame = CGRectMake(self.view.bounds.size.width / 3.0f,
                                           self.view.bounds.size.height / 2.0f,
                                           self.view.bounds.size.width * 2.0f / 3.0f,
-                                          self.view.bounds.size.height / 4.0f);
+                                          self.view.bounds.size.height / 2.0f);
         addDoorVC.delegate = self;
         [self presentPopupViewController:addDoorVC animationType:MJPopupViewAnimationSlideTopTop];
         return;
