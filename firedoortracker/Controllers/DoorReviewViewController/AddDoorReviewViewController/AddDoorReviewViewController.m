@@ -340,6 +340,14 @@ static const NSInteger cMaxDoorIdLength = 6;
     [inspectionDictionary setObject:[dateFormatter stringFromDate:[NSDate date]]
                              forKey:kStartDate];
     
+    if ([self selectedValuesFromLocationsArray:self.locations]) {
+        [inspectionDictionary setObject:[self selectedValuesFromLocationsArray:self.locations]
+                                 forKey:kLocation];
+    } else {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Missed Location", nil)];
+        return nil;
+    }
+    
     
     return inspectionDictionary;
 }
