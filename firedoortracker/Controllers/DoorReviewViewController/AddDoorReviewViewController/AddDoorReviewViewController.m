@@ -25,6 +25,16 @@ typedef enum{
 
 static NSString* kDoorID = @"barcode";
 static NSString* kStartDate = @"StartDate";
+static NSString* kLocation = @"location";
+static NSString* kOldData = @"olddata";
+static NSString* kNewData = @"newdata";
+
+static NSString* kName = @"name";
+static NSString* kValues = @"values";
+static NSString* kEnabled = @"enabled";
+static NSString* kForceRefresh = @"force_refresh";
+static NSString* kSelected = @"selected";
+
 static NSString* kCreatedInspection = @"CreatedInspection";
 
 static const NSInteger cMaxDoorIdLength = 6;
@@ -34,9 +44,8 @@ static const NSInteger cMaxDoorIdLength = 6;
 @property (weak,   nonatomic) IBOutlet UITextField *doorIdTextField;
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *inspetionInfoFields;
 
-@property (nonatomic, strong) NSMutableArray *buildingsAndLocations;
-@property (nonatomic, strong) NSArray *buildings;
-@property (nonatomic, strong) NSArray *buildingLocations;
+@property (nonatomic, strong) NSMutableArray *locations;
+@property (nonatomic, strong) NSMutableArray *oldLocations;
 
 @end
 
@@ -45,8 +54,7 @@ static const NSInteger cMaxDoorIdLength = 6;
 #pragma mark - View Controller Lyfecircle
 #pragma mark -
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self setupInputFields];
 }
@@ -86,8 +94,7 @@ static const NSInteger cMaxDoorIdLength = 6;
 #pragma mark - Supporting Methods
 #pragma mark - Get Inspection Field by Type
 
-- (IQDropDownTextField *)fieldByType:(NewInspectionInputField)type
-{
+- (IQDropDownTextField *)fieldByType:(NewInspectionInputField)type {
     for (IQDropDownTextField *inputField in self.inspetionInfoFields) {
         if (inputField.tag == type) {
             return inputField;
@@ -96,8 +103,7 @@ static const NSInteger cMaxDoorIdLength = 6;
     return nil;
 }
 
-- (NewInspectionInputField)typeByField:(UITextField *)field
-{
+- (NewInspectionInputField)typeByField:(UITextField *)field {
     for (UITextField *inputField in self.inspetionInfoFields) {
         if (inputField == field) {
             return (NewInspectionInputField)inputField.tag;
@@ -127,11 +133,14 @@ static const NSInteger cMaxDoorIdLength = 6;
 - (void)textField:(IQDropDownTextField *)textField didSelectItem:(NSString *)item {
     NewInspectionInputField selectedFieldType = [self typeByField:textField];
     switch (selectedFieldType) {
-        case NewInspectionInputFieldBuilding: {
-            if (textField.text.length) {
-            } else {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unknow Building ID", nil)];
-            }
+        case NewInspectionInputFieldBuilding:
+        case NewInspectionInputFieldFloor:
+        case NewInspectionInputFieldWing:
+        case NewInspectionInputFieldArea:
+        case NewInspectionInputFieldLevel: {
+            NSMutableDictionary *inspectionInfo = [NSMutableDictionary dictionaryWithDictionary:[self.locations objectAtIndex:selectedFieldType-1]];
+            [inspectionInfo setObject:item forKey:kSelected];
+            [self saveLocationInfo:inspectionInfo byType:selectedFieldType];
             break;
         }
             
@@ -167,10 +176,8 @@ static const NSInteger cMaxDoorIdLength = 6;
     switch (selectedFieldType) {
         case NewInspectionInputFieldDoorID: {
             NSString *selectedDoorID = textField.text;
-            IQDropDownTextField *buildingTextField = [self fieldByType:NewInspectionInputFieldBuilding];
             if (selectedDoorID.length) {
-                [self loadAndDisplayBuildingsByDoorID:selectedDoorID
-                                         OnInputField:buildingTextField];
+                [self loadAndDisplayBuildingsByDoorID:selectedDoorID];
             } else {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unknow Door ID", nil)];
             }
@@ -198,25 +205,65 @@ static const NSInteger cMaxDoorIdLength = 6;
 
 
 #pragma mark - API callers
-
 #pragma mark - Load Buildings By Door ID
 
-- (void)loadAndDisplayBuildingsByDoorID:(NSString *)doorID
-                           OnInputField:(IQDropDownTextField *)field {
+- (void)loadAndDisplayBuildingsByDoorID:(NSString *)doorID {
     __weak typeof(self) welf = self;
     [SVProgressHUD show];
+    NSMutableDictionary *addInspectionInfo = [NSMutableDictionary dictionaryWithDictionary:@{kDoorID : doorID}];
+    if (self.locations && self.oldLocations) {
+        [addInspectionInfo setObject:[self selectedValuesFromLocationsArray:self.locations] forKey:kNewData];
+        [addInspectionInfo setObject:[self selectedValuesFromLocationsArray:self.oldLocations] forKey:kOldData];
+    }
     [[NetworkManager sharedInstance] performRequestWithType:InspectionCreateChackDoorID
-                                                  andParams:@{kDoorID : doorID}
+                                                  andParams:addInspectionInfo
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      [welf fieldByType:NewInspectionInputFieldDoorID].text = nil;
                                                      [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                      return;
                                                  }
-                                                 //TODO: Display Case
-//                                                 [SVProgressHUD showInfoWithStatus:[responseObject objectForKey:kCase]];
+                                                 [welf setupLocation:[responseObject objectForKey:kLocation]];
+                                                 [SVProgressHUD showSuccessWithStatus:nil];
                                              }];
-    
+}
+
+- (void)setupLocation:(NSArray *)location {
+    if (location) {
+        self.locations = [NSMutableArray arrayWithArray:location];
+        self.oldLocations = [self.locations mutableCopy];
+        [self setupLocationFields];
+    } else {
+        //TODO: Diplsay error
+    }
+}
+
+- (void)setupLocationFields {
+    for (int i = NewInspectionInputFieldBuilding; i < NewInspectionInputFieldCount; i++) {
+        IQDropDownTextField *field = [self.inspetionInfoFields objectAtIndex:i];
+        NSDictionary *fieldInfo = [self.locations objectAtIndex:i-1];
+        field.itemList = [fieldInfo objectForKey:kValues];
+        field.text = [fieldInfo objectForKey:kSelected];
+    }
+}
+
+- (void)saveLocationInfo:(NSDictionary *)info byType:(NewInspectionInputField)type {
+    [self.locations replaceObjectAtIndex:type-1 withObject:info];
+    if ([[info objectForKey:kForceRefresh] boolValue]) {
+        [self loadAndDisplayBuildingsByDoorID:self.doorIdTextField.text];
+    } else {
+        self.oldLocations = [self.locations mutableCopy];
+    }
+}
+
+- (NSArray *)selectedValuesFromLocationsArray:(NSArray *)array {
+    NSMutableArray *selectedArray = [NSMutableArray array];
+    for (NSDictionary *location in array) {
+        if ([[location objectForKey:kEnabled] boolValue]) {
+            [selectedArray addObject:@{[location objectForKey:kName] : [location objectForKey:kSelected]}];
+        }
+    }
+    return selectedArray;
 }
 
 #pragma mark - UI Actions
