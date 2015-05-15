@@ -21,10 +21,12 @@
 
 static NSString* kSelected = @"selected";
 static NSString* kLabel = @"label";
+static NSString* kEnabled = @"enabled";
 
 @implementation DoorOverviewTextFieldCell
 
 - (void)setAnswerDictionary:(NSDictionary *)answerDictionary {
+    self.textField.enabled = [[answerDictionary objectForKey:kEnabled] boolValue];
     self.titleLabel.text = [answerDictionary objectForKey:kLabel];
     self.textField.text = [answerDictionary objectForKey:kSelected];
     _answerDictionary = answerDictionary;

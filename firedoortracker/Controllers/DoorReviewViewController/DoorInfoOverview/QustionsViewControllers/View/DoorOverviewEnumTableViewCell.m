@@ -24,11 +24,13 @@
 static NSString* kSelected = @"selected";
 static NSString* kValues = @"values";
 static NSString* kLabel = @"label";
+static NSString* kEnabled = @"enabled";
 
 @implementation DoorOverviewEnumTableViewCell
 
 - (void)setAnswerDictionary:(NSDictionary *)answerDictionary {
     NSArray *values = [answerDictionary objectForKey:kValues];
+    self.dropDawnTextField.enabled = [[answerDictionary objectForKey:kEnabled] boolValue];
     [self setupDropDawnTextField:values];
     self.answerLabel.text = [answerDictionary objectForKey:kLabel];
     id selectedValue = [answerDictionary objectForKey:kSelected];
@@ -83,7 +85,12 @@ static NSString* kLabel = @"label";
 
 - (IBAction)dropDawnDidEndEditing:(IQDropDownTextField *)sender {
     NSMutableDictionary *changedDictionary = [self.answerDictionary mutableCopy];
-    NSString *selectedValue = (sender.selectedItem) ? : [sender.itemList firstObject];
+    
+    NSString *selectedValue = @"Error";
+    NSArray *values = [changedDictionary objectForKey:kValues];
+    if (sender.selectedRow < values.count) {
+        selectedValue = [values objectAtIndex:sender.selectedRow];
+    }
     
     [changedDictionary setObject:selectedValue forKey:kSelected];
     if ([self.delegate respondsToSelector:@selector(userUpdateDictionary:doorOverviewEnumTableViewCell:)]) {
