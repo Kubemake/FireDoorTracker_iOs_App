@@ -228,7 +228,7 @@
         title = NSLocalizedString(@"Settings", @"");
     }
     else if (NiceTabBarButtonTypeLogOut == buttonType) {
-        title = NSLocalizedString(@"Log Outs", @"");
+        title = NSLocalizedString(@"Log Out", @"");
     }
     
     return title;
