@@ -154,11 +154,26 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dru-dv-cBn">
+                                                            <rect key="frame" x="185" y="5" width="35" height="35"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="35" id="42e-8F-IeK"/>
+                                                                <constraint firstAttribute="width" constant="35" id="8bc-kB-fIG"/>
+                                                            </constraints>
+                                                            <state key="normal" image="closeIcon">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteButtonTouched:" destination="4Fr-kp-ISJ" eventType="touchUpInside" id="N6e-XM-FGC"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="XCT-iD-e1m" firstAttribute="leading" secondItem="8MF-rQ-EFO" secondAttribute="trailing" constant="8" id="78c-ND-d5H"/>
+                                                        <constraint firstAttribute="trailing" secondItem="dru-dv-cBn" secondAttribute="trailing" constant="5" id="9Co-P1-qNX"/>
                                                         <constraint firstAttribute="trailing" secondItem="XCT-iD-e1m" secondAttribute="trailing" constant="8" id="Nur-Dc-p6L"/>
+                                                        <constraint firstItem="dru-dv-cBn" firstAttribute="top" secondItem="mz6-nd-4Io" secondAttribute="top" constant="5" id="Pw9-f4-wfu"/>
                                                         <constraint firstAttribute="bottom" secondItem="XCT-iD-e1m" secondAttribute="bottom" constant="3" id="UsT-1A-acP"/>
                                                         <constraint firstItem="ygO-qu-IYZ" firstAttribute="top" secondItem="mz6-nd-4Io" secondAttribute="top" id="W1Y-QU-TWd"/>
                                                         <constraint firstItem="XCT-iD-e1m" firstAttribute="top" secondItem="ygO-qu-IYZ" secondAttribute="bottom" constant="3" id="cHx-0c-mkP"/>
@@ -180,6 +195,7 @@
                                         </constraints>
                                         <size key="customSize" width="225" height="125"/>
                                         <connections>
+                                            <outlet property="deleteButton" destination="dru-dv-cBn" id="2xG-rF-YEE"/>
                                             <outlet property="descriptionHeadlineLabel" destination="8MF-rQ-EFO" id="zac-CM-C8t"/>
                                             <outlet property="descriptionLabel" destination="XCT-iD-e1m" id="UsL-19-9Hf"/>
                                             <outlet property="titleLabel" destination="R8c-1D-QW8" id="Enf-h2-mW8"/>
@@ -233,7 +249,13 @@
                             <constraint firstItem="Qbu-7N-a7j" firstAttribute="top" secondItem="8Sf-kX-BLD" secondAttribute="bottom" id="wtg-NU-13t"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="DOOR REVIEWS" id="lep-hP-b63"/>
+                    <navigationItem key="navigationItem" title="DOOR REVIEWS" id="lep-hP-b63">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="K1l-eF-mIC">
+                            <connections>
+                                <action selector="editButtonTouched:" destination="8rJ-Kc-sve" id="NAT-uS-mRn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Qbu-7N-a7j" id="1LT-sR-eQW"/>
                         <outlet property="noInspectionsLabel" destination="MRm-oL-gRE" id="WBx-e4-Y0Q"/>
@@ -1986,6 +2008,7 @@ No Data</string>
     <resources>
         <image name="backButton" width="37" height="37"/>
         <image name="buildingReview" width="107" height="107"/>
+        <image name="closeIcon" width="70" height="70"/>
         <image name="doorReviewIcon" width="37" height="37"/>
         <image name="hideDoorSectionButton" width="32" height="12"/>
         <image name="homeIcon" width="37" height="37"/>

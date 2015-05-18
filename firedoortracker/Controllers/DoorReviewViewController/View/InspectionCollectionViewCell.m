@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionHeadlineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end
 
@@ -23,7 +24,7 @@
 
 #pragma mark - Display Methods
 
-- (void)displayInspection:(Inspection *)inspection {
+- (void)displayInspection:(Inspection *)inspection editingMode:(BOOL)isEditing {
     self.titleLabel.text = [NSString stringWithFormat:@"Door ID %@",inspection.barCode];
     //TODO: Display Result Statuses
     self.descriptionLabel.text = [NSString stringWithFormat:@"%@ %@\n%@\n%@\n%@\n%@ %@\n%@ %@\n%@",
@@ -35,6 +36,7 @@
                                   inspection.creatorFirstName, inspection.creatorLastName,
                                   @"-"];
     [self displayColorStatuses:inspection.colorStatus];
+    self.deleteButton.hidden = !isEditing;
 }
 
 - (void)displayColorStatuses:(NSArray *)statuses {
@@ -51,6 +53,12 @@
                                            statusImageView.bounds.size.height);
         [self.descriptionLabel addSubview:statusImageView];
         colorStatusViewX += statusImageView.bounds.size.width + 3.0f;
+    }
+}
+
+- (IBAction)deleteButtonTouched:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(inspectionCollectionViewCell:userTouchedDeleteButton:)]) {
+        [self.delegate inspectionCollectionViewCell:self userTouchedDeleteButton:sender];
     }
 }
 

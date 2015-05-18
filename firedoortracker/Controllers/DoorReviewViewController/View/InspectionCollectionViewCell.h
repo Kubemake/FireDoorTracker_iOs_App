@@ -9,8 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Inspection.h"
 
+@protocol InspectionCollectionViewCellDelegate <NSObject>
+
+@required
+- (void)inspectionCollectionViewCell: (UICollectionViewCell *)cell userTouchedDeleteButton:(id)sender;
+
+@end
+
 @interface InspectionCollectionViewCell : UICollectionViewCell
 
-- (void)displayInspection:(Inspection *)inspection;
+@property (weak, nonatomic) id<InspectionCollectionViewCellDelegate> delegate;
+
+- (void)displayInspection:(Inspection *)inspection editingMode:(BOOL)isEditing;
 
 @end

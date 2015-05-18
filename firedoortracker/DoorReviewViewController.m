@@ -30,11 +30,12 @@ static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifi
 static NSString* kUserInspections = @"inspections";
 static NSString* kKeyword = @"keyword";
 
-@interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate,  AddDoorReviewDelegate>
+@interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate,  AddDoorReviewDelegate, InspectionCollectionViewCellDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *noInspectionsLabel;
+@property (assign, nonatomic) BOOL editingMode;
 
 //User Data
 @property (strong, nonatomic) Inspection* createdInspection;
@@ -141,7 +142,8 @@ static NSString* kKeyword = @"keyword";
     
     InspectionCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:inspectionCellIdentifier
                                                                                    forIndexPath:indexPath];
-    [cell displayInspection:[self.inspectionsForDisplaying objectAtIndex:indexPath.row - 1]];
+    [cell displayInspection:[self.inspectionsForDisplaying objectAtIndex:indexPath.row - 1] editingMode:self.editingMode];
+    cell.delegate = self;
     return cell;
 }
 
@@ -210,6 +212,23 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.createdInspection = createdInspection;
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopTop];
     [self loadAndDisplayInspectionList:nil withKeyword:nil];
+}
+
+#pragma mark - IBActions
+#pragma mark - 
+
+- (IBAction)editButtonTouched:(id)sender {
+    self.editingMode = !self.editingMode;
+    [self.collectionView reloadData];
+}
+
+#pragma mark - InspectionCollectionViewCellDelegate
+#pragma mark - 
+
+- (void)inspectionCollectionViewCell:(UICollectionViewCell *)cell userTouchedDeleteButton:(id)sender {
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    Inspection *inspectionForDelete = (Inspection *)[self.inspectionsForDisplaying objectAtIndex:indexPath.row];
+    //TODO: Remove Inspection and reload collection view
 }
 
 @end

@@ -26,6 +26,7 @@ static NSString* vTypeDouble = @"double";
 static NSString* kName = @"name";
 static NSString* kSelected = @"selected";
 static NSString* kFroceRefresh = @"force_refresh";
+static NSString* kLabel = @"label";
 
 static NSString* kOldData = @"olddata";
 static NSString* kNewData = @"newdata";
@@ -181,11 +182,23 @@ static const CGFloat headerSize = 45.0f;
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     for (NSArray *sectionAnswers in [inputDictionary allValues]) {
         for (NSDictionary *answer in sectionAnswers) {
-            [result setObject:[answer objectForKey:kSelected] forKey:[answer objectForKey:kName]];
+            NSString *selectedAnswer = [answer objectForKey:kSelected];
+            NSString *answerName = [answer objectForKey:kName];
+            [result setObject:selectedAnswer forKey:answerName];
         }
     }
-    
     return result;
+}
+
+- (BOOL)validateAnwsersDictionary:(NSDictionary *)answersDictionary {
+    for (NSString *answerName in [answersDictionary allKeys]) {
+        NSString *answerValue = [answersDictionary objectForKey:answerName];
+        if ([answerValue isEqualToString:@"Please select value"]) {
+            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Please complete %@ field", answerName]];
+            return NO;
+        }
+    }
+    return YES;
 }
 
 #pragma mark - IBActions
@@ -193,7 +206,10 @@ static const CGFloat headerSize = 45.0f;
 
 - (IBAction)submitButtonPressed:(id)sender {
     if ([self.delegate respondsToSelector:@selector(submitDoorOverview:)]) {
-        [self.delegate submitDoorOverview:[self createResultDictionary:self.answersDictionary]];
+        NSDictionary *answers = [self createResultDictionary:self.answersDictionary];
+        if ([self validateAnwsersDictionary:answers]) {
+            [self.delegate submitDoorOverview:answers];
+        }
     }
 }
 
