@@ -112,6 +112,7 @@ static bool isFirstAccess = YES;
 - (void)performRequestWithType:(RequestType)type
                      andParams:(NSDictionary *)params
                 withCompletion:(void (^)(id responseObject, NSError* error))completion {
+    NSLog(@"%@",params);
     NSMutableDictionary* requestParams = [NSMutableDictionary dictionary];
     
     switch (type) {

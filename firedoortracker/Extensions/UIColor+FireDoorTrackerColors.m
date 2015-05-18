@@ -28,23 +28,23 @@
 
 //Door Review Colors
 + (UIColor *)FDTcompliant {
-    return [UIColor colorWithRed:198/255.0f green:239/255.0f blue:206/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:33/255.0f green:138/255.0f blue:47/255.0f alpha:1.0f];
 }
 
 + (UIColor *)FDTmaintenance {
-    return [UIColor colorWithRed:247/255.0f green:150/255.0f blue:70/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:0/255.0f green:51/255.0f blue:204/255.0f alpha:1.0f];
 }
 
 + (UIColor *)FDTrepair {
-    return [UIColor colorWithRed:75/255.0f green:172/255.0f blue:198/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:255/255.0f green:255/255.0f blue:51/255.0f alpha:1.0f];
 }
 
 + (UIColor *)FDTreplace {
-    return [UIColor colorWithRed:128/255.0f green:100/255.0f blue:162/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:212/255.0f green:20/255.0f blue:20/255.0f alpha:1.0f];
 }
 
 + (UIColor *)FDTrecertify {
-    return [UIColor colorWithRed:255/255.0f green:199/255.0f blue:206/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:154/255.0f green:0/255.0f blue:205/255.0f alpha:1.0f];
 }
 
 @end

@@ -19,6 +19,7 @@
 		6851D3981AB60BAC0085965E /* AlphabetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D3971AB60BAC0085965E /* AlphabetView.m */; };
 		6851D39C1AB6E7130085965E /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D39B1AB6E7130085965E /* NetworkManager.m */; };
 		6851D3A01AB6E8FB0085965E /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851D39F1AB6E8FB0085965E /* AuthorizationViewController.m */; };
+		6860A7361B09C7E500F147E4 /* DoorInfoOverviewHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860A7351B09C7E500F147E4 /* DoorInfoOverviewHeaderTableViewCell.m */; };
 		686634AE1AB5E7CA003EA804 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634AD1AB5E7CA003EA804 /* main.m */; };
 		686634B11AB5E7CA003EA804 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634B01AB5E7CA003EA804 /* AppDelegate.m */; };
 		686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686634B31AB5E7CA003EA804 /* HomeViewController.m */; };
@@ -100,6 +101,8 @@
 		6851D39B1AB6E7130085965E /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkManager.m; path = NetworkManager/NetworkManager.m; sourceTree = "<group>"; };
 		6851D39E1AB6E8FB0085965E /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizationViewController.h; path = Controllers/AuthorizationViewController/AuthorizationViewController.h; sourceTree = "<group>"; };
 		6851D39F1AB6E8FB0085965E /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationViewController.m; path = Controllers/AuthorizationViewController/AuthorizationViewController.m; sourceTree = "<group>"; };
+		6860A7341B09C7E500F147E4 /* DoorInfoOverviewHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorInfoOverviewHeaderTableViewCell.h; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/View/DoorInfoOverviewHeaderTableViewCell.h; sourceTree = "<group>"; };
+		6860A7351B09C7E500F147E4 /* DoorInfoOverviewHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorInfoOverviewHeaderTableViewCell.m; path = Controllers/DoorReviewViewController/DoorInfoOverview/QustionsViewControllers/View/DoorInfoOverviewHeaderTableViewCell.m; sourceTree = "<group>"; };
 		686634A81AB5E7CA003EA804 /* firedoortracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firedoortracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686634AC1AB5E7CA003EA804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686634AD1AB5E7CA003EA804 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				680CF4A91AFA1A9D00F776C5 /* DoorOverviewEnumTableViewCell.m */,
 				680CF4AB1AFA1E4F00F776C5 /* DoorOverviewTextFieldCell.h */,
 				680CF4AC1AFA1E4F00F776C5 /* DoorOverviewTextFieldCell.m */,
+				6860A7341B09C7E500F147E4 /* DoorInfoOverviewHeaderTableViewCell.h */,
+				6860A7351B09C7E500F147E4 /* DoorInfoOverviewHeaderTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -849,6 +854,7 @@
 				686634B41AB5E7CA003EA804 /* HomeViewController.m in Sources */,
 				F9DA379F1AB9E0B60075BCB6 /* UIImage+Utilities.m in Sources */,
 				68B27A211AB717E900990DCA /* TermTableViewCell.m in Sources */,
+				6860A7361B09C7E500F147E4 /* DoorInfoOverviewHeaderTableViewCell.m in Sources */,
 				689BFD231AC3D5850068733D /* AddDoorReviewViewController.m in Sources */,
 				682C11661AE286B600CDD219 /* MediaHeaderCollectionReusableView.m in Sources */,
 				F94A8C0D1ABB21DE00A3AC06 /* NavigationBarButtons.m in Sources */,

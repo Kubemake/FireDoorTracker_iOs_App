@@ -1562,6 +1562,30 @@ No Data</string>
                                 <rect key="frame" x="15" y="73" width="570" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoorInfoOverviewHeaderTableViewCellIdentifier" id="Clh-JA-g2j" customClass="DoorInfoOverviewHeaderTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Clh-JA-g2j" id="gR2-Ku-u8v">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyj-aJ-o80">
+                                                    <rect key="frame" x="250" y="10" width="70" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="Fyj-aJ-o80" secondAttribute="centerX" id="JhO-Bd-rj2"/>
+                                                <constraint firstAttribute="centerY" secondItem="Fyj-aJ-o80" secondAttribute="centerY" id="UpJ-gP-3MC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="sectionHeaderLabel" destination="Fyj-aJ-o80" id="XmP-en-SVa"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CIDoorInfoOverviewTextInputCell" id="A1x-Q7-WiR" customClass="DoorOverviewTextFieldCell">
                                         <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>

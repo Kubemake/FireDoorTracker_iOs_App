@@ -95,6 +95,9 @@ static NSString* kApertureID = @"aperture_id";
                                  self.selectedInspection.firstName, self.selectedInspection.lastName,
                                  self.selectedInspection.completionDate
                                  ];
+    if ([self.selectedInspection.colorStatus count]) {
+        [self changeInspectionStatusTo:self.selectedInspection.colorStatus];
+    }
 }
 
 - (void)setupDoorInfoMenu {

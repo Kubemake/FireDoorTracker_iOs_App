@@ -13,6 +13,7 @@
 #import <IQDropDownTextField.h>
 #import "DoorOverviewEnumTableViewCell.h"
 #import "DoorOverviewTextFieldCell.h"
+#import "DoorInfoOverviewHeaderTableViewCell.h"
 #import <SVProgressHUD.h>
 
 //Import Model
@@ -33,6 +34,8 @@ static NSString* kApertureId = @"aperture_id";
 
 static NSString* kCIDropDawnCellIdentifier = @"CIDoorInfoOverviewEnumInputCell";
 static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
+
+static const CGFloat headerSize = 45.0f;
 
 @interface StartInterviewViewController () <DoorOverviewTextFieldCellDelegate, DoorOverviewEnumTableViewCellDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -68,8 +71,14 @@ static NSString* kCIStringCellIdentifier = @"CIDoorInfoOverviewTextInputCell";
 #pragma mark - UITableView Datasource
 #pragma mark -
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self sectionNameByIndex:section];
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    DoorInfoOverviewHeaderTableViewCell *header = [tableView dequeueReusableCellWithIdentifier:[DoorInfoOverviewHeaderTableViewCell identifier]];
+    [header displayHeader:[self sectionNameByIndex:section]];
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return headerSize;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
