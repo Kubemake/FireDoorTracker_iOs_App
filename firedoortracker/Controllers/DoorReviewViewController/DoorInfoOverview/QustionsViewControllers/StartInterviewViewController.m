@@ -144,6 +144,18 @@ static const CGFloat headerSize = 45.0f;
     return [self.answersDictionary objectForKey:[self sectionNameByIndex:index]];
 }
 
+- (NSDictionary *)answerByName:(NSString *)name {
+    for (NSArray *answersInSection in [self.answersDictionary allValues]) {
+        for (NSDictionary *answerDictionary in answersInSection) {
+            if ([[answerDictionary objectForKey:kName] isEqualToString:name]) {
+                return answerDictionary;
+            }
+        }
+    }
+    
+    return nil;
+}
+
 - (void)updateAnswerDictionaryWithAnswer:(NSDictionary *)updatedAnswer atIndexPath:(NSIndexPath *)indexPath {
     if (updatedAnswer) {
         NSMutableArray *answersForUpdate = [NSMutableArray arrayWithArray:[self answersBySectionIndex:indexPath.section]];
@@ -194,7 +206,8 @@ static const CGFloat headerSize = 45.0f;
     for (NSString *answerName in [answersDictionary allKeys]) {
         NSString *answerValue = [answersDictionary objectForKey:answerName];
         if ([answerValue isEqualToString:@"Please select value"]) {
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Please complete %@ field", answerName]];
+            NSDictionary *answer = [self answerByName:answerName];
+            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Please complete %@ field", [answer objectForKey:kLabel]]];
             return NO;
         }
     }

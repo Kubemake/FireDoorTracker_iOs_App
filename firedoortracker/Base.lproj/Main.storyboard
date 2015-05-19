@@ -250,7 +250,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="DOOR REVIEWS" id="lep-hP-b63">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="K1l-eF-mIC">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="edit" id="K1l-eF-mIC">
                             <connections>
                                 <action selector="editButtonTouched:" destination="8rJ-Kc-sve" id="NAT-uS-mRn"/>
                             </connections>
