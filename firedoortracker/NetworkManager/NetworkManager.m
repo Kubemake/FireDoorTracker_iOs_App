@@ -28,6 +28,7 @@ static NSString* inspectionConfirmation = @"set_inspection_confirmation";
 static NSString* inspectionCreateCheckDoorID = @"check_door_uid";
 static NSString* inspectionAdd = @"add_inspection";
 static NSString* expertsList = @"get_experts";
+static NSString* deleteInspection = @"delete_inspection";
 
 static NSString* kToken = @"token";
 static NSString* kFile = @"file";
@@ -160,6 +161,8 @@ static bool isFirstAccess = YES;
         case ExpertsListRequestType:
             [requestParams setObject:expertsList forKey:kRequestType];
             break;
+        case DeleteInspectionRequestType:
+            [requestParams setObject:deleteInspection forKey:kRequestType];
         default:
             //TODO: Unknow request type, return Error
             break;

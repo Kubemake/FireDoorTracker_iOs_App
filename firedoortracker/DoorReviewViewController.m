@@ -28,6 +28,8 @@ static NSString* addDoorViewControllerIdentifier = @"AddDoorReviewViewController
 static NSString* showDoorInfoOverviewSegue = @"showDoorInfoOverviewSegueIdentifier";
 
 static NSString* kUserInspections = @"inspections";
+static NSString* kInspectionId = @"inspection_id";
+static NSString* kApertireId = @"aperture_id";
 static NSString* kKeyword = @"keyword";
 
 @interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate,  AddDoorReviewDelegate, InspectionCollectionViewCellDelegate>
@@ -215,7 +217,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark - IBActions
-#pragma mark - 
+#pragma mark -
 
 - (IBAction)editButtonTouched:(id)sender {
     self.editingMode = !self.editingMode;
@@ -223,12 +225,23 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark - InspectionCollectionViewCellDelegate
-#pragma mark - 
+#pragma mark -
 
 - (void)inspectionCollectionViewCell:(UICollectionViewCell *)cell userTouchedDeleteButton:(id)sender {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    __weak typeof(self) welf = self;
     Inspection *inspectionForDelete = (Inspection *)[self.inspectionsForDisplaying objectAtIndex:indexPath.row];
-    //TODO: Remove Inspection and reload collection view
+    [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"Remove Review %@", inspectionForDelete.uid]];
+    [[NetworkManager sharedInstance] performRequestWithType:DeleteInspectionRequestType
+                                                  andParams:@{kInspectionId : (inspectionForDelete.uid) ? : [NSNull null],
+                                                              kApertireId: (inspectionForDelete.apertureId) ? : [NSNull null]}
+                                             withCompletion:^(id responseObject, NSError *error) {
+                                                 if (error) {
+                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                     return;
+                                                 }
+                                                 [welf loadAndDisplayInspectionList:nil withKeyword:nil];
+                                             }];
 }
 
 @end
