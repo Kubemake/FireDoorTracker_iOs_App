@@ -17,7 +17,7 @@
 
 //Review Status
 - (void)changeInspectionStatusTo:(NSArray *)newStatuses;
-
+- (void)inspectionUpdated:(Inspection *)updatedInspection;
 - (void)inspectionConfirmded;
 
 @end

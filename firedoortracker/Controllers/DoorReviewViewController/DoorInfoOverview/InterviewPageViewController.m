@@ -45,6 +45,7 @@ static NSString* kSpecial= @"Special";
 static NSString* kTabs = @"tabs";
 static NSString* kQuestions = @"issues";
 static NSString* kAnswers = @"answers";
+static NSString* kUpdatedInspection = @"updated_inspection";
 
 @interface InterviewPageViewController () <UIPageViewControllerDataSource,
 UIPageViewControllerDelegate,
@@ -175,6 +176,8 @@ InterviewConfirmationProtocol>
                                                      [mutableQuestions addObject:encodedQuestion];
                                                  }
                                                  welf.questions = mutableQuestions;
+                                                 Inspection *updatedInspection = [[Inspection alloc] initWithDictionary:[responseObject objectForKey:kUpdatedInspection]];
+                                                 [welf.interviewDelegate inspectionUpdated:updatedInspection];
                                                  [welf displayTabQuestionsViewControllers];
                                                  [welf displayTabsOnDoorInfoOverview];
                                                  [welf notifyDelagateAboutStatusChanges];

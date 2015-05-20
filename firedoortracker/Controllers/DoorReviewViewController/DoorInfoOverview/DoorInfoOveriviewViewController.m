@@ -187,6 +187,13 @@ static NSString* kApertureID = @"aperture_id";
     self.selectedInspection.colorStatus = newStatuses;
 }
 
+- (void)inspectionUpdated:(Inspection *)updatedInspection {
+    if (updatedInspection) {
+        self.selectedInspection = updatedInspection;
+        [self setupInspectionInfo];
+    }
+}
+
 #pragma mark - Display Methods 
 
 - (void)addAndDisplayStatusView:(inspectionStatus)status {
