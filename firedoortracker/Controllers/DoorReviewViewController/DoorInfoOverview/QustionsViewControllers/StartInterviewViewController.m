@@ -47,6 +47,7 @@ static const CGFloat headerSize = 45.0f;
 @property (strong, nonatomic) NSDictionary *previousAnswersDictionary;
 @property (strong, nonatomic) NSMutableDictionary *answersDictionary;
 @property (copy, nonatomic) NSString *apertureId;
+@property (strong, nonatomic) NSArray *sections;
 
 @end
 
@@ -62,10 +63,13 @@ static const CGFloat headerSize = 45.0f;
 #pragma mark - Display View Methods
 #pragma mark -
 
-- (void)displayDoorProperties:(NSDictionary *)doorProperties apertureId:(NSString *)apertureId {
+- (void)displayDoorProperties:(NSDictionary *)doorProperties
+                   apertureId:(NSString *)apertureId
+                     sections:(NSArray *)sections {
     self.answersDictionary = [NSMutableDictionary dictionaryWithDictionary:doorProperties];
     self.previousAnswersDictionary = [NSDictionary dictionaryWithDictionary:self.answersDictionary];
     self.apertureId = apertureId;
+    self.sections = sections;
     [self.tableView reloadData];
 }
 
@@ -132,7 +136,7 @@ static const CGFloat headerSize = 45.0f;
 }
 
 - (NSString *)sectionNameByIndex:(NSInteger)index {
-    NSArray *sections = @[@"Ratings",@"Door Details", @"Frame Label", @"Door Label", ];
+    NSArray *sections = self.sections;
     if (index >= sections.count) {
         return @"Unknow Section";
     } else {
@@ -184,7 +188,8 @@ static const CGFloat headerSize = 45.0f;
                                                  }
                                                  [SVProgressHUD showSuccessWithStatus:nil];
                                                  [welf displayDoorProperties:[responseObject objectForKey:@"info"]
-                                                                  apertureId:welf.apertureId];
+                                                                  apertureId:welf.apertureId
+                                                                    sections:self.sections];
                                              }];
 }
 

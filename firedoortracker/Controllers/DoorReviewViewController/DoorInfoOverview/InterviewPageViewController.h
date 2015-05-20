@@ -31,6 +31,8 @@
 
 - (void)setSelectedPage:(NSInteger)selectedPage;
 
-- (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary toApertureId:(NSString *)apertureId;
+- (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary
+                     toApertureId:(NSString *)apertureId
+                         sections:(NSArray *)sections;
 
 @end

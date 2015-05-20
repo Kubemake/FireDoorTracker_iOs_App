@@ -293,8 +293,12 @@ questionTreeController:(id)controller {
 
 #pragma mark - public setters
 
-- (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary toApertureId:(NSString *)apertureId {
-    [self.startInterviewController displayDoorProperties:doorOverviewDictionary apertureId:apertureId];
+- (void)setDoorOverviewDictionary:(NSDictionary *)doorOverviewDictionary
+                     toApertureId:(NSString *)apertureId
+                         sections:(NSArray *)sections {
+    [self.startInterviewController displayDoorProperties:doorOverviewDictionary
+                                              apertureId:apertureId
+                                                sections:sections];
 }
 
 - (void)setSelectedPage:(NSInteger)selectedPage {
