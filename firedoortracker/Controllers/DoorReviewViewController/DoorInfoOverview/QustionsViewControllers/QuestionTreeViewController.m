@@ -96,6 +96,7 @@ static const CGFloat answerButtonPadding = 5.0f;
         //TODO: Change to answer collor
         [answerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [answerButton.titleLabel setFont:[UIFont FDTTimesNewRomanBoldWithSize:24.0f]];
+        answerButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         
         if ([answer.selected boolValue]) {
             //TODO: Add to the question array
