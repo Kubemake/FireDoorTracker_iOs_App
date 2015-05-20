@@ -17,7 +17,7 @@
 @implementation MediaHeaderCollectionReusableView
 
 - (void)displayInspectionInfo:(Inspection *)inspection {
-    self.textLabel.text = [NSString stringWithFormat:@"Review %@",inspection.uid];
+    self.textLabel.text = [NSString stringWithFormat:@"Door ID %@",inspection.barCode];
 }
 
 + (NSString *)identifier {
