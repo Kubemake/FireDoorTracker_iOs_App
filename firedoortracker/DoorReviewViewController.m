@@ -230,7 +230,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (void)inspectionCollectionViewCell:(UICollectionViewCell *)cell userTouchedDeleteButton:(id)sender {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
     __weak typeof(self) welf = self;
-    Inspection *inspectionForDelete = (Inspection *)[self.inspectionsForDisplaying objectAtIndex:indexPath.row];
+    Inspection *inspectionForDelete = (Inspection *)[self.inspectionsForDisplaying objectAtIndex:indexPath.row-1];
     [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"Remove Review %@", inspectionForDelete.uid]];
     [[NetworkManager sharedInstance] performRequestWithType:DeleteInspectionRequestType
                                                   andParams:@{kInspectionId : (inspectionForDelete.uid) ? : [NSNull null],
