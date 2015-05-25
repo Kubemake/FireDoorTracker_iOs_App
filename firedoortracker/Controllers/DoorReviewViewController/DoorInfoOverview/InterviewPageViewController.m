@@ -40,7 +40,8 @@ static NSString* kidFormField = @"idFormFields";
 static NSString* kAperture = @"aperture_id";
 static NSString* kFile = @"file";
 static NSString* kFileName = @"file_name";
-static NSString* kSpecial= @"Special";
+static NSString* kSpecial = @"Special";
+static NSString* kQuestionId = @"questionId";
 
 static NSString* kTabs = @"tabs";
 static NSString* kQuestions = @"issues";
@@ -195,7 +196,8 @@ InterviewConfirmationProtocol>
                                                               kidFormField : (answer.idFormField) ? : [NSNull null],
                                                               kSelected : (answer.selected) ? : [NSNull null],
                                                               kStatus : (answer.status) ? : [NSNull null],
-                                                              kSpecial : (answer.special) ? : [NSNull null]}
+                                                              kSpecial : (answer.special) ? : [NSNull null],
+                                                              kQuestionId: (answer.questionID) ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  if (error) {
                                                      //TODO: Display Error
