@@ -20,6 +20,7 @@
         self.selected = dict[@"selected"];
         self.status = dict[@"status"];
         self.type = dict[@"type"];
+        self.autoSubmit = [dict objectForKey:@"autoSubmit"];
         if ([dict objectForKey:@"answers"]) {
             NSMutableArray *answers = [NSMutableArray array];
             for (NSDictionary *answer in [[dict objectForKey:@"answers"] allObjects]) {
