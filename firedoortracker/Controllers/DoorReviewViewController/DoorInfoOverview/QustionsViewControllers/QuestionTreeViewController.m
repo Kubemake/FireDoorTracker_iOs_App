@@ -169,9 +169,6 @@ static const CGFloat answerButtonPadding = 5.0f;
     } else {
         [self resetAllAnswersWithStatus:inspectionStatusCompliant];
     }
-    //Reset UI View
-    [self displayQuestion:self.currentQuestion];
-    self.nextQuestionButton.enabled = YES;
     
     //TODO: Colorize Previous Answer Status as selected
     
@@ -181,6 +178,10 @@ static const CGFloat answerButtonPadding = 5.0f;
     } else if ([self.selectedAnswer.selected boolValue]) {
         [self showPhotoButtonOppositeButton:sender];
     }
+    
+    //Reset UI View
+    [self displayQuestion:self.currentQuestion];
+    self.nextQuestionButton.enabled = YES;
 }
 
 - (void)showOtherAlertView {
