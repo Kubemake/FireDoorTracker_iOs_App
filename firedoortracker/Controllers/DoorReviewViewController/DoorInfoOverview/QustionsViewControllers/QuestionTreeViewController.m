@@ -82,7 +82,12 @@ static const CGFloat answerButtonPadding = 5.0f;
     self.questionTitleLabel.text = question.label;
     
     self.previousQuestionButton.enabled = (self.previosQuestion) ? YES : NO;
+    
     self.nextQuestionButton.enabled = NO;
+    if ([question.nextQuiestionID integerValue] != 0) {
+        self.selectedAnswer = question;
+        self.nextQuestionButton.enabled = YES;
+    }
     
     [self removeAllButtonsFromView];
     CGFloat answerButtonHeight = self.questionBodyView.bounds.size.height / self.currentQuestion.answers.count;
