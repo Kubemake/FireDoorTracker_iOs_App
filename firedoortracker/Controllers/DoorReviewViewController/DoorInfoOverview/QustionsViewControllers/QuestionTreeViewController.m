@@ -84,8 +84,9 @@ static const CGFloat answerButtonPadding = 5.0f;
     self.previousQuestionButton.enabled = (self.previosQuestion) ? YES : NO;
     
     self.nextQuestionButton.enabled = NO;
-    if ([question.nextQuiestionID integerValue] != 0) {
-        self.selectedAnswer = question;
+    
+    //Hotfix for question
+    if ([question.nextQuiestionID integerValue] > 0) {
         self.nextQuestionButton.enabled = YES;
     }
     
@@ -123,6 +124,7 @@ static const CGFloat answerButtonPadding = 5.0f;
         answerButtonY += answerButtonHeight;
     }
     self.answerButtons = answerButtons;
+    self.selectedAnswer = nil;
 }
 
 - (void)addStatusIconsToButton:(UIButton *)button withAnswer:(QuestionOrAnswer *)answer {
@@ -307,14 +309,19 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 
 - (IBAction)nextQuestionButtonPressed:(id)sender {
-    self.previosQuestion = self.currentQuestion;
-    QuestionOrAnswer *nextQuestion = [self questionByID:self.selectedAnswer.nextQuiestionID];
+    QuestionOrAnswer *nextQuestion;
+    if (self.selectedAnswer) {
+        nextQuestion = [self questionByID:self.selectedAnswer.nextQuiestionID];
+    } else {
+        nextQuestion = [self questionByID:self.currentQuestion.nextQuiestionID];
+    }
     
     //Delegate Notifyng
     if ([self.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
         [self.questionDelegate userSelectAnswer:self.selectedAnswer questionTreeController:self];
     }
     
+    self.previosQuestion = self.currentQuestion;
     [self displayQuestion:nextQuestion];
 }
 
