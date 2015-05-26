@@ -242,18 +242,18 @@ static const CGFloat answerButtonPadding = 5.0f;
                                                    handler:^(UIAlertAction * action) {
                                                        [alert dismissViewControllerAnimated:YES completion:nil];
                                                    }];
-//    UIAlertAction* delete = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil)
-//                                                     style:UIAlertActionStyleCancel
-//                                                   handler:^(UIAlertAction * action) {
-//                                                       welf.selectedAnswer.selected = @"0,0";
-//                                                       if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
-//                                                           [welf.questionDelegate userSelectAnswer:welf.selectedAnswer questionTreeController:self];
-//                                                           [alert dismissViewControllerAnimated:YES completion:nil];
-//                                                       }
-//                                                   }];
+    //    UIAlertAction* delete = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil)
+    //                                                     style:UIAlertActionStyleCancel
+    //                                                   handler:^(UIAlertAction * action) {
+    //                                                       welf.selectedAnswer.selected = @"0,0";
+    //                                                       if ([welf.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
+    //                                                           [welf.questionDelegate userSelectAnswer:welf.selectedAnswer questionTreeController:self];
+    //                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+    //                                                       }
+    //                                                   }];
     [alert addAction:submit];
     [alert addAction:cancel];
-//    [alert addAction:delete];
+    //    [alert addAction:delete];
     
     NSArray *oldSize = [self.selectedAnswer.selected componentsSeparatedByString:@","];
     
@@ -321,8 +321,10 @@ static const CGFloat answerButtonPadding = 5.0f;
         [self.questionDelegate userSelectAnswer:self.selectedAnswer questionTreeController:self];
     }
     
-    self.previosQuestion = self.currentQuestion;
-    [self displayQuestion:nextQuestion];
+    if ([nextQuestion.idFormField integerValue] > 0) {
+        self.previosQuestion = self.currentQuestion;
+        [self displayQuestion:nextQuestion];
+    }
 }
 
 - (IBAction)previousQuestionButtonPressed:(id)sender {
@@ -332,7 +334,7 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 - (IBAction)makePhotoButonPressed:(UIButton *)sender {
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-
+    
     if (status == AVAuthorizationStatusAuthorized || status == AVAuthorizationStatusNotDetermined) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
@@ -341,11 +343,11 @@ static const CGFloat answerButtonPadding = 5.0f;
         
         [self presentViewController:picker animated:YES completion:nil];
     } else {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
-                                       message:NSLocalizedString(@"Please enable access to camera by firedoortracker in settings", nil)
-                                      delegate:nil
-                             cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                    message:NSLocalizedString(@"Please enable access to camera by firedoortracker in settings", nil)
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
     }
 }
 
@@ -356,7 +358,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     if ([self.questionDelegate respondsToSelector:@selector(userMakePhoto:toAnswer:questionTreeController:)]) {
         [self.questionDelegate userMakePhoto:chosenImage
                                     toAnswer:self.selectedAnswer
-         questionTreeController:self];
+                      questionTreeController:self];
     }
     
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -405,7 +407,7 @@ static const CGFloat answerButtonPadding = 5.0f;
                                                       animatedFromView:self.view];
     [browser setInitialPageIndex:indexPath.row];
     [self presentViewController:browser animated:YES completion:nil];
-
+    
 }
 
 @end
