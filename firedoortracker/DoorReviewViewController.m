@@ -229,19 +229,37 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)inspectionCollectionViewCell:(UICollectionViewCell *)cell userTouchedDeleteButton:(id)sender {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-    __weak typeof(self) welf = self;
     Inspection *inspectionForDelete = (Inspection *)[self.inspectionsForDisplaying objectAtIndex:indexPath.row-1];
-    [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"Remove Review %@", inspectionForDelete.uid]];
-    [[NetworkManager sharedInstance] performRequestWithType:DeleteInspectionRequestType
-                                                  andParams:@{kInspectionId : (inspectionForDelete.uid) ? : [NSNull null],
-                                                              kApertireId: (inspectionForDelete.apertureId) ? : [NSNull null]}
-                                             withCompletion:^(id responseObject, NSError *error) {
-                                                 if (error) {
-                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                                                     return;
-                                                 }
-                                                 [welf loadAndDisplayInspectionList:nil withKeyword:nil];
-                                             }];
+    [self presentDeleteReviewDialog:inspectionForDelete];
+}
+
+- (void)presentDeleteReviewDialog:(Inspection *)inspection {
+    UIAlertController *deleteController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete", nil)
+                                                                              message:[NSString stringWithFormat:@"Are you sure you want to permanently delete door review %@", inspection.uid]
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil)
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action) {
+                                                             __weak typeof(self) welf = self;
+                                                             [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"Removing Review %@", inspection.uid]];
+                                                             [[NetworkManager sharedInstance] performRequestWithType:DeleteInspectionRequestType
+                                                                                                           andParams:@{kInspectionId : (inspection.uid) ? : [NSNull null],
+                                                                                                                       kApertireId: (inspection.apertureId) ? : [NSNull null]}
+                                                                                                      withCompletion:^(id responseObject, NSError *error) {
+                                                                                                          if (error) {
+                                                                                                              [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                                                                              return;
+                                                                                                          }
+                                                                                                          [welf loadAndDisplayInspectionList:nil withKeyword:nil];
+                                                                                                      }];
+                                                         }];
+    [deleteController addAction:deleteAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil)
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    [deleteController addAction:cancelAction];
+    [self presentViewController:deleteController animated:YES completion:nil];
 }
 
 @end
