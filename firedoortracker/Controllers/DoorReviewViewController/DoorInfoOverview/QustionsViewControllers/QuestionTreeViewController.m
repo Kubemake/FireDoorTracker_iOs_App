@@ -161,7 +161,7 @@ static const CGFloat answerButtonPadding = 5.0f;
         [self showOtherAlertView];
         return;
     }
-    if ([self.currentQuestion.name isEqualToString:@"EnterinDimensionsofSigns"]) {
+    if ([self.currentQuestion.name containsString:@"EnterinDimensionsofSigns"]) {
         [self showDoorSizeAlert];
         return;
     }
@@ -175,7 +175,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     //TODO: Colorize Previous Answer Status as selected
     
     //If Answer not have side effect -> go to next question
-    if (self.selectedAnswer.status.integerValue == 0 || [self.selectedAnswer.autoSubmit boolValue]) {
+    if (self.selectedAnswer.status.integerValue == 0 || ([self.selectedAnswer.autoSubmit boolValue] && [self.selectedAnswer.selected boolValue])) {
         [self nextQuestionButtonPressed:sender];
     } else if ([self.selectedAnswer.selected boolValue]) {
         [self showPhotoButtonOppositeButton:sender];
