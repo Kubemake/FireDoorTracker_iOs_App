@@ -179,6 +179,10 @@ static const CGFloat answerButtonPadding = 5.0f;
         [self nextQuestionButtonPressed:sender];
     } else if ([self.selectedAnswer.selected boolValue]) {
         [self showPhotoButtonOppositeButton:sender];
+        //Delegate Notifyng
+        if ([self.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
+            [self.questionDelegate userSelectAnswer:self.selectedAnswer questionTreeController:self];
+        }
     }
     
     //Reset UI View
