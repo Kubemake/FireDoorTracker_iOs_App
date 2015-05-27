@@ -235,7 +235,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)presentDeleteReviewDialog:(Inspection *)inspection {
     UIAlertController *deleteController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete", nil)
-                                                                              message:[NSString stringWithFormat:@"Are you sure you want to permanently delete door review %@", inspection.uid]
+                                                                              message:[NSString stringWithFormat:@"Are you sure you want to permanently delete this review?"]
                                                                        preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil)
                                                            style:UIAlertActionStyleDestructive
