@@ -120,6 +120,10 @@ static const CGFloat headerSize = 45.0f;
     [self updateAnswerDictionaryWithAnswer:dictionary atIndexPath:[self.tableView indexPathForCell:cell]];
 }
 
+- (void)presentAlertDialog:(UIAlertController *)alertController doorOverviewTextFieldCell:(id)cell {
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 - (void)userUpdateDictionary:(NSDictionary *)updatedDictionary doorOverviewEnumTableViewCell:(id)cell {
     [self updateAnswerDictionaryWithAnswer:updatedDictionary atIndexPath:[self.tableView indexPathForCell:cell]];
 }

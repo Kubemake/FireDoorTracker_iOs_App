@@ -12,6 +12,7 @@
 
 @required
 - (void)userUpdateDictionary:(NSDictionary *)dictionary doorOverviewTextFieldCell: (id)cell;
+- (void)presentAlertDialog:(UIAlertController *)alertController doorOverviewTextFieldCell: (id)cell;
 
 @end
 

@@ -17,11 +17,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
+@property (assign, nonatomic) BOOL isAllowToEdit;
+
 @end
 
 static NSString* kSelected = @"selected";
 static NSString* kLabel = @"label";
 static NSString* kEnabled = @"enabled";
+static NSString* kAlert = @"alert";
 
 @implementation DoorOverviewTextFieldCell
 
@@ -52,7 +55,30 @@ static NSString* kEnabled = @"enabled";
 
 #pragma mark - UITextField IBAction
 
+- (IBAction)textFieldDidBeginEditing:(id)sender {
+    if ([[self.answerDictionary objectForKey:kAlert] length] && !self.isAllowToEdit) {
+        UIAlertController *changeController = [UIAlertController alertControllerWithTitle:@"Attention"
+                                                                                  message:[self.answerDictionary objectForKey:kAlert]
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                         style:UIAlertActionStyleCancel
+                                                       handler:nil];
+        UIAlertAction *agree = [UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          self.isAllowToEdit = YES;
+                                                          [sender becomeFirstResponder];
+                                                      }];
+        [changeController addAction:cancel];
+        [changeController addAction:agree];
+        if ([self.delegate respondsToSelector:@selector(presentAlertDialog:doorOverviewTextFieldCell:)]) {
+            [self.delegate presentAlertDialog:changeController doorOverviewTextFieldCell:self];
+        }
+    }
+}
+
 - (IBAction)textFieldDidChangeText:(UITextField *)sender {
+    self.isAllowToEdit = NO;
     NSMutableDictionary *changedAnswer = [self.answerDictionary mutableCopy];
     [changedAnswer setObject:sender.text forKey:kSelected];
     if ([self.delegate respondsToSelector:@selector(userUpdateDictionary:doorOverviewTextFieldCell:)]) {
