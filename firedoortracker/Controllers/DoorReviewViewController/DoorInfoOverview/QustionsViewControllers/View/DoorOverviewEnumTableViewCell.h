@@ -12,6 +12,7 @@
 
 @required
 - (void)userUpdateDictionary:(NSDictionary *)updatedDictionary doorOverviewEnumTableViewCell:(id)cell;
+- (void)presentAlertDialog:(UIAlertController *)alertController doorOverviewEnumTableViewCell: (id)cell;
 
 @end
 

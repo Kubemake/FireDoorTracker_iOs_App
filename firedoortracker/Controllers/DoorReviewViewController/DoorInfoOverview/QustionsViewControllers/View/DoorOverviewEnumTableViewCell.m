@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 @property (weak, nonatomic) IBOutlet IQDropDownTextField *dropDawnTextField;
+@property (assign, nonatomic) BOOL isAllowToEdit;
 
 @end
 
@@ -25,6 +26,7 @@ static NSString* kSelected = @"selected";
 static NSString* kValues = @"values";
 static NSString* kLabel = @"label";
 static NSString* kEnabled = @"enabled";
+static NSString* kAlert = @"alert";
 
 @implementation DoorOverviewEnumTableViewCell
 
@@ -83,7 +85,32 @@ static NSString* kEnabled = @"enabled";
 
 #pragma mark - Delegate
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if ([[self.answerDictionary objectForKey:kAlert] length] && !self.isAllowToEdit) {
+        UIAlertController *changeController = [UIAlertController alertControllerWithTitle:@"Attention"
+                                                                                  message:[self.answerDictionary objectForKey:kAlert]
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                         style:UIAlertActionStyleCancel
+                                                       handler:nil];
+        UIAlertAction *agree = [UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          self.isAllowToEdit = YES;
+                                                          [textField becomeFirstResponder];
+                                                      }];
+        [changeController addAction:cancel];
+        [changeController addAction:agree];
+        if ([self.delegate respondsToSelector:@selector(presentAlertDialog:doorOverviewEnumTableViewCell:)]) {
+            [self.delegate presentAlertDialog:changeController doorOverviewEnumTableViewCell:self];
+        }
+        return NO;
+    }
+    return YES;
+}
+
 - (IBAction)dropDawnDidEndEditing:(IQDropDownTextField *)sender {
+    self.isAllowToEdit = NO;
     NSMutableDictionary *changedDictionary = [self.answerDictionary mutableCopy];
     
     NSString *selectedValue = @"Error";
