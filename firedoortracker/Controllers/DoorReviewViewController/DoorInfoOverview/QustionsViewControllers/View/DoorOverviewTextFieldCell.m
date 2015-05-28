@@ -55,7 +55,7 @@ static NSString* kAlert = @"alert";
 
 #pragma mark - UITextField IBAction
 
-- (IBAction)textFieldDidBeginEditing:(id)sender {
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if ([[self.answerDictionary objectForKey:kAlert] length] && !self.isAllowToEdit) {
         UIAlertController *changeController = [UIAlertController alertControllerWithTitle:@"Attention"
                                                                                   message:[self.answerDictionary objectForKey:kAlert]
@@ -67,14 +67,16 @@ static NSString* kAlert = @"alert";
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction *action) {
                                                           self.isAllowToEdit = YES;
-                                                          [sender becomeFirstResponder];
+                                                          [textField becomeFirstResponder];
                                                       }];
         [changeController addAction:cancel];
         [changeController addAction:agree];
         if ([self.delegate respondsToSelector:@selector(presentAlertDialog:doorOverviewTextFieldCell:)]) {
             [self.delegate presentAlertDialog:changeController doorOverviewTextFieldCell:self];
         }
+        return NO;
     }
+    return YES;
 }
 
 - (IBAction)textFieldDidChangeText:(UITextField *)sender {

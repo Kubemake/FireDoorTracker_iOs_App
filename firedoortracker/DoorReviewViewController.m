@@ -217,6 +217,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self loadAndDisplayInspectionList:nil withKeyword:nil];
 }
 
+#pragma mark - Update Inspection method
+
+- (void)updateInspection:(Inspection *)updatedInspection {
+    for (Inspection *insp in self.inspectionsForDisplaying) {
+        if (insp.uid.integerValue == updatedInspection.uid.integerValue) {
+            insp.colorStatus = updatedInspection.colorStatus;
+            insp.barCode = updatedInspection.barCode;
+        }
+    }
+}
+
 #pragma mark - IBActions
 #pragma mark -
 

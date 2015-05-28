@@ -1622,7 +1622,6 @@ No Data</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="textFieldDidBeginEditing:" destination="A1x-Q7-WiR" eventType="editingDidBegin" id="oyX-bc-PPx"/>
                                                         <action selector="textFieldDidChangeText:" destination="A1x-Q7-WiR" eventType="editingDidEnd" id="0X4-1b-z8T"/>
                                                         <outlet property="delegate" destination="A1x-Q7-WiR" id="HNd-bd-B3g"/>
                                                     </connections>
