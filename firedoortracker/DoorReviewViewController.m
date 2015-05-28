@@ -224,6 +224,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         if (insp.uid.integerValue == updatedInspection.uid.integerValue) {
             insp.colorStatus = updatedInspection.colorStatus;
             insp.barCode = updatedInspection.barCode;
+            [self.collectionView reloadData];
         }
     }
 }
@@ -278,7 +279,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - 
 
 - (void)DoorInfoOveriviewViewController:(id)doorInfoOveriviewViewController didUpdateInspection:(Inspection *)inspection {
-    //TODO: Update inspection
+    [self updateInspection:inspection];
 }
 
 @end

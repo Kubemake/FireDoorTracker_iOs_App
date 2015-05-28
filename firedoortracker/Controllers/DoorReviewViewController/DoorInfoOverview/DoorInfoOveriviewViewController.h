@@ -18,7 +18,7 @@
 
 @interface DoorInfoOveriviewViewController : UIViewController
 
-@property (nonatomic, weak) Inspection* selectedInspection;
+@property (nonatomic, strong) Inspection* selectedInspection;
 
 @property (nonatomic, weak) id<DoorInfoOveriviewViewControllerDelegate>delegate;
 
