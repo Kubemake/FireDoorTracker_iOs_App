@@ -32,7 +32,7 @@ static NSString* kInspectionId = @"inspection_id";
 static NSString* kApertireId = @"aperture_id";
 static NSString* kKeyword = @"keyword";
 
-@interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate,  AddDoorReviewDelegate, InspectionCollectionViewCellDelegate>
+@interface DoorReviewViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate,  AddDoorReviewDelegate, InspectionCollectionViewCellDelegate, DoorInfoOveriviewViewControllerDelegate>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -206,6 +206,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //TODO: Check for segue identifier
     DoorInfoOveriviewViewController *destionationVC = [segue destinationViewController];
     destionationVC.selectedInspection = self.selectedInspection;
+    destionationVC.delegate = self;
 }
 
 #pragma mark - Add New Inspection Delegate
@@ -260,6 +261,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                                                          handler:nil];
     [deleteController addAction:cancelAction];
     [self presentViewController:deleteController animated:YES completion:nil];
+}
+
+#pragma mark - DoorInfoOveriviewViewControllerDelegate
+#pragma mark - 
+
+- (void)DoorInfoOveriviewViewController:(id)doorInfoOveriviewViewController didUpdateInspection:(Inspection *)inspection {
+    //TODO: Update inspection
 }
 
 @end

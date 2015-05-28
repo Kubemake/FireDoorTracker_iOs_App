@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, copy) NSString *special;
 @property (nonatomic, strong) NSNumber *autoSubmit;
+@property (nonatomic, strong) NSNumber *forceRefresh;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

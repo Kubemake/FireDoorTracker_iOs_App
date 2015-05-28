@@ -191,6 +191,9 @@ InterviewConfirmationProtocol>
     //TODO: Maybe call this method ever
     [self notifyDelagateAboutStatusChanges];
     //Save info and server
+    if ([answer.forceRefresh boolValue]) {
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+    }
     [[NetworkManager sharedInstance] performRequestWithType:InspectionUpdateDataRequestType
                                                   andParams:@{kInspectionID : self.inspectionID,
                                                               kidFormField : (answer.idFormField) ? : [NSNull null],
@@ -199,6 +202,7 @@ InterviewConfirmationProtocol>
                                                               kSpecial : (answer.special) ? : [NSNull null],
                                                               kQuestionId: (answer.questionID) ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
+                                                 [SVProgressHUD dismiss];
                                                  if (error) {
                                                      //TODO: Display Error
                                                      return;

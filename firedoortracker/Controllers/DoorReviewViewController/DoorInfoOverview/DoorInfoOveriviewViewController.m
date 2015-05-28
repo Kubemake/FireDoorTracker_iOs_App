@@ -68,6 +68,13 @@ static NSString* kApertureID = @"aperture_id";
     [self setupInspectionInfo];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if ([self.delegate respondsToSelector:@selector(DoorInfoOveriviewViewController:didUpdateInspection:)]) {
+        [self.delegate DoorInfoOveriviewViewController:self didUpdateInspection:self.selectedInspection];
+    }
+}
+
 #pragma mark - Actions
 #pragma mark -
 
