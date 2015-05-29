@@ -259,7 +259,11 @@ static const CGFloat answerButtonPadding = 5.0f;
     [alert addAction:cancel];
     //    [alert addAction:delete];
     
-    NSArray *oldSize = [self.selectedAnswer.selected componentsSeparatedByString:@","];
+    NSArray *oldSize = @[[NSNull null]];
+    
+    if (self.selectedAnswer.selected) {
+        oldSize = [self.selectedAnswer.selected componentsSeparatedByString:@","];
+    }
     
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = NSLocalizedString(@"Width...", nil);
