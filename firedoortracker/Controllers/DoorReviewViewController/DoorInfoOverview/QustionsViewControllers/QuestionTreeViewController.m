@@ -63,20 +63,20 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 - (void)updateCurrentQuestionAnswers:(NSArray *)answers {
     self.currentQuestion.answers = answers;
-    [self displayQuestion:self.currentQuestion];
+    [self displayQuestion:self.currentQuestion hidePhotoButton:YES];
 }
 
 #pragma mark - Display Methods
 
 - (void)displayTab:(Tab *)tabForReview {
     QuestionOrAnswer *firstQuestionForTab = [self questionByID:tabForReview.nextQuiestionID];
-    [self displayQuestion:firstQuestionForTab];
+    [self displayQuestion:firstQuestionForTab hidePhotoButton:YES];
 }
 
 #pragma mark - Display Question
 
-- (void)displayQuestion:(QuestionOrAnswer *)question {
-    self.makePhotoButton.hidden = YES;
+- (void)displayQuestion:(QuestionOrAnswer *)question hidePhotoButton:(BOOL)hidePhotoButton {
+    self.makePhotoButton.hidden = hidePhotoButton;
     [self.photosCollectionView reloadData];
     self.currentQuestion = question;
     self.questionTitleLabel.text = question.label;
@@ -174,10 +174,13 @@ static const CGFloat answerButtonPadding = 5.0f;
     
     //TODO: Colorize Previous Answer Status as selected
     
+    BOOL needToHidePhotoButton = YES;
+    
     //If Answer not have side effect -> go to next question
     if (self.selectedAnswer.status.integerValue == 0 || ([self.selectedAnswer.autoSubmit boolValue] && [self.selectedAnswer.selected boolValue])) {
         [self nextQuestionButtonPressed:sender];
     } else if ([self.selectedAnswer.selected boolValue]) {
+        needToHidePhotoButton = NO;
         [self showPhotoButtonOppositeButton:sender];
         //Delegate Notifyng
         if ([self.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
@@ -186,7 +189,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     }
     
     //Reset UI View
-    [self displayQuestion:self.currentQuestion];
+    [self displayQuestion:self.currentQuestion hidePhotoButton:needToHidePhotoButton];
     self.nextQuestionButton.enabled = YES;
 }
 
@@ -331,13 +334,13 @@ static const CGFloat answerButtonPadding = 5.0f;
     
     if ([nextQuestion.idFormField integerValue] > 0) {
         self.previosQuestion = self.currentQuestion;
-        [self displayQuestion:nextQuestion];
+        [self displayQuestion:nextQuestion hidePhotoButton:YES];
     }
 }
 
 - (IBAction)previousQuestionButtonPressed:(id)sender {
     self.currentQuestion = self.previosQuestion;
-    [self displayQuestion:self.currentQuestion];
+    [self displayQuestion:self.currentQuestion hidePhotoButton:YES];
 }
 
 - (IBAction)makePhotoButonPressed:(UIButton *)sender {
