@@ -26,7 +26,7 @@
         [answersString appendString:[NSString stringWithFormat:@"%@",[answers objectAtIndex:i]]];
         if ((i + 1) < answers.count) [answersString appendString:@",\n"];
     }
-    self.answersLabel.text = answersString.length ? answersString : @"No Information";
+    self.answersLabel.text = answersString.length ? answersString : @"Compliant";
 }
 
 @end

@@ -199,7 +199,6 @@ InterviewConfirmationProtocol>
                                                               kidFormField : (answer.idFormField) ? : [NSNull null],
                                                               kSelected : (answer.selected) ? : [NSNull null],
                                                               kStatus : (answer.status) ? : [NSNull null],
-                                                              kSpecial : (answer.special) ? : [NSNull null],
                                                               kQuestionId: (answer.questionID) ? : [NSNull null]}
                                              withCompletion:^(id responseObject, NSError *error) {
                                                  [SVProgressHUD dismiss];
