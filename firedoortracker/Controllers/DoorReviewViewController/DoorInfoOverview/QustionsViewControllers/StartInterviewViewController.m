@@ -216,13 +216,17 @@ static const CGFloat headerSize = 45.0f;
 }
 
 - (BOOL)validateAnwsersDictionary:(NSDictionary *)answersDictionary {
+    NSString *unCompletedFields = @"";
     for (NSString *answerName in [answersDictionary allKeys]) {
         NSString *answerValue = [answersDictionary objectForKey:answerName];
         if ([answerValue isEqualToString:@"Please select value"]) {
             NSDictionary *answer = [self answerByName:answerName];
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Please complete %@ field", [answer objectForKey:kLabel]]];
-            return NO;
+            unCompletedFields = [unCompletedFields stringByAppendingString:[NSString stringWithFormat:@"%@,", [answer objectForKey:kLabel]]];
         }
+    }
+    if (unCompletedFields.length) {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Please complete %@ fields", unCompletedFields]];
+        return NO;
     }
     return YES;
 }
