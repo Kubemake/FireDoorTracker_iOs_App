@@ -22,6 +22,7 @@
         self.type = dict[@"type"];
         self.autoSubmit = [dict objectForKey:@"autoSubmit"];
         self.forceRefresh = [dict objectForKey:@"forceRefresh"];
+        self.alert = [dict objectForKey:@"alert"];
         if ([dict objectForKey:@"answers"]) {
             NSMutableArray *answers = [NSMutableArray array];
             for (NSDictionary *answer in [[dict objectForKey:@"answers"] allObjects]) {
