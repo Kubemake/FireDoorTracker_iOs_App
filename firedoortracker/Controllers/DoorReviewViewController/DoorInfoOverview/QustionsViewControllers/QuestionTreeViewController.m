@@ -178,6 +178,12 @@ static const CGFloat answerButtonPadding = 5.0f;
     
     //If Answer not have side effect -> go to next question
     if (self.selectedAnswer.status.integerValue == 0 || ([self.selectedAnswer.autoSubmit boolValue] && [self.selectedAnswer.selected boolValue])) {
+        
+        if ([self.selectedAnswer.alert length]) {
+            [self showQuestionAlert];
+            return;
+        }
+        
         [self nextQuestionButtonPressed:sender];
     } else if ([self.selectedAnswer.selected boolValue]) {
         needToHidePhotoButton = NO;
@@ -191,6 +197,27 @@ static const CGFloat answerButtonPadding = 5.0f;
     //Reset UI View
     [self displayQuestion:self.currentQuestion hidePhotoButton:needToHidePhotoButton];
     self.nextQuestionButton.enabled = YES;
+}
+
+- (void)showQuestionAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Attention", nil)
+                                                                   message:self.selectedAnswer.alert
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
+                                                         if ([self.questionDelegate respondsToSelector:@selector(userSelectAnswer:questionTreeController:)]) {
+                                                             [self.questionDelegate userSelectAnswer:self.selectedAnswer questionTreeController:self];
+                                                         }
+                                                     }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:nil];
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert
+                       animated:YES
+                     completion:nil];
 }
 
 - (void)showOtherAlertView {
