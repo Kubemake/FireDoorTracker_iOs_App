@@ -190,6 +190,7 @@ InterviewConfirmationProtocol>
 - (void)userSelectAnswer:(QuestionOrAnswer *)answer questionTreeController:(id)controller {
     //TODO: Maybe call this method ever
     [self notifyDelagateAboutStatusChanges];
+    [self saveChangesInQuestion:answer];
     //Save info and server
     if ([answer.forceRefresh boolValue]) {
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
@@ -244,6 +245,21 @@ questionTreeController:(id)controller {
     if ([self.interviewDelegate respondsToSelector:@selector(changeInspectionStatusTo:)]) {
         [self.interviewDelegate
          changeInspectionStatusTo:[QuestionOrAnswer statusesByQuestionAndAnswersArray:self.questions]];
+    }
+}
+
+#pragma mark - Save changes in question
+
+- (void)saveChangesInQuestion:(QuestionOrAnswer *)updatedAnswer {
+    for (QuestionOrAnswer *question in self.questions) {
+        if ([question.idFormField isEqualToString:updatedAnswer.questionID]) {
+            for (QuestionOrAnswer *answer in question.answers) {
+                if ([answer.idFormField isEqualToString:updatedAnswer.idFormField]) {
+                    answer.selected = updatedAnswer.selected;
+                    return;
+                }
+            }
+        }
     }
 }
 

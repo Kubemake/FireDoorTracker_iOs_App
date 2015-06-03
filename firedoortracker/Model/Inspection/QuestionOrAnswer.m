@@ -68,7 +68,11 @@
     NSMutableArray *answersLabels = [NSMutableArray array];
     for (QuestionOrAnswer *answer in self.answers) {
         if ([answer.selected boolValue]) {
-            [answersLabels addObject:answer.label];
+            if ([answer.selected isEqualToString:@"YES"]) {
+                [answersLabels addObject:answer.label];
+            } else {
+                [answersLabels addObject:answer.selected];
+            }
         }
     }
     return answersLabels;
