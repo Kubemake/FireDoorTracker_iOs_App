@@ -366,7 +366,14 @@ static const CGFloat answerButtonPadding = 5.0f;
 }
 
 - (IBAction)previousQuestionButtonPressed:(id)sender {
-    self.currentQuestion = self.previosQuestion;
+    QuestionOrAnswer *previousQuestion = [self parentQuestionForQuestion:self.currentQuestion];
+    if (previousQuestion) {
+        self.currentQuestion = previousQuestion;
+    } else {
+        //TODO: Display Error
+        self.currentQuestion = self.previosQuestion;
+    }
+    
     [self displayQuestion:self.currentQuestion hidePhotoButton:YES];
 }
 
@@ -413,6 +420,17 @@ static const CGFloat answerButtonPadding = 5.0f;
     for (QuestionOrAnswer *question in self.questionForReview) {
         if ([question.idFormField isEqualToString:uid]) {
             return question;
+        }
+    }
+    return nil;
+}
+
+- (QuestionOrAnswer *)parentQuestionForQuestion:(QuestionOrAnswer *)question {
+    for (QuestionOrAnswer *parentQuestion in self.questionForReview) {
+        for (QuestionOrAnswer *parentAnswer in parentQuestion.answers) {
+            if ([parentAnswer.idFormField isEqualToString:question.parent]) {
+                return parentQuestion;
+            }
         }
     }
     return nil;
