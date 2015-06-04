@@ -225,9 +225,9 @@ questionTreeController:(id)controller {
     __weak typeof(self) welf = self;
     
     NSDictionary *params = @{ kFile     : photo,
-                              kFileName : answer.label,
-                              kInspectionID : self.inspectionID,
-                              kidFormField : answer.idFormField};
+                              kFileName : (answer.label) ? : [NSNull null],
+                              kInspectionID : (self.inspectionID) ? : [NSNull null],
+                              kidFormField : (answer.idFormField) ? : [NSNull null]};
     
     [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType
                                                   andParams:params
