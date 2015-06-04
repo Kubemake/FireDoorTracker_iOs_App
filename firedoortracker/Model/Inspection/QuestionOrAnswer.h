@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSNumber *autoSubmit;
 @property (nonatomic, strong) NSNumber *forceRefresh;
 @property (nonatomic, copy) NSString *alert;
+@property (nonatomic, copy) NSString *parent;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

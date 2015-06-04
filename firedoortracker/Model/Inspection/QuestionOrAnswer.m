@@ -23,6 +23,7 @@
         self.autoSubmit = [dict objectForKey:@"autoSubmit"];
         self.forceRefresh = [dict objectForKey:@"forceRefresh"];
         self.alert = [dict objectForKey:@"alert"];
+        self.parent = [dict objectForKey:@"parent"];
         if ([dict objectForKey:@"answers"]) {
             NSMutableArray *answers = [NSMutableArray array];
             for (NSDictionary *answer in [[dict objectForKey:@"answers"] allObjects]) {
