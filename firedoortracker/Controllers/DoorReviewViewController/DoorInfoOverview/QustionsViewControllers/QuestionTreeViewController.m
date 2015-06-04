@@ -211,8 +211,8 @@ static const CGFloat answerButtonPadding = 5.0f;
                                                          }
                                                      }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                     style:UIAlertActionStyleCancel
-                                                   handler:nil];
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
     [alert addAction:okAction];
     [alert addAction:cancelAction];
     [self presentViewController:alert
@@ -399,11 +399,13 @@ static const CGFloat answerButtonPadding = 5.0f;
 #pragma mark - UIImagePickerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    if ([self.questionDelegate respondsToSelector:@selector(userMakePhoto:toAnswer:questionTreeController:)]) {
-        [self.questionDelegate userMakePhoto:chosenImage
-                                    toAnswer:self.selectedAnswer
-                      questionTreeController:self];
+    UIImage *chosenImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    if (chosenImage) {
+        if ([self.questionDelegate respondsToSelector:@selector(userMakePhoto:toAnswer:questionTreeController:)]) {
+            [self.questionDelegate userMakePhoto:chosenImage
+                                        toAnswer:self.selectedAnswer
+                          questionTreeController:self];
+        }
     }
     
     [picker dismissViewControllerAnimated:YES completion:nil];
