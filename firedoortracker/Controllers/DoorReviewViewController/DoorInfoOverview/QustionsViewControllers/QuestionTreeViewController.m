@@ -43,6 +43,7 @@ static const CGFloat answerButtonPadding = 5.0f;
 @property (nonatomic, weak) QuestionOrAnswer *previosQuestion;
 @property (nonatomic, weak) QuestionOrAnswer *currentQuestion;
 @property (nonatomic, weak) QuestionOrAnswer *selectedAnswer;
+@property (nonatomic, strong) QuestionOrAnswer *photoAnswer;
 
 @end
 
@@ -315,6 +316,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     self.makePhotoButtonTopConstraint.constant = button.frame.origin.y + (button.bounds.size.height / 2.0f) - (self.makePhotoButton.bounds.size.height / 2.0f);
     
     self.makePhotoButton.tag = [self.selectedAnswer.idFormField integerValue];
+    self.photoAnswer = self.selectedAnswer;
     self.makePhotoButton.hidden = NO;
     
     [UIView animateWithDuration:0.25f
@@ -403,7 +405,7 @@ static const CGFloat answerButtonPadding = 5.0f;
     if (chosenImage) {
         if ([self.questionDelegate respondsToSelector:@selector(userMakePhoto:toAnswer:questionTreeController:)]) {
             [self.questionDelegate userMakePhoto:chosenImage
-                                        toAnswer:self.selectedAnswer
+                                        toAnswer:self.photoAnswer
                           questionTreeController:self];
         }
     }
