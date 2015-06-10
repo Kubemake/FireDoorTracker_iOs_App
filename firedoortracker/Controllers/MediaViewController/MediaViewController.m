@@ -46,7 +46,6 @@ UISearchBarDelegate, UIActionSheetDelegate>
 @property (strong, nonatomic) NSArray* inspectionsForDisplaying;
 @property (weak, nonatomic) Inspection *selectedInspection;
 
-
 @end
 
 @implementation MediaViewController
@@ -64,13 +63,41 @@ UISearchBarDelegate, UIActionSheetDelegate>
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    [self uploadImage:chosenImage
-         toInspection:self.selectedInspection
-      withDescription:nil];
+    [self presentPhotoDescriptionDialogForImage:chosenImage];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Image Description Dialog
+
+- (void)presentPhotoDescriptionDialogForImage:(UIImage *)image {
+    UIAlertController *photoDescriptionDialog = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Description", nil)
+                                                                                    message:NSLocalizedString(@"Please input photo description:", nil)
+                                                                             preferredStyle:UIAlertControllerStyleAlert];
+    [photoDescriptionDialog addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = NSLocalizedString(@"Description...", nil);
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:^(UIAlertAction *action) {
+                                                        UITextField *descriptionTextField = [[photoDescriptionDialog textFields] firstObject];
+                                            
+                                                        [self uploadImage:image
+                                                             toInspection:self.selectedInspection
+                                                          withDescription:descriptionTextField.text];
+                                                    }];
+    [photoDescriptionDialog addAction:cancelAction];
+    [photoDescriptionDialog addAction:okAction];
+    
+    [self presentViewController:photoDescriptionDialog
+                       animated:YES
+                     completion:nil];
 }
 
 #pragma mark - Inspection Selector Delegate
