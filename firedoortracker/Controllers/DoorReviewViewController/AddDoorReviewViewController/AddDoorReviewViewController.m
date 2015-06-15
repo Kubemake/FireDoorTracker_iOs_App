@@ -72,6 +72,7 @@ static const NSInteger cMaxDoorIdLength = 6;
             case NewInspectionInputFieldLevel: {
                 field.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reviewLeftViewField"]];
                 field.isOptionalDropDown = NO;
+                field.delegate = self;
                 
                 break;
             }

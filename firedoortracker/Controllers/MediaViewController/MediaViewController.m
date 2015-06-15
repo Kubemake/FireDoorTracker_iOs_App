@@ -10,6 +10,7 @@
 #import "DoorReviewViewController.h"
 #import "NetworkManager.h"
 #import "CurrentUser.h"
+#import "AddDoorReviewViewController.h"
 
 //Import View
 #import "MediaCollectionViewCell.h"
@@ -19,6 +20,7 @@
 #import <QRCodeReaderViewController.h>
 #import <SVProgressHUD.h>
 #import <IDMPhotoBrowser.h>
+#import <UIViewController+MJPopupViewController.h>
 
 static NSString* inspectionSelectorID = @"DoorReviewViewController";
 static NSString* kAperture = @"aperture_id";
@@ -27,6 +29,7 @@ static NSString* kFileName = @"file_name";
 static NSString* kKeyword = @"keyword";
 static NSString* kUserInspections = @"inspections";
 
+static NSString* addDoorViewControllerIdentifier = @"AddDoorReviewViewController";
 static NSString* kCIMediaPlusCollectionViewCellIdentifier = @"MediaPlusCollectionViewCellIdentifier";
 
 typedef enum {
@@ -37,7 +40,7 @@ typedef enum {
 
 @interface MediaViewController() <UIImagePickerControllerDelegate, UINavigationControllerDelegate,
 QRCodeReaderDelegate, UICollectionViewDataSource, UICollectionViewDelegate,
-UISearchBarDelegate, UIActionSheetDelegate>
+UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -248,6 +251,24 @@ UISearchBarDelegate, UIActionSheetDelegate>
     }
 }
 
+#pragma mark - Add Door 
+
+- (IBAction)addDoorButtonPressed:(id)sender {
+    AddDoorReviewViewController *addDoorVC = [self.storyboard instantiateViewControllerWithIdentifier:addDoorViewControllerIdentifier];
+    addDoorVC.view.frame = CGRectMake(self.view.bounds.size.width / 3.0f,
+                                      self.view.bounds.size.height / 2.0f,
+                                      self.view.bounds.size.width * 2.0f / 3.0f,
+                                      self.view.bounds.size.height / 2.0f);
+    addDoorVC.delegate = self;
+    [self presentPopupViewController:addDoorVC animationType:MJPopupViewAnimationSlideTopTop];
+}
+
+#pragma mark - Add New Inspection Delegate
+
+- (void)inspectionSuccessfullyCreated:(Inspection *)createdInspection {
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopTop];
+    [self loadAndDisplayInspectionList:nil withKeyword:nil];
+}
 #pragma mark - SearchBar Delegate
 #pragma mark -
 
