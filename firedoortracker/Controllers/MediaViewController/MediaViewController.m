@@ -155,14 +155,7 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        self.selectedInspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.section];
-        UIActionSheet *attachPhoto = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"New image source?", nil)
-                                                                 delegate:self
-                                                        cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"To Take Picture", @"From Library", nil];
-        //        attachPhoto.delegate = self;
-        [attachPhoto showInView:self.view];
+        [self displayActionSheetToInspection:[self.inspectionsForDisplaying objectAtIndex:indexPath.section]];
         return;
     }
     
@@ -189,6 +182,18 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
     Inspection *inspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.section];
     [header displayInspectionInfo:inspection];
     return header;
+}
+
+#pragma mark - Action Sheet
+
+- (void)displayActionSheetToInspection:(Inspection *)inspection {
+    self.selectedInspection = inspection;
+    UIActionSheet *attachPhoto = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"New image source?", nil)
+                                                             delegate:self
+                                                    cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"To Take Picture", @"From Library", nil];
+    [attachPhoto showInView:self.view];
 }
 
 #pragma mark - API Methods
@@ -267,6 +272,7 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
 
 - (void)inspectionSuccessfullyCreated:(Inspection *)createdInspection {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopTop];
+    [self displayActionSheetToInspection:createdInspection];
     [self loadAndDisplayInspectionList:nil withKeyword:nil];
 }
 #pragma mark - SearchBar Delegate

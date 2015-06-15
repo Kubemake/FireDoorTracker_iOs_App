@@ -1124,7 +1124,7 @@ No Data</string>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="MEDIA" id="Po3-34-URB">
-                        <barButtonItem key="leftBarButtonItem" title="Add Door" id="2IG-sG-dWD">
+                        <barButtonItem key="leftBarButtonItem" title="Create New Door" id="2IG-sG-dWD">
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="addDoorButtonPressed:" destination="UWy-Xt-lAu" id="7Uk-MI-ls0"/>
