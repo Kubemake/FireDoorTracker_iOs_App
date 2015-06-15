@@ -47,7 +47,7 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
 
 //User Data
 @property (strong, nonatomic) NSArray* inspectionsForDisplaying;
-@property (weak, nonatomic) Inspection *selectedInspection;
+@property (strong, nonatomic) Inspection *selectedInspection;
 
 @end
 
@@ -272,6 +272,7 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
 
 - (void)inspectionSuccessfullyCreated:(Inspection *)createdInspection {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopTop];
+    [self displayActionSheetToInspection:createdInspection];
     [self loadAndDisplayInspectionList:nil withKeyword:nil];
 }
 #pragma mark - SearchBar Delegate
