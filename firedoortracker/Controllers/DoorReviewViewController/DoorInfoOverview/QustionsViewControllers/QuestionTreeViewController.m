@@ -463,11 +463,9 @@ static const CGFloat answerButtonPadding = 5.0f;
         [photos addObject:photo];
     }
     
-    IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos:photos
-                                                      animatedFromView:self.view];
+    IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos:photos];
     [browser setInitialPageIndex:indexPath.row];
     [self presentViewController:browser animated:YES completion:nil];
-    
 }
 
 @end
