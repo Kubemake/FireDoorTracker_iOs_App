@@ -218,27 +218,24 @@ InterviewConfirmationProtocol>
                                              }];
 }
 
-- (void)userMakePhoto:(UIImage *)photo
-             toAnswer:(QuestionOrAnswer *)answer
-questionTreeController:(id)controller {
-    [SVProgressHUD show];
-    __weak typeof(self) welf = self;
+- (void)uploadPhoto:(UIImage *)photo toAnswer:(QuestionOrAnswer *)answer withComment:(NSString *)comment sender:(id)controller {
+        [SVProgressHUD show];
     
-    NSDictionary *params = @{ kFile     : photo,
-                              kFileName : (answer.label) ? : [NSNull null],
-                              kInspectionID : (self.inspectionID) ? : [NSNull null],
-                              kidFormField : (answer.idFormField) ? : [NSNull null]};
+        NSDictionary *params = @{ kFile     : photo,
+                                  kFileName : comment ? : [NSNull null],
+                                  kInspectionID : (self.inspectionID) ? : [NSNull null],
+                                  kidFormField : (answer.idFormField) ? : [NSNull null]};
     
-    [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType
-                                                  andParams:params
-                                             withCompletion:^(id responseObject, NSError *error) {
-                                                 if (error) {
-                                                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                                                     return;
-                                                 }
-                                                 [SVProgressHUD showSuccessWithStatus:@""];
-                                                 [controller refreshViewWithNewImages:[responseObject objectForKey:@"images"]];
-                                             }];
+        [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType
+                                                      andParams:params
+                                                 withCompletion:^(id responseObject, NSError *error) {
+                                                     if (error) {
+                                                         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                                                         return;
+                                                     }
+                                                     [SVProgressHUD showSuccessWithStatus:@""];
+                                                     [controller refreshViewWithNewImages:[responseObject objectForKey:@"images"]];
+                                                 }];
 }
 
 - (void)notifyDelagateAboutStatusChanges {

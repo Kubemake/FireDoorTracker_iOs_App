@@ -17,9 +17,7 @@
 @required
 - (void)userSelectAnswer:(QuestionOrAnswer *)answer
   questionTreeController:(id)controller;
-- (void)userMakePhoto:(UIImage *)photo
-             toAnswer:(QuestionOrAnswer *)answer
-questionTreeController:(id)controller;
+- (void)uploadPhoto:(UIImage *)photo toAnswer:(QuestionOrAnswer *)answer withComment:(NSString *)comment sender:(id)controller;
 
 @end
 

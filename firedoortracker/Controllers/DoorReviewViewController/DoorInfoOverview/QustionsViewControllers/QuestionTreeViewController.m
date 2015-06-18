@@ -386,7 +386,7 @@ static const CGFloat answerButtonPadding = 5.0f;
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         
         [self presentViewController:picker animated:YES completion:nil];
     } else {
@@ -402,15 +402,34 @@ static const CGFloat answerButtonPadding = 5.0f;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIAlertController *photoDescriptionDialog;
     if (chosenImage) {
-        if ([self.questionDelegate respondsToSelector:@selector(userMakePhoto:toAnswer:questionTreeController:)]) {
-            [self.questionDelegate userMakePhoto:chosenImage
-                                        toAnswer:self.photoAnswer
-                          questionTreeController:self];
-        }
+         photoDescriptionDialog = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Description", nil)
+                                                                                        message:NSLocalizedString(@"Please input photo description:", nil)
+                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        [photoDescriptionDialog addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            textField.placeholder = NSLocalizedString(@"Description...", nil);
+        }];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             UITextField *descriptionTextField = [[photoDescriptionDialog textFields] firstObject];
+                                                             if ([self.questionDelegate respondsToSelector:@selector(uploadPhoto:toAnswer:withComment:sender:)]) {
+                                                                 [self.questionDelegate uploadPhoto:chosenImage
+                                                                                           toAnswer:self.photoAnswer
+                                                                                        withComment:descriptionTextField.text
+                                                                                             sender:self];
+                                                             }
+                                                         }];
+        [photoDescriptionDialog addAction:okAction];
     }
     
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        if (photoDescriptionDialog) {
+            [self presentViewController:photoDescriptionDialog animated:YES completion:nil];
+        }
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

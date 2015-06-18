@@ -83,9 +83,6 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
         textField.placeholder = NSLocalizedString(@"Description...", nil);
     }];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:nil];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                       style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction *action) {
@@ -95,7 +92,6 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
                                                              toInspection:self.selectedInspection
                                                           withDescription:descriptionTextField.text];
                                                     }];
-    [photoDescriptionDialog addAction:cancelAction];
     [photoDescriptionDialog addAction:okAction];
     
     [self presentViewController:photoDescriptionDialog
