@@ -28,7 +28,7 @@
 @property (nonatomic, weak) NSArray* questionForReview;
 @property (nonatomic, weak) Tab *tabForDisplaying;
 
-- (void)refreshViewWithNewImages:(NSArray *)images;
+- (void)refreshViewWithNewImages:(NSArray *)images andComments:(NSArray *)comments;
 - (void)updateCurrentQuestionAnswers:(NSArray *)answers;
 
 @end

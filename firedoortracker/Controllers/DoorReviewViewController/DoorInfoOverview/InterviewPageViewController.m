@@ -234,7 +234,7 @@ InterviewConfirmationProtocol>
                                                          return;
                                                      }
                                                      [SVProgressHUD showSuccessWithStatus:@""];
-                                                     [controller refreshViewWithNewImages:[responseObject objectForKey:@"images"]];
+                                                     [controller refreshViewWithNewImages:[responseObject objectForKey:@"images"] andComments:[responseObject objectForKey:@"images_comments"]];
                                                  }];
 }
 

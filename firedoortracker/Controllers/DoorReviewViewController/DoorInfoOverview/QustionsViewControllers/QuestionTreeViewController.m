@@ -57,8 +57,9 @@ static const CGFloat answerButtonPadding = 5.0f;
     [self displayTab:self.tabForDisplaying];
 }
 
-- (void)refreshViewWithNewImages:(NSArray *)images {
+- (void)refreshViewWithNewImages:(NSArray *)images andComments:(NSArray *)comments {
     self.currentQuestion.images = images;
+    self.currentQuestion.imagesComments = comments;
     [self.photosCollectionView reloadData];
 }
 
