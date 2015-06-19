@@ -32,6 +32,7 @@
         self.apertureName = [dictionary objectForKey:@"aperture_name"];
         self.colorStatus = [dictionary objectForKey:@"colorcode"];
         self.images = [dictionary objectForKey:@"images"];
+        self.imagesComments = [dictionary objectForKey:@"images_comments"];
     }
     return self;
 }

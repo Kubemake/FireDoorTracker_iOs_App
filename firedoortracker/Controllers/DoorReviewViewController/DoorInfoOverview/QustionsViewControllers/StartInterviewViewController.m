@@ -261,11 +261,11 @@ static const CGFloat headerSize = 45.0f;
         NSString *answerValue = [answersDictionary objectForKey:answerName];
         if ([answerValue isEqualToString:@"Please select value"]) {
             NSDictionary *answer = [self answerByName:answerName];
-            unCompletedFields = [unCompletedFields stringByAppendingString:[NSString stringWithFormat:@"%@,", [answer objectForKey:kLabel]]];
+            unCompletedFields = [unCompletedFields stringByAppendingString:[NSString stringWithFormat:@"-%@,\n", [answer objectForKey:kLabel]]];
         }
     }
     if (unCompletedFields.length) {
-        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Please complete %@ fields", unCompletedFields]];
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Required fields: \n %@", unCompletedFields]];
         return NO;
     }
     return YES;

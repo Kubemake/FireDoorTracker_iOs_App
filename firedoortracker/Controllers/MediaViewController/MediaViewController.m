@@ -158,8 +158,10 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
     NSMutableArray *photos = [NSMutableArray new];
     Inspection *sectionInspection = [self.inspectionsForDisplaying objectAtIndex:indexPath.section];
     
-    for (NSString *url in sectionInspection.images) {
-        IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:url]];
+    for (int i = 0; i< sectionInspection.images.count; i++) {
+        NSURL *url = [NSURL URLWithString:[sectionInspection.images objectAtIndex:i]];
+        IDMPhoto *photo = [IDMPhoto photoWithURL:url];
+        photo.caption = [sectionInspection.imagesComments objectAtIndex:i];
         [photos addObject:photo];
     }
     

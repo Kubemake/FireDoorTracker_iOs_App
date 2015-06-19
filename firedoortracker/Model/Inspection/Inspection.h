@@ -38,6 +38,7 @@ typedef enum{
 @property (nonatomic, copy) NSString* apertureName;
 @property (nonatomic, strong) NSArray* colorStatus;
 @property (nonatomic, strong) NSArray* images;
+@property (nonatomic, strong) NSArray* imagesComments;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
