@@ -21,6 +21,7 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, strong) NSArray* answers;
 @property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSArray *imagesComments;
 @property (nonatomic, copy) NSString *special;
 @property (nonatomic, strong) NSNumber *autoSubmit;
 @property (nonatomic, strong) NSNumber *forceRefresh;

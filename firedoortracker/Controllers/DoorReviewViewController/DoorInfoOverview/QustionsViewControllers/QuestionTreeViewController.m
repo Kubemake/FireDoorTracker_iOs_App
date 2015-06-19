@@ -477,8 +477,10 @@ static const CGFloat answerButtonPadding = 5.0f;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *photos = [NSMutableArray new];
     
-    for (NSString *url in self.currentQuestion.images) {
-        IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:url]];
+    for (int i=0; i < self.currentQuestion.images.count; i++) {
+        NSURL *url = [NSURL URLWithString:[self.currentQuestion.images objectAtIndex:i]];
+        IDMPhoto *photo = [IDMPhoto photoWithURL:url];
+        photo.caption = [self.currentQuestion.imagesComments objectAtIndex:i];
         [photos addObject:photo];
     }
     

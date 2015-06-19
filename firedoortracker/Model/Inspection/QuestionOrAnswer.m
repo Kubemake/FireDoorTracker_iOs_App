@@ -33,6 +33,7 @@
             self.answers = answers;
         }
         self.images = [dict objectForKey:@"images"];
+        self.imagesComments = [dict objectForKey:@"images_comments"];
     }
     return self;
 }
