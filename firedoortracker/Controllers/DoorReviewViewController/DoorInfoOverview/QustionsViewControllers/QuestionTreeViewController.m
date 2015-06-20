@@ -120,7 +120,10 @@ static const CGFloat answerButtonPadding = 5.0f;
         
         [answerButton addTarget:self action:@selector(answerSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self.questionBodyView addSubview:answerButton];
-        [self addStatusIconsToButton:answerButton withAnswer:answer];
+        
+        if (![self.currentQuestion.name isEqualToString:@"SelecttheQuantityofHoles"]) {
+            [self addStatusIconsToButton:answerButton withAnswer:answer];
+        }
         
         [answerButtons addObject:answerButton];
         answerButtonY += answerButtonHeight;
@@ -405,9 +408,9 @@ static const CGFloat answerButtonPadding = 5.0f;
     UIImage *chosenImage = [info objectForKey:UIImagePickerControllerEditedImage];
     UIAlertController *photoDescriptionDialog;
     if (chosenImage) {
-         photoDescriptionDialog = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Description", nil)
-                                                                                        message:NSLocalizedString(@"Please input photo description:", nil)
-                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        photoDescriptionDialog = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Description", nil)
+                                                                     message:NSLocalizedString(@"Please input photo description:", nil)
+                                                              preferredStyle:UIAlertControllerStyleAlert];
         [photoDescriptionDialog addTextFieldWithConfigurationHandler:^(UITextField *textField) {
             textField.placeholder = NSLocalizedString(@"Description...", nil);
         }];
