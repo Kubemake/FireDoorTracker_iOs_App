@@ -26,6 +26,7 @@
 
 static const CGFloat maxAnswerButtonHeight = 65.0f;
 static const CGFloat answerButtonPadding = 5.0f;
+static NSString* kuserTutorial = @"userTutorial";
 
 @interface QuestionTreeViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -160,6 +161,19 @@ static const CGFloat answerButtonPadding = 5.0f;
 #pragma mark -
 
 - (void)answerSelected:(UIButton *)sender {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kuserTutorial]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kuserTutorial];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        UIAlertController *tutorialAlert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Attention", nil)
+                                                                               message:NSLocalizedString(@"Please note: if you have to change your answer, please first un-select your original answer before selecting the new one", nil)
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [tutorialAlert addAction:okAction];
+        [self presentViewController:tutorialAlert animated:YES completion:nil];
+    }
+    
     //TODO: Save current Answer for the crump breads
     self.selectedAnswer = [self.currentQuestion answerByID:[NSString stringWithFormat:@"%d",sender.tag]];
     if ([self.selectedAnswer.label isEqualToString:@"Other"] || [self.selectedAnswer.label isEqualToString:@"Write-in Option"]) {
