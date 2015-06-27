@@ -222,7 +222,7 @@ InterviewConfirmationProtocol>
         [SVProgressHUD show];
     
         NSDictionary *params = @{ kFile     : photo,
-                                  kFileName : comment ? : [NSNull null],
+                                  kFileName : [comment length] ? comment : @" ",
                                   kInspectionID : (self.inspectionID) ? : [NSNull null],
                                   kidFormField : (answer.idFormField) ? : [NSNull null]};
     

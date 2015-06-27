@@ -106,7 +106,7 @@ UISearchBarDelegate, UIActionSheetDelegate, AddDoorReviewDelegate>
     __weak typeof(self) welf = self;
     
     NSDictionary *params = @{ kFile     : image,
-                              kFileName : (description) ? : @"From iPad",
+                              kFileName : [description length] ? description : @" ",
                               kAperture : (inspection.apertureId) ? : @"" };
     
     [[NetworkManager sharedInstance] performRequestWithType:uploadFileRequestType
