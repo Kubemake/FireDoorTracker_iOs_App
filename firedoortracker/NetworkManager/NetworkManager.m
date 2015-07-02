@@ -8,6 +8,7 @@
 
 #import "NetworkManager.h"
 #import <AFNetworking.h>
+#import <SVProgressHUD.h>
 
 static NSString* baseURL = @"http://firedoortracker.org/service/";
 static NSString* dispatcherURL = @"dispatcher";
@@ -36,6 +37,7 @@ static NSString* kFile = @"file";
 static NSString* kStatus = @"status";
 static NSString* kError = @"error";
 static NSString* statusOK = @"ok";
+static NSString* kWarningMessage = @"warning_message";
 
 typedef enum {
     RequestMethodPOST = 0,
@@ -195,6 +197,9 @@ static bool isFirstAccess = YES;
                               if (completion) {
                                   if ([[responseObject objectForKey:kStatus] isEqualToString:statusOK]) {
                                       completion(responseObject, nil);
+                                      if ([responseObject objectForKey:kWarningMessage]) {
+                                          [SVProgressHUD showInfoWithStatus:[responseObject objectForKey:kWarningMessage]];
+                                      }
                                   } else {
                                       completion(nil, [NSError errorWithDomain:[responseObject objectForKey:kError]
                                                                           code:0
@@ -221,6 +226,9 @@ static bool isFirstAccess = YES;
                           if (completion) {
                               if ([[responseObject objectForKey:kStatus] isEqualToString:statusOK]) {
                                   completion(responseObject, nil);
+                                  if ([responseObject objectForKey:kWarningMessage]) {
+                                      [SVProgressHUD showInfoWithStatus:[responseObject objectForKey:kWarningMessage]];
+                                  }
                               } else {
                                   completion(nil, [NSError errorWithDomain:[responseObject objectForKey:kError]
                                                                       code:0
