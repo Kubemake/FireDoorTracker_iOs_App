@@ -14,6 +14,8 @@
 
 static NSString* showTabBarFlowSegueIdentifier = @"showTabBarFlowSegueIdentifier";
 static NSString* kUserInspections = @"inspections";
+static NSString* kWarningMessage = @"warning_message";
+static NSString* kWarningLink = @"warning_link";
 
 @interface AuthorizationViewController ()
 
@@ -76,6 +78,25 @@ static NSString* kUserInspections = @"inspections";
         
         if (error) {
             [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            return;
+        }
+        
+        if ([responseObject objectForKey:kWarningMessage]) {
+            [SVProgressHUD dismiss];
+
+            UIAlertController *warningController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Warning", nil)
+                                                                                       message:[responseObject objectForKey:kWarningMessage]
+                                                                                preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+                [welf loadIssuesListFromServer];
+            }];
+            UIAlertAction *renew = [UIAlertAction actionWithTitle:@"Renew Now" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[responseObject objectForKey:kWarningLink]]];
+            }];
+            [warningController addAction: cancel];
+            [warningController addAction:renew];
+            [self presentViewController:warningController animated:YES completion:nil];
+            
             return;
         }
        
