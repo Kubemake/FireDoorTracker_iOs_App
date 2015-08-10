@@ -264,6 +264,7 @@ static NSString* kuserTutorial = @"userTutorial";
     
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = NSLocalizedString(@"Description...", nil);
+        textField.text = ([self.selectedAnswer.selected isKindOfClass:[NSString class]]) ? self.selectedAnswer.selected : @"";
     }];
     
     [self presentViewController:alert animated:YES completion:nil];
