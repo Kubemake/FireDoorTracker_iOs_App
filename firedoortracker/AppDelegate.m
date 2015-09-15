@@ -17,40 +17,33 @@
 
 #pragma mark - Lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setupNavigationBarAppearance];
-    [TestFairy begin:@"80331b626231b2dc25c06037e77882814a81c4c5"];
+//    [TestFairy begin:@"80331b626231b2dc25c06037e77882814a81c4c5"];
     
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
+- (void)applicationWillResignActive:(UIApplication *)application {
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application {
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
+- (void)applicationWillEnterForeground:(UIApplication *)application {
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application {
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+- (void)applicationWillTerminate:(UIApplication *)application {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userInfoKey"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Private UI
 
-- (void)setupNavigationBarAppearance
-{
+- (void)setupNavigationBarAppearance {
     [[UINavigationBar appearance] setTranslucent:NO];
     
     UIImage *backgroundImage = [UIImage imageWithColor:[UIColor whiteColor]];
