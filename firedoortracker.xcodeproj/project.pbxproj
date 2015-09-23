@@ -31,6 +31,7 @@
 		6868264A1AD4204800684AE9 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686826491AD4204800684AE9 /* WebViewController.m */; };
 		686826531AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 686826521AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m */; };
 		686826561AD6AC2F00684AE9 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686826551AD6AC2F00684AE9 /* PhotoCollectionViewCell.m */; };
+		6879D2BB1BB2B2FE00B1ADBA /* OfflineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6879D2BA1BB2B2FE00B1ADBA /* OfflineManager.m */; settings = {ASSET_TAGS = (); }; };
 		688188211AFC8A5D0084151A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688188201AFC8A5D0084151A /* AVFoundation.framework */; };
 		688906851AB85CA10079F67B /* Inspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906841AB85CA10079F67B /* Inspection.m */; };
 		688906891AB861180079F67B /* InspectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688906881AB861180079F67B /* InspectionCollectionViewCell.m */; };
@@ -124,6 +125,8 @@
 		686826521AD4FC2A00684AE9 /* UINavigationController+FireDoorTrackerOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+FireDoorTrackerOptions.m"; path = "Extensions/UINavigationController+FireDoorTrackerOptions/UINavigationController+FireDoorTrackerOptions.m"; sourceTree = "<group>"; };
 		686826541AD6AC2F00684AE9 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCollectionViewCell.h; path = View/PhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		686826551AD6AC2F00684AE9 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCollectionViewCell.m; path = View/PhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		6879D2B91BB2B2FE00B1ADBA /* OfflineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OfflineManager.h; path = NetworkManager/OfflineManager.h; sourceTree = "<group>"; };
+		6879D2BA1BB2B2FE00B1ADBA /* OfflineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OfflineManager.m; path = NetworkManager/OfflineManager.m; sourceTree = "<group>"; };
 		688188201AFC8A5D0084151A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		688906831AB85CA10079F67B /* Inspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Inspection.h; path = Model/Inspection/Inspection.h; sourceTree = "<group>"; };
 		688906841AB85CA10079F67B /* Inspection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Inspection.m; path = Model/Inspection/Inspection.m; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 			children = (
 				6851D39A1AB6E7130085965E /* NetworkManager.h */,
 				6851D39B1AB6E7130085965E /* NetworkManager.m */,
+				6879D2B91BB2B2FE00B1ADBA /* OfflineManager.h */,
+				6879D2BA1BB2B2FE00B1ADBA /* OfflineManager.m */,
 			);
 			name = NetworkManager;
 			sourceTree = "<group>";
@@ -859,6 +864,7 @@
 				682C11661AE286B600CDD219 /* MediaHeaderCollectionReusableView.m in Sources */,
 				F94A8C0D1ABB21DE00A3AC06 /* NavigationBarButtons.m in Sources */,
 				6889068D1AB879360079F67B /* HomeMenuCollectionViewCell.m in Sources */,
+				6879D2BB1BB2B2FE00B1ADBA /* OfflineManager.m in Sources */,
 				682C11631AE26F5E00CDD219 /* MediaCollectionViewCell.m in Sources */,
 				686634AE1AB5E7CA003EA804 /* main.m in Sources */,
 				6851D3881AB5ED2D0085965E /* MediaViewController.m in Sources */,
