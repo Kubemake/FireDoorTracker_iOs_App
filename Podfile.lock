@@ -31,10 +31,15 @@ PODS:
     - pop
   - IQDropDownTextField (1.0.4.1)
   - M13Checkbox (1.1.2)
+  - macros_blocks (0.0.1)
   - MJPopupViewController (0.4)
   - NPAAViewHelper (0.0.1)
   - pop (1.0.7)
   - QRCodeReaderViewController (3.2.3)
+  - SCNetworkReachability (2.0.4):
+    - SCNetworkReachability/Core (= 2.0.4)
+  - SCNetworkReachability/Core (2.0.4):
+    - macros_blocks (= 0.0.1)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -51,6 +56,7 @@ DEPENDENCIES:
   - MJPopupViewController (~> 0.4)
   - NPAAViewHelper
   - QRCodeReaderViewController (~> 3.2.3)
+  - SCNetworkReachability
   - SDWebImage (~> 3.7)
   - SVProgressHUD (~> 1.1)
   - TestFairy
@@ -63,12 +69,14 @@ SPEC CHECKSUMS:
   IDMPhotoBrowser: ebbfa6690456b72dd92d93b7bc11d71519f4d06d
   IQDropDownTextField: 4e6fc6dbfd46a922fbc3fb76ac855d05ccfdc962
   M13Checkbox: 0c0bb08dcd144c4ea33f883b68270f3f56908ea2
+  macros_blocks: da2106a0975514e16f3669f2f50a02efaff642cf
   MJPopupViewController: e9ad553a3145eb8126ba2748e872ae7fb25cc605
   NPAAViewHelper: 94af85631e0ada6c446e04641a1799d46e8dffea
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   QRCodeReaderViewController: 875032a407082d9c598794aa1433e7013c9ac468
+  SCNetworkReachability: 4d836180e9ef916da4ef68a34fec748f88950712
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
   TestFairy: d4d805d6312008f136b347df510239460c15b141
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.38.2

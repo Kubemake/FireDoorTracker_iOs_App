@@ -9,6 +9,7 @@
 #import "NetworkManager.h"
 #import <AFNetworking.h>
 #import <SVProgressHUD.h>
+#import <SCNetworkReachability.h>
 
 static NSString* baseURL = @"http://firedoortracker.org/service/";
 static NSString* dispatcherURL = @"dispatcher";
@@ -47,6 +48,7 @@ typedef enum {
 @interface NetworkManager()
 
 @property (nonatomic, strong) AFHTTPRequestOperationManager* networkManager;
+@property (nonatomic, strong) SCNetworkReachability* reachability;
 @property (nonatomic, copy) NSString* userToken;
 
 @end
@@ -108,6 +110,8 @@ static bool isFirstAccess = YES;
     self.networkManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
     self.networkManager.requestSerializer = [AFJSONRequestSerializer serializer];
     self.networkManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    self.reachability = [[SCNetworkReachability alloc] initWithHost:@"http://firedoortracker.org"];
 }
 
 #pragma mark - Request methods
@@ -181,16 +185,36 @@ static bool isFirstAccess = YES;
         }
     }
     
+    __weak typeof(self) welf = self;
+    [self.reachability reachabilityStatus:^(SCNetworkStatus status) {
+        switch (status) {
+            case SCNetworkStatusNotReachable:
+                //TODO: Perform Request In OfflineManager
+                break;
+                
+            default:
+                [welf completeRequestWithType:type
+                                    andParams:requestParams
+                               withCompletion:completion];
+                break;
+        }
+    }];
+    
+}
+
+- (void)completeRequestWithType:(RequestType)type
+                      andParams:(NSMutableDictionary *)params
+                 withCompletion:(void (^)(id responseObject, NSError* error))completion {
     if (type == uploadFileRequestType) {
         //Special method for upload
-        NSData *dataForUpload = UIImagePNGRepresentation([requestParams objectForKey:kFile]);
-        [requestParams removeObjectForKey:kFile];
+        NSData *dataForUpload = UIImagePNGRepresentation([params objectForKey:kFile]);
+        [params removeObjectForKey:kFile];
         [self.networkManager POST:uploadURL
-                       parameters:requestParams
+                       parameters:params
         constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             [formData appendPartWithFileData:dataForUpload
                                         name:kFile
-                                    fileName:[requestParams objectForKey:@"file_name"]
+                                    fileName:[params objectForKey:@"file_name"]
                                     mimeType:@"image/png"];
         }
                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -214,7 +238,7 @@ static bool isFirstAccess = YES;
     }
     
     [self.networkManager POST:dispatcherURL
-                   parameters:requestParams
+                   parameters:params
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
                           if ([responseObject objectForKey:kToken]) {
                               self.userToken = [responseObject objectForKey:kToken];
@@ -231,11 +255,11 @@ static bool isFirstAccess = YES;
                           }
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                           if (completion) completion(nil, error);
-//                          NSData *theData = [error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"];
-//                          NSString *string = [NSString stringWithUTF8String:[theData bytes]];
-//                          NSLog(@"%@",string);
+                          //                          NSData *theData = [error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"];
+                          //                          NSString *string = [NSString stringWithUTF8String:[theData bytes]];
+                          //                          NSLog(@"%@",string);
                       }];
-}
 
+}
 
 @end

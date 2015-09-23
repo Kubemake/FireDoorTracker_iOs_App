@@ -15,6 +15,7 @@ pod 'QRCodeReaderViewController', '~> 3.2.3'
 pod 'M13Checkbox', '~> 1.1.0'
 pod 'SDWebImage', '~> 3.7'
 pod 'IDMPhotoBrowser', '~> 1.6'
+pod 'SCNetworkReachability'
 
 end
 
